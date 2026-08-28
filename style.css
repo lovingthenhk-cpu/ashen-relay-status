@@ -1,0 +1,76 @@
+:root {
+  color-scheme: dark;
+  --ink: #ece8dc;
+  --muted: #aaa699;
+  --panel: rgba(24, 26, 25, .86);
+  --line: #393c37;
+  --ember: #db875b;
+  --arcane: #8ab9af;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 78% 10%, rgba(83, 129, 120, .16), transparent 32rem),
+    radial-gradient(circle at 12% 28%, rgba(173, 89, 50, .13), transparent 28rem),
+    #101211;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Noto Sans JP", sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .14;
+  background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+main { width: min(1080px, calc(100% - 40px)); margin: auto; padding: 72px 0 40px; }
+header { padding: 50px 0 64px; border-bottom: 1px solid var(--line); }
+.eyebrow, .tag { color: var(--arcane); font-size: .72rem; font-weight: 800; letter-spacing: .18em; }
+h1 { margin: 8px 0 14px; font-family: Georgia, serif; font-size: clamp(3.5rem, 11vw, 7.5rem); font-weight: 500; line-height: .9; letter-spacing: -.055em; }
+.lead { max-width: 650px; color: var(--muted); font-size: clamp(1rem, 2.4vw, 1.35rem); line-height: 1.8; }
+.status { display: inline-flex; align-items: center; gap: 9px; margin-top: 18px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; color: #c9c6bb; font: 700 .72rem ui-monospace, monospace; }
+.status span { width: 8px; height: 8px; border-radius: 50%; background: #79c597; box-shadow: 0 0 13px #79c597; }
+section { margin-top: 56px; }
+.section-heading { display: flex; justify-content: space-between; align-items: end; }
+h2 { margin: 0 0 18px; font-size: 1.1rem; letter-spacing: .01em; }
+.section-heading strong { margin-bottom: 18px; color: var(--ember); font: 700 .75rem ui-monospace, monospace; }
+.progress { height: 8px; overflow: hidden; border-radius: 10px; background: #292b28; }
+.progress span { display: block; width: 24%; height: 100%; background: linear-gradient(90deg, var(--ember), var(--arcane)); }
+.muted { color: var(--muted); font-size: .82rem; }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+article { min-height: 190px; padding: 26px; border: 1px solid var(--line); border-radius: 4px; background: var(--panel); }
+article.done { border-top-color: var(--arcane); }
+article.active { border-color: rgba(219, 135, 91, .62); box-shadow: inset 0 0 35px rgba(219, 135, 91, .05); }
+article.active .tag { color: var(--ember); }
+article h2 { margin-top: 38px; margin-bottom: 10px; font-family: Georgia, serif; font-size: 1.55rem; font-weight: 500; }
+article p:last-child { margin: 0; color: var(--muted); line-height: 1.7; }
+.chips { display: flex; flex-wrap: wrap; gap: 9px; padding: 0; list-style: none; }
+.chips li { padding: 9px 12px; border: 1px solid var(--line); background: rgba(255,255,255,.025); color: #c8c4b8; font-size: .8rem; }
+.timeline ol { display: grid; grid-template-columns: repeat(5, 1fr); padding: 0; list-style: none; }
+.timeline li { position: relative; display: flex; gap: 12px; padding: 18px 10px 18px 0; border-top: 1px solid var(--line); color: #777b75; }
+.timeline li::before { content: ""; position: absolute; top: -3px; left: 0; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+.timeline li.complete { color: var(--arcane); }
+.timeline li.current { color: var(--ember); }
+.timeline span { font: 700 .72rem ui-monospace, monospace; }
+.timeline strong, .timeline small { display: block; }
+.timeline strong { color: var(--ink); font-size: .8rem; }
+.timeline small { margin-top: 5px; color: var(--muted); font-size: .68rem; line-height: 1.5; }
+footer { margin-top: 70px; padding-top: 22px; border-top: 1px solid var(--line); color: #74766f; font: .7rem ui-monospace, monospace; }
+
+@media (max-width: 680px) {
+  main { width: min(100% - 28px, 1080px); padding-top: 36px; }
+  header { padding-bottom: 44px; }
+  .grid { grid-template-columns: 1fr; }
+  .timeline ol { grid-template-columns: 1fr; }
+  .timeline li { border-top: 0; border-left: 1px solid var(--line); padding: 8px 0 24px 18px; }
+  .timeline li::before { top: 12px; left: -3px; }
+}
+

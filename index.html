@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ashen Relay ModPack development status">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Ashen Relay — Development Status</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">MINECRAFT 1.20.1 · FORGE 47.4.23</p>
+      <h1>Ashen Relay</h1>
+      <p class="lead">魔法都市を探索し、ボスから力を継承する個人用ModPack。</p>
+      <div class="status"><span></span> Prototype boots successfully</div>
+    </header>
+
+    <section aria-labelledby="progress-title">
+      <div class="section-heading">
+        <h2 id="progress-title">現在の進捗</h2>
+        <strong>Phase 1 / 5</strong>
+      </div>
+      <div class="progress" role="progressbar" aria-label="全体進捗" aria-valuemin="0" aria-valuemax="100" aria-valuenow="24">
+        <span></span>
+      </div>
+      <p class="muted">基盤構築と最初のゲームループを検証中</p>
+    </section>
+
+    <section class="grid" aria-label="開発項目">
+      <article class="done">
+        <p class="tag">COMPLETE</p>
+        <h2>実行基盤</h2>
+        <p>Forge開発環境、専用Java 17、再現可能なpackwiz構成を固定。</p>
+      </article>
+      <article class="done">
+        <p class="tag">COMPLETE</p>
+        <h2>統合起動</h2>
+        <p>中核Modと依存Modを読み込み、新規ワールド生成まで確認。</p>
+      </article>
+      <article class="active">
+        <p class="tag">IN PROGRESS</p>
+        <h2>力の継承</h2>
+        <p>武器のエンチャントを抽出し、新しい武器へ移す試作を実装。</p>
+      </article>
+      <article>
+        <p class="tag">NEXT</p>
+        <h2>魔法と構造物</h2>
+        <p>Spell Imprint、Affix、独自都市区画、ボス報酬を順次統合。</p>
+      </article>
+    </section>
+
+    <section aria-labelledby="stack-title">
+      <h2 id="stack-title">中核スタック</h2>
+      <ul class="chips">
+        <li>The Lost Cities</li>
+        <li>Iron's Spells 'n Spellbooks</li>
+        <li>L_Ender's Cataclysm</li>
+        <li>Mowzie's Mobs</li>
+        <li>Apotheosis</li>
+        <li>Better Combat</li>
+      </ul>
+    </section>
+
+    <section class="timeline" aria-labelledby="timeline-title">
+      <h2 id="timeline-title">ロードマップ</h2>
+      <ol>
+        <li class="complete"><span>01</span><div><strong>Foundation</strong><small>版固定・ビルド・起動検証</small></div></li>
+        <li class="current"><span>02</span><div><strong>Inheritance</strong><small>装備更新と強化継承</small></div></li>
+        <li><span>03</span><div><strong>Arcana</strong><small>独自スペルと能力連携</small></div></li>
+        <li><span>04</span><div><strong>The City</strong><small>都市区画・構造物・進行</small></div></li>
+        <li><span>05</span><div><strong>Polish</strong><small>バランス・演出・配信向け調整</small></div></li>
+      </ol>
+    </section>
+
+    <footer>
+      <p>Last updated <time datetime="2026-08-28">2026-08-28</time> · Story details intentionally sealed.</p>
+    </footer>
+  </main>
+</body>
+</html>
