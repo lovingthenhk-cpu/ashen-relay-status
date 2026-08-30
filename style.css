@@ -43,7 +43,7 @@ section { margin-top: 56px; }
 h2 { margin: 0 0 18px; font-size: 1.1rem; letter-spacing: .01em; }
 .section-heading strong { margin-bottom: 18px; color: var(--ember); font: 700 .75rem ui-monospace, monospace; }
 .progress { height: 8px; overflow: hidden; border-radius: 10px; background: #292b28; }
-.progress span { display: block; width: 54%; height: 100%; background: linear-gradient(90deg, var(--ember), var(--arcane)); }
+.progress span { display: block; width: 58%; height: 100%; background: linear-gradient(90deg, var(--ember), var(--arcane)); }
 .muted { color: var(--muted); font-size: .82rem; }
 .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
 article { min-height: 190px; padding: 26px; border: 1px solid var(--line); border-radius: 4px; background: var(--panel); }
