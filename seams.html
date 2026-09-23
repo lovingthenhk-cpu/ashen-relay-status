@@ -13,7 +13,8 @@
     <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="mods.html">Mod採用表</a><a href="ideas.html">旧案の採用台帳</a><a href="seams.html" aria-current="page">縫合パターン42件</a><a href="delivery.html">次の作業と実装受入</a><a href="implementation.html">実装ファイル</a><a href="completion.html">完成工程</a></nav>
     <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
     <article class="document"><h1>Mod要素単位の縫合パターン台帳</h1>
-<p>更新日: 2026-09-24。<strong>企画上42パターン</strong>。内訳は現行packに入っているModとAshen Relayの部品を組む <strong>C01〜C22の22件</strong>、未導入Modの部品を隔離試験して採用可否を決める <strong>X01〜X20の20件</strong>。これは完成数でも、42種類のModや42棟の建物を入れる約束でもない。R-27W3はユーザー指示により未着手のまま。</p>
+<p>更新日: 2026-09-24。<strong>企画上42パターン</strong>。内訳は現行packに入っているModとAshen Relayの部品を組む <strong>C01〜C22の22件</strong>（機械確認1、一部稼働10、計画11）、未導入Modの部品を隔離試験して採用可否を決める <strong>X01〜X20の20件</strong>（全件隔離試験待ち）。これは完成数でも、42種類のModや42棟の建物を入れる約束でもない。R-27W3はユーザー指示により未着手のまま。</p>
+<p>照合元は <code>MODPACK_CONTENT_BLUEPRINT.md</code> の施設別の混ぜ方、<code>EXPANDED_GAME_VISION.md</code> の六圏・五縫合、<code>IDEA_DELIVERY_CONTRACT.md</code> のW/P/U/X行、<code>IDEA_INCLUSION_LEDGER.md</code> のネガティブリスト。実装証拠は <code>TESTING.md</code> と <code>reports/compat/</code> を正本とする。</p>
 <h2>数え方と状態</h2>
 <p>一件は「部品A × 部品B → 特定の場所でプレイヤーに生じる操作」が異なる縫合レシピ。同じ塔の色違い、同じ弾の属性違い、同じ仕組みを別seedへ置いたものは増やさない。Lost Citiesの道路とMod建築の接合、戦闘payloadと別Modのcarrier、報酬と別Modの装備更新も、プレイヤーの操作が異なれば数える。<code>W01〜W06</code>、<code>S01〜S05</code>、<code>G01〜G05</code> は圏・空間・方法の分類であり、42件に重複加算しない。</p>
 <p>状態は <strong>機械確認</strong>＝現行packで実ブロック/専用server等の該当接続を確認、<strong>一部稼働</strong>＝構成部品や片側はあるが施設内の一連の遊びは未受入、<strong>計画</strong>＝現行packの部品で実装予定、<strong>隔離試験待ち</strong>＝未導入Modの版・互換・権利・停止方法を含む候補。人の外観・操作感を機械確認に含めない。C01も外観と実player歩行は未検証。</p>
