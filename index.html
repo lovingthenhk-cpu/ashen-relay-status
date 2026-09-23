@@ -3,92 +3,87 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Ashen Relay ModPack development status">
+  <meta name="description" content="Ashen Relayの具体的なModPack企画と開発状況。物語のネタバレを含みます。">
   <meta name="robots" content="noindex, nofollow, noarchive">
-  <title>Ashen Relay — Development Status</title>
+  <title>Ashen Relay — ModPack企画と開発計画</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main>
     <header>
-      <p class="eyebrow">MINECRAFT 1.20.1 · FORGE 47.4.23</p>
+      <p class="eyebrow">MINECRAFT 1.20.1 · FORGE 47.4.23 · 企画公開版</p>
       <h1>Ashen Relay</h1>
-      <p class="lead">魔法都市を探索し、ボスから力を継承する個人用ModPack。</p>
-      <div class="status"><span></span> Vertical slice · incomplete</div>
+      <p class="lead">Lost Citiesの道路から、他Modの塔、地下墓地、工場、城塞、海と洞窟へ。そこで受けた異質な攻撃を、武器や呪文として持ち帰って次の攻略へ使うModPack。</p>
+      <div class="status"><span></span> 企画再編済み · 実装進行中</div>
+      <p class="notice"><strong>ネタバレあり。</strong> このページには物語の核心、終盤の選択、未実装の攻略計画を記載しています。「実装済み」「検証済み」「計画」を区別して読んでください。</p>
     </header>
 
-    <section aria-labelledby="progress-title">
-      <div class="section-heading">
-        <h2 id="progress-title">現在の進捗</h2>
-        <strong>Vertical slice · 約30%</strong>
-      </div>
-      <div class="progress" role="progressbar" aria-label="当初の完成像に対する全体進捗" aria-valuemin="0" aria-valuemax="100" aria-valuenow="30" aria-valuetext="約30パーセント">
-        <span></span>
-      </div>
-      <p class="muted">当初の完成像に対する概算。全体スコープの再監査は未実施のため据え置き。検証密度の高い土台は完成しているが、必須コンテンツは未完成。</p>
+    <section aria-labelledby="now-title">
+      <div class="section-heading"><h2 id="now-title">現在地</h2><strong>2026-09-23</strong></div>
+      <p>装備の強化継承、4種類の敵・弾・場所の遭遇、BOMDの任意遠征、複数Modのボス報酬、終盤の二択は実装済みです。専用サーバーと自己試験で主要な進行を検証しました。一方、実際に見えた街はLost Cities標準建築とAshen Relay製の建物が中心で、他Modの施設が都市から孤立していました。都市景観の完成判定を取り消し、次の作業を街と施設の接続から始めます。</p>
+      <p class="muted">以前の「約30%」は2026-09-17時点の旧監査による概算です。今回の再編後の完成率として使いません。外観、歩行感、面白さは、人の確認が済むまで未検証です。</p>
     </section>
 
-    <section class="grid" aria-label="開発項目">
-      <article class="done">
-        <p class="tag">VERIFIED</p>
-        <h2>実行基盤</h2>
-        <p>Forge開発環境、専用Java 17、再現可能なpackwiz構成を固定。</p>
-      </article>
-      <article class="done">
-        <p class="tag">VERIFIED</p>
-        <h2>統合起動</h2>
-        <p>30個のModを固定し、専用サーバーで統合起動と自己試験を確認。</p>
-      </article>
-      <article class="done">
-        <p class="tag">VERIFIED</p>
-        <h2>力の継承</h2>
-        <p>エンチャント、Affix、Gem、装備型呪文の安全な抽出と再装着を実装・検証。</p>
-      </article>
-      <article class="done">
-        <p class="tag">VERIFIED</p>
-        <h2>地区類型</h2>
-        <p>必須4類型（生体・投射・固定化・反転）を実装し、runtime統合を検証。必須ゲートの一つ。</p>
-      </article>
-      <article class="active">
-        <p class="tag">ACTIVE</p>
-        <h2>地区共通基盤の硬化</h2>
-        <p>4地区のclear帰属・再取得・報酬順を対称化する。次段は縫合都市・worldgen。</p>
-      </article>
-      <article class="planned">
-        <p class="tag">PLANNED</p>
-        <h2>完成へ向けた残り</h2>
-        <p>縫合都市、任意遠征・横断進行、終盤分岐、報酬・能力の広がり、独自ゲームプレイ、定量バランス、Computer Use非依存の最終検証。</p>
-      </article>
-    </section>
-
-    <section aria-labelledby="stack-title">
-      <h2 id="stack-title">中核スタック</h2>
-      <ul class="chips">
-        <li>The Lost Cities</li>
-        <li>Iron's Spells 'n Spellbooks</li>
-        <li>L_Ender's Cataclysm</li>
-        <li>Mowzie's Mobs</li>
-        <li>T.O Magic 'n Extras</li>
-        <li>Bosses of Mass Destruction</li>
-        <li>Apotheosis</li>
-        <li>Better Combat</li>
-      </ul>
-    </section>
-
-    <section class="timeline" aria-labelledby="timeline-title">
-      <h2 id="timeline-title">ロードマップ</h2>
-      <ol>
-        <li class="complete"><span>01</span><div><strong>Foundation</strong><small>版固定・ビルド・起動検証（検証済み）</small></div></li>
-        <li class="complete"><span>02</span><div><strong>Inheritance</strong><small>装備更新と強化継承（検証済み）</small></div></li>
-        <li class="complete"><span>03</span><div><strong>Arcana</strong><small>独自スペルと能力連携（検証済み）</small></div></li>
-        <li class="current"><span>04</span><div><strong>The City</strong><small>地区4類型を実装・統合。次は共通基盤の硬化。</small></div></li>
-        <li class="planned"><span>05</span><div><strong>Completion</strong><small>縫合都市・worldgen・遠征・終盤・バランス・最終検証</small></div></li>
+    <section aria-labelledby="loop-title">
+      <h2 id="loop-title">プレイヤーが繰り返すこと</h2>
+      <ol class="steps">
+        <li><strong>見つける</strong><span>現世の街道から、由来の違う構造物を選んで入る。入口と帰路が道路につながる。</span></li>
+        <li><strong>攻略する</strong><span>敵の技、弾、変わる床、磁力など、施設ごとに違う規則を学ぶ。</span></li>
+        <li><strong>持ち帰る</strong><span>元Mod固有の武器・素材に、別Mod由来の巻物や強化を重ねる。</span></li>
+        <li><strong>組み替える</strong><span>Affix、Gem、装備型呪文を継承印で新しい武器へ移し、横断合成を目指す。</span></li>
+        <li><strong>別の場所で試す</strong><span>地下で得た技を塔へ、都市で作った装備を海や洞窟へ持ち込む。</span></li>
       </ol>
     </section>
 
-    <footer>
-      <p>Last updated <time datetime="2026-09-17">2026-09-17</time> · Story details intentionally sealed.</p>
-    </footer>
+    <section aria-labelledby="sites-title">
+      <h2 id="sites-title">どこで何を混ぜるか</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>場所</th><th>Modの組み合わせと遊び</th><th>持ち帰るもの</th><th>状態</th></tr></thead>
+        <tbody>
+          <tr><td>現世の街道と地下</td><td>Lost Citiesの道 × Alex's Cavesの地下小屋 × Mowzie's Mobsのフェラス地下室。小屋から梯子と通路で降りる。</td><td>固有の斧・兜、共鳴素材。塔で拾った武器との比較と継承。</td><td>小屋と地下室は接合済み。都市道路との接続はR-27W。</td></tr>
+          <tr><td>街道の塔</td><td>Apotheosisの塔 × 他Mod由来の射手モデル × BOMDの弾 × CataclysmのBone Fracture。遮蔽物と射線を使う。</td><td>Affix武器、Gem、弾系能力。地下探索用の別ビルド。</td><td>塔と射撃AIは実装済み。外見と街道接続はR-27M/W。</td></tr>
+          <tr><td>地下墓地</td><td>Iron's Spellsのcatacombs × Mowzie'sの一時的なブロック変換 × Cataclysmの予兆攻撃。変わる床と退路を読む。</td><td>巻物、ルーン、装備型呪文。敵の技を後に自分の呪文へ。</td><td>原生施設と攻撃は実装済み。一時床の実施設導入はR-27E。</td></tr>
+          <tr><td>城塞</td><td>Iron's Spellsのevoker fort × 敵が使うrelay_step × Pehkui縮小。門、広間、狭所で位置取りを変える。</td><td>移動巻物と継承可能な装備型呪文。</td><td>敵の移動は実装済み。縮小との複合は計画。</td></tr>
+          <tr><td>地下工場</td><td>Cataclysmのancient_factory × Alex's Cavesの磁力 × Mowzie'sの一時床。装置と安全帯の間で移動する。</td><td>工場素材と位置取りを変える能力を都市の武器へ。</td><td>工場の領域攻撃は実装済み。磁力・一時床はR-27E候補。</td></tr>
+          <tr><td>海と洞窟</td><td>Cataclysmのsunken_city × Alex's Cavesの水中Effect × T.O水系装備。六つの洞窟では原生のtablet探索を使う。</td><td>T.O段階強化武器、洞窟素材、異なる環境に合うビルド。</td><td>原生施設と合成経路は存在。都市からの案内と複合戦闘は計画。</td></tr>
+          <tr><td>都市外遠征</td><td>Mowzie's自然拠点とBOMD四施設。寒冷地、地下、Nether、Endで同じ装備を使い回せない攻略にする。</td><td>BOMDのEarthdive Spear、固有drop、継承する次の器。</td><td>BOMD四遠征と横断合成は実装済み。戦術差をR-28で評価。</td></tr>
+        </tbody>
+      </table></div>
+      <p class="muted">地下工場は地下、sunken_cityは海、次元固有施設は本来の次元に置きます。街はそこへ向かう接続と手掛かりを持ちます。生成条件を無視して施設を市街地へ強制移植する計画ではありません。</p>
+    </section>
+
+    <section aria-labelledby="parts-title">
+      <h2 id="parts-title">Modを部品として使う</h2>
+      <p>借りるのは必要な構造物、接合元、モデル、アイテム、弾、Effectです。各Modの要素を「原生攻略として維持」「Ashen Relayの配置・報酬へ移す」「重複するので停止」に分けます。BOMDの四遠征と原生drop・レシピ、Alex's Cavesの洞窟探索は残します。Dungeons Enhancedは小型構造を街の接合元に使う候補ですが、未導入です。採用する場合も27種類を一斉に自然生成させず、不要なstructure setを個別に止める案を検証します。</p>
+      <p>停止方法は設定、データパック、イベント、必要箇所だけのMixinの順に調べます。構造物NBTやモデルは公式Modを実行時参照し、コピーが必要な場合は権利と動画利用条件を確認します。現時点で「停止予定」は実装済みを意味しません。</p>
+    </section>
+
+    <section aria-labelledby="city-title">
+      <h2 id="city-title">街を遊べる場所にする</h2>
+      <p>最初の街区では、同じ道路からフェラスの地下へのルートと射手の塔へのルートを選べます。R-27WではAshen Relay製の外観用建物を棚卸しして、他Mod由来の建物と接合元を増やします。少なくとも3 Mod由来・8種類以上の実質的に異なる配置を下限とし、色違いは別種に数えません。施設の入口、通路、帰路、道路との連続性を新規ワールドで確認します。</p>
+      <p>地区ごとに見つかりやすい戦利品を変える「地区共鳴」と、二つのModの規則が境界で順番に働く任意戦闘「継ぎ目異常」を戻します。魔術側は巻物、工業側は重い武器や素材、水辺側は水・雷系素材へ寄せます。原生dropは置き換えません。</p>
+    </section>
+
+    <section class="spoilers" aria-labelledby="story-title">
+      <p class="tag">STORY SPOILERS</p>
+      <h2 id="story-title">物語の核心と攻略との関係</h2>
+      <p>廃都市の中継網は、技術や魔力を別の器へ運ぶために作られました。末期にはその対象が人間の記憶と人格へ拡張され、都市の崩壊につながります。都市は他Modの文明やボスを作ったわけではありません。各地の施設を観測し、能力の発生源、持ち主、到達先をつなぎ替えたため、見慣れない敵が別のModの技を使います。</p>
+      <p>序盤は道具の便利さを先に体験し、中盤に使用記録と欠けた記録から代償に気づきます。九つの信号は九施設を順番に強制する章立てではなく、中枢への照合鍵です。終盤には網を維持するか解放するかを選びます。条件を満たしたプレイヤーには、技術と自発的な記録だけを扱うよう網を改修する第三の経路も計画しています。現在実装済みなのは通常の二択で、第三経路は未実装です。</p>
+    </section>
+
+    <section class="timeline" aria-labelledby="roadmap-title">
+      <h2 id="roadmap-title">これからの順序</h2>
+      <ol>
+        <li class="current"><span>01</span><div><strong>R-27W · 現世の街</strong><small>外部Modの建築を増やし、街道と地下・塔を物理的につなぐ。</small></div></li>
+        <li class="planned"><span>02</span><div><strong>R-27M · 射手</strong><small>名前付きスケルトンを、他Mod由来の外見と専用AIを持つ敵へ変更。</small></div></li>
+        <li class="planned"><span>03</span><div><strong>R-27E · 環境戦</strong><small>一時床、磁力、予兆攻撃から、塔と違う攻略を最低2種類作る。</small></div></li>
+        <li class="planned"><span>04</span><div><strong>R-27A/B · 街と進行</strong><small>地区共鳴、継ぎ目異常、原生drop、合成、継承、案内、物語を統合。</small></div></li>
+        <li class="planned"><span>05</span><div><strong>R-28〜33 · 調整と完成判定</strong><small>戦術差、報酬密度、難度、生成、90分性能、権利、原要求を検証。</small></div></li>
+      </ol>
+      <p class="muted">未導入Modの追加、新次元、公開サイトの拡充はゲーム完成の必須作業に含めません。現在の施設に具体的な不足が見つかった場合のみ、追加Modの部品価値と不要機能の停止方法を評価します。</p>
+    </section>
+
+    <footer><p>Last updated <time datetime="2026-09-23">2026-09-23</time> · 公開ページ。物語のネタバレを含みます。</p></footer>
   </main>
 </body>
 </html>
