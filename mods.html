@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="description" content="Ashen RelayのMod採用表。実装済み・計画・受入条件を区別して掲載。">
+  <title>Mod採用表 — Ashen Relay</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="mods.html" aria-current="page">Mod採用表</a><a href="implementation.html">実装ファイル</a><a href="completion.html">完成工程</a></nav>
+    <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
+    <article class="document"><h1>Modと部品の採用表</h1>
+<p>固定版のModを丸ごと「有効」または「削除」と扱わない。各行で<strong>原生攻略として残すもの、Ashen Relayへ借りるもの、止める/調整するもの</strong>を対応させる。停止欄は計画であり、現在すでに停止したという意味ではない。採用する実行時参照、動画利用、将来配布の条件は別途R-31で再監査する。</p>
+<h2>世界・施設・ボス</h2>
+<table>
+<thead>
+<tr>
+<th>Mod</th>
+<th>パック内の仕事</th>
+<th>借りる具体物</th>
+<th>残すもの</th>
+<th>停止・調整するもの / 時期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The Lost Cities <code>7.5.2</code></td>
+<td>現世の道路と街区の基盤</td>
+<td>city/road判定、worldstyle、building/part、接合語彙</td>
+<td>道路と自然な区画</td>
+<td>見た目を支配している独自 <code>vocab_*</code> 12棟と <code>link_tower</code> のselector参照をR-27Wで解消。<code>anchor_02</code> は主導線から外す。既存worldの建物は消さない</td>
+</tr>
+<tr>
+<td>Alex's Caves <code>2.0.2</code></td>
+<td>六洞窟の探索、異なる環境素材</td>
+<td><code>alexscaves:forlorn_hut_1</code> 9×9×9、<code>MAGNETIZING</code>、<code>BUBBLED</code>、<code>DEEPSIGHT</code></td>
+<td>六洞窟、tablet導線、固有武器・drop</td>
+<td>洞窟全体は止めない。外部施設でのEffectは限定区画・短時間だけ</td>
+</tr>
+<tr>
+<td>Mowzie's Mobs <code>1.8.2</code></td>
+<td>フェラスを最初の強敵にする</td>
+<td><code>mowziesmobs:wroughtnaut_chamber</code> 19×7×19、<code>EntityBlockSwapper.swapBlock</code></td>
+<td>ボスAI、斧・兜、自然拠点</td>
+<td>接合施設が重複すると実測された場所だけ頻度調整。変換床から梯子・箱・出口を除外</td>
+</tr>
+<tr>
+<td>Apotheosis <code>7.4.8</code></td>
+<td>拾った装備のAffix/Socket/Gemで更新動機を作る</td>
+<td><code>tower_main/leaf/sand/spruce</code>、Affix/Gem装備</td>
+<td>原生塔と強化入手</td>
+<td>射手を変更した場合、その1体だけ元AI/dropの重複を止める。塔やAffix全体は止めない</td>
+</tr>
+<tr>
+<td>Iron's Spells 'n Spellbooks <code>3.16.3</code></td>
+<td>呪文、巻物、詠唱、装備型呪文、地下と城塞</td>
+<td><code>catacombs</code>、<code>evoker_fort</code>、LivingEntity caster</td>
+<td>原生施設、呪文、原生loot</td>
+<td>追加敵/追加lootは指定施設内だけ。Mobやスペル全体の停止なし</td>
+</tr>
+<tr>
+<td>L_Ender's Cataclysm <code>3.16</code></td>
+<td>大型ボス、工場、海と固有武器</td>
+<td><code>ancient_factory</code>、<code>sunken_city</code>、<code>bone_fracture</code>、予兆攻撃</td>
+<td>原生施設・ボス・固有drop</td>
+<td>工場の装置室1室だけに追加遭遇を置き、元装置・保護ブロックを上書きしない</td>
+</tr>
+<tr>
+<td>Bosses of Mass Destruction <code>1.1.2</code></td>
+<td>寒冷地・地下・Nether・Endの四遠征</td>
+<td><code>MagicMissileProjectile</code> と命中callback、Earthdive Spear素材</td>
+<td>四施設、ボス、原生drop、通常レシピ</td>
+<td>Ashen Relay追加報酬の二重支給のみ一回性状態で防ぐ</td>
+</tr>
+<tr>
+<td>T.O Magic 'n Extras <code>6.3.0</code></td>
+<td>ボス技の呪文化、4系列×3段階の武器、横断合成</td>
+<td><code>aqua_mage_tower</code> / <code>echo_shrine</code> / <code>void_cathedral</code>、Cataclysm/Alex's素材を使う合成</td>
+<td>原生施設・武器・通常レシピ</td>
+<td>確認された重複loot/recipeだけ局所調整。都市へ強制移植する施設は寸法と生成条件を確認</td>
+</tr>
+<tr>
+<td>Dungeons Enhanced（未導入）</td>
+<td>建築が不足した場合の小型接合元</td>
+<td><code>watch_tower</code> / <code>ruined_building</code> 候補</td>
+<td>採用する施設だけ、原生攻略としての価値を個別判断</td>
+<td>不要なstructure setを固定jarの実IDごと停止する案。依存、権利、動画、性能のゲート通過前は導入しない</td>
+</tr>
+</tbody>
+</table>
+<h2>戦闘、進行、制作を支えるMod</h2>
+<table>
+<thead>
+<tr>
+<th>Mod</th>
+<th>パック内の具体的な役割</th>
+<th>扱い</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Better Combat <code>1.9.0</code></td>
+<td>斧、槍、魔術武器などの手触りを変え、施設ごとの武器選択に意味を持たせる</td>
+<td>モーションを維持。新しい武器数の代用にはしない</td>
+</tr>
+<tr>
+<td>Pehkui <code>3.8.2</code></td>
+<td>敵や通路のサイズ条件、時間制限付きscale</td>
+<td>城塞など限定遭遇へ。プレイヤー恒久縮小や帰路を塞ぐ使い方はしない</td>
+</tr>
+<tr>
+<td>KubeJS <code>2001.6.5</code></td>
+<td>横断レシピ、進行、場所限定lootの配線</td>
+<td><code>ashen_relay_recipes.js</code> と <code>ashen_relay_loot.js</code> を主要編集点にする</td>
+</tr>
+<tr>
+<td>LootJS <code>2.13.1</code></td>
+<td>他Modの元lootを消さず、指定テーブルへ追加分を注入する</td>
+<td>原生dropの全面置換はしない</td>
+</tr>
+<tr>
+<td>FTB Quests <code>2001.4.22</code></td>
+<td>入口、危険、報酬用途、次の候補を段階的に示す</td>
+<td>未訪問の核心は早期表示しない。章は <code>ashen_relay.snbt</code></td>
+</tr>
+<tr>
+<td>JEI</td>
+<td>T.OやAshen Relayの合成先を確認するUI</td>
+<td>維持</td>
+</tr>
+<tr>
+<td>Patchouli</td>
+<td>導入Modの既存ガイド</td>
+<td>維持。独自ガイドへの文面転用は権利確認が必要</td>
+</tr>
+<tr>
+<td>Ashen Relay addon</td>
+<td>構造物検出、戦闘のHost/Payload、報酬一回性、継承、記録</td>
+<td>Javaが必要な動的処理のみを担当。単純なloot/recipeはデータとスクリプトへ</td>
+</tr>
+</tbody>
+</table>
+<p>Iron's Lib、Lionfish API、Citadel、Cerbons API、Apothic Attributes、Placebo、Curios、GeckoLib、Player Animation Lib、Rhino、Architectury、Cloth Config、FTB Library、FTB Teamsは、上表のModを動かす固定依存。独立した新攻略先を約束するものではない。版の正本は <code>pack/mods/*.pw.toml</code>。</p>
+<h2>未導入候補の扱いも計画に含める</h2>
+<p>現行の施設で不足が具体的に見つかった場合だけ、部品価値・止める要素・導入負荷・権利・動画条件・検証場所を記録し、隔離試験から判断する。調査棚にはApoliのEntity/Block/Item Action、Ars Nouveauのcaster/設備、Immersive Engineeringの弾薬/液体、Occultismの儀式、Mekanismの放射線/レーザー、Hex Castingの座標操作などがある。<strong>ソースで可能性を見つけた段階であり、導入やR作業は未決定</strong>。現行の不足が確認されない限り、これらを黙って追加する予定はない。</p>
+<h2>停止手段の順序</h2>
+<ol>
+<li>固定版Modの設定で、狙う機能だけ止められるか確認。</li>
+<li>実在する <code>data/&lt;namespace&gt;/worldgen/structure_set/&lt;id&gt;.json</code>、loot table、recipe等を同IDのdatapackまたはKubeJSで個別上書き。空配列を未検証で置かない。</li>
+<li>Forge eventで特定個体・構造・場所にだけ条件をかける。</li>
+<li>上記でできない処理だけ対象メソッドを固定したMixinを検討。現在、採用確定のMixinはない。</li>
+</ol>
+<p>外部ModのNBT、テクスチャ、モデルをpackへ複製する前に権利を監査する。可能な場合は公式jar内の登録済みIDとアセットを実行時に参照する。</p>
+</article>
+    <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-09-23 · 物語の核心は掲載しません。</footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="description" content="Ashen Relayの実装ファイル。実装済み・計画・受入条件を区別して掲載。">
+  <title>実装ファイル — Ashen Relay</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="mods.html">Mod採用表</a><a href="implementation.html" aria-current="page">実装ファイル</a><a href="completion.html">完成工程</a></nav>
+    <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
+    <article class="document"><h1>実装ファイルの全計画</h1>
+<p><strong>現在のコード</strong>と<strong>新規ファイル案</strong>を分けて記載する。ここに書いた新規案は未実装。Javaは動的な配置・AI・保存状態、Lost Cities JSONは静的な建築語彙、KubeJS/LootJSはloot・recipe、advancementとFTBは進行・案内を担当する。R-27後の調整・最終検証も<a href="completion.html">完成工程</a>に全件記載する。</p>
+<h2>R-27W：現世の街と入口</h2>
+<p>現在の <code>WroughtFacilityReservation.java</code> は <code>PostGenOutsideChunkEvent</code> から小屋と室を置くが、対象2×2を<strong>すべて非都市chunk</strong>に限定する。64×64 chunk領域に候補1件なので、都市と孤立する。旧 <code>anchor_02.json</code> は <code>lostcities:lostcity</code> 次元の固定座標で、現世の施設を追跡できない。</p>
+<table>
+<thead>
+<tr>
+<th>ファイル</th>
+<th>既存/案</th>
+<th>仕事</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>addon/.../worldgen/WroughtFacilityReservation.java</code></td>
+<td>既存改修</td>
+<td><code>forlorn_hut_1</code> と <code>wroughtnaut_chamber</code>、梯子・通路・再実行防止を保ち、街路縁候補を安全に受け入れる</td>
+</tr>
+<tr>
+<td><code>addon/.../worldgen/CityFacilityConnector.java</code></td>
+<td>新規案</td>
+<td>Lost Citiesの道路端、施設入口、街区・構造の衝突を調べ、配置候補と拒否理由を記録する</td>
+</tr>
+<tr>
+<td><code>addon/.../worldgen/CityPathWeld.java</code></td>
+<td>新規案</td>
+<td>道路端と小屋/塔入口を幅2以上の歩ける通路で接続。段差・照明・帰路・保護ブロックを検査</td>
+</tr>
+<tr>
+<td><code>pack/kubejs/data/lostcities/lostcities/worldstyles/standard.json</code></td>
+<td>既存改修</td>
+<td>都市に出す建物の参照を更新し、外観用 <code>vocab_*</code> の主役化を止める</td>
+</tr>
+<tr>
+<td><code>pack/kubejs/data/ashen_relay/lostcities/predefinedcities/anchor_02.json</code></td>
+<td>既存見直し</td>
+<td>固定別次元街区を主進行から外す。既存worldとadvancement参照を確認後に生成停止を判断</td>
+</tr>
+<tr>
+<td><code>pack/kubejs/data/ashen_relay/lostcities/{buildings,parts,citystyles}/...</code></td>
+<td>既存選別</td>
+<td><code>link_entrance</code> / <code>link_hall</code> 等の接合片は必要に応じて残し、外観代用 <code>link_tower</code> と <code>vocab_*</code> の参照を段階的に解消</td>
+</tr>
+<tr>
+<td><code>scripts/r27w-city-walk.py</code></td>
+<td>新規案</td>
+<td>3 seed、新規現世、道→入口→戦闘室→帰路、再起動後の同一性、衝突と種類数を検査</td>
+</tr>
+</tbody>
+</table>
+<p><strong>未確定の実装選択</strong>: 外部建築8種類の候補IDと実寸。固定jarを棚卸しして決める。3 Mod・8種類の景観が作れなければR-27Wは未完了。色違い、案内板、街道、独自箱建物は種類に数えない。</p>
+<h2>R-27M：射手の外見と専用AI</h2>
+<table>
+<thead>
+<tr>
+<th>ファイル</th>
+<th>既存/案</th>
+<th>仕事</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>addon/.../district/RelayTowerDistrict.java</code></td>
+<td>既存改修</td>
+<td><code>EntityType.SKELETON</code> を置く現行seedを専用射手へ移す</td>
+</tr>
+<tr>
+<td><code>addon/.../mob/RelayMarksman.java</code></td>
+<td>既存改修</td>
+<td>名前付きスケルトンの経路をなくし、専用AIの付与と一回出現を管理</td>
+</tr>
+<tr>
+<td><code>addon/.../mob/RelayBoltSentryGoal.java</code></td>
+<td>既存再利用</td>
+<td>30 tick予兆、射線、70–110 tick再装填を新しい外見で維持</td>
+</tr>
+<tr>
+<td><code>addon/.../projectile/RelayMissileCarrier.java</code>、<code>RelayMissileHost.java</code></td>
+<td>既存保全</td>
+<td>BOMD弾のownerと命中callback、Cataclysm <code>bone_fracture</code></td>
+</tr>
+<tr>
+<td><code>addon/.../mob/RelayMarksmanEntity.java</code> と <code>addon/.../client/RelayMarksmanRenderer.java</code></td>
+<td><strong>条件付き新規案</strong></td>
+<td>固定jarでmodel/rendererを実行時参照できる場合の専用Entity。使えなければ原生Mobホスト案を検証</td>
+</tr>
+<tr>
+<td><code>pack/kubejs/data/ashen_relay/loot_tables/chests/relay_tower_reward.json</code></td>
+<td>既存監査</td>
+<td>原生塔lootとAffix/Gem/空印が重複せず届くか確認</td>
+</tr>
+</tbody>
+</table>
+<p>モデルの直接コピーは決定していない。候補のEntityType、renderer公開範囲、AI差し替え、安全なhitbox、動画利用を調べてホストを決める。候補が決まらなければR-27Mは未完了。</p>
+<h2>R-27E：異なる二つの環境遭遇</h2>
+<table>
+<thead>
+<tr>
+<th>ファイル</th>
+<th>既存/案</th>
+<th>仕事</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>addon/.../zone/CatacombFloorCycle.java</code></td>
+<td>新規案</td>
+<td>Mowzie's <code>EntityBlockSwapper.swapBlock</code> で墓地一室の床を一時変化・復元。入口、箱、梯子は保護</td>
+</tr>
+<tr>
+<td><code>addon/.../zone/FactoryMagnetCycle.java</code></td>
+<td>新規案</td>
+<td>Alex's <code>MAGNETIZING</code> を工場一室の短い周期に限定。常時安全な帯を残す</td>
+</tr>
+<tr>
+<td><code>addon/.../zone/FlameZoneHost.java</code>、<code>FlameZonePayload.java</code></td>
+<td>既存調整</td>
+<td>工場の既存予兆装置と磁力・足場の順序を組む</td>
+</tr>
+<tr>
+<td><code>addon/.../district/RelayDistrictPlacement.java</code>、<code>RelayFactoryDistrict.java</code></td>
+<td>既存改修</td>
+<td>実在するcatacombs/factoryのstructure start内だけ追加遭遇を起動</td>
+</tr>
+<tr>
+<td><code>addon/.../zone/SeamEncounter.java</code></td>
+<td>新規案、R-27Aで統合</td>
+<td>地区境界の任意起動、床→弾の順、退路・再挑戦・一回報酬</td>
+</tr>
+</tbody>
+</table>
+<p>2種類が実際に異なる対処を要求し、保護ブロックや入口が壊れず、再入場・再起動で床が戻ることを専用サーバーで検査する。</p>
+<h2>R-27A/B：loot、進行、合成、案内</h2>
+<table>
+<thead>
+<tr>
+<th>ファイル</th>
+<th>既存/案</th>
+<th>仕事</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pack/kubejs/server_scripts/ashen_relay_loot.js</code></td>
+<td>既存改修</td>
+<td>墓地の巻物、工場の重量素材、水辺の水・雷素材を元dropに追加。構造/テーブル限定</td>
+</tr>
+<tr>
+<td><code>pack/kubejs/data/ashen_relay/loot_tables/chests/relay_district_reward.json</code>、<code>relay_factory_reward.json</code>、<code>relay_tower_reward.json</code></td>
+<td>既存改修</td>
+<td>場所ごとの個数・傾向と一回性を調整</td>
+</tr>
+<tr>
+<td><code>pack/kubejs/data/ashen_relay/loot_tables/chests/seam_reward.json</code></td>
+<td>新規案</td>
+<td>地区境界の選択報酬。元の箱は消さない</td>
+</tr>
+<tr>
+<td><code>pack/kubejs/data/ashen_relay/advancements/progress/reach_*.json</code></td>
+<td>既存改修</td>
+<td>実施設到着→記録→FTB表示の依存を固定別次元から現世へ移す</td>
+</tr>
+<tr>
+<td><code>pack/config/ftbquests/quests/chapters/ashen_relay.snbt</code></td>
+<td>既存改修</td>
+<td>入口、危険、報酬の用途、次の候補を段階表示</td>
+</tr>
+<tr>
+<td><code>pack/kubejs/server_scripts/ashen_relay_recipes.js</code></td>
+<td>既存監査・改修</td>
+<td>T.O段階武器、Alex's/Cataclysm素材、BOMD槍、継承印の合成経路と重複を確認</td>
+</tr>
+<tr>
+<td><code>addon/.../item/ImprintItem.java</code>、<code>ledger/RelayWeaponLedger.java</code></td>
+<td>既存保全</td>
+<td>Affix/Gem/装備型呪文の移設、部分適用、素材の消失・増殖防止</td>
+</tr>
+</tbody>
+</table>
+<h2>R-27S以降の実装・検証</h2>
+<p>R-27Sでは通常進行とは独立した条件付き追加経路の状態、排他、一回報酬、再取得、再起動、管理者の反転を実装する。物語の成立条件や結末はここに載せない。R-28は戦術・報酬密度・数値調整、R-29は世界生成と90分試験、R-30はビルド・起動・保存の最終マトリクス、R-31は原要求と権利の監査、R-33は完成判定。どれも省略可能な後片付けではない。全unitの成果物と受入は<a href="completion.html">完成工程</a>に載せる。</p>
+</article>
+    <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-09-23 · 物語の核心は掲載しません。</footer>
+  </main>
+</body>
+</html>

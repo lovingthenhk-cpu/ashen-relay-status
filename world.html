@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="description" content="Ashen Relayの世界と攻略先。実装済み・計画・受入条件を区別して掲載。">
+  <title>世界と攻略先 — Ashen Relay</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html" aria-current="page">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="mods.html">Mod採用表</a><a href="implementation.html">実装ファイル</a><a href="completion.html">完成工程</a></nav>
+    <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
+    <article class="document"><h1>世界と攻略先</h1>
+<p>このページは<strong>配置と体験の全計画</strong>。表の「現行」はコードまたはデータが存在する範囲で、目視と自然歩行の合格を意味しない。都市の見た目はプレイテストで不合格となり、R-27Wで再設計する。</p>
+<h2>空間の骨格</h2>
+<table>
+<thead>
+<tr>
+<th>層</th>
+<th>プレイヤーの移動</th>
+<th>役割</th>
+<th>状態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>現世のLost Cities道路</td>
+<td>中継所から複数の施設入口へ歩く</td>
+<td>異なるModの建築を接合する共通の街路</td>
+<td>道路は現行。外部建築との接続は未完成</td>
+</tr>
+<tr>
+<td>道路の下</td>
+<td>小屋の梯子、墓地、工場の地下へ降りる</td>
+<td>高低差、帰路、閉所戦</td>
+<td>小屋→室は現行。道路との導線は未完成</td>
+</tr>
+<tr>
+<td>道路の上</td>
+<td>Apotheosis塔を登る</td>
+<td>射線、遮蔽物、高所戦</td>
+<td>原生塔と弾AIは現行。街道接続と射手外見は未完成</td>
+</tr>
+<tr>
+<td>都市の外縁</td>
+<td>海、洞窟、自然拠点へ遠征する</td>
+<td>都市の装備を異なる環境で試す</td>
+<td>原生遠征と一部進行は現行。案内の統合は未完成</td>
+</tr>
+<tr>
+<td>元Modの原生次元</td>
+<td>Nether・End固有施設へ行く</td>
+<td>環境を変えた任意遠征</td>
+<td>BOMD四遠征は進行に接続済み</td>
+</tr>
+</tbody>
+</table>
+<p>旧 <code>anchor_02</code> は <code>lostcities:lostcity</code> 次元の固定街区。通常の現世プレイからそこへ行く手段がなく、他Mod施設は孤立していた。新しい主導線は現世に置く。既存ワールドを破壊せず、旧固定街区への依存を外す。</p>
+<h2>攻略先と組合せの全体像</h2>
+<table>
+<thead>
+<tr>
+<th>場所</th>
+<th>建築・戦闘の組合せ</th>
+<th>一つの攻略として追加する操作</th>
+<th>報酬と次の使い道</th>
+<th>現在地</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>最初の地下</td>
+<td>Lost Cities道路 × Alex's Caves <code>forlorn_hut_1</code> × Mowzie's <code>wroughtnaut_chamber</code></td>
+<td>道→小屋→梯子→水平通路→フェラス室→道の帰路</td>
+<td>原生の斧・兜、共鳴素材→塔や次の武器更新</td>
+<td>小屋と室は接合済み、道が未接続</td>
+</tr>
+<tr>
+<td>街道の塔</td>
+<td>Apotheosis <code>tower_main/leaf/sand/spruce</code> × BOMD弾 × Cataclysm骨折効果 × 他Mod由来の外見</td>
+<td>予兆線、遮蔽物、階段、高所の射手を読む</td>
+<td>Affix・Gem・空印→地下用ビルド</td>
+<td>原生塔と弾AIは現行、外見と道が未完成</td>
+</tr>
+<tr>
+<td>地下墓地</td>
+<td>Iron's <code>catacombs</code> × Mowzie's一時床 × Cataclysm予兆攻撃</td>
+<td>一室で床の変化を見て退路を選ぶ</td>
+<td>巻物・ルーン・装備型呪文→城塞と武器継承</td>
+<td>原生室と敵は現行、床は予定</td>
+</tr>
+<tr>
+<td>城塞</td>
+<td>Iron's <code>evoker_fort</code> × 敵の <code>relay_step</code> × Pehkui</td>
+<td>門と狭路で移動と短時間のサイズ変化へ対処</td>
+<td>移動呪文→工場の回避</td>
+<td>敵の移動は現行、サイズ戦は予定</td>
+</tr>
+<tr>
+<td>地下工場</td>
+<td>Cataclysm <code>ancient_factory</code> × Alex's <code>MAGNETIZING</code> × Mowzie's一時床</td>
+<td>予兆装置、引力、復元する足場の間に安全帯を選ぶ</td>
+<td>工場素材→T.O武器系列</td>
+<td>原生工場とzoneは現行、複合は予定</td>
+</tr>
+<tr>
+<td>水辺と海</td>
+<td>都市の水位線 × Cataclysm <code>sunken_city</code> × Alex's水中Effect × T.O水系装備</td>
+<td>海への準備、視界・空気・立体戦</td>
+<td>海の固有drop→武器強化</td>
+<td>原生施設は存在、都市からの案内は予定</td>
+</tr>
+<tr>
+<td>六つの洞窟</td>
+<td>Alex's原生バイオーム × T.O横断合成</td>
+<td>tabletの手掛かりを追い、環境ごとに武器を持ち替える</td>
+<td>洞窟素材→T.O段階武器</td>
+<td>原生洞窟と合成は現行、都市案内は予定</td>
+</tr>
+<tr>
+<td>魔術外縁</td>
+<td>T.O <code>aqua_mage_tower</code> / <code>echo_shrine</code> / <code>void_cathedral</code> × Iron's呪文 × Apotheosis Gem</td>
+<td>原生の生成条件で施設を探し、呪文と武器を合わせる</td>
+<td>T.O段階武器へ旧装備の強化を継承</td>
+<td>施設と装備は存在、街路との適合は要調査</td>
+</tr>
+<tr>
+<td>自然拠点</td>
+<td>Mowzie's <code>monastery</code> / <code>umvuthana_grove</code> × 局所的な別Mod攻撃</td>
+<td>屋外の広さを使い、原生Mobの戦闘を壊さない範囲で追加遭遇</td>
+<td>原生dropと次の遠征用能力</td>
+<td>原生拠点は存在、追加遭遇は候補</td>
+</tr>
+<tr>
+<td>四つの任意遠征</td>
+<td>BOMDの寒冷地・地下・Nether・End施設 × Iron's/T.O戦技</td>
+<td>各環境に合うビルドへ替えてボスを攻略</td>
+<td>Earthdive Spear用素材、継承先</td>
+<td>四施設・進行・横断合成は実装済み</td>
+</tr>
+<tr>
+<td>地区境界</td>
+<td>Lost Citiesの接合部 × 墓地の一時床 × 塔の予兆弾</td>
+<td>プレイヤーが起動し、二つの規則を順に越え、退路から帰る</td>
+<td>二地区の追加lootから選択</td>
+<td>R-27A予定</td>
+</tr>
+</tbody>
+</table>
+<h2>景観を完成と呼ぶ条件</h2>
+<p>R-27Wでは<strong>最低3つの外部Mod由来、見た目が実質的に異なる建築8種類以上</strong>を新規現世の探索範囲で確認する。色・素材の差、道路や看板だけ、Ashen Relay製の四角い箱は別種に数えない。現時点でこの8種類のIDは確定していない。R-27Wの最初に固定jarのNBT寸法と生成条件を調べ、候補表を埋めてから配置する。不足した場合のみDungeons Enhancedの小型建築を権利・依存・自然生成停止のゲートへ送る。</p>
+<p>入口ごとに道路から到達でき、元構造の入口を塞がず、攻略後に同じ道へ戻れることを3 seedの新規現世、再起動後、サーバー側の到達性で検査する。外観と歩いた感覚は人の目視で別判定する。世界に建築が生成されたというログだけでは景観を完了にしない。</p>
+</article>
+    <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-09-23 · 物語の核心は掲載しません。</footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="description" content="Ashen Relayのプレイループ。実装済み・計画・受入条件を区別して掲載。">
+  <title>プレイループ — Ashen Relay</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html" aria-current="page">プレイループ</a><a href="mods.html">Mod採用表</a><a href="implementation.html">実装ファイル</a><a href="completion.html">完成工程</a></nav>
+    <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
+    <article class="document"><h1>プレイの全ループ</h1>
+<p>完成目標は、施設の展示ではなく<strong>発見→異なる戦闘→戦利品→装備更新→別環境への遠征</strong>が回るModPack。以下は <code>docs/FOUNDATION.md</code> の原要求と現行の実装・予定を対応させた一覧。</p>
+<h2>原要求と到達点</h2>
+<table>
+<thead>
+<tr>
+<th>原要求</th>
+<th>ゲームで行うこと</th>
+<th>現状と残作業</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>複数Modの強敵を攻略</td>
+<td>Mowzie's、Cataclysm、Iron's、BOMD、T.O由来のボスや施設を巡る</td>
+<td>九信号ボスの個別追加報酬とBOMD四遠征は実装。場所ごとの戦術差と自然な案内はR-27/28</td>
+</tr>
+<tr>
+<td>呪文・固有武器・素材を収集</td>
+<td>原生dropにAshen Relayの追加巻物・共鳴素材・空印を重ねる</td>
+<td>原生dropを残す実装は現行。地区別lootの偏りと説明はR-27A</td>
+</tr>
+<tr>
+<td>多様な武器を育てる</td>
+<td>Better Combatの操作差、Apotheosis Affix/Gem、Iron's装備型呪文、T.O段階武器4系列を使い分ける</td>
+<td>強化・段階武器・横断合成は現行。実プレイの更新間隔はR-28で測る</td>
+</tr>
+<tr>
+<td>強化を新武器へ移す</td>
+<td>抽出印と触媒を使い、エンチャント、Affix/Gem、装備型呪文を対応する次の器へ移す</td>
+<td>継承・部分適用・残響精錬・武器記録台帳は実装。案内と費用の体験評価はR-27/28</td>
+</tr>
+<tr>
+<td>Modの建築を縫い合わせる</td>
+<td>都市道路から他Modの塔・小屋・地下・工場・城塞へ連続歩行する</td>
+<td>現世の物理接続と景観が不足。R-27Wを最優先</td>
+</tr>
+<tr>
+<td>他Modの攻撃を利用する</td>
+<td>BOMDの弾、CataclysmのEffect/設置攻撃、Iron's/T.Oの呪文を敵とプレイヤーの異なる主体に渡す</td>
+<td>弾・攻撃・呪文接続の一部は現行。床・磁力・モデルの場所化はR-27M/E</td>
+</tr>
+<tr>
+<td>背景を探索で読む</td>
+<td>環境→アイテム片→発見記録→攻略後の案内の順で情報を得る</td>
+<td>進行・記録・FTBは現行。街・施設・報酬への再接続はR-27A/B。核心と結末はこのページに掲載しない</td>
+</tr>
+</tbody>
+</table>
+<h2>最小単位を積んで施設にする</h2>
+<table>
+<thead>
+<tr>
+<th>単位</th>
+<th>1件の完成条件</th>
+<th>必要なレイヤー</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>入口接合</td>
+<td>道路→入口→戦闘室→帰路を歩ける</td>
+<td>worldgen Java、Lost Cities JSON、到達性検査</td>
+</tr>
+<tr>
+<td>遭遇</td>
+<td>予兆、対処、失敗、退路、再挑戦が一組</td>
+<td>addonのGoal/Zone、既存Mob・弾・Effect</td>
+</tr>
+<tr>
+<td>戦利品</td>
+<td>原生dropと追加報酬を得て、次の装備/施設で使える</td>
+<td>LootJS、chest JSON、recipe、継承状態</td>
+</tr>
+<tr>
+<td>地区差</td>
+<td>どの施設で何を探せるかを地形と箱で判断できる</td>
+<td>施設限定loot、観測票、FTB</td>
+</tr>
+<tr>
+<td>記録</td>
+<td>行動後に次の選択肢を1つ開示する</td>
+<td>advancement、FTB、記録item</td>
+</tr>
+</tbody>
+</table>
+<p>最初の街区では地下の近接戦と塔の射線戦を同じ道路から選べる。両方の戦利品を使って武器を更新し、墓地・工場・海・洞窟へ進む。施設の攻略順は固定しない。原生施設が存在することと、Ashen Relayの案内・報酬が完成していることは分けて表示する。</p>
+<h2>武器と報酬の具体例</h2>
+<ul>
+<li><strong>最初の地下</strong>: Ferrous Wroughtnautの固有斧・兜を受け取り、共鳴素材と巻物を別の武器更新へ使う。</li>
+<li><strong>塔</strong>: ApotheosisのAffix装備・Gemを得て、空印に強化を移し、地下で使う重い武器または呪文武器と比較する。</li>
+<li><strong>墓地・城塞</strong>: Iron'sの巻物・ルーンと移動呪文を得て、装備型呪文を継承候補にする。</li>
+<li><strong>工場・海・洞窟</strong>: CataclysmとAlex'sの原生素材を、T.Oの段階武器へ持ち込む。T.Oの4系列はCursed Wraithblade、Gauntlet of Extinction、Mechanized Wraithblade、Trident of the Eternal Maelstrom。</li>
+<li><strong>任意遠征</strong>: BOMDのVoid BlossomとObsidilith等の素材をEarthdive Spearの横断合成へ使い、得た武器を次の継承先として試す。</li>
+</ul>
+<p>ボス9経路の個別報酬と能力接続はすでにコードとlootへ入っている。R-27はその成果を実際の場所・案内・選択へ結び、R-28は「毎回同じ戦利品・同じ技」になっていないか測る。</p>
+</article>
+    <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-09-23 · 物語の核心は掲載しません。</footer>
+  </main>
+</body>
+</html>
