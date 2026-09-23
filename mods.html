@@ -10,7 +10,7 @@
 </head>
 <body>
   <main>
-    <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="mods.html" aria-current="page">Mod採用表</a><a href="implementation.html">実装ファイル</a><a href="completion.html">完成工程</a></nav>
+    <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="mods.html" aria-current="page">Mod採用表</a><a href="ideas.html">旧案の採用台帳</a><a href="implementation.html">実装ファイル</a><a href="completion.html">完成工程</a></nav>
     <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
     <article class="document"><h1>Modと部品の採用表</h1>
 <p>固定版のModを丸ごと「有効」または「削除」と扱わない。各行で<strong>原生攻略として残すもの、Ashen Relayへ借りるもの、止める/調整するもの</strong>を対応させる。停止欄は計画であり、現在すでに停止したという意味ではない。採用する実行時参照、動画利用、将来配布の条件は別途R-31で再監査する。</p>
@@ -84,7 +84,7 @@
 </tr>
 <tr>
 <td>Dungeons Enhanced（未導入）</td>
-<td>建築が不足した場合の小型接合元</td>
+<td>都市の小型接合元として隔離試験する候補</td>
 <td><code>watch_tower</code> / <code>ruined_building</code> 候補</td>
 <td>採用する施設だけ、原生攻略としての価値を個別判断</td>
 <td>不要なstructure setを固定jarの実IDごと停止する案。依存、権利、動画、性能のゲート通過前は導入しない</td>
@@ -144,8 +144,119 @@
 </tbody>
 </table>
 <p>Iron's Lib、Lionfish API、Citadel、Cerbons API、Apothic Attributes、Placebo、Curios、GeckoLib、Player Animation Lib、Rhino、Architectury、Cloth Config、FTB Library、FTB Teamsは、上表のModを動かす固定依存。独立した新攻略先を約束するものではない。版の正本は <code>pack/mods/*.pw.toml</code>。</p>
-<h2>未導入候補の扱いも計画に含める</h2>
-<p>現行の施設で不足が具体的に見つかった場合だけ、部品価値・止める要素・導入負荷・権利・動画条件・検証場所を記録し、隔離試験から判断する。調査棚にはApoliのEntity/Block/Item Action、Ars Nouveauのcaster/設備、Immersive Engineeringの弾薬/液体、Occultismの儀式、Mekanismの放射線/レーザー、Hex Castingの座標操作などがある。<strong>ソースで可能性を見つけた段階であり、導入やR作業は未決定</strong>。現行の不足が確認されない限り、これらを黙って追加する予定はない。</p>
+<h2>未導入Modの案（すべて採用対象・隔離試験待ち）</h2>
+<p>この表は<strong>pack採用の宣言ではなく、旧ソース調査をゲーム制作の作業へ変える台帳</strong>。各行で「部品を借りるか」「原生の何を残すか」「不要な自然生成・レシピ・AIをどこで止めるか」を調べる。初回試験に失敗した場合は同じ遊びの別経路を試す。</p>
+<table>
+<thead>
+<tr>
+<th>Mod・旧資料の案</th>
+<th>実際に試す場面と操作</th>
+<th>取得・停止の試験</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Origins Forge / Apoli</td>
+<td>境界で同じEffectをMob・設備・Playerに条件つきで発火</td>
+<td>Action/Condition JSONとaddon Action、種族選択等の不要内容の停止</td>
+</tr>
+<tr>
+<td>Ars Nouveau</td>
+<td>高層魔術のturretとPlayerが同じpayloadをFormだけ変えて撃つ</td>
+<td>Effect/Augment登録、施設に不要なレシピ/worldgen停止</td>
+</tr>
+<tr>
+<td>Immersive Engineering</td>
+<td>工場で液体のEntity/Block別反応と弾の複数ownerを読む</td>
+<td>Chemthrower/Railgun API、巨大な機械進行を必要箇所に限定</td>
+</tr>
+<tr>
+<td>Occultism</td>
+<td>地区核の準備・継続・中断できる継承儀式</td>
+<td>Ritual lifecycle、不要な召喚/生成/レシピの停止</td>
+</tr>
+<tr>
+<td>Mekanism</td>
+<td>工場の時間制限つき汚染源と耐性装備、化学弾/レーザー</td>
+<td>radiation/chemical API、汚染の永続化と機械連鎖の制御</td>
+</tr>
+<tr>
+<td>Hex Casting</td>
+<td>座標・ベクトルをPlayerの弾道/設置攻撃へ渡す</td>
+<td>Action登録、暴走計算と広範囲改変の制限</td>
+</tr>
+<tr>
+<td>PneumaticCraft</td>
+<td>工業地区のDroneが別Modのアイテムを使用し、対象で行動を変える</td>
+<td>Drone widget/API、圧力進行の導入範囲</td>
+</tr>
+<tr>
+<td>Twilight Forest</td>
+<td>外縁のNatureBoltによる一時的な環境変化、Anti-builderの復元室</td>
+<td>原生BlockEntity実行時参照、構造物/音の複製なし、次元進行の扱い</td>
+</tr>
+<tr>
+<td>Create</td>
+<td>工業地区のDeployer/Fan/Armが他Mod品を処理し、街の設備を動かす</td>
+<td>Behaviour/Recipe/API、過剰な自動生産と自然生成の制御</td>
+</tr>
+<tr>
+<td>Botania</td>
+<td>境界のmanaを別Mod攻撃の準備資源に変える</td>
+<td>APIと利用条件、コード・アセット複製を避ける経路</td>
+</tr>
+<tr>
+<td>The Aether</td>
+<td>外縁のZephyr弾/浮遊Blockを別ownerで使い、原生遠征を案内</td>
+<td>Projectile/BlockEntity、次元追加と不要進行の制御</td>
+</tr>
+<tr>
+<td>Ice and Fire</td>
+<td>気候別外縁のbreath/石化/誘引を施設罠とMobに渡す</td>
+<td>Citadel互換版の隔離起動、Dragon自然生成と地形破壊の制御</td>
+</tr>
+<tr>
+<td>Industrial Foregoing</td>
+<td>工場設備が別ModのMob/loot/液体を処理する</td>
+<td>公開APIと装置の独立性、資源無限化の制御</td>
+</tr>
+<tr>
+<td>EvilCraft</td>
+<td>地下の血・魂系資源を別Modの武器更新の選択肢にする</td>
+<td>固定版の公開部品と権利確認、余剰レシピ停止</td>
+</tr>
+<tr>
+<td>CC:Tweaked / Integrated Dynamics</td>
+<td>工業施設の観測・条件分岐をPlayerの解法へ変える</td>
+<td>peripheral/ネットワークAPI、操作が必須パズルにならない導入</td>
+</tr>
+<tr>
+<td>Dungeons Enhanced + Structure Gel</td>
+<td>都市の小塔・迷路・城・寺院を道路と原生施設の接合元にする</td>
+<td>実NBT/入口/寸法、使わないstructure set停止、既確認の隔離起動を再評価</td>
+</tr>
+<tr>
+<td>Simply Swords + Integrated Simply Swords</td>
+<td>六圏ごとに別の武器種・横断素材を置き継承の器にする</td>
+<td>loot希釈とBetter Combat/Affix/呪文適合を測り、余剰武器loot停止</td>
+</tr>
+<tr>
+<td>The Graveyard</td>
+<td>地下の背景墓所・寄り道・任意ボスをIron's墓地と役割分離</td>
+<td>原生構造参照、自然生成密度と報酬重複の制御</td>
+</tr>
+<tr>
+<td>When Dungeons Arise</td>
+<td>都市遠景と外縁の大型ランドマークを少数使う</td>
+<td>NBT複製なしの実行時参照、動画条件、自然生成の間引き</td>
+</tr>
+<tr>
+<td>Integrated Dungeons Arise</td>
+<td>上の大型施設と既存ModのMob・lootを結ぶ寄り道にする</td>
+<td>依存/起動、過密生成と重複lootの停止</td>
+</tr>
+</tbody>
+</table>
 <h2>停止手段の順序</h2>
 <ol>
 <li>固定版Modの設定で、狙う機能だけ止められるか確認。</li>

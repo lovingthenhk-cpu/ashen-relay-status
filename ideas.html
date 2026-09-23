@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="description" content="Ashen Relayの旧案の採用台帳。実装済み・計画・受入条件を区別して掲載。">
+  <title>旧案の採用台帳 — Ashen Relay</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="mods.html">Mod採用表</a><a href="ideas.html" aria-current="page">旧案の採用台帳</a><a href="implementation.html">実装ファイル</a><a href="completion.html">完成工程</a></nav>
+    <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
+    <article class="document"><h1>旧資料の案を採用対象に戻す台帳</h1>
+<p>更新日: 2026-09-23。現行の企画範囲の正本。旧資料の「保留」「不採用」「凍結」は当時の判断履歴であり、ここに挙げた案を自動的に企画から除かない。旧資料の空間・戦闘・Mod調査・構造計画から採用対象を戻した。物語の核心は本台帳に転記しない。</p>
+<h2>採否の規則</h2>
+<p><strong>旧資料で提案された遊び・部品・建築・接続は、初期状態を「採用対象・検証待ち」とする。</strong> 企画に含むとは、使い場所、プレイヤーの操作、保持する原生要素、停止する余剰要素、技術試験を作業に入れること。未導入Modのjarを一斉にpackへ入れる意味ではない。実導入は版・依存、専用serverとclient、worldgen、個人利用と動画条件、不要要素の停止手段を確認してから個別に行う。</p>
+<p>除外できる理由は次の三つだけ。① <strong>技術・権利上実現できない</strong>（固定版で成立する経路がなく、代替の実行時参照等も失敗した証拠がある）、② <strong>遊びとして成立しない</strong>（操作・視認性・密度・性能・報酬を試し、具体的な悪化がある）、③ <strong>物語と衝突する</strong>（原要求と非公開の物語資料 の正史・開示順に抵触）。「工数が多い」「既に似たModがある」「旧計画で保留」「R番号に収まらない」は除外理由にならない。未知の権利条件、互換性、素材IDは<strong>調査待ち</strong>であり除外と書かない。</p>
+<p>除外時は対象、三理由のどれか、再現可能な証拠、遊びへの影響、別の実現経路、覆す条件をこの文書と 内部の決定記録 に記す。部品が失敗しても場面そのものは残し、他のModや既存addonによる同等以上の体験を探す。</p>
+<h2>世界・進行・独自ギミック（すべて採用対象）</h2>
+<table>
+<thead>
+<tr>
+<th>旧案</th>
+<th>ゲーム内の置き場所と最小の操作</th>
+<th>次の成果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>六圏、高層魔術・地下継ぎ目・工業・城塞・浸水・外縁</td>
+<td>各圏に遠景、寄り道、地区核、大型攻略、境界、帰還先。現世街路と原生遠征を往復する</td>
+<td><a href="world.html">世界と攻略先</a> の18場面を起点に、原生施設別の場面を増やす</td>
+</tr>
+<tr>
+<td>五空間型、狭路・閉鎖室・屋外・垂直・境界</td>
+<td>安全帯、退路、弾cleanup、上下復帰、二規則の教示を各施設で設計</td>
+<td>各施設の空間型と失敗時復帰を配置票に記す</td>
+</tr>
+<tr>
+<td>五縫合、敵・弾・場所・道具・連鎖</td>
+<td>同じpayloadを異なる主体で見て、得て、再び対処する</td>
+<td>Host×Carrier×Payload票と受入selftest</td>
+</tr>
+<tr>
+<td>残響精錬・武器記録台帳・地区共鳴・戦技再演・継ぎ目異常・継承の選択損失</td>
+<td>重複武器、探索先選択、ボス技獲得、境界報酬、旧武器からの部分継承に使う</td>
+<td>実装済み部分を六圏の報酬へ接続し、未実装の再演・異常を追加</td>
+</tr>
+<tr>
+<td>九信号、任意遠征、原生ボスdrop、固有武器、T.O四系列、Apo Affix/Gem、Iron's装備型呪文</td>
+<td>施設攻略→素材→武器更新→別圏での再使用を複数の順で成立させる</td>
+<td>施設別loot/recipe/advancement/FTB票、再取得・死亡復帰試験</td>
+</tr>
+<tr>
+<td>物語の段階開示と条件付き経路</td>
+<td>環境、品、記録、攻略後の順に示す</td>
+<td>条件は 非公開の物語資料、公開計画は操作と状態だけ</td>
+</tr>
+</tbody>
+</table>
+<h2>現行packの部品（すべて採用対象）</h2>
+<table>
+<thead>
+<tr>
+<th>元Modの部品</th>
+<th>接合先・試す操作</th>
+<th>抑えるもの</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alex's Caves Effect、WaveEntity、MagnetBlockEntity、NuclearExplosionEntity</td>
+<td>浸水の視界/移動、工場の周期磁力、境界の波、核爆発は破壊半径を制御した隔離試験</td>
+<td>常時発動、保護施設の破壊、意図しない自然生成</td>
+</tr>
+<tr>
+<td>Cataclysm Effect、Flame Strike、Lightning Storm、Ignis Fireball、その他独立Entity</td>
+<td>工場設置攻撃、塔の弾payload、城塞の予兆、原生ボス技のプレイヤー化</td>
+<td>原生ボスの戦闘とdropの置換</td>
+</tr>
+<tr>
+<td>Mowzie's BlockSwapper、Sunstrike、IceBall、地形/攻撃Entity、Effect</td>
+<td>墓地の復元床、屋外の予兆、浸水/寒冷の装備選択</td>
+<td>入口、箱、梯子の置換と復元漏れ</td>
+</tr>
+<tr>
+<td>BOMD Magic Missile、RiftBurst、Spikes、SporeBall、行動部品</td>
+<td>塔の射手、境界の別owner弾、原生遠征後の戦技再演</td>
+<td>四つの原生施設と固有dropの消去</td>
+</tr>
+<tr>
+<td>Iron's LivingEntity caster、T.O既存呪文、Apo Affix/Gem、Pehkui</td>
+<td>城塞の敵mirror、工業設備・Playerの呪文、武器継承とサイズ戦</td>
+<td>T.O既存技の重複実装、恒久縮小</td>
+</tr>
+</tbody>
+</table>
+<h2>未導入Modの案（すべて採用対象・隔離試験待ち）</h2>
+<p>この表は<strong>pack採用の宣言ではなく、旧ソース調査をゲーム制作の作業へ変える台帳</strong>。各行で「部品を借りるか」「原生の何を残すか」「不要な自然生成・レシピ・AIをどこで止めるか」を調べる。初回試験に失敗した場合は同じ遊びの別経路を試す。</p>
+<table>
+<thead>
+<tr>
+<th>Mod・旧資料の案</th>
+<th>実際に試す場面と操作</th>
+<th>取得・停止の試験</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Origins Forge / Apoli</td>
+<td>境界で同じEffectをMob・設備・Playerに条件つきで発火</td>
+<td>Action/Condition JSONとaddon Action、種族選択等の不要内容の停止</td>
+</tr>
+<tr>
+<td>Ars Nouveau</td>
+<td>高層魔術のturretとPlayerが同じpayloadをFormだけ変えて撃つ</td>
+<td>Effect/Augment登録、施設に不要なレシピ/worldgen停止</td>
+</tr>
+<tr>
+<td>Immersive Engineering</td>
+<td>工場で液体のEntity/Block別反応と弾の複数ownerを読む</td>
+<td>Chemthrower/Railgun API、巨大な機械進行を必要箇所に限定</td>
+</tr>
+<tr>
+<td>Occultism</td>
+<td>地区核の準備・継続・中断できる継承儀式</td>
+<td>Ritual lifecycle、不要な召喚/生成/レシピの停止</td>
+</tr>
+<tr>
+<td>Mekanism</td>
+<td>工場の時間制限つき汚染源と耐性装備、化学弾/レーザー</td>
+<td>radiation/chemical API、汚染の永続化と機械連鎖の制御</td>
+</tr>
+<tr>
+<td>Hex Casting</td>
+<td>座標・ベクトルをPlayerの弾道/設置攻撃へ渡す</td>
+<td>Action登録、暴走計算と広範囲改変の制限</td>
+</tr>
+<tr>
+<td>PneumaticCraft</td>
+<td>工業地区のDroneが別Modのアイテムを使用し、対象で行動を変える</td>
+<td>Drone widget/API、圧力進行の導入範囲</td>
+</tr>
+<tr>
+<td>Twilight Forest</td>
+<td>外縁のNatureBoltによる一時的な環境変化、Anti-builderの復元室</td>
+<td>原生BlockEntity実行時参照、構造物/音の複製なし、次元進行の扱い</td>
+</tr>
+<tr>
+<td>Create</td>
+<td>工業地区のDeployer/Fan/Armが他Mod品を処理し、街の設備を動かす</td>
+<td>Behaviour/Recipe/API、過剰な自動生産と自然生成の制御</td>
+</tr>
+<tr>
+<td>Botania</td>
+<td>境界のmanaを別Mod攻撃の準備資源に変える</td>
+<td>APIと利用条件、コード・アセット複製を避ける経路</td>
+</tr>
+<tr>
+<td>The Aether</td>
+<td>外縁のZephyr弾/浮遊Blockを別ownerで使い、原生遠征を案内</td>
+<td>Projectile/BlockEntity、次元追加と不要進行の制御</td>
+</tr>
+<tr>
+<td>Ice and Fire</td>
+<td>気候別外縁のbreath/石化/誘引を施設罠とMobに渡す</td>
+<td>Citadel互換版の隔離起動、Dragon自然生成と地形破壊の制御</td>
+</tr>
+<tr>
+<td>Industrial Foregoing</td>
+<td>工場設備が別ModのMob/loot/液体を処理する</td>
+<td>公開APIと装置の独立性、資源無限化の制御</td>
+</tr>
+<tr>
+<td>EvilCraft</td>
+<td>地下の血・魂系資源を別Modの武器更新の選択肢にする</td>
+<td>固定版の公開部品と権利確認、余剰レシピ停止</td>
+</tr>
+<tr>
+<td>CC:Tweaked / Integrated Dynamics</td>
+<td>工業施設の観測・条件分岐をPlayerの解法へ変える</td>
+<td>peripheral/ネットワークAPI、操作が必須パズルにならない導入</td>
+</tr>
+<tr>
+<td>Dungeons Enhanced + Structure Gel</td>
+<td>都市の小塔・迷路・城・寺院を道路と原生施設の接合元にする</td>
+<td>実NBT/入口/寸法、使わないstructure set停止、既確認の隔離起動を再評価</td>
+</tr>
+<tr>
+<td>Simply Swords + Integrated Simply Swords</td>
+<td>六圏ごとに別の武器種・横断素材を置き継承の器にする</td>
+<td>loot希釈とBetter Combat/Affix/呪文適合を測り、余剰武器loot停止</td>
+</tr>
+<tr>
+<td>The Graveyard</td>
+<td>地下の背景墓所・寄り道・任意ボスをIron's墓地と役割分離</td>
+<td>原生構造参照、自然生成密度と報酬重複の制御</td>
+</tr>
+<tr>
+<td>When Dungeons Arise</td>
+<td>都市遠景と外縁の大型ランドマークを少数使う</td>
+<td>NBT複製なしの実行時参照、動画条件、自然生成の間引き</td>
+</tr>
+<tr>
+<td>Integrated Dungeons Arise</td>
+<td>上の大型施設と既存ModのMob・lootを結ぶ寄り道にする</td>
+<td>依存/起動、過密生成と重複lootの停止</td>
+</tr>
+</tbody>
+</table>
+<h2>現時点のネガティブリスト</h2>
+<table>
+<thead>
+<tr>
+<th>除外する具体的な方式</th>
+<th>理由・証拠</th>
+<th>残す案・覆す条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T.O 6.3.0とCataclysm 3.31をそのまま同居</td>
+<td>技術: 内部Mod調査 にバイナリ非互換の隔離起動記録。起動不能</td>
+<td>T.OとCataclysmの組合せ自体は採用。互換確認済み3.16系を固定し、新版で再試験可</td>
+</tr>
+<tr>
+<td>他ModのARRモデル・NBT・音をaddonへコピーして公開</td>
+<td>権利: 内部のソース調査 のTwilight/Create/Aether/WDA等の条件。直接複製の許可がない</td>
+<td>公式Modを導入し実行時参照する案は採用対象。個別許諾が得られれば再評価</td>
+</tr>
+<tr>
+<td>外部建築群を全件、無調整で都市へ自然生成</td>
+<td>体験: 内部コンテンツ監査 とユーザー目視で都市景観・孤立が問題化。27種類を一斉追加すると道路と入口の設計を壊す</td>
+<td>施設単位の選別・接合・頻度制御を採用。seed比較で密度が成立すれば拡大</td>
+</tr>
+<tr>
+<td>特定バイオーム/海/Nether/Endの原生施設を強制的に都市へ移植</td>
+<td>物語・遊び: <code>STRUCTURE_CONTENT_PLAN.md</code> の外縁遠征と原生環境の役割を消す</td>
+<td>原生の場所を残し、都市からの手掛かり・準備・帰還と報酬でつなぐ</td>
+</tr>
+</tbody>
+</table>
+<p>除外は上記の<strong>方式だけ</strong>で、Modや場面の全面除外ではない。新しい除外は証拠を追加するまで発効しない。</p>
+<h2>R-unitごとの受入</h2>
+<p>一単位が終わるたびに、①この表のどの案が実装・検証・調査待ちか、②何と何がゲームのどこで結びついたか、③Playerが何を見て操作し持ち帰るか、④止めた原生要素と残した原生要素、⑤除外の三理由の証拠を引き継ぎと公開Pagesへ同期する。検証待ちを「任意」「完了」に書き換えない。R-36は第一波の中間監査で、完成の期限ではない。</p>
+<p>全作業群と受入は<a href="completion.html">完成工程</a>、六圏の場面は<a href="world.html">世界と攻略先</a>に記載。</p>
+</article>
+    <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-09-23 · 物語の核心は掲載しません。</footer>
+  </main>
+</body>
+</html>

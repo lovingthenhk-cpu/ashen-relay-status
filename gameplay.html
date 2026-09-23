@@ -10,7 +10,7 @@
 </head>
 <body>
   <main>
-    <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html" aria-current="page">プレイループ</a><a href="mods.html">Mod採用表</a><a href="implementation.html">実装ファイル</a><a href="completion.html">完成工程</a></nav>
+    <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html" aria-current="page">プレイループ</a><a href="mods.html">Mod採用表</a><a href="ideas.html">旧案の採用台帳</a><a href="implementation.html">実装ファイル</a><a href="completion.html">完成工程</a></nav>
     <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
     <article class="document"><h1>プレイの全ループ</h1>
 <p>完成目標は、施設の展示ではなく<strong>発見→異なる戦闘→戦利品→装備更新→別環境への遠征</strong>が回るModPack。以下は <code>docs/FOUNDATION.md</code> の原要求と現行の実装・予定を対応させた一覧。</p>
@@ -108,6 +108,51 @@
 <li><strong>任意遠征</strong>: BOMDのVoid BlossomとObsidilith等の素材をEarthdive Spearの横断合成へ使い、得た武器を次の継承先として試す。</li>
 </ul>
 <p>ボス9経路の個別報酬と能力接続はすでにコードとlootへ入っている。R-27〜31はその成果を実際の場所・案内・選択へ結び、R-32は「毎回同じ戦利品・同じ技」になっていないか測る。</p>
+<h2>五種類の「縫合」をゲーム全体の文法にする</h2>
+<table>
+<thead>
+<tr>
+<th>縫合</th>
+<th>先に受ける場面</th>
+<th>後で使う/再び対処する場面</th>
+<th>技術の受け皿</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>敵</strong></td>
+<td>墓地のMobがCataclysm予兆攻撃を使う</td>
+<td>城塞では獲得済み能力を敵が別のタイミングで使う</td>
+<td>Goal、タグ、原生モデル/Entityの実行時参照</td>
+</tr>
+<tr>
+<td><strong>弾</strong></td>
+<td>塔のBOMD <code>MagicMissileProjectile</code> がCataclysm効果を運ぶ</td>
+<td>プレイヤー用スペル/装備、工業設備の弾として異なる射線へ</td>
+<td>callback、owner、寿命、命中結果</td>
+</tr>
+<tr>
+<td><strong>場所</strong></td>
+<td>工場のzone、地下の一時床、浸水のEffect</td>
+<td>境界イベントで二つの圏の規則が順番に働く</td>
+<td>SavedData/structure判定、Mowzie swap、Alex Effect</td>
+</tr>
+<tr>
+<td><strong>道具</strong></td>
+<td>ボスの行動を観測してから戦技再演を得る</td>
+<td>T.O登録スペルかAshen Relayスペルを別圏の武器へ継承</td>
+<td>Iron's caster、T.O登録spell、ImprintItem</td>
+</tr>
+<tr>
+<td><strong>連鎖</strong></td>
+<td>異なる二圏で素材・記録・勝利を集める</td>
+<td>強化の継承、T.O段階武器、BOMD槍、境界報酬の選択を解放</td>
+<td>advancement、recipe、ledger、FTB</td>
+</tr>
+</tbody>
+</table>
+<p>旧 <code>RELAY_REFRAME.md</code> の「単独提示→二部品の合成→別Hostによる再提示」を全体の教示順とする。五空間型も全圏で使う: 狭い通路は退路を残す、閉鎖室は安全帯を見せる、屋外は弾のcleanup、垂直空間は復帰経路、境界は二規則を同時最大強度にしない。これは難度だけでなく風景の意味を作る規則である。</p>
+<p>旧資料の六つの独自ギミックと未導入Modの操作も<a href="ideas.html">旧案の採用台帳</a>に含む。</p>
 </article>
     <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-09-23 · 物語の核心は掲載しません。</footer>
   </main>

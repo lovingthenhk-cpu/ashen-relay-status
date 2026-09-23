@@ -67,4 +67,19 @@
 | R-33A/B | 生成標本script、非idle 90分負荷script、`docs/TESTING.md` | 生成・衝突・性能・再起動の保全 |
 | R-34/35/36 | build/audit/backup script、`RELEASE_MANIFEST.md`、`docs/COMPLETION.md`、権利監査、引き継ぎ | 最終treeの技術・権利・原要求を判定。R-36は期限ではなく判定点 |
 
-R-27Sでは通常進行とは独立した条件付き追加経路の状態、排他、一回報酬、再取得、再起動、管理者の反転を実装する。物語の成立条件や結末はここに載せない。全30 unitの成果物と受入は[完成工程](completion.html)に載せる。
+R-27Sでは通常進行とは独立した条件付き追加経路の状態、排他、一回報酬、再取得、再起動、管理者の反転を実装する。物語の成立条件や結末はここに載せない。第一波30 unitと第二波R-37〜44の成果物と受入は[完成工程](completion.html)に載せる。
+
+## R-37〜44の実装面と採用試験
+
+| 作業群 | 新規ファイル/編集面の案 | 受入する操作 |
+|---|---|---|
+| R-37 | `CityFacilityConnector.java`、`CityPathWeld.java`、`lostcities/{buildings,parts,citystyles}/*.json`、施設別入口データ | 六圏から各施設へ歩いて入り帰還する |
+| R-38 | Host別Goal/Projectile/Zone adapter、`seam_*.json`、selftest | 五空間×五縫合を別Hostでも読み解く |
+| R-39 | `BossTechnique*.java`、`ashen_relay_loot.js`、`ashen_relay_recipes.js`、施設別chest/advancement JSON | ボス技を獲得し別圏の武器へ継承する |
+| R-40 | `ApoliActionAdapter.java`、`ArsCasterAdapter.java`、`IndustrialPayloadAdapter.java`、`RitualBridge.java`、該当ModのAction/recipe/structure JSON | Player・Mob・設備で同じpayloadを使う |
+| R-41 | `FactoryHazardAdapter.java`、`CoordinatePayload.java`、`DroneTargetAdapter.java`、機械別recipe/tag JSON | 汚染・計算弾・Drone・装置を工場で使い分ける |
+| R-42 | `OuterExpeditionAdapter.java`、原生Entity/BlockEntity参照、外縁のloot/route JSON | 自然弾・復元室・元素攻撃・資源を外縁攻略へ接続する |
+| R-43 | 各候補Modの固定jar NBT/structure set/lootを棚卸しし、採用分だけ`lostcities`とlootへ接続 | 建築種類と武器種を増やし、街路と報酬に意味を持たせる |
+| R-44 | `IDEA_INCLUSION_LEDGER.md`相当の公開台帳、生成/保存/権利/遊びの証拠 | 旧案の全件に実装・検証・除外理由を付ける |
+
+表のクラス名は作業の責務を示す**新規案**。固定版APIを確認して実名を決める。各Modの用途と停止対象は[旧案の採用台帳](ideas.html)に全件掲載。

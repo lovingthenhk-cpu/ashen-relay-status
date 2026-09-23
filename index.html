@@ -10,21 +10,22 @@
 </head>
 <body>
   <main>
-    <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html" aria-current="page">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="mods.html">Mod採用表</a><a href="implementation.html">実装ファイル</a><a href="completion.html">完成工程</a></nav>
+    <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html" aria-current="page">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="mods.html">Mod採用表</a><a href="ideas.html">旧案の採用台帳</a><a href="implementation.html">実装ファイル</a><a href="completion.html">完成工程</a></nav>
     <header>
       <p class="eyebrow">MINECRAFT 1.20.1 · FORGE 47.4.23 · 実装計画</p>
       <h1>Ashen Relay</h1>
       <p class="lead">Lost Citiesの道路から、他Modの塔、地下墓地、工場、城塞、海と洞窟へ。そこで受けた異質な攻撃を、武器や呪文として持ち帰って次の攻略へ使うModPack。</p>
-      <div class="status"><span></span> 未完成 · 次はR-27W1 · 最低30単位を計画</div>
-      <p class="notice"><strong>この1ページが計画の全量ではありません。</strong> 下の5ページに、現在決まっている攻略先・Mod・実装ファイル・最低30単位をすべて掲載しました。追加の仕事が確定したら完成工程にも追記します。物語の核心と隠し条件は掲載しません。</p>
+      <div class="status"><span></span> 未完成 · 次はR-27W1 · 第一波30単位・第二波R-37〜44</div>
+      <p class="notice"><strong>この1ページが計画の全量ではありません。</strong> 下の6ページに六圏、旧案の採用台帳、全作業群と受入を掲載しました。追加の仕事が確定したら完成工程にも追記します。物語の核心と隠し条件は掲載しません。</p>
     </header>
 
     <section aria-labelledby="map-title"><h2 id="map-title">計画の各ページ</h2><div class="page-grid">
       <a class="page-card" href="world.html"><strong>世界と攻略先</strong><span>現世、地下、塔、工場、海、洞窟、任意遠征。各施設の組合せと未完成箇所。</span></a>
       <a class="page-card" href="gameplay.html"><strong>プレイループ</strong><span>原要求9項目、最小の遊び、武器・戦利品・継承・遠征のつながり。</span></a>
       <a class="page-card" href="mods.html"><strong>Mod採用表</strong><span>固定Modの担当、借りる部品、原生で残す要素、個別に止める要素。</span></a>
+      <a class="page-card" href="ideas.html"><strong>旧案の採用台帳</strong><span>旧資料の案を原則採用対象に戻し、三つの除外理由と各Modの試験場所を列挙。</span></a>
       <a class="page-card" href="implementation.html"><strong>実装ファイル</strong><span>R-27で触るJava、Lost Cities JSON、loot、advancement、FTBと新規案。</span></a>
-      <a class="page-card" href="completion.html"><strong>完成工程</strong><span>M-1〜M-9の状態、最低30単位、全unitの条件、各単位の受入条件。</span></a>
+      <a class="page-card" href="completion.html"><strong>完成工程</strong><span>M-1〜M-9、第一波30単位、第二波R-37〜44の作業群と受入。</span></a>
     </div></section>
 
     <section aria-labelledby="now-title">
@@ -97,7 +98,7 @@
         <tr><td>T.O</td><td>段階武器4系列、ボス技の呪文化、Cataclysm/Alex's素材との合成。</td><td>原生武器・レシピ・施設は維持。重複分だけ個別調整。</td></tr>
         <tr><td>Pehkui / Better Combat</td><td>限定遭遇の縮小、武器別モーション。</td><td>全プレイヤーの恒久縮小はしない。戦闘基盤は維持。</td></tr>
         <tr><td>KubeJS / LootJS / FTB Quests</td><td>場所限定loot、横断レシピ、入口と報酬の案内。</td><td>原生dropとレシピの全面置換はしない。</td></tr>
-        <tr><td>Dungeons Enhanced（未導入）</td><td>小型建築 <code>watch_tower</code> / <code>ruined_building</code> は不足時の接合元候補。</td><td>採用が決まる場合、使わないstructure setを個別に停止。現状は未導入・未停止。</td></tr>
+        <tr><td>Dungeons Enhanced（未導入）</td><td>小型建築 <code>watch_tower</code> / <code>ruined_building</code> を接合元として隔離試験する。</td><td>採用が決まる場合、使わないstructure setを個別に停止。現状は未導入・未停止。</td></tr>
       </tbody></table></div>
     </section>
 
@@ -121,9 +122,9 @@
         <li class="planned"><span>03</span><div><strong>R-28A〜D · 四地区</strong><small>魔術・工業・城塞・水辺を作り、8種類の外部建築を受け入れる。</small></div></li>
         <li class="planned"><span>04</span><div><strong>R-29〜31 · 遠征と武器</strong><small>都市外の遠征、序中後の装備更新、記録と案内を統合。</small></div></li>
         <li class="planned"><span>05</span><div><strong>R-32〜35 · 調整と検証</strong><small>戦術・生成・性能・技術・権利を段階的に受け入れる。</small></div></li>
-        <li class="planned"><span>06</span><div><strong>R-36 · 完成可否の判定</strong><small>必須の体験と証拠が揃った場合だけ完成。未達ならR-37以降を追加。</small></div></li>
+        <li class="planned"><span>06</span><div><strong>R-36 · 第一波の中間監査</strong><small>旧案の採用範囲を照合し、R-37〜44へ進む。</small></div></li>
       </ol>
-      <p class="muted">この一覧は段階の見出しです。R-27A/B/Sも含む全30 unit、追加の必須コンテンツ契約と各受入条件は<a href="completion.html">完成工程</a>に掲載しています。新Modは具体的な不足・権利・停止方法を確認した場合のみ個別採用します。</p>
+      <p class="muted">この一覧は段階の見出しです。R-27A/B/Sも含む第一波30 unitと第二波の作業群、六圏と旧案の受入条件は<a href="completion.html">完成工程</a>に掲載しています。旧資料のMod案は原則採用対象とし、jar導入は互換・権利・停止方法の試験後に個別決定します。</p>
     </section>
 
     <footer><p>Last updated <time datetime="2026-09-23">2026-09-23</time> · 公開ページ。物語の核心と隠し条件は掲載しません。</p></footer>

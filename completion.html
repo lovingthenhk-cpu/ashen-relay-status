@@ -10,7 +10,7 @@
 </head>
 <body>
   <main>
-    <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="mods.html">Mod採用表</a><a href="implementation.html">実装ファイル</a><a href="completion.html" aria-current="page">完成工程</a></nav>
+    <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="mods.html">Mod採用表</a><a href="ideas.html">旧案の採用台帳</a><a href="implementation.html">実装ファイル</a><a href="completion.html" aria-current="page">完成工程</a></nav>
     <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
     <article class="document"><h1>完成までの全工程</h1>
 <p><strong>未完成。現在はR-26Bまでの土台を作った段階で、次はR-27W1。</strong> このページは2026-09-23時点で決まっている通常計画を<strong>すべて</strong>列挙する。旧「残り13単位・R-33で完成」は撤回した。R番号は作業束であって完成率ではない。旧「約30%」はR-15時点の概算なので、現在の完成率として更新しない。</p>
@@ -71,7 +71,7 @@
 </tr>
 </tbody>
 </table>
-<p>ゲートにチェックがあるものも、ModPack全体の完成や人間の見た目・面白さの合格を意味しない。完成宣言はR-36の判定点で全ゲートと原要求を再監査してから行う。</p>
+<p>ゲートにチェックがあるものも、ModPack全体の完成や人間の見た目・面白さの合格を意味しない。R-36は第一波の中間監査である。旧資料の案の採用範囲を含めた完成監査はR-44以降に行う。</p>
 <h2>追加の必須コンテンツ契約</h2>
 <table>
 <thead>
@@ -120,7 +120,7 @@
 </tbody>
 </table>
 <p>上の「最低」はゲームの面白さを数字だけで保証しない。下限を達成しても一つの地区が同じ外観・同じ技・同じ報酬の繰り返しなら未完成。反対に未確定のMod候補を無条件に増やす意味でもない。</p>
-<h2>現時点で予定する全30 unit</h2>
+<h2>第一波の全30 unit</h2>
 <table>
 <thead>
 <tr>
@@ -195,7 +195,7 @@
 <td style="text-align:right">11</td>
 <td><strong>R-27S</strong></td>
 <td>通常進行から独立した条件付き追加経路の状態・排他・報酬・復旧</td>
-<td>保存/再起動/反転/重複防止。物語上の条件は <code>spoilers/</code> に隔離</td>
+<td>保存/再起動/反転/重複防止。物語上の条件は非公開文書に隔離</td>
 </tr>
 <tr>
 <td style="text-align:right">12</td>
@@ -308,19 +308,74 @@
 <tr>
 <td style="text-align:right">30</td>
 <td><strong>R-36</strong></td>
-<td>完成可否の判定とmanifest/handoff一致</td>
-<td>必須体験・証拠・権利が揃った場合だけCompleted。欠けた場合はR-37以降を具体的に追加</td>
+<td>第一波の被覆監査とmanifest/handoff一致</td>
+<td>六圏・旧案の残課題をR-37〜44へ引き継ぎ、未達をCompletedにしない</td>
 </tr>
 </tbody>
 </table>
-<p><strong>R-36は期限ではなく判定点</strong>。不足を「任意」「将来」と言い換えて完成扱いにしない。R番号は増える可能性がある。新Mod導入・アセット複製・既存worldの不可逆変更は、それぞれ権利と安全性の判断を別に行う。人の目視が必要な景観や面白さは自動テストで合格にできない。</p>
+<p><strong>R-36は第一波の中間監査</strong>。不足を「任意」「将来」と言い換えて完成扱いにしない。R番号は増える可能性がある。新Mod導入・アセット複製・既存worldの不可逆変更は、それぞれ権利と安全性の判断を別に行う。人の目視が必要な景観や面白さは自動テストで合格にできない。</p>
 <h2>計画の成長・縮小ルール</h2>
 <ul>
 <li>各unit終了時、R単位の報告規則の企画説明に加え、本書§2のどの契約がプレイヤーに届いたか、未達なら何が足りないかを記す。引き継ぎ文書 と公開Pagesを同じ単位で更新する。</li>
 <li>固定jarから必要な外部建築が見つからない、APIが届かない、自然生成と接合が衝突する等が判明したら、受入を下げずにMod候補、別の構造ID、追加R unitを記録する。Dungeons Enhancedは部品・停止手段・権利が通った場合のみ採用する。</li>
-<li>施設を増やす際は建築、操作、戦利品、次の用途をセットで追加する。マーカーや件数だけで完了しない。未導入Modのソース調査は選択肢であり、採用が決まるまでは隠れた必須作業にしない。</li>
+<li>施設を増やす際は建築、操作、戦利品、次の用途をセットで追加する。マーカーや件数だけで完了しない。未導入Modの旧案は台帳に載せた場面で隔離試験する。jar導入は試験結果から個別決定する。</li>
 <li>具体的な上流不具合やユーザーのプレイテストから新しい欠落が判明したときは、受入条件・作業・公開計画を増やす。作業を減らすには原要求との照合と 判断記録 の理由・代替案・体験影響を必要とする。</li>
 </ul>
+<h2>4. 第二波以降の必須作業（R-36後も企画に含む）</h2>
+<p><a href="world.html">世界と攻略先</a> の六圏と18場面は第一の空間下限である。<a href="ideas.html">旧案の採用台帳</a> の旧案は原則採用対象で、R-36を完了期限としない。以下の作業群は<strong>具体的な制作範囲</strong>であり、「不足したら検討する任意案」ではない。unitの文字枝と順序は調査結果で切るが、各行のプレイヤー体験と試験を消さない。</p>
+<table>
+<thead>
+<tr>
+<th>作業群</th>
+<th>制作・試験するプレイヤー体験</th>
+<th>主なファイル/接続</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R-37 街の六圏化</td>
+<td>高層・地下・工業・城塞・浸水・外縁が道路、縦坑、橋、堤防で繋がる。各圏に遠景、寄り道、地区核、大型攻略、境界、帰還先を置く</td>
+<td>Lost Cities buildings/parts/citystyles JSON、CityFacilityConnector、原生構造参照、3 seed到達性</td>
+</tr>
+<tr>
+<td>R-38 空間と縫合の拡張</td>
+<td>五空間型それぞれに敵・弾・場所・道具・連鎖を単独→二部品→別Hostの順で体験する</td>
+<td>Goal/Projectile/Zone、Host×Carrier×Payload票、境界selftest</td>
+</tr>
+<tr>
+<td>R-39 装備と戦技の横断</td>
+<td>六圏の原生drop、九ボス、T.O四系列、BOMD槍、残響精錬・台帳・共鳴・再演・異常・部分継承を選択として結ぶ</td>
+<td>LootJS、recipe/loot/advancement JSON、ImprintItem、戦技追加クラス</td>
+</tr>
+<tr>
+<td>R-40 接着基盤試験</td>
+<td>Apoli Action/Condition、Ars caster/Form、IE液体・弾API、Occultism Ritualを実際の施設とPlayer操作で試す</td>
+<td>addon adapter/action、JSON、不要worldgen/recipe停止、隔離server/client</td>
+</tr>
+<tr>
+<td>R-41 機械・危険の選択</td>
+<td>Mekanismの時間限定汚染・化学、Hexの座標弾、PneumaticDrone、CreateのDeployer/Fan、Industrial Foregoing設備を工場/境界で試す</td>
+<td>API adapter、KubeJS、危険停止/保存/過密生成テスト</td>
+</tr>
+<tr>
+<td>R-42 外縁と魔術の選択</td>
+<td>Twilight NatureBolt/復元室、Aether浮遊弾、Ice and Fireのbreath/石化、Botania mana、EvilCraft資源、CC:Tweaked/Integrated Dynamicsの観測を外縁/地下へ置く</td>
+<td>原生Entity/BlockEntity参照、addon adapter、権利・動画・互換試験</td>
+</tr>
+<tr>
+<td>R-43 外部建築と武器供給</td>
+<td>Dungeons Enhanced、Simply Swords/Integrated、The Graveyard、When Dungeons Arise、Integrated Dungeons Ariseをそれぞれ都市景観、寄り道、継承の器として隔離試験する</td>
+<td>固定jar NBT/loot/structure set、Lost Cities接合、loot希釈・動画条件試験</td>
+</tr>
+<tr>
+<td>R-44 企画被覆監査</td>
+<td>旧資料の各案に場面・操作・実装/試験/三理由の除外証拠を付け、六圏を通しで遊べるか監査する</td>
+<td>IDEA_INCLUSION_LEDGER、TESTING、HANDOFF、公開Pages。未達は後続Rへ具体化</td>
+</tr>
+</tbody>
+</table>
+<p>個々のModの本採用は試験で決める。採用しない部品があっても、狙った場面と操作は代替経路で実現する。全候補を無検証でpackへ導入したり、全要素を自然生成させたりしない。</p>
+<p><a href="ideas.html">旧案の採用台帳</a>の全候補について、個別の技術・権利・遊び・物語の判定を残す。番号だけで完成を決めない。</p>
 </article>
     <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-09-23 · 物語の核心は掲載しません。</footer>
   </main>

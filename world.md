@@ -32,6 +32,24 @@
 
 ## 景観を完成と呼ぶ条件
 
-R-28Dの街全体受入では**最低3つの外部Mod由来、見た目が実質的に異なる建築8種類以上**を新規現世の探索範囲で確認する。色・素材の差、道路や看板だけ、Ashen Relay製の四角い箱は別種に数えない。現時点でこの8種類のIDは確定していない。R-27W1で固定jarのNBT寸法と生成条件を調べ、候補表を埋めてから配置する。不足した場合のみDungeons Enhancedの小型建築を権利・依存・自然生成停止のゲートへ送る。
+R-28Dの街全体受入では**最低3つの外部Mod由来、見た目が実質的に異なる建築8種類以上**を新規現世の探索範囲で確認する。色・素材の差、道路や看板だけ、Ashen Relay製の四角い箱は別種に数えない。現時点でこの8種類のIDは確定していない。R-27W1で固定jarのNBT寸法と生成条件を調べ、候補表を埋めてから配置する。Dungeons Enhancedの小型建築も採用対象として権利・依存・自然生成停止の隔離試験へ送る。
 
 入口ごとに道路から到達でき、元構造の入口を塞がず、攻略後に同じ道へ戻れることを3 seedの新規現世、再起動後、サーバー側の到達性で検査する。外観と歩いた感覚は人の目視で別判定する。世界に建築が生成されたというログだけでは景観を完了にしない。
+
+## 六圏と18の場面（完成の下限）
+
+これは18の新規建物を自作する計画ではない。**18の異なる「見る→対処する→持ち帰る」場面**を既存Modの構造・Mob・Effect・弾・報酬から組む。候補構造IDの寸法・自然生成条件・権利はR-27W1と各圏の着手時に確認する。
+
+| 圏 | 3場面の設計 | Modの交差 | 圏から持ち帰る変化 |
+|---|---|---|---|
+| **高層魔術** | ①Apotheosis原生塔の射線戦 ②Iron's `citadel` または `pyromancer_tower` の高所攻略 ③Lost Citiesの屋上橋で二種類の予兆を順番に読む | Apo塔 × BOMD owner付き弾 × Cataclysm骨折、Iron's呪文 × T.O既存スペル、LC橋 | Affix/Gemと魔法武器を比較し、射線を切る移動スペルを次の地下へ持ち込む |
+| **地下継ぎ目** | ①Alex's `forlorn_hut_1`→Mowzie's `wroughtnaut_chamber` ②Iron's `catacombs` の複数戦 ③両者に接する封鎖縦坑で一時床→予兆攻撃を越える | Alex小屋 × Mowzieボス/床変換 × Iron's墓地 × Cataclysm設置攻撃 | 固有斧・兜、巻物、ルーン、継承印。重い近接から呪文ビルドへの分岐 |
+| **工業** | ①Cataclysm `ancient_factory` の原生装置 ②Alex's磁力とMowzie's復元床を持つ機械室 ③弾または液体を別主体が撃つ実験設備 | Cataclysm工場 × Alex `MAGNETIZING` × Mowzie床、設備はIE `RailgunHandler`/`ChemthrowerHandler` を採用ゲートで試す。失敗時は既存Zone Hostで同じ操作を実装 | 重量武器素材と敵・設備で共通のpayload。Player側の弾/道具の更新 |
+| **城塞・反転** | ①Iron's `evoker_fort` の門と広間 ②狭路で敵の `relay_step`＋Pehkui縮小を読む ③城壁外縁で獲得済みの技を別Hostの敵が使う | Iron's fort × Pehkui × Ashen Relay歩法 × Cataclysm `ruined_citadel` またはDungeons Enhancedの外壁候補（生成条件次第） | 自分の技への対処、移動巻物、別の装備型呪文。敵とPlayerの能力の関係が変わる |
+| **浸水** | ①街の水位線と堤防から海の手掛かりを見つける ②`sunken_city` の水中立体戦 ③水中EffectとT.O水系装備で帰りの屋上/工場を別ルートで越える | LC低地 × Cataclysm原生海施設 × Alex `BUBBLED`/`DEEPSIGHT` × T.Oの水・雷装備 | 海の固有dropと水中準備。トライデント系列を都市の高所戦でも使う |
+| **外縁遠征** | ①Mowzie's `monastery`/`umvuthana_grove` の屋外戦 ②Cataclysm `cursed_pyramid`/`frosted_prison` など気候別の遠征 ③BOMD四施設を寒冷/地下/Nether/Endで攻略 | Mowzie原生AI × Cataclysm/T.O行動スペル × BOMD原生素材 × 継承印 | 原生武器、Earthdive Spear、装備型能力。別環境で鍛えた器を都市へ戻す |
+
+上表は最終的な一施設一戦を列挙する最小数であり、同じ塔の色違いや既存loot箱を増やすだけでは1場面に数えない。高層/城塞/工業で示した未確認構造ID・外部Mod採用はR-27W1で候補を調べ、採用不可なら同じ体験上の役目を持つ実在候補へ置き換える。失敗したからその場面を削ることはしない。
+
+
+[旧案の採用台帳](ideas.html)に、外縁・魔術・工業へ戻す追加Mod案と具体的な試験を掲載。18場面は下限であり上限ではない。

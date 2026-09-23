@@ -10,6 +10,7 @@ PAGES = [
     ("world.html", "世界と攻略先"),
     ("gameplay.html", "プレイループ"),
     ("mods.html", "Mod採用表"),
+    ("ideas.html", "旧案の採用台帳"),
     ("implementation.html", "実装ファイル"),
     ("completion.html", "完成工程"),
 ]

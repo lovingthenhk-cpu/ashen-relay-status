@@ -14,7 +14,7 @@
 | L_Ender's Cataclysm `3.16` | 大型ボス、工場、海と固有武器 | `ancient_factory`、`sunken_city`、`bone_fracture`、予兆攻撃 | 原生施設・ボス・固有drop | 工場の装置室1室だけに追加遭遇を置き、元装置・保護ブロックを上書きしない |
 | Bosses of Mass Destruction `1.1.2` | 寒冷地・地下・Nether・Endの四遠征 | `MagicMissileProjectile` と命中callback、Earthdive Spear素材 | 四施設、ボス、原生drop、通常レシピ | Ashen Relay追加報酬の二重支給のみ一回性状態で防ぐ |
 | T.O Magic 'n Extras `6.3.0` | ボス技の呪文化、4系列×3段階の武器、横断合成 | `aqua_mage_tower` / `echo_shrine` / `void_cathedral`、Cataclysm/Alex's素材を使う合成 | 原生施設・武器・通常レシピ | 確認された重複loot/recipeだけ局所調整。都市へ強制移植する施設は寸法と生成条件を確認 |
-| Dungeons Enhanced（未導入） | 建築が不足した場合の小型接合元 | `watch_tower` / `ruined_building` 候補 | 採用する施設だけ、原生攻略としての価値を個別判断 | 不要なstructure setを固定jarの実IDごと停止する案。依存、権利、動画、性能のゲート通過前は導入しない |
+| Dungeons Enhanced（未導入） | 都市の小型接合元として隔離試験する候補 | `watch_tower` / `ruined_building` 候補 | 採用する施設だけ、原生攻略としての価値を個別判断 | 不要なstructure setを固定jarの実IDごと停止する案。依存、権利、動画、性能のゲート通過前は導入しない |
 
 ## 戦闘、進行、制作を支えるMod
 
@@ -31,9 +31,33 @@
 
 Iron's Lib、Lionfish API、Citadel、Cerbons API、Apothic Attributes、Placebo、Curios、GeckoLib、Player Animation Lib、Rhino、Architectury、Cloth Config、FTB Library、FTB Teamsは、上表のModを動かす固定依存。独立した新攻略先を約束するものではない。版の正本は `pack/mods/*.pw.toml`。
 
-## 未導入候補の扱いも計画に含める
+## 未導入Modの案（すべて採用対象・隔離試験待ち）
 
-現行の施設で不足が具体的に見つかった場合だけ、部品価値・止める要素・導入負荷・権利・動画条件・検証場所を記録し、隔離試験から判断する。調査棚にはApoliのEntity/Block/Item Action、Ars Nouveauのcaster/設備、Immersive Engineeringの弾薬/液体、Occultismの儀式、Mekanismの放射線/レーザー、Hex Castingの座標操作などがある。**ソースで可能性を見つけた段階であり、導入やR作業は未決定**。現行の不足が確認されない限り、これらを黙って追加する予定はない。
+この表は**pack採用の宣言ではなく、旧ソース調査をゲーム制作の作業へ変える台帳**。各行で「部品を借りるか」「原生の何を残すか」「不要な自然生成・レシピ・AIをどこで止めるか」を調べる。初回試験に失敗した場合は同じ遊びの別経路を試す。
+
+| Mod・旧資料の案 | 実際に試す場面と操作 | 取得・停止の試験 |
+|---|---|---|
+| Origins Forge / Apoli | 境界で同じEffectをMob・設備・Playerに条件つきで発火 | Action/Condition JSONとaddon Action、種族選択等の不要内容の停止 |
+| Ars Nouveau | 高層魔術のturretとPlayerが同じpayloadをFormだけ変えて撃つ | Effect/Augment登録、施設に不要なレシピ/worldgen停止 |
+| Immersive Engineering | 工場で液体のEntity/Block別反応と弾の複数ownerを読む | Chemthrower/Railgun API、巨大な機械進行を必要箇所に限定 |
+| Occultism | 地区核の準備・継続・中断できる継承儀式 | Ritual lifecycle、不要な召喚/生成/レシピの停止 |
+| Mekanism | 工場の時間制限つき汚染源と耐性装備、化学弾/レーザー | radiation/chemical API、汚染の永続化と機械連鎖の制御 |
+| Hex Casting | 座標・ベクトルをPlayerの弾道/設置攻撃へ渡す | Action登録、暴走計算と広範囲改変の制限 |
+| PneumaticCraft | 工業地区のDroneが別Modのアイテムを使用し、対象で行動を変える | Drone widget/API、圧力進行の導入範囲 |
+| Twilight Forest | 外縁のNatureBoltによる一時的な環境変化、Anti-builderの復元室 | 原生BlockEntity実行時参照、構造物/音の複製なし、次元進行の扱い |
+| Create | 工業地区のDeployer/Fan/Armが他Mod品を処理し、街の設備を動かす | Behaviour/Recipe/API、過剰な自動生産と自然生成の制御 |
+| Botania | 境界のmanaを別Mod攻撃の準備資源に変える | APIと利用条件、コード・アセット複製を避ける経路 |
+| The Aether | 外縁のZephyr弾/浮遊Blockを別ownerで使い、原生遠征を案内 | Projectile/BlockEntity、次元追加と不要進行の制御 |
+| Ice and Fire | 気候別外縁のbreath/石化/誘引を施設罠とMobに渡す | Citadel互換版の隔離起動、Dragon自然生成と地形破壊の制御 |
+| Industrial Foregoing | 工場設備が別ModのMob/loot/液体を処理する | 公開APIと装置の独立性、資源無限化の制御 |
+| EvilCraft | 地下の血・魂系資源を別Modの武器更新の選択肢にする | 固定版の公開部品と権利確認、余剰レシピ停止 |
+| CC:Tweaked / Integrated Dynamics | 工業施設の観測・条件分岐をPlayerの解法へ変える | peripheral/ネットワークAPI、操作が必須パズルにならない導入 |
+| Dungeons Enhanced + Structure Gel | 都市の小塔・迷路・城・寺院を道路と原生施設の接合元にする | 実NBT/入口/寸法、使わないstructure set停止、既確認の隔離起動を再評価 |
+| Simply Swords + Integrated Simply Swords | 六圏ごとに別の武器種・横断素材を置き継承の器にする | loot希釈とBetter Combat/Affix/呪文適合を測り、余剰武器loot停止 |
+| The Graveyard | 地下の背景墓所・寄り道・任意ボスをIron's墓地と役割分離 | 原生構造参照、自然生成密度と報酬重複の制御 |
+| When Dungeons Arise | 都市遠景と外縁の大型ランドマークを少数使う | NBT複製なしの実行時参照、動画条件、自然生成の間引き |
+| Integrated Dungeons Arise | 上の大型施設と既存ModのMob・lootを結ぶ寄り道にする | 依存/起動、過密生成と重複lootの停止 |
+
 
 ## 停止手段の順序
 
