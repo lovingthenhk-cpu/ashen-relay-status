@@ -15,7 +15,7 @@
     <article class="document"><h1>次の作業と受入条件</h1>
 <p>目的: プレイテストから企画再編までのユーザー指示を、次のRで実際に処理する作業へ対応させる。状態: <strong>現行の公開作業計画</strong>（2026-09-23）。順序と受入は <a href="completion.html">完成工程</a>、旧案の採否は <a href="ideas.html">旧案の採用台帳</a>、全案の実装行は このページ、既存実装と検証は 内部の検証記録 を参照。物語の核心と隠し条件は本書に記さない。</p>
 <h2>1. 次に開始する作業</h2>
-<p>次の制作単位は <strong>R-27W1: 原生建築・入口・権利・生成停止範囲の棚卸し</strong>。まず <code>WroughtFacilityReservation.java</code>、Lost Citiesの街路条件、現行の <code>vocab_*</code>/接合part、固定jarの建築テンプレートとstructure setを読む。新規現世で道路から利用できる原生建築の実ID・寸法・入口・生成条件、地中埋没/通路切断の原因候補、モデルの参照可否を表にする。R-27W1は調査票の完成であり、都市接合や新Mod導入を完了した扱いにしない。</p>
+<p><strong>R-27W1の固定jar静的監査は完了。次の制作単位はR-27W2</strong>。現世のLost Cities道路を実ブロックで調べ、Alex'sの小屋、梯子、Mowzie'sのフェラス室、帰路をつなぐ。新規3 seedと再起動で通路・衝突・元boss/dropを検査する。R-27W1では市街接続の実装も実world配置も行っていない。</p>
 <table>
 <thead>
 <tr>
@@ -27,7 +27,7 @@
 <tbody>
 <tr>
 <td>1</td>
-<td><strong>R-27W1</strong></td>
+<td><strong>R-27W1（静的監査完了）</strong></td>
 <td>原生構造の候補と入口/寸法/権利、既存の独自建物の参照箇所、Lost Citiesの配置・空洞の原因を確定する。Dungeons Enhanced等の未導入候補も隔離試験の資料として載せる</td>
 </tr>
 <tr>
@@ -62,7 +62,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>R-27W1を先に完了してから</strong>、実IDと配置条件に基づいてW2のコード/JSONを確定する。新規worldの検証には使い捨て環境を使い、プレイ中worldを断りなく削除しない。</p>
+<p>R-27W1で確認した実IDと配置条件に基づいてW2のコード/JSONを確定する。新規worldの検証には使い捨て環境を使い、プレイ中worldを断りなく削除しない。</p>
 <h2>2. プレイテストから残った修正要求</h2>
 <table>
 <thead>
