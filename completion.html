@@ -13,7 +13,7 @@
     <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="mods.html">Mod採用表</a><a href="implementation.html">実装ファイル</a><a href="completion.html" aria-current="page">完成工程</a></nav>
     <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
     <article class="document"><h1>完成までの全工程</h1>
-<p><strong>未完成。現在はR-26Bまでの土台を作った段階で、次はR-27W。</strong> このページは2026-09-23時点の通常計画を<strong>すべて</strong>列挙する。R番号は作業束であって完成率ではない。旧「約30%」はR-15時点の概算なので、現在の完成率として更新しない。</p>
+<p><strong>未完成。現在はR-26Bまでの土台を作った段階で、次はR-27W1。</strong> このページは2026-09-23時点で決まっている通常計画を<strong>すべて</strong>列挙する。旧「残り13単位・R-33で完成」は撤回した。R番号は作業束であって完成率ではない。旧「約30%」はR-15時点の概算なので、現在の完成率として更新しない。</p>
 <h2>必須完成ゲート M-1〜M-9</h2>
 <table>
 <thead>
@@ -27,7 +27,7 @@
 <tr>
 <td>M-1 街の景観</td>
 <td>現世Lost Citiesの道路に異なるModの建築が縫い合わされ、地下・塔・帰路が歩ける。人の目でも違いが分かる</td>
-<td><strong>再オープン</strong>。旧固定別次元の機械試験は通ったが、プレイテストで街の外観と孤立を指摘。R-27Wで修正</td>
+<td><strong>再オープン</strong>。旧固定別次元の機械試験は通ったが、プレイテストで街の外観と孤立を指摘。R-27W1〜W4とR-28A〜Dで修正</td>
 </tr>
 <tr>
 <td>M-2 地区類型</td>
@@ -47,7 +47,7 @@
 <tr>
 <td>M-5 横断報酬</td>
 <td>九ボスの個別報酬、複数のボス技のプレイヤー用呪文化、武器更新</td>
-<td>実装・機械受入済み。施設内での見せ方はR-27/28</td>
+<td>実装・機械受入済み。施設内での見せ方はR-27〜30</td>
 </tr>
 <tr>
 <td>M-6 独自の遊び</td>
@@ -62,115 +62,265 @@
 <tr>
 <td>M-8 戦術と密度</td>
 <td>場所ごとに違う戦術・武器更新があり、TTK、被ダメージ、drop、進行速度、コストが妥当</td>
-<td>未完了。R-28A/B</td>
+<td>未完了。R-32A/B</td>
 </tr>
 <tr>
 <td>M-9 最終検証</td>
 <td>全Modと欠損Mod、client起動ログ、セーブ、復旧、権利、原要求を最終treeで受入</td>
-<td>未完了。R-29〜33</td>
+<td>未完了。R-33〜36</td>
 </tr>
 </tbody>
 </table>
-<p>ゲートにチェックがあるものも、ModPack全体の完成や人間の見た目・面白さの合格を意味しない。完成宣言はR-33で全ゲートと原要求を再監査してから行う。</p>
-<h2>残る通常作業 13単位</h2>
+<p>ゲートにチェックがあるものも、ModPack全体の完成や人間の見た目・面白さの合格を意味しない。完成宣言はR-36の判定点で全ゲートと原要求を再監査してから行う。</p>
+<h2>追加の必須コンテンツ契約</h2>
 <table>
 <thead>
 <tr>
-<th>順</th>
-<th>作業</th>
-<th>ゲームで増えるもの、編集する主なもの</th>
-<th>その単位を終える条件</th>
+<th>契約</th>
+<th>合格の証拠</th>
+<th>対応する作業</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1</td>
-<td><strong>R-27W</strong> 現世の街</td>
-<td>外部Mod建築、街路から小屋/塔への入口と帰路。<code>WroughtFacilityReservation</code>、LC worldstyle/parts、接合Java</td>
-<td>3 Mod・実質8建築以上、道路から二施設へ歩ける、3 seed・再起動・衝突検査。人の外観評価は別記</td>
+<td><strong>外部Mod建築の街</strong></td>
+<td>現世の道路から最低3 Mod・8種類以上の実質異なる外部建築を見つけ、入口・攻略室・帰路に歩いて到達できる。色違い、標識、道だけは数えない。外観は人の目で判定</td>
+<td>R-27W1〜W4、R-28A〜D</td>
 </tr>
 <tr>
-<td>2</td>
-<td><strong>R-27M</strong> 射手</td>
-<td>名前付きスケルトンを他Mod由来の外見＋専用AIへ。<code>RelayMarksman</code>、Goal、弾、renderer候補</td>
-<td>専用外見が表示され、予兆/owner/射線/loot/進行を保全。client起動・ログ確認と人の目視</td>
+<td><strong>四地区を遊べる</strong></td>
+<td>魔術/地下、投射/塔、工業/工場、城塞/反転の各地区に、異なる外観・空間・対処・原生drop＋追加報酬・次の用途・帰路が揃う。Hostの登録数だけでは合格にしない</td>
+<td>R-27M/E1〜E3、R-28A〜D</td>
 </tr>
 <tr>
-<td>3</td>
-<td><strong>R-27E</strong> 環境遭遇</td>
-<td>墓地の一時床、工場の磁力/安全帯、境界への応用。新規zoneクラス案</td>
-<td>塔と異なる対処が2種。床復元、退路、再挑戦、再起動で壊れない</td>
+<td><strong>都市外へ行く理由</strong></td>
+<td>T.Oの施設、Alex'sの洞窟、水辺の原生施設、Mowzie's/BOMDの遠征のうち、各系統に少なくとも一本、街で得た準備→探索→固有drop→街での武器更新がある。自然生成だけでは合格にしない</td>
+<td>R-29A〜C</td>
 </tr>
 <tr>
-<td>4</td>
-<td><strong>R-27A</strong> 場所・報酬・案内</td>
-<td>地区共鳴のloot、境界の任意戦、FTB・観測票・合成先。LootJS、chest JSON、advancement、FTB</td>
-<td>原生dropを残し、入口→危険→報酬→次の攻略が一施設ずつつながる</td>
+<td><strong>武器を替える理由</strong></td>
+<td>序盤・中盤・後半に別々の戦闘距離/武器種の更新候補があり、Affix/Gem/呪文の継承費用が拾い直しの妨げにならない。T.Oの4系列、BOMD槍、元Mod固有武器を実際の経路へ配置</td>
+<td>R-30A〜C、R-32A/B</td>
 </tr>
 <tr>
-<td>5</td>
-<td><strong>R-27B</strong> 施設の統合</td>
-<td>街から地下/塔/墓地/工場へ行き、戦利品を武器更新へ戻す</td>
-<td>新規world・再起動・再取得・一回性を通し、既存M-3〜M-7を壊していない。独立レビュー</td>
+<td><strong>場所で覚える横断戦</strong></td>
+<td>弾、設置攻撃、一時床、磁力、縮小、呪文のうち複数が施設の空間と結びつく。少なくとも塔・墓地・工場・城塞・地区境界で異なる対処と退路がある</td>
+<td>R-27M/E1〜E3、R-28A〜D</td>
 </tr>
 <tr>
-<td>6</td>
-<td><strong>R-27S</strong> 条件付き追加進行</td>
-<td>既存進行とは独立した状態、報酬、再取得、排他。詳細条件は公開しない</td>
-<td>両経路の保存、重複防止、管理者反転、通常進行の保全</td>
+<td><strong>記録と自由な案内</strong></td>
+<td>未訪問の核心を明かさず、発見→使用→記録→次の候補が複数ルートでつながる。九信号を一本道の章リストにしない。保存・再取得・一回性を保つ</td>
+<td>R-27A/B/S、R-31A/B</td>
 </tr>
 <tr>
-<td>7</td>
-<td><strong>R-28A</strong> 戦術と報酬の計測</td>
-<td>場所別武器/呪文/回避、TTK、被ダメージ、drop/時、進行/時、継承コストを調整</td>
-<td>単調な施設があれば内容不足として戻して修正。数値とプレイ上の役割を対応</td>
-</tr>
-<tr>
-<td>8</td>
-<td><strong>R-28B</strong> 再測定</td>
-<td>調整後に同じ条件で比較し、M-8受入を独立レビュー</td>
-<td>場所ごとの武器更新・難度差の証拠。人の体験未確認は未検証と記録</td>
-</tr>
-<tr>
-<td>9</td>
-<td><strong>R-29A</strong> 世界生成と90分負荷</td>
-<td>複数seedの生成頻度、衝突、入口、到達性。非idleな専用serverのTPS/MSPT/RSS/entities/save</td>
-<td>90分以上記録し、worldgen/性能blockerを同unitで修正</td>
-</tr>
-<tr>
-<td>10</td>
-<td><strong>R-29B</strong> 生成再確認</td>
-<td>修正範囲とM-1/M-8の保全を再実行</td>
-<td>独立レビューで生成・性能・到達性を受入</td>
-</tr>
-<tr>
-<td>11</td>
-<td><strong>R-30</strong> 最終技術マトリクス</td>
-<td>Java17 build、packwiz、資源/言語/モデル、全Mod/欠損Mod、fresh/restart、client起動・接続ログ、backup/restore</td>
-<td>最終treeとmanifestで起動・保存・復旧を通す。MinecraftのGUI自動操作はしない</td>
-</tr>
-<tr>
-<td>12</td>
-<td><strong>R-31</strong> 原要求と権利監査</td>
-<td>景観・収集・継承・遠征が原要求を満たすか再点検。外部Modの利用条件、公開物、プレイヤーデータ</td>
-<td>実装済み/未検証/blockerを明示し、ライセンス・動画利用・runtime参照を確認</td>
-</tr>
-<tr>
-<td>13</td>
-<td><strong>R-33</strong> 完成判定</td>
-<td>M-1〜M-9、release manifest、handoffを一致させる</td>
-<td>必須条件が全部通った場合だけCompleted。失敗時は追加修正unitを明示</td>
+<td><strong>完成の検証</strong></td>
+<td>新規現世・複数seed・再起動・元drop/recipe・任意Mod欠損・性能・client起動ログ・人の目視未確認を分離した証拠。権利、動画条件、バックアップ/復旧も通す</td>
+<td>R-32A/B、R-33A/B、R-34、R-35、R-36</td>
 </tr>
 </tbody>
 </table>
-<h2>条件付き作業と変更の規則</h2>
+<p>上の「最低」はゲームの面白さを数字だけで保証しない。下限を達成しても一つの地区が同じ外観・同じ技・同じ報酬の繰り返しなら未完成。反対に未確定のMod候補を無条件に増やす意味でもない。</p>
+<h2>現時点で予定する全30 unit</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">順</th>
+<th>unit</th>
+<th>内容と成果物</th>
+<th>受入境界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">1</td>
+<td><strong>R-27W1</strong></td>
+<td>固定jarの建築NBT、実寸、入口、自然生成条件、権利・動画条件を棚卸し。8種候補と代替候補のID表、残す/止めるstructure set表を作る</td>
+<td>現行Modの候補を確定IDで示し、足りない種類とDungeons Enhanced導入要否を判断</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td><strong>R-27W2</strong></td>
+<td>現世のLost Cities道路→Alex's小屋→Mowzie's室をつなぐ。<code>WroughtFacilityReservation</code>、新規接合Java、city判定と衝突保護</td>
+<td>新規world 3 seedで道路から徒歩往復、地下・梯子・入口と元ボスdrop保全</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td><strong>R-27W3</strong></td>
+<td>同じ街道からApotheosis塔へつなぎ、地下と高所を選べる最初の街区を作る。LC JSONと動的接合を整理</td>
+<td>二入口が同一歩行圏。塔の元lootを保持。固定別次元アンカーを主進行から外す</td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td><strong>R-27W4</strong></td>
+<td>Ashen Relay製外観ビルのselectorを解消し、原生建築を街に置く第1波。既存world参照、data、頻度、接合部品を整理</td>
+<td>独自箱建物の景観支配がなく、外部建築が目に見える。8種類全体の受入はR-28Dまで保留</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td><strong>R-27M</strong></td>
+<td>塔の名前付きスケルトンを他Mod由来の外見＋専用AIへ。モデル実行時参照を第一候補に、ホスト案を検証付き代替にする</td>
+<td>外見、予兆、BOMD弾、Cataclysm効果、loot/進行、client起動ログ。視覚は人の目視</td>
+</tr>
+<tr>
+<td style="text-align:right">6</td>
+<td><strong>R-27E1</strong></td>
+<td>Iron's墓地の一室にMowzie'sの一時床を入れ、予兆・復元・安全出口を作る</td>
+<td>死亡、再入場、再起動で入口とlootが壊れない</td>
+</tr>
+<tr>
+<td style="text-align:right">7</td>
+<td><strong>R-27E2</strong></td>
+<td>Cataclysm工場の一室にAlex's磁力、既存zone、復元床と安全帯を組む</td>
+<td>墓地と異なる対処。原生装置・保護ブロック・boss dropを守る</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td><strong>R-27E3</strong></td>
+<td>Iron's城塞で敵の移動とPehkui縮小を短時間に限って使う。地区境界の任意複合戦も縦切り</td>
+<td>閉じ込めなし、明示起動、順番に学べる規則、退路・再挑戦</td>
+</tr>
+<tr>
+<td style="text-align:right">9</td>
+<td><strong>R-27A</strong></td>
+<td>地区共鳴loot、境界報酬、施設ごとの用途、観測票/FTB/advancementを接続</td>
+<td>元dropを残し、どの場所で何を探すかをプレイヤーが選べる</td>
+</tr>
+<tr>
+<td style="text-align:right">10</td>
+<td><strong>R-27B</strong></td>
+<td>第一街区と3環境遭遇の横断統合。保存、再取得、原生drop、一回性、既存M-3〜M-7の回帰</td>
+<td>一街区の徒歩・戦闘・持ち帰り・継承が通る。独立レビュー。街全体の完成判定はしない</td>
+</tr>
+<tr>
+<td style="text-align:right">11</td>
+<td><strong>R-27S</strong></td>
+<td>通常進行から独立した条件付き追加経路の状態・排他・報酬・復旧</td>
+<td>保存/再起動/反転/重複防止。物語上の条件は <code>spoilers/</code> に隔離</td>
+</tr>
+<tr>
+<td style="text-align:right">12</td>
+<td><strong>R-28A</strong></td>
+<td>魔術/地下地区の建築、墓地から地上への入口、巻物系の報酬、別Mod攻撃との組合せを拡張</td>
+<td>外観・床/遮蔽物・loot・帰路が一組になり、既存墓地の原生攻略を保持</td>
+</tr>
+<tr>
+<td style="text-align:right">13</td>
+<td><strong>R-28B</strong></td>
+<td>工業地区の工場への導線、設備と足場、重量武器素材、街路の配管/封鎖を作る</td>
+<td>墓地と違う移動・報酬。工場の原生装置と生成条件を守る</td>
+</tr>
+<tr>
+<td style="text-align:right">14</td>
+<td><strong>R-28C</strong></td>
+<td>城塞/反転地区の門・狭路・広間、敵の能力、報酬、街路接合を作る</td>
+<td>別施設の装備を持ち込む意味と帰路がある。縮小で進行不能を作らない</td>
+</tr>
+<tr>
+<td style="text-align:right">15</td>
+<td><strong>R-28D</strong></td>
+<td>水辺・塔側を含む街区間の道と建築分布を統合。3 Mod・8外部建築と四地区の違いを人の目で判定</td>
+<td>M-1再受入。3 seed/再起動/徒歩・衝突・都市景観の証拠。足りなければ同親で増やす</td>
+</tr>
+<tr>
+<td style="text-align:right">16</td>
+<td><strong>R-29A</strong></td>
+<td>T.O原生施設への都市からの案内と、Iron's/Apo強化をT.O段階武器へ渡す経路</td>
+<td>原生生成条件、三施設の所在、固有dropと合成の使い道を確認</td>
+</tr>
+<tr>
+<td style="text-align:right">17</td>
+<td><strong>R-29B</strong></td>
+<td>Alex's六洞窟と海への準備を都市の手掛かり・武器更新につなぐ</td>
+<td>tablet導線を壊さず、都市装備→洞窟/海→素材→都市という往復が成立</td>
+</tr>
+<tr>
+<td style="text-align:right">18</td>
+<td><strong>R-29C</strong></td>
+<td>Mowzie's自然拠点とBOMD四遠征を都市の任意経路に位置づけ、戦術と報酬の重複を整理</td>
+<td>寒冷/地下/Nether/Endを維持し、Earthdive Spearと継承先まで示す</td>
+</tr>
+<tr>
+<td style="text-align:right">19</td>
+<td><strong>R-30A</strong></td>
+<td>序盤のフェラス/塔/墓地で斧・Affix・呪文武器の三つの更新候補を調整</td>
+<td>最初の数施設で拾う価値と継承費用を測る</td>
+</tr>
+<tr>
+<td style="text-align:right">20</td>
+<td><strong>R-30B</strong></td>
+<td>中盤の工場/城塞/洞窟とT.O4系列を横断合成で接続</td>
+<td>素材が場所を跨ぎ、武器種と距離の持ち替えが成立</td>
+</tr>
+<tr>
+<td style="text-align:right">21</td>
+<td><strong>R-30C</strong></td>
+<td>後半の九ボス・BOMD槍・固有武器と残響精錬/台帳/部分継承を統合</td>
+<td>原生drop、個別報酬、再取得、投資の移設が同時に成立</td>
+</tr>
+<tr>
+<td style="text-align:right">22</td>
+<td><strong>R-31A</strong></td>
+<td>施設発見・攻略後の記録とFTBを全ルートで段階整理</td>
+<td>未訪問情報を隠し、次の二つ以上の候補を示し、一本道にしない</td>
+</tr>
+<tr>
+<td style="text-align:right">23</td>
+<td><strong>R-31B</strong></td>
+<td>迷子/死亡/再ログイン時の案内、帰路、救済と日本語表示を統合</td>
+<td>操作不能や進行不能を残さず、核心の先出しをしない</td>
+</tr>
+<tr>
+<td style="text-align:right">24</td>
+<td><strong>R-32A</strong></td>
+<td>場所別戦術・TTK・被ダメージ・drop/時・進行/時・資源収支を測定、内容不足を修正</td>
+<td>同じloot/攻撃を施設で使い回していない。M-8の前半受入</td>
+</tr>
+<tr>
+<td style="text-align:right">25</td>
+<td><strong>R-32B</strong></td>
+<td>同条件で再測定、装備更新の頻度と難度差、人の体験未確認を整理</td>
+<td>M-8独立レビュー。面白さの未確認を機械PASSに混ぜない</td>
+</tr>
+<tr>
+<td style="text-align:right">26</td>
+<td><strong>R-33A</strong></td>
+<td>複数seedの都市/自然構造の頻度・衝突・入口・到達性を再測定</td>
+<td>新規/再起動worldで施設と道が維持される</td>
+</tr>
+<tr>
+<td style="text-align:right">27</td>
+<td><strong>R-33B</strong></td>
+<td>非idle専用serverで90分以上のworldgen/戦闘/保存負荷と再確認</td>
+<td>TPS/MSPT/RSS/entities/saveとエラー。プレイヤー探索の代用限界を記録</td>
+</tr>
+<tr>
+<td style="text-align:right">28</td>
+<td><strong>R-34</strong></td>
+<td>Java17/packwiz、資源・言語・モデル、全Mod/欠損Mod、server/client起動ログ、保存・backup/restoreの最終技術マトリクス</td>
+<td>最終treeで再現可能。Computer Useは禁止</td>
+</tr>
+<tr>
+<td style="text-align:right">29</td>
+<td><strong>R-35</strong></td>
+<td>原要求 原要求、Mod/アセット権利、動画条件、公開物、プレイヤーデータ、未検証事項の独立監査</td>
+<td>M-1〜M-9に加え本書§2のコンテンツ契約を判定。blockerを明示</td>
+</tr>
+<tr>
+<td style="text-align:right">30</td>
+<td><strong>R-36</strong></td>
+<td>完成可否の判定とmanifest/handoff一致</td>
+<td>必須体験・証拠・権利が揃った場合だけCompleted。欠けた場合はR-37以降を具体的に追加</td>
+</tr>
+</tbody>
+</table>
+<p><strong>R-36は期限ではなく判定点</strong>。不足を「任意」「将来」と言い換えて完成扱いにしない。R番号は増える可能性がある。新Mod導入・アセット複製・既存worldの不可逆変更は、それぞれ権利と安全性の判断を別に行う。人の目視が必要な景観や面白さは自動テストで合格にできない。</p>
+<h2>計画の成長・縮小ルール</h2>
 <ul>
-<li><strong>R-32</strong>: R-31で確定したblockerがある場合だけ、1〜3の限定修正単位を使う。blockerがなければ発動しない。</li>
-<li><strong>R-34以降</strong>: R-33の完成再監査が真正に失敗したときだけ、証拠と修正範囲を記して追加する。通常の隠し予定ではない。</li>
-<li><strong>新Mod候補</strong>: 現行の施設で具体的な不足が確認された場合に限り、<a href="mods.html">Mod採用表</a>の調査棚から個別にゲートへ上げる。採用を決めたら、このページの作業・版・停止範囲へ追記する。</li>
-<li><strong>実装中に分かった欠陥</strong>: 同じRの受入範囲なら、そのR内で修正・再検証する。新しい作業単位が必要なら理由、戻し方、受入条件を先に記録し、このページに追加する。</li>
+<li>各unit終了時、R単位の報告規則の企画説明に加え、本書§2のどの契約がプレイヤーに届いたか、未達なら何が足りないかを記す。引き継ぎ文書 と公開Pagesを同じ単位で更新する。</li>
+<li>固定jarから必要な外部建築が見つからない、APIが届かない、自然生成と接合が衝突する等が判明したら、受入を下げずにMod候補、別の構造ID、追加R unitを記録する。Dungeons Enhancedは部品・停止手段・権利が通った場合のみ採用する。</li>
+<li>施設を増やす際は建築、操作、戦利品、次の用途をセットで追加する。マーカーや件数だけで完了しない。未導入Modのソース調査は選択肢であり、採用が決まるまでは隠れた必須作業にしない。</li>
+<li>具体的な上流不具合やユーザーのプレイテストから新しい欠落が判明したときは、受入条件・作業・公開計画を増やす。作業を減らすには原要求との照合と 判断記録 の理由・代替案・体験影響を必要とする。</li>
 </ul>
-<p><strong>この公開計画にない作業を黙って「やること」から落とさない。</strong> 原要求を満たすために新しい仕事が判明したら、内部の決定・ロードマップと同時に公開ページも更新する。物語の核心や隠し条件は、完成作業の存在と検証方法を示したうえで中立名にする。</p>
 </article>
     <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-09-23 · 物語の核心は掲載しません。</footer>
   </main>

@@ -1,8 +1,8 @@
 # 実装ファイルの全計画
 
-**現在のコード**と**新規ファイル案**を分けて記載する。ここに書いた新規案は未実装。Javaは動的な配置・AI・保存状態、Lost Cities JSONは静的な建築語彙、KubeJS/LootJSはloot・recipe、advancementとFTBは進行・案内を担当する。R-27後の調整・最終検証も[完成工程](completion.html)に全件記載する。
+**現在のコード**と**新規ファイル案**を分けて記載する。ここに書いた新規案は未実装。Javaは動的な配置・AI・保存状態、Lost Cities JSONは静的な建築語彙、KubeJS/LootJSはloot・recipe、advancementとFTBは進行・案内を担当する。R-28以降の地区・遠征・武器更新・調整・最終検証も[完成工程](completion.html)に全件記載する。
 
-## R-27W：現世の街と入口
+## R-27W1〜W4：現世の街と入口
 
 現在の `WroughtFacilityReservation.java` は `PostGenOutsideChunkEvent` から小屋と室を置くが、対象2×2を**すべて非都市chunk**に限定する。64×64 chunk領域に候補1件なので、都市と孤立する。旧 `anchor_02.json` は `lostcities:lostcity` 次元の固定座標で、現世の施設を追跡できない。
 
@@ -16,7 +16,7 @@
 | `pack/kubejs/data/ashen_relay/lostcities/{buildings,parts,citystyles}/...` | 既存選別 | `link_entrance` / `link_hall` 等の接合片は必要に応じて残し、外観代用 `link_tower` と `vocab_*` の参照を段階的に解消 |
 | `scripts/r27w-city-walk.py` | 新規案 | 3 seed、新規現世、道→入口→戦闘室→帰路、再起動後の同一性、衝突と種類数を検査 |
 
-**未確定の実装選択**: 外部建築8種類の候補IDと実寸。固定jarを棚卸しして決める。3 Mod・8種類の景観が作れなければR-27Wは未完了。色違い、案内板、街道、独自箱建物は種類に数えない。
+**未確定の実装選択**: 外部建築8種類の候補IDと実寸。固定jarを棚卸しして決める。3 Mod・8種類の景観がR-28Dで作れなければ都市は未完了。色違い、案内板、街道、独自箱建物は種類に数えない。
 
 ## R-27M：射手の外見と専用AI
 
@@ -31,7 +31,7 @@
 
 モデルの直接コピーは決定していない。候補のEntityType、renderer公開範囲、AI差し替え、安全なhitbox、動画利用を調べてホストを決める。候補が決まらなければR-27Mは未完了。
 
-## R-27E：異なる二つの環境遭遇
+## R-27E1〜E3：異なる環境遭遇
 
 | ファイル | 既存/案 | 仕事 |
 |---|---|---|
@@ -55,6 +55,16 @@
 | `pack/kubejs/server_scripts/ashen_relay_recipes.js` | 既存監査・改修 | T.O段階武器、Alex's/Cataclysm素材、BOMD槍、継承印の合成経路と重複を確認 |
 | `addon/.../item/ImprintItem.java`、`ledger/RelayWeaponLedger.java` | 既存保全 | Affix/Gem/装備型呪文の移設、部分適用、素材の消失・増殖防止 |
 
-## R-27S以降の実装・検証
+## R-28以降の編集面
 
-R-27Sでは通常進行とは独立した条件付き追加経路の状態、排他、一回報酬、再取得、再起動、管理者の反転を実装する。物語の成立条件や結末はここに載せない。R-28は戦術・報酬密度・数値調整、R-29は世界生成と90分試験、R-30はビルド・起動・保存の最終マトリクス、R-31は原要求と権利の監査、R-33は完成判定。どれも省略可能な後片付けではない。全unitの成果物と受入は[完成工程](completion.html)に載せる。
+| unit | 主な既存ファイル/新規案 | プレイヤーへ届く内容 |
+|---|---|---|
+| R-28A〜D | `pack/kubejs/data/ashen_relay/lostcities/{citystyles,buildings,parts}/*.json`、`worldstyles/standard.json`、`CityFacilityConnector.java`、`CityPathWeld.java`、`RelayDistrictPlacement.java`、`RelayFactoryDistrict.java`、`RelayFortDistrict.java` | 四地区で外部建築、徒歩の入口・帰路、異なる遭遇と報酬を一組ずつ増やす |
+| R-29A〜C | `ashen_relay_recipes.js`、`ashen_relay_loot.js`、`advancements/progress/reach_*.json`、`ashen_relay.snbt`、施設ごとの新規案 `route_*.json` | T.O施設、洞窟・海、自然拠点・BOMD遠征を街での装備更新へつなぐ |
+| R-30A〜C | `ashen_relay_loot.js`、`ashen_relay_recipes.js`、`ImprintItem.java`、`EchoRefiningItem.java`、`RelayWeaponLedger.java`、九ボス用loot JSON | 序盤・中盤・後半の別武器更新と継承費用を成立させる |
+| R-31A/B | `SealedRecordItem.java`、`ashen_relay.snbt`、`advancements/progress/*.json`、ja/en lang | 発見後の記録、複数の次の候補、死亡や再ログインからの復帰を案内 |
+| R-32A/B | loot/recipe/config調整、計測scriptと報告 | 場所ごとの戦術、TTK、被ダメージ、報酬密度の調整と再測定 |
+| R-33A/B | 生成標本script、非idle 90分負荷script、`docs/TESTING.md` | 生成・衝突・性能・再起動の保全 |
+| R-34/35/36 | build/audit/backup script、`RELEASE_MANIFEST.md`、`docs/COMPLETION.md`、権利監査、引き継ぎ | 最終treeの技術・権利・原要求を判定。R-36は期限ではなく判定点 |
+
+R-27Sでは通常進行とは独立した条件付き追加経路の状態、排他、一回報酬、再取得、再起動、管理者の反転を実装する。物語の成立条件や結末はここに載せない。全30 unitの成果物と受入は[完成工程](completion.html)に載せる。
