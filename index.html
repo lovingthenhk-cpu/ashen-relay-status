@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Ashen Relayの具体的なModPack企画と開発状況。物語のネタバレを含みます。">
+  <meta name="description" content="Ashen Relayの具体的なModPack企画、Modごとの役割と実装計画。">
   <meta name="robots" content="noindex, nofollow, noarchive">
   <title>Ashen Relay — ModPack企画と開発計画</title>
   <link rel="stylesheet" href="style.css">
@@ -11,11 +11,11 @@
 <body>
   <main>
     <header>
-      <p class="eyebrow">MINECRAFT 1.20.1 · FORGE 47.4.23 · 企画公開版</p>
+      <p class="eyebrow">MINECRAFT 1.20.1 · FORGE 47.4.23 · 実装計画</p>
       <h1>Ashen Relay</h1>
       <p class="lead">Lost Citiesの道路から、他Modの塔、地下墓地、工場、城塞、海と洞窟へ。そこで受けた異質な攻撃を、武器や呪文として持ち帰って次の攻略へ使うModPack。</p>
       <div class="status"><span></span> 企画再編済み · 実装進行中</div>
-      <p class="notice"><strong>ネタバレあり。</strong> このページには物語の核心、終盤の選択、未実装の攻略計画を記載しています。「実装済み」「検証済み」「計画」を区別して読んでください。</p>
+      <p class="notice">このページは施設、戦闘、報酬、実装予定を具体的に記します。物語の核心と隠し条件は掲載しません。「実装済み」「検証済み」「計画」を区別して読んでください。</p>
     </header>
 
     <section aria-labelledby="now-title">
@@ -64,11 +64,43 @@
       <p>地区ごとに見つかりやすい戦利品を変える「地区共鳴」と、二つのModの規則が境界で順番に働く任意戦闘「継ぎ目異常」を戻します。魔術側は巻物、工業側は重い武器や素材、水辺側は水・雷系素材へ寄せます。原生dropは置き換えません。</p>
     </section>
 
-    <section class="spoilers" aria-labelledby="story-title">
-      <p class="tag">STORY SPOILERS</p>
-      <h2 id="story-title">物語の核心と攻略との関係</h2>
-      <p>廃都市の中継網は、技術や魔力を別の器へ運ぶために作られました。末期にはその対象が人間の記憶と人格へ拡張され、都市の崩壊につながります。都市は他Modの文明やボスを作ったわけではありません。各地の施設を観測し、能力の発生源、持ち主、到達先をつなぎ替えたため、見慣れない敵が別のModの技を使います。</p>
-      <p>序盤は道具の便利さを先に体験し、中盤に使用記録と欠けた記録から代償に気づきます。九つの信号は九施設を順番に強制する章立てではなく、中枢への照合鍵です。終盤には網を維持するか解放するかを選びます。条件を満たしたプレイヤーには、技術と自発的な記録だけを扱うよう網を改修する第三の経路も計画しています。現在実装済みなのは通常の二択で、第三経路は未実装です。</p>
+    <section aria-labelledby="units-title">
+      <h2 id="units-title">追加する最小の遊び</h2>
+      <div class="table-wrap"><table><thead><tr><th>単位</th><th>完了の条件</th><th>最初の実例</th></tr></thead><tbody>
+        <tr><td>入口接合</td><td>道路→入口→攻略室→同じ道路へ連続歩行でき、再起動後も維持。</td><td>現世道路→Alex's Caves <code>forlorn_hut_1</code>→梯子→Mowzie's <code>wroughtnaut_chamber</code>。</td></tr>
+        <tr><td>遭遇</td><td>場所、予兆、対処、失敗、退路、再挑戦条件を一組で作る。</td><td>Apotheosis塔の射手。BOMD弾とCataclysmの骨折効果、遮蔽物。</td></tr>
+        <tr><td>持ち帰り</td><td>原生dropを残し、別Modの装備や次の攻略に1本以上つながる。</td><td>塔のAffix/Gem＋空印→継承→地下用武器。</td></tr>
+        <tr><td>地区差・記録</td><td>場所に応じて追加lootを変え、行動後に次の入口や用途を1つ示す。</td><td>墓地の巻物、工場の重量素材、施設帰還後の観測票。</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <section aria-labelledby="mods-title">
+      <h2 id="mods-title">各Modの担当と止める範囲</h2>
+      <div class="table-wrap"><table><thead><tr><th>Mod</th><th>採用する具体物</th><th>維持・停止するもの</th></tr></thead><tbody>
+        <tr><td>Lost Cities</td><td>現世道路、city判定、接合用part。</td><td>道路網は維持。独自 <code>vocab_*</code> 12棟と外観代用 <code>link_tower</code> を景観の主役から外す。固定別次元 <code>anchor_02</code> は主導線から退ける計画。</td></tr>
+        <tr><td>Alex's Caves</td><td><code>forlorn_hut_1</code>、磁力・水中Effect、六洞窟の素材。</td><td>洞窟、tablet、固有dropは維持。Effectの全域常時付与はしない。</td></tr>
+        <tr><td>Mowzie's Mobs</td><td><code>wroughtnaut_chamber</code>、フェラス、一時床の <code>EntityBlockSwapper</code>。</td><td>ボスAIと固有dropは維持。床変換の対象から入口・梯子・箱を除外。</td></tr>
+        <tr><td>Apotheosis</td><td><code>tower_main</code> 等の塔、Affix、Gem、Socket。</td><td>原生塔と装備強化は維持。塔の専用射手だけ元AI/dropの重複を防ぐ。</td></tr>
+        <tr><td>BOMD</td><td><code>MagicMissileProjectile</code> の命中callback、四遠征と槍。</td><td>原生ボス・施設・drop・レシピは維持。追加報酬の二重支給のみ防止。</td></tr>
+        <tr><td>Cataclysm</td><td><code>bone_fracture</code>、<code>ancient_factory</code>、<code>sunken_city</code>。</td><td>原生施設・ボス・dropは維持。追加装置は工場の限定1室だけ。</td></tr>
+        <tr><td>Iron's Spells</td><td><code>catacombs</code>、<code>evoker_fort</code>、巻物・呪文武器。</td><td>原生施設・報酬は維持。追加敵とlootは特定構造内だけ。</td></tr>
+        <tr><td>T.O</td><td>段階武器4系列、ボス技の呪文化、Cataclysm/Alex's素材との合成。</td><td>原生武器・レシピ・施設は維持。重複分だけ個別調整。</td></tr>
+        <tr><td>Pehkui / Better Combat</td><td>限定遭遇の縮小、武器別モーション。</td><td>全プレイヤーの恒久縮小はしない。戦闘基盤は維持。</td></tr>
+        <tr><td>KubeJS / LootJS / FTB Quests</td><td>場所限定loot、横断レシピ、入口と報酬の案内。</td><td>原生dropとレシピの全面置換はしない。</td></tr>
+        <tr><td>Dungeons Enhanced（未導入）</td><td>小型建築 <code>watch_tower</code> / <code>ruined_building</code> は不足時の接合元候補。</td><td>採用が決まる場合、使わないstructure setを個別に停止。現状は未導入・未停止。</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <section aria-labelledby="files-title">
+      <h2 id="files-title">R単位で書くクラスとデータ</h2>
+      <p class="muted">「新規案」はまだ存在しません。ファイル名は作業境界を具体化するための案で、固定版jarのAPI確認により変更できます。</p>
+      <div class="table-wrap"><table><thead><tr><th>単位</th><th>Java・JSON・スクリプト</th><th>何を成立させるか</th></tr></thead><tbody>
+        <tr><td>R-27W</td><td>既存 <code>WroughtFacilityReservation.java</code>、新規案 <code>CityFacilityConnector.java</code> / <code>CityPathWeld.java</code>。<code>worldstyles/standard.json</code>、<code>predefinedcities/anchor_02.json</code>、<code>buildings/vocab_*.json</code> とcitystyleの参照。</td><td>現行の小屋は非都市2×2チャンクに限定されるため道路から孤立する。動的に街路端を選び、幅2以上の入口通路と帰路を置く。独自外観の参照を解消してから生成を止める。</td></tr>
+        <tr><td>R-27M</td><td>既存 <code>RelayMarksman.java</code> / <code>RelayBoltSentryGoal.java</code> / <code>RelayMissileCarrier.java</code>。専用Entity/rendererは固定jarの公開modelを確認後に設計。</td><td>名前付きスケルトンを置き換え、他Mod由来の外見と30 tick予兆・BOMD弾・骨折効果を一体化。原生Mobホスト案は代替候補。</td></tr>
+        <tr><td>R-27E</td><td>新規案 <code>CatacombFloorCycle.java</code> / <code>FactoryMagnetCycle.java</code> / <code>SeamEncounter.java</code>。既存 <code>RelayDistrictPlacement.java</code> / <code>RelayFactoryDistrict.java</code>。</td><td>墓地1室の一時床と復元、工場1室の磁力・安全帯、境界で順番に働く任意遭遇。</td></tr>
+        <tr><td>R-27A/B</td><td><code>ashen_relay_loot.js</code>、<code>ashen_relay_recipes.js</code>、<code>loot_tables/chests/relay_*_reward.json</code>、<code>advancements/progress/reach_*.json</code>、<code>ashen_relay.snbt</code>。新規案 <code>seam_reward.json</code>。</td><td>場所別追加loot、原生drop保全、入口から報酬・継承・次の遠征までの案内。</td></tr>
+      </tbody></table></div>
+      <p>停止の順は設定→同IDのdatapack JSONまたはKubeJS→Forge event→対象限定Mixinです。Mixinは現時点で採用確定していません。未導入Modのstructure setを止めるJSONは、そのModの固定jarで実在IDとスキーマを確認してから作ります。</p>
     </section>
 
     <section class="timeline" aria-labelledby="roadmap-title">
@@ -78,13 +110,13 @@
         <li class="planned"><span>02</span><div><strong>R-27M · 射手</strong><small>名前付きスケルトンを、他Mod由来の外見と専用AIを持つ敵へ変更。</small></div></li>
         <li class="planned"><span>03</span><div><strong>R-27E · 環境戦</strong><small>一時床、磁力、予兆攻撃から、塔と違う攻略を最低2種類作る。</small></div></li>
         <li class="planned"><span>04</span><div><strong>R-27A/B · 街と進行</strong><small>地区共鳴、継ぎ目異常、原生drop、合成、継承、案内、物語を統合。</small></div></li>
-        <li class="planned"><span>05</span><div><strong>R-27S · 第三の経路</strong><small>任意記録と継承利用の条件から、通常二択とは別の改修を選べるようにする。</small></div></li>
+        <li class="planned"><span>05</span><div><strong>R-27S · 追加進行</strong><small>既存の終盤進行とは独立した、条件付きの追加経路を検証。</small></div></li>
         <li class="planned"><span>06</span><div><strong>R-28〜33 · 調整と完成判定</strong><small>戦術差、報酬密度、難度、生成、90分性能、権利、原要求を検証。</small></div></li>
       </ol>
       <p class="muted">未導入Modの追加、新次元、公開サイトの拡充はゲーム完成の必須作業に含めません。現在の施設に具体的な不足が見つかった場合のみ、追加Modの部品価値と不要機能の停止方法を評価します。</p>
     </section>
 
-    <footer><p>Last updated <time datetime="2026-09-23">2026-09-23</time> · 公開ページ。物語のネタバレを含みます。</p></footer>
+    <footer><p>Last updated <time datetime="2026-09-23">2026-09-23</time> · 公開ページ。物語の核心と隠し条件は掲載しません。</p></footer>
   </main>
 </body>
 </html>
