@@ -6,7 +6,7 @@
 
 | Mod | パック内の仕事 | 借りる具体物 | 残すもの | 停止・調整するもの / 時期 |
 |---|---|---|---|---|
-| The Lost Cities `7.5.2` | 現世の道路と街区の基盤 | city/road判定、worldstyle、building/part、接合語彙 | 道路と自然な区画 | 見た目を支配している独自 `vocab_*` 12棟と `link_tower` のselector参照をR-27Wで解消。`anchor_02` は主導線から外す。既存worldの建物は消さない |
+| The Lost Cities `7.5.2` | 現世の道路と街区の基盤 | city/road判定、原生standard citystyle、worldstyle、building/part、接合語彙 | 道路と自然な区画 | 見た目を支配している独自 `vocab_*` 12棟と `link_tower` のselector参照をR-27Wで解消。`anchor_02` は主導線から外す。既存worldの建物は消さない |
 | Alex's Caves `2.0.2` | 六洞窟の探索、異なる環境素材 | `alexscaves:forlorn_hut_1` 9×9×9、`MAGNETIZING`、`BUBBLED`、`DEEPSIGHT` | 六洞窟、tablet導線、固有武器・drop | 洞窟全体は止めない。外部施設でのEffectは限定区画・短時間だけ |
 | Mowzie's Mobs `1.8.2` | フェラスを最初の強敵にする | `mowziesmobs:wroughtnaut_chamber` 19×7×19、`EntityBlockSwapper.swapBlock` | ボスAI、斧・兜、自然拠点 | 接合施設が重複すると実測された場所だけ頻度調整。変換床から梯子・箱・出口を除外 |
 | Apotheosis `7.4.8` | 拾った装備のAffix/Socket/Gemで更新動機を作る | `tower_main/leaf/sand/spruce`、Affix/Gem装備 | 原生塔と強化入手 | 射手を変更した場合、その1体だけ元AI/dropの重複を止める。塔やAffix全体は止めない |

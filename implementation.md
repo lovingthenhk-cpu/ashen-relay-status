@@ -4,19 +4,21 @@
 
 ## R-27W1〜W4：現世の街と入口
 
-現在の `WroughtFacilityReservation.java` は `PostGenOutsideChunkEvent` から小屋と室を置くが、対象2×2を**すべて非都市chunk**に限定する。64×64 chunk領域に候補1件なので、都市と孤立する。旧 `anchor_02.json` は `lostcities:lostcity` 次元の固定座標で、現世の施設を追跡できない。
+R-27W1で判明した旧 `WroughtFacilityReservation.java` は非都市のランダム候補を選び、都市と孤立していた。R-27W2で**現世のLost Cities道路縁**へ候補を移し、実歩行面から原生小屋と室へ接続した。3 seedと再起動の機械検証は通過した。旧 `anchor_02.json` は `lostcities:lostcity` 次元の固定座標で、現世の施設を追跡できない。
 
 | ファイル | 既存/案 | 仕事 |
 |---|---|---|
-| `addon/.../worldgen/WroughtFacilityReservation.java` | 既存改修 | `forlorn_hut_1` と `wroughtnaut_chamber`、梯子・通路・再実行防止を保ち、街路縁候補を安全に受け入れる |
+| `addon/.../worldgen/WroughtFacilityReservation.java` | R-27W2実装・機械検証済み | `forlorn_hut_1` と `wroughtnaut_chamber`、梯子・通路・再実行防止を保ち、街路縁候補を安全に受け入れる |
 | `addon/.../worldgen/CityFacilityConnector.java` | 新規案 | Lost Citiesの道路端、施設入口、街区・構造の衝突を調べ、配置候補と拒否理由を記録する |
-| `addon/.../worldgen/CityPathWeld.java` | 新規案 | 道路端と小屋/塔入口を幅2以上の歩ける通路で接続。段差・照明・帰路・保護ブロックを検査 |
+| `addon/.../worldgen/CityPathWeld.java` | 塔向けの新規案 | 小屋への通路は既存classへ実装済み。塔入口と同じ道路を幅2以上の通路で接続し、帰路を検査 |
 | `pack/kubejs/data/lostcities/lostcities/worldstyles/standard.json` | 既存改修 | 都市に出す建物の参照を更新し、外観用 `vocab_*` の主役化を止める |
+| `pack/kubejs/data/ashen_relay/lostcities/predefinedcities/anchor_road_01.json` | R-27W2追加 | 現世のLost Cities原生style、半径160ブロック、強制独自建物0。道路縁の接合元 |
 | `pack/kubejs/data/ashen_relay/lostcities/predefinedcities/anchor_02.json` | 既存見直し | 固定別次元街区を主進行から外す。既存worldとadvancement参照を確認後に生成停止を判断 |
 | `pack/kubejs/data/ashen_relay/lostcities/{buildings,parts,citystyles}/...` | 既存選別 | `link_entrance` / `link_hall` 等の接合片は必要に応じて残し、外観代用 `link_tower` と `vocab_*` の参照を段階的に解消 |
-| `scripts/r27w-city-walk.py` | 新規案 | 3 seed、新規現世、道→入口→戦闘室→帰路、再起動後の同一性、衝突と種類数を検査 |
+| `scripts/r27w2-verify.sh` | R-27W2実装・実行済み | 3 seed、新規現世、自然生成、実ブロックの経路、原生boss、再起動を検査 |
+| `scripts/r27w-city-walk.py` | 後続案 | 人の目視を代用せず、塔と地下の二択・衝突と種類数を追加検査 |
 
-**未確定の実装選択**: 外部建築8種類の候補IDと実寸。固定jarを棚卸しして決める。3 Mod・8種類の景観がR-28Dで作れなければ都市は未完了。色違い、案内板、街道、独自箱建物は種類に数えない。
+**未確定の実装選択**: 固定jarから地上9家族を候補化したが、同じ街で8種類に歩いて届く配置と外観は未検証。3 Mod・8種類の景観がR-28Dで作れなければ都市は未完了。色違い、案内板、街道、独自箱建物は種類に数えない。
 
 ## R-27M：射手の外見と専用AI
 

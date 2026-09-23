@@ -15,7 +15,7 @@
       <p class="eyebrow">MINECRAFT 1.20.1 · FORGE 47.4.23 · 実装計画</p>
       <h1>Ashen Relay</h1>
       <p class="lead">Lost Citiesの道路から、他Modの塔、地下墓地、工場、城塞、海と洞窟へ。そこで受けた異質な攻撃を、武器や呪文として持ち帰って次の攻略へ使うModPack。</p>
-      <div class="status"><span></span> 未完成 · 次はR-27W2 · 第一波30単位・第二波R-37〜44</div>
+      <div class="status"><span></span> 未完成 · 次はR-27W3 · 第一波30単位・第二波R-37〜44</div>
       <p class="notice"><strong>この1ページが計画の全量ではありません。</strong> 下の7ページに六圏、旧案の採用台帳、次の作業、全作業群と受入を掲載しました。追加の仕事が確定したら完成工程にも追記します。物語の核心と隠し条件は掲載しません。</p>
     </header>
 
@@ -24,14 +24,14 @@
       <a class="page-card" href="gameplay.html"><strong>プレイループ</strong><span>原要求9項目、最小の遊び、武器・戦利品・継承・遠征のつながり。</span></a>
       <a class="page-card" href="mods.html"><strong>Mod採用表</strong><span>固定Modの担当、借りる部品、原生で残す要素、個別に止める要素。</span></a>
       <a class="page-card" href="ideas.html"><strong>旧案の採用台帳</strong><span>旧資料の案を原則採用対象に戻し、三つの除外理由と各Modの試験場所を列挙。</span></a>
-      <a class="page-card" href="delivery.html"><strong>次の作業と実装受入</strong><span>このチャットの決定事項、R-27W1の監査結果とR-27W2からの順序、旧案20件のクラス/JSON案と施設受入。</span></a>
+      <a class="page-card" href="delivery.html"><strong>次の作業と実装受入</strong><span>このチャットの決定事項、R-27W1/W2の結果とR-27W3からの順序、旧案20件のクラス/JSON案と施設受入。</span></a>
       <a class="page-card" href="implementation.html"><strong>実装ファイル</strong><span>R-27で触るJava、Lost Cities JSON、loot、advancement、FTBと新規案。</span></a>
       <a class="page-card" href="completion.html"><strong>完成工程</strong><span>M-1〜M-9、第一波30単位、第二波R-37〜44の作業群と受入。</span></a>
     </div></section>
 
     <section aria-labelledby="now-title">
-      <div class="section-heading"><h2 id="now-title">現在地</h2><strong>2026-09-23</strong></div>
-      <p>装備の強化継承、4種類の敵・弾・場所の遭遇、BOMDの任意遠征、複数Modのボス報酬と進行分岐は実装済みです。専用サーバーと自己試験で主要な進行を検証しました。一方、実際に見えた街はLost Cities標準建築とAshen Relay製の建物が中心で、他Modの施設が都市から孤立していました。都市景観の完成判定を取り消し、次の作業を街と施設の接続から始めます。</p>
+      <div class="section-heading"><h2 id="now-title">現在地</h2><strong>2026-09-24</strong></div>
+      <p>装備の強化継承、4種類の敵・弾・場所の遭遇、BOMDの任意遠征、複数Modのボス報酬と進行分岐は実装済みです。R-27W2では現世のLost Cities道路からAlex's Cavesの小屋とMowzie's Mobsの地下室を接続し、3 seedの専用サーバーで自然生成、実ブロックの経路、再起動後の維持を確認しました。外観と実際の歩行感は未確認です。次のR-27W3では同じ街道に原生Apotheosis塔への入口を作ります。</p>
       <p><a href="completion.html">完成工程の全件を見る →</a></p>
       <p class="muted">以前の「約30%」は2026-09-17時点の旧監査による概算です。今回の再編後の完成率として使いません。外観、歩行感、面白さは、人の確認が済むまで未検証です。</p>
     </section>
@@ -52,7 +52,7 @@
       <div class="table-wrap"><table>
         <thead><tr><th>場所</th><th>Modの組み合わせと遊び</th><th>持ち帰るもの</th><th>状態</th></tr></thead>
         <tbody>
-          <tr><td>現世の街道と地下</td><td>Lost Citiesの道 × Alex's Cavesの地下小屋 × Mowzie's Mobsのフェラス地下室。小屋から梯子と通路で降りる。</td><td>固有の斧・兜、共鳴素材。塔で拾った武器との比較と継承。</td><td>小屋と地下室は接合済み。都市道路との接続はR-27W2。</td></tr>
+          <tr><td>現世の街道と地下</td><td>Lost Citiesの道 × Alex's Cavesの地下小屋 × Mowzie's Mobsのフェラス地下室。小屋から梯子と通路で降りる。</td><td>固有の斧・兜、共鳴素材。塔で拾った武器との比較と継承。</td><td>現世道路との接続は3 seedで機械検証済み。外観と実際の歩行は未確認。</td></tr>
           <tr><td>街道の塔</td><td>Apotheosisの塔 × 他Mod由来の射手モデル × BOMDの弾 × CataclysmのBone Fracture。遮蔽物と射線を使う。</td><td>Affix武器、Gem、弾系能力。地下探索用の別ビルド。</td><td>塔と射撃AIは実装済み。街道接続はR-27W3、外見はR-27M。</td></tr>
           <tr><td>地下墓地</td><td>Iron's Spellsのcatacombs × Mowzie'sの一時的なブロック変換 × Cataclysmの予兆攻撃。変わる床と退路を読む。</td><td>巻物、ルーン、装備型呪文。敵の技を後に自分の呪文へ。</td><td>原生施設と攻撃は実装済み。一時床の実施設導入はR-27E1。</td></tr>
           <tr><td>城塞</td><td>Iron's Spellsのevoker fort × 敵が使うrelay_step × Pehkui縮小。門、広間、狭所で位置取りを変える。</td><td>移動巻物と継承可能な装備型呪文。</td><td>敵の移動は実装済み。縮小との複合は計画。</td></tr>
@@ -107,7 +107,7 @@
       <h2 id="files-title">R単位で書くクラスとデータ</h2>
       <p class="muted">「新規案」はまだ存在しません。ファイル名は作業境界を具体化するための案で、固定版jarのAPI確認により変更できます。</p>
       <div class="table-wrap"><table><thead><tr><th>単位</th><th>Java・JSON・スクリプト</th><th>何を成立させるか</th></tr></thead><tbody>
-        <tr><td>R-27W</td><td>既存 <code>WroughtFacilityReservation.java</code>、新規案 <code>CityFacilityConnector.java</code> / <code>CityPathWeld.java</code>。<code>worldstyles/standard.json</code>、<code>predefinedcities/anchor_02.json</code>、<code>buildings/vocab_*.json</code> とcitystyleの参照。</td><td>現行の小屋は非都市2×2チャンクに限定されるため道路から孤立する。動的に街路端を選び、幅2以上の入口通路と帰路を置く。独自外観の参照を解消してから生成を止める。</td></tr>
+        <tr><td>R-27W</td><td>既存 <code>WroughtFacilityReservation.java</code>、新規案 <code>CityFacilityConnector.java</code> / <code>CityPathWeld.java</code>。<code>worldstyles/standard.json</code>、<code>predefinedcities/anchor_02.json</code>、<code>buildings/vocab_*.json</code> とcitystyleの参照。</td><td>R-27W2で現世道路縁からAlex小屋とMowzie室への接続を実装・機械検証。次は塔の入口を同じ街道へ結ぶ。独自外観の参照を解消してから生成を止める。</td></tr>
         <tr><td>R-27M</td><td>既存 <code>RelayMarksman.java</code> / <code>RelayBoltSentryGoal.java</code> / <code>RelayMissileCarrier.java</code>。専用Entity/rendererは固定jarの公開modelを確認後に設計。</td><td>名前付きスケルトンを置き換え、他Mod由来の外見と30 tick予兆・BOMD弾・骨折効果を一体化。原生Mobホスト案は代替候補。</td></tr>
         <tr><td>R-27E</td><td>新規案 <code>CatacombFloorCycle.java</code> / <code>FactoryMagnetCycle.java</code> / <code>SeamEncounter.java</code>。既存 <code>RelayDistrictPlacement.java</code> / <code>RelayFactoryDistrict.java</code>。</td><td>墓地1室の一時床と復元、工場1室の磁力・安全帯、境界で順番に働く任意遭遇。</td></tr>
         <tr><td>R-27A/B</td><td><code>ashen_relay_loot.js</code>、<code>ashen_relay_recipes.js</code>、<code>loot_tables/chests/relay_*_reward.json</code>、<code>advancements/progress/reach_*.json</code>、<code>ashen_relay.snbt</code>。新規案 <code>seam_reward.json</code>。</td><td>場所別追加loot、原生drop保全、入口から報酬・継承・次の遠征までの案内。</td></tr>
@@ -128,7 +128,7 @@
       <p class="muted">この一覧は段階の見出しです。R-27A/B/Sも含む第一波30 unitと第二波の作業群、六圏と旧案の受入条件は<a href="completion.html">完成工程</a>に掲載しています。旧資料のMod案は原則採用対象とし、jar導入は互換・権利・停止方法の試験後に個別決定します。</p>
     </section>
 
-    <footer><p>Last updated <time datetime="2026-09-23">2026-09-23</time> · 公開ページ。物語の核心と隠し条件は掲載しません。</p></footer>
+    <footer><p>Last updated <time datetime="2026-09-24">2026-09-24</time> · 公開ページ。物語の核心と隠し条件は掲載しません。</p></footer>
   </main>
 </body>
 </html>
