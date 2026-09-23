@@ -74,7 +74,7 @@ article h2 { margin-top: 38px; margin-bottom: 10px; font-family: Georgia, serif;
 article p:last-child { margin: 0; color: var(--muted); line-height: 1.7; }
 .chips { display: flex; flex-wrap: wrap; gap: 9px; padding: 0; list-style: none; }
 .chips li { padding: 9px 12px; border: 1px solid var(--line); background: rgba(255,255,255,.025); color: #c8c4b8; font-size: .8rem; }
-.timeline ol { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; padding: 0; list-style: none; }
+.timeline ol { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; padding: 0; list-style: none; }
 .timeline li { position: relative; display: flex; gap: 12px; padding: 18px 10px 18px 0; border-top: 1px solid var(--line); color: #777b75; }
 .timeline li::before { content: ""; position: absolute; top: -3px; left: 0; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
 .timeline li.complete { color: var(--arcane); }
