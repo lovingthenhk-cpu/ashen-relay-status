@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="description" content="Ashen Relayの縫合パターン42件。実装済み・計画・受入条件を区別して掲載。">
+  <title>縫合パターン42件 — Ashen Relay</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="mods.html">Mod採用表</a><a href="ideas.html">旧案の採用台帳</a><a href="seams.html" aria-current="page">縫合パターン42件</a><a href="delivery.html">次の作業と実装受入</a><a href="implementation.html">実装ファイル</a><a href="completion.html">完成工程</a></nav>
+    <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
+    <article class="document"><h1>Mod要素単位の縫合パターン台帳</h1>
+<p>更新日: 2026-09-24。<strong>企画上42パターン</strong>。内訳は現行packに入っているModとAshen Relayの部品を組む <strong>C01〜C22の22件</strong>、未導入Modの部品を隔離試験して採用可否を決める <strong>X01〜X20の20件</strong>。これは完成数でも、42種類のModや42棟の建物を入れる約束でもない。R-27W3はユーザー指示により未着手のまま。</p>
+<h2>数え方と状態</h2>
+<p>一件は「部品A × 部品B → 特定の場所でプレイヤーに生じる操作」が異なる縫合レシピ。同じ塔の色違い、同じ弾の属性違い、同じ仕組みを別seedへ置いたものは増やさない。Lost Citiesの道路とMod建築の接合、戦闘payloadと別Modのcarrier、報酬と別Modの装備更新も、プレイヤーの操作が異なれば数える。<code>W01〜W06</code>、<code>S01〜S05</code>、<code>G01〜G05</code> は圏・空間・方法の分類であり、42件に重複加算しない。</p>
+<p>状態は <strong>機械確認</strong>＝現行packで実ブロック/専用server等の該当接続を確認、<strong>一部稼働</strong>＝構成部品や片側はあるが施設内の一連の遊びは未受入、<strong>計画</strong>＝現行packの部品で実装予定、<strong>隔離試験待ち</strong>＝未導入Modの版・互換・権利・停止方法を含む候補。人の外観・操作感を機械確認に含めない。C01も外観と実player歩行は未検証。</p>
+<h2>A. 現行packの部品で作る22パターン</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>部品同士の縫合と場所</th>
+<th>プレイヤーがすること・次の用途</th>
+<th>状態 / 受入R</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C01</td>
+<td>Lost Cities現世道路 × Alex's <code>forlorn_hut_1</code> × Mowzie's <code>wroughtnaut_chamber</code></td>
+<td>道から小屋の梯子を降り、フェラス室へ行って同じ道へ戻る。原生dropを次の武器候補にする</td>
+<td><strong>機械確認</strong>：R-27W2。外観・実歩行は未検証</td>
+</tr>
+<tr>
+<td>C02</td>
+<td>Lost Cities街路 × Apotheosis原生塔</td>
+<td>地下との二択として道から塔へ登り、Affix/Gemを持ち帰る</td>
+<td><strong>計画</strong>：R-27W3。現在は着手停止</td>
+</tr>
+<tr>
+<td>C03</td>
+<td>塔の射手AI × BOMD <code>MagicMissileProjectile</code> × Cataclysm <code>Bone Fracture</code></td>
+<td>予兆を見て遮蔽物へ移り、弾の命中効果を読む</td>
+<td><strong>一部稼働</strong>：弾とAIは既存、実施設・外見はR-27M/R-28D</td>
+</tr>
+<tr>
+<td>C04</td>
+<td>Cataclysm由来の外見候補 × 塔専用射手AI</td>
+<td>名前付きvanilla skeletonから脱し、外見と攻撃の予兆を一致させる</td>
+<td><strong>計画</strong>：R-27M。モデル/rendererと権利を確認</td>
+</tr>
+<tr>
+<td>C05</td>
+<td>Iron's <code>catacombs</code> × Mowzie's <code>EntityBlockSwapper</code></td>
+<td>一室で床が一時変わる予兆を見て安全帯へ移り、復元後に進む</td>
+<td><strong>計画</strong>：R-27E1/R-37B。入口・箱は保護</td>
+</tr>
+<tr>
+<td>C06</td>
+<td>Iron's <code>catacombs</code> × Cataclysmの設置予兆攻撃</td>
+<td>墓地の別室で床変化とは違うタイミングの攻撃を避ける</td>
+<td><strong>一部稼働</strong>：元施設・攻撃部品あり、実施設受入はR-28A</td>
+</tr>
+<tr>
+<td>C07</td>
+<td>Cataclysm <code>ancient_factory</code> × Alex's磁力Effect/BlockEntity</td>
+<td>工場の設備周期で引かれる向きを読み、安全帯へ動く</td>
+<td><strong>計画</strong>：R-27E2/R-28B</td>
+</tr>
+<tr>
+<td>C08</td>
+<td>Cataclysm工場 × Mowzie's復元床</td>
+<td>原生装置を避けつつ一時的な足場を渡り、復元後も退路を失わない</td>
+<td><strong>計画</strong>：R-27E2/R-28B</td>
+</tr>
+<tr>
+<td>C09</td>
+<td>Iron's <code>evoker_fort</code> × Ashen Relay <code>relay_step</code> × Pehkui縮小</td>
+<td>門・狭路で敵の移動と短時間のサイズ変化に対処する</td>
+<td><strong>一部稼働</strong>：敵の移動あり、縮小との複合はR-27E3/R-28C</td>
+</tr>
+<tr>
+<td>C10</td>
+<td>都市の二地区境界 × Mowzie's一時床 × BOMD/塔の予兆弾</td>
+<td>学んだ二規則を順番に越え、任意の一回報酬を選ぶ</td>
+<td><strong>計画</strong>：R-27E3/R-27A/R-39E</td>
+</tr>
+<tr>
+<td>C11</td>
+<td>Lost Cities魔術地区 × Iron's巻物loot</td>
+<td>建物と観測票から巻物を探す地区を選び、次の呪文武器へ使う</td>
+<td><strong>計画</strong>：R-27A/R-28A</td>
+</tr>
+<tr>
+<td>C12</td>
+<td>Lost Cities工業地区 × Cataclysm工場素材/重量装備loot</td>
+<td>工業区で重い武器の素材を狙い、城塞や洞窟用へ更新する</td>
+<td><strong>計画</strong>：R-27A/R-28B</td>
+</tr>
+<tr>
+<td>C13</td>
+<td>Lost Citiesの浸水街路 × Cataclysm <code>sunken_city</code> × Alex's水中Effect</td>
+<td>街の水位を手掛かりに海へ向かい、水中能力で探索・帰還する</td>
+<td><strong>計画</strong>：R-29B/R-37E。原生海生成は維持</td>
+</tr>
+<tr>
+<td>C14</td>
+<td>Alex's六洞窟の素材 × T.O段階武器</td>
+<td>都市の装備で洞窟へ行き、素材を持ち帰って別の武器種へ更新する</td>
+<td><strong>一部稼働</strong>：素材/合成は既存、案内と往復はR-29B/R-30B</td>
+</tr>
+<tr>
+<td>C15</td>
+<td>Cataclysm工場・海の素材 × T.O段階武器</td>
+<td>地下/海の原生攻略を剣・拳・機械刃・トライデント系列の更新へ結ぶ</td>
+<td><strong>一部稼働</strong>：横断レシピあり、施設別の入手順はR-29/R-30B</td>
+</tr>
+<tr>
+<td>C16</td>
+<td>Mowzie's屋外原生拠点 × Cataclysm設置攻撃</td>
+<td>地下より広い視界で予兆を読み、遮蔽物の使い方を変える</td>
+<td><strong>計画</strong>：R-29C/R-37F。原生Mob戦を保持</td>
+</tr>
+<tr>
+<td>C17</td>
+<td>Apotheosis Affix/Gem × Ashen Relay継承印 × T.O武器</td>
+<td>塔で拾った強化を新しい器へ部分的に移し、地下や工場で試す</td>
+<td><strong>一部稼働</strong>：継承機構あり、施設別更新はR-30A/B</td>
+</tr>
+<tr>
+<td>C18</td>
+<td>Iron's装備型呪文 × Ashen Relay継承印 × 別Mod武器</td>
+<td>墓地の呪文付き装備から互換分を移し、不適合分は印に残す</td>
+<td><strong>一部稼働</strong>：部分適用あり、施設報酬の調整はR-30A/B</td>
+</tr>
+<tr>
+<td>C19</td>
+<td>BOMD <code>Earthdive Spear</code> × Ashen Relay継承印/台帳</td>
+<td>任意遠征で得た槍を次の器と比較し、旧武器への投資を移す</td>
+<td><strong>一部稼働</strong>：槍・継承あり、遠征からの導線はR-29C/R-30C</td>
+</tr>
+<tr>
+<td>C20</td>
+<td>Mowzie's/Cataclysm固有武器の重複品 × 残響精錬 × 継承素材</td>
+<td>二個目以降の戦利品を残響片にし、新しい武器へ投資を回す</td>
+<td><strong>一部稼働</strong>：精錬機構あり、複数圏の実報酬はR-30C/R-39A</td>
+</tr>
+<tr>
+<td>C21</td>
+<td>複数Modの異なる武器種 × Ashen Relay武器記録台帳</td>
+<td>一度使った武器種を記録し、次の器や継承先を選ぶ</td>
+<td><strong>一部稼働</strong>：台帳あり、六圏での選択はR-30/R-39B</td>
+</tr>
+<tr>
+<td>C22</td>
+<td>BOMD等の未収録ボス行動 × Player用スペル/道具 × 原生drop</td>
+<td>敵の技を観測後、短いPlayer用能力として別の施設で使う</td>
+<td><strong>計画</strong>：R-39D。T.O既存スペルとの重複は作らない</td>
+</tr>
+</tbody>
+</table>
+<h2>B. 未導入Modの部品を試す20パターン</h2>
+<p>この20件は<strong>実験と採否判断を含む企画範囲</strong>であり、20 Modをそのままpackへ追加する決定ではない。各件で部品の固定版・依存・動画利用条件・元Modで残す内容・不要な生成/レシピ/AIを止める手段を試す。部品が使えない場合も、狙ったプレイヤー操作は別経路で追う。X番号は <code>IDEA_DELIVERY_CONTRACT.md</code> と一致する。</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>部品同士の縫合と場所</th>
+<th>プレイヤーがすること</th>
+<th>受入R</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X01</td>
+<td>Apoli Action/Condition × Mob/設備/Player、地区境界</td>
+<td>同じ条件付き効果を三主体で見比べる</td>
+<td>R-40A</td>
+</tr>
+<tr>
+<td>X02</td>
+<td>Ars Nouveau turret/Form × Player caster、高層魔術</td>
+<td>設備と自分で同じEffectの射線/範囲を変える</td>
+<td>R-40B</td>
+</tr>
+<tr>
+<td>X03</td>
+<td>Immersive Engineering Chemthrower/Railgun × 他Modの液体・弾、工場</td>
+<td>液体のEntity/Block別反応と別ownerの弾を読む</td>
+<td>R-40C</td>
+</tr>
+<tr>
+<td>X04</td>
+<td>Occultism Ritual × Ashen Relay武器継承、地区核</td>
+<td>素材を払い、準備・中断・完成できる継承を行う</td>
+<td>R-40D</td>
+</tr>
+<tr>
+<td>X05</td>
+<td>Mekanismの汚染/化学 × 別Modの耐性装備、工場</td>
+<td>時間制限の危険を装備選択で越える</td>
+<td>R-41A</td>
+</tr>
+<tr>
+<td>X06</td>
+<td>Hex Castingの座標/ベクトル × 弾/設置攻撃</td>
+<td>弾道や置き場所を計算して変える</td>
+<td>R-41B</td>
+</tr>
+<tr>
+<td>X07</td>
+<td>PneumaticCraft Drone × 他Modのアイテム、工業設備</td>
+<td>対象を指定し、Droneに別Mod品を使わせる</td>
+<td>R-41C</td>
+</tr>
+<tr>
+<td>X08</td>
+<td>Create Deployer/Fan/Arm × 他Modの部品、工場</td>
+<td>機械の応答で経路を開き、報酬へ届く</td>
+<td>R-41D</td>
+</tr>
+<tr>
+<td>X09</td>
+<td>Industrial Foregoing設備 × 他ModのMob/素材/液体、工場</td>
+<td>加工と戦闘の資源を結び、無限lootなしで更新する</td>
+<td>R-41E</td>
+</tr>
+<tr>
+<td>X10</td>
+<td>Twilight Forest NatureBolt/復元室 × 都市外縁</td>
+<td>一時的に環境を変えて道を開き、元へ戻す</td>
+<td>R-42A</td>
+</tr>
+<tr>
+<td>X11</td>
+<td>Botania mana × 地区境界の別Mod攻撃</td>
+<td>manaを準備資源にして任意戦を起動・中断する</td>
+<td>R-42B</td>
+</tr>
+<tr>
+<td>X12</td>
+<td>Aether Zephyr弾/浮遊Block × 別owner/街への帰還</td>
+<td>空の遠征で得た一時足場の使い方を街で変える</td>
+<td>R-42C</td>
+</tr>
+<tr>
+<td>X13</td>
+<td>Ice and Fire breath/石化 × 気候別のMob/罠</td>
+<td>敵と罠の両方から石化を学び、復帰を含め対処する</td>
+<td>R-42D</td>
+</tr>
+<tr>
+<td>X14</td>
+<td>EvilCraftの血・魂資源 × 別Mod武器/継承、地下</td>
+<td>旧装備を次の器へ移す際に資源の使い方を選ぶ</td>
+<td>R-42E</td>
+</tr>
+<tr>
+<td>X15</td>
+<td>CC:Tweaked / Integrated Dynamicsの観測 × 工場設備</td>
+<td>状態を読んで安全な通路を開く。手動の別解も残す</td>
+<td>R-42F</td>
+</tr>
+<tr>
+<td>X16</td>
+<td>Dungeons Enhanced原生小塔等 × Lost Cities道路</td>
+<td>異なる外観の小型建築を街へ接合して攻略する</td>
+<td>R-43A</td>
+</tr>
+<tr>
+<td>X17</td>
+<td>Simply Swords系武器 × Affix/Better Combat/継承</td>
+<td>武器種を試し、別圏に合う器を選ぶ</td>
+<td>R-43B</td>
+</tr>
+<tr>
+<td>X18</td>
+<td>The Graveyard原生墓所 × Iron's墓地の寄り道</td>
+<td>地下で別の敵・空間・報酬を選ぶ</td>
+<td>R-43C</td>
+</tr>
+<tr>
+<td>X19</td>
+<td>When Dungeons Arise大型建築 × Lost Cities外縁</td>
+<td>都市の遠景から歩いて入口と原生室へ行く</td>
+<td>R-43D</td>
+</tr>
+<tr>
+<td>X20</td>
+<td>Integrated Dungeons AriseのMob/loot × X19原生建築</td>
+<td>同じ大型施設に異なる攻略・報酬の寄り道を作る</td>
+<td>R-43E</td>
+</tr>
+</tbody>
+</table>
+<h2>全体での数え直し</h2>
+<ul>
+<li><strong>42レシピ = C22 + X20</strong>。現行packだけで完成した42の遊びという意味ではない。</li>
+<li><strong>六圏・18場面</strong>は配置と体験の下限。42レシピの複数件を一場面に組み、同じレシピを複数場面で使う場合もある。従って42と18を足さない。</li>
+<li><strong>五縫合</strong>（敵・弾・場所・道具・連鎖）は実装方法の分類。C/Xの件数と足さない。</li>
+<li><strong>X15</strong>は二Modを一つの操作の代替候補として数える。両者で別の操作が成立した場合は分割して増やす。</li>
+<li>今後、部品や施設を追加して異なる操作が確定したら新IDを付け、<code>IDEA_DELIVERY_CONTRACT.md</code>、<code>REVISED_COMPLETION_PLAN.md</code>、公開Pagesに同じ作業単位で反映する。除外は <code>IDEA_INCLUSION_LEDGER.md</code> の三理由と証拠に限る。</li>
+</ul>
+</article>
+    <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-09-24 · 物語の核心は掲載しません。</footer>
+  </main>
+</body>
+</html>
