@@ -11,7 +11,7 @@ PAGES = [
     ("gameplay.html", "プレイループ"),
     ("mods.html", "Mod採用表"),
     ("ideas.html", "旧案の採用台帳"),
-    ("seams.html", "縫合パターン42件"),
+    ("seams.html", "縫合パターン58件"),
     ("delivery.html", "次の作業と実装受入"),
     ("implementation.html", "実装ファイル"),
     ("completion.html", "完成工程"),

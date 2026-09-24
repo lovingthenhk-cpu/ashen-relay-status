@@ -4,21 +4,21 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow, noarchive">
-  <meta name="description" content="Ashen Relayの縫合パターン42件。実装済み・計画・受入条件を区別して掲載。">
-  <title>縫合パターン42件 — Ashen Relay</title>
+  <meta name="description" content="Ashen Relayの縫合パターン58件。実装済み・計画・受入条件を区別して掲載。">
+  <title>縫合パターン58件 — Ashen Relay</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main>
-    <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="mods.html">Mod採用表</a><a href="ideas.html">旧案の採用台帳</a><a href="seams.html" aria-current="page">縫合パターン42件</a><a href="delivery.html">次の作業と実装受入</a><a href="implementation.html">実装ファイル</a><a href="completion.html">完成工程</a></nav>
+    <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="mods.html">Mod採用表</a><a href="ideas.html">旧案の採用台帳</a><a href="seams.html" aria-current="page">縫合パターン58件</a><a href="delivery.html">次の作業と実装受入</a><a href="implementation.html">実装ファイル</a><a href="completion.html">完成工程</a></nav>
     <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
     <article class="document"><h1>Mod要素単位の縫合パターン台帳</h1>
-<p>更新日: 2026-09-24。<strong>企画上42パターン</strong>。内訳は現行packに入っているModとAshen Relayの部品を組む <strong>C01〜C22の22件</strong>（機械確認1、一部稼働10、計画11）、未導入Modの部品を隔離試験して採用可否を決める <strong>X01〜X20の20件</strong>（全件隔離試験待ち）。これは完成数でも、42種類のModや42棟の建物を入れる約束でもない。R-27W3はユーザー指示により未着手のまま。</p>
+<p>更新日: 2026-09-24。<strong>場所と操作まで定義した縫合は現時点で58パターン</strong>。内訳は現行packの部品を組む <strong>C01〜C35の35件</strong>（道路経路の機械確認1、部品・一部ループ稼働17、計画17）と、未導入Modの <strong>X01〜X20という20作業パッケージ内の23操作</strong>（全件隔離試験待ち）。前版の42件は作業パッケージを数え、既存のR-01〜R-22の縫合7件を落とし、X03/X12/X13内の別操作を一件にまとめていた。58は完成数でも上限でもなく、旧資料にある未割当候補は末尾で追う。R-27W3のproductionはユーザー指示により未着手のまま。</p>
 <p>照合元は <code>MODPACK_CONTENT_BLUEPRINT.md</code> の施設別の混ぜ方、<code>EXPANDED_GAME_VISION.md</code> の六圏・五縫合、<code>IDEA_DELIVERY_CONTRACT.md</code> のW/P/U/X行、<code>IDEA_INCLUSION_LEDGER.md</code> のネガティブリスト。実装証拠は <code>TESTING.md</code> と <code>reports/compat/</code> を正本とする。</p>
 <h2>数え方と状態</h2>
-<p>一件は「部品A × 部品B → 特定の場所でプレイヤーに生じる操作」が異なる縫合レシピ。同じ塔の色違い、同じ弾の属性違い、同じ仕組みを別seedへ置いたものは増やさない。Lost Citiesの道路とMod建築の接合、戦闘payloadと別Modのcarrier、報酬と別Modの装備更新も、プレイヤーの操作が異なれば数える。<code>W01〜W06</code>、<code>S01〜S05</code>、<code>G01〜G05</code> は圏・空間・方法の分類であり、42件に重複加算しない。</p>
+<p>一件は「部品A × 部品B → 特定の場所でプレイヤーに生じる操作」が異なる縫合レシピ。同じ塔の色違い、同じ弾の属性違い、同じ仕組みを別seedへ置いたものは増やさない。Lost Citiesの道路とMod建築の接合、戦闘payloadと別Modのcarrier、報酬と別Modの装備更新も、プレイヤーの操作が異なれば数える。<code>W01〜W06</code>、<code>S01〜S05</code>、<code>G01〜G05</code> は圏・空間・方法の分類であり、58件に重複加算しない。X03a/b、X12a/b、X13a/bは元のX IDの枝であり、<code>IDEA_DELIVERY_CONTRACT.md</code> の20作業単位を増やした意味ではない。</p>
 <p>状態は <strong>機械確認</strong>＝現行packで実ブロック/専用server等の該当接続を確認、<strong>一部稼働</strong>＝構成部品や片側はあるが施設内の一連の遊びは未受入、<strong>計画</strong>＝現行packの部品で実装予定、<strong>隔離試験待ち</strong>＝未導入Modの版・互換・権利・停止方法を含む候補。人の外観・操作感を機械確認に含めない。C01も外観と実player歩行は未検証。</p>
-<h2>A. 現行packの部品で作る22パターン</h2>
+<h2>A. 現行packの部品で作る35パターン</h2>
 <table>
 <thead>
 <tr>
@@ -161,10 +161,179 @@
 <td>敵の技を観測後、短いPlayer用能力として別の施設で使う</td>
 <td><strong>計画</strong>：R-39D。T.O既存スペルとの重複は作らない</td>
 </tr>
+<tr>
+<td>C23</td>
+<td>Iron's <code>relay_flame_strike</code> × Cataclysm <code>Flame_Strike_Entity</code></td>
+<td>墓地で見た予兆攻撃を呪文として得て、別の施設で指定地点へ置く</td>
+<td><strong>一部稼働</strong>：R-02/R-07。spell実装・試験済み、施設横断の体験は未受入</td>
+</tr>
+<tr>
+<td>C24</td>
+<td>タグ付きMob Goal × Cataclysm Flame Strike、Iron's墓地</td>
+<td>Mobの予兆を見て安全帯へ動き、後にC23のPlayer呪文と比較する</td>
+<td><strong>一部稼働</strong>：R-01/R-14。Goal実装・試験済み、外観/実歩行は未受入</td>
+</tr>
+<tr>
+<td>C25</td>
+<td>Cataclysm <code>ancient_factory</code> × Ashen Relay Zone Host × Cataclysm Flame Strike</td>
+<td>無人の装置が同じ攻撃を周期発火する。敵の技と違い安全帯を読む</td>
+<td><strong>一部稼働</strong>：R-03/R-18C。zone/工場配置は実装、実player体験は未受入</td>
+</tr>
+<tr>
+<td>C26</td>
+<td>Iron's <code>relay_bone_bolt</code> × BOMD Magic Missile × Cataclysm Bone Fracture</td>
+<td>塔で受けた弾をPlayerが別施設で撃ち、ownerと効果を使い分ける</td>
+<td><strong>一部稼働</strong>：R-06/R-07。spell/弾は試験済み、獲得後の往復は未受入</td>
+</tr>
+<tr>
+<td>C27</td>
+<td>Iron's <code>relay_shrink</code> × Pehkui BASE scale</td>
+<td>短時間だけ自分のサイズを変え、城塞の狭路を別ルートで通る</td>
+<td><strong>一部稼働</strong>：R-05。spell実装・試験済み、城塞の実ルートは未受入</td>
+</tr>
+<tr>
+<td>C28</td>
+<td>Iron's <code>relay_step</code> のPlayer版 × 城塞の敵側Goal</td>
+<td>自分が使った短距離移動を敵も予兆つきで使うため、着地点を読む</td>
+<td><strong>一部稼働</strong>：R-19D。enemy mirror実装・専用server試験済み、実player操作は未受入</td>
+</tr>
+<tr>
+<td>C29</td>
+<td>異なる2地区の攻略記録 × Ashen Relay連鎖state × Apo/Iron's強化継承</td>
+<td>攻略順を選び、両地区後に旧武器のAffix/Gem/装備呪文を移す</td>
+<td><strong>一部稼働</strong>：R-22A/B。状態/永続のproxy受入済み、実player操作は未受入</td>
+</tr>
+<tr>
+<td>C30</td>
+<td>BOMD Magic Missile命中 × Mowzie's BlockSwapper、都市境界</td>
+<td>命中地点に一時床を作り、弾を避けるだけでなく足場を読み直す</td>
+<td><strong>計画</strong>：R-38G/R-39E。owner・復元・保護blockを隔離試験</td>
+</tr>
+<tr>
+<td>C31</td>
+<td>BOMD Magic Missile命中 × Cataclysm Flame Strike、塔の上層</td>
+<td>弾の着弾予兆の後に遅れて床攻撃が来るため、二段階で移動する</td>
+<td><strong>計画</strong>：R-38G。遅延、miss cleanup、元塔lootを保護</td>
+</tr>
+<tr>
+<td>C32</td>
+<td>Mowzie's Sunstrike × 日光で起動する都市外縁設備</td>
+<td>設備の照射予兆を見て遮蔽物に入る。夜は別の通路を選べる</td>
+<td><strong>計画</strong>：R-37F/R-38H。固定版B候補、設備と原生Mob戦を分離</td>
+</tr>
+<tr>
+<td>C33</td>
+<td>Alex's MAGNETIZING Effect × 工場の武装Mob</td>
+<td>敵の装備に引かれる方向を見て退路を選び、C07の固定設備と比較する</td>
+<td><strong>計画</strong>：R-37C/R-38F。Effectの対象・同期を隔離試験</td>
+</tr>
+<tr>
+<td>C34</td>
+<td>Pehkui BASE scale × Projectile命中、城塞の狭路</td>
+<td>被弾による短時間縮小を利用または回避し、終了後に元サイズへ戻る</td>
+<td><strong>計画</strong>：R-38G。EX-06は四Host実証、実施設と復帰は未検証</td>
+</tr>
+<tr>
+<td>C35</td>
+<td>BOMD RiftBurst × Mowzie's BlockSwapper、外縁の屋外戦</td>
+<td>裂け目の遅延予兆を見て、短時間だけ変わる地面から退避する</td>
+<td><strong>計画</strong>：R-37F/R-38G。固定版B候補、原生屋外戦を保持</td>
+</tr>
 </tbody>
 </table>
-<h2>B. 未導入Modの部品を試す20パターン</h2>
-<p>この20件は<strong>実験と採否判断を含む企画範囲</strong>であり、20 Modをそのままpackへ追加する決定ではない。各件で部品の固定版・依存・動画利用条件・元Modで残す内容・不要な生成/レシピ/AIを止める手段を試す。部品が使えない場合も、狙ったプレイヤー操作は別経路で追う。X番号は <code>IDEA_DELIVERY_CONTRACT.md</code> と一致する。</p>
+<h3>C23〜C35で借りるものと止める範囲</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>借りる部品・実装入口</th>
+<th>残す原生要素</th>
+<th>抑える範囲と受入</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C23</td>
+<td>Iron's caster、Cataclysm Flame Strike、<code>RelayFlameStrikeSpell</code></td>
+<td>Iron'sのmana/cooldownとCataclysm原生ボス</td>
+<td>呪文の一回発火、ボス攻撃との差、施設別入手を確認。元ボスAIを変更しない</td>
+</tr>
+<tr>
+<td>C24</td>
+<td>Cataclysm Flame Strike、<code>FlameboundSentinel</code> のタグ限定Goal</td>
+<td>墓地の原生室と元Mobの通常戦</td>
+<td>タグ対象以外へGoalを広げず、元dropを置換しない</td>
+</tr>
+<tr>
+<td>C25</td>
+<td>Cataclysm Flame Strike、<code>FlameZoneHost</code> の保存付きZone</td>
+<td>工場の原生装置・ボスdrop</td>
+<td>Zoneは限定室だけ。原生装置、入口、安全帯への重ね置きを拒否</td>
+</tr>
+<tr>
+<td>C26</td>
+<td>Iron's caster、BOMD弾、Cataclysm効果、<code>RelayBoneBoltSpell</code></td>
+<td>BOMD原生遠征、弾の外見、Iron's詠唱資源</td>
+<td>owner消失・dimension変更・missで弾を消し、追加報酬の二重支給を防ぐ</td>
+</tr>
+<tr>
+<td>C27</td>
+<td>Iron's caster、Pehkui BASE scale、<code>RelayShrinkSpell</code></td>
+<td>Iron's原生呪文体系とPehkuiの通常サイズ</td>
+<td>恒久縮小を避け、死亡/再ログイン/狭路復帰で元サイズを確認</td>
+</tr>
+<tr>
+<td>C28</td>
+<td><code>RelayStepPayload</code> と <code>RelayEchoHunter</code> の個体限定Goal</td>
+<td>城塞原生MobとPlayer用 <code>relay_step</code></td>
+<td>特殊個体以外へ移動Goalを広げず、壁内着地を拒否</td>
+</tr>
+<tr>
+<td>C29</td>
+<td>二地区の攻略記録、<code>RelayChainSuture</code>、<code>ImprintItem</code></td>
+<td>Apo Affix/GemとIron's装備型呪文の本来の入手</td>
+<td>継承解禁はプレイヤー別・一回。再ログイン、逆順攻略、不正受取を検査</td>
+</tr>
+<tr>
+<td>C30</td>
+<td>BOMD命中callback、Mowzie's <code>EntityBlockSwapper</code></td>
+<td>両Modの原生弾/床能力</td>
+<td>箱・梯子・入口を変換せず、命中時一回と復元を検査</td>
+</tr>
+<tr>
+<td>C31</td>
+<td>BOMD命中callback、Cataclysm Flame Strike</td>
+<td>塔の原生構造・loot、BOMD原生遠征</td>
+<td>弾missの残存と床攻撃の二重発火を防ぎ、安全帯を残す</td>
+</tr>
+<tr>
+<td>C32</td>
+<td>Mowzie's <code>EntitySunstrike</code>、都市外縁の起動設備</td>
+<td>Mowzie's原生日光攻撃と自然拠点</td>
+<td>設備限定で発火。夜/悪天候条件、owner、街路通行を隔離検査</td>
+</tr>
+<tr>
+<td>C33</td>
+<td>Alex's <code>MAGNETIZING</code> Effect、工場Mobの装備条件</td>
+<td>Alex's洞窟と原生磁力設備</td>
+<td>全Mobへの常時付与を避け、効果切れ・死亡・chunk unloadを検査</td>
+</tr>
+<tr>
+<td>C34</td>
+<td>Pehkui BASE scale、Projectile hit</td>
+<td>Pehkui原生サイズと城塞の原生通路</td>
+<td>対象個体と短時間に限定し、壁内/乗り物/死亡時の復帰を検査</td>
+</tr>
+<tr>
+<td>C35</td>
+<td>BOMD <code>RiftBurst</code>、Mowzie's <code>EntityBlockSwapper</code></td>
+<td>BOMD/Mowzie'sの原生施設とdrop</td>
+<td>屋外限定で地形復元、離脱時のcleanup、建築保護を検査</td>
+</tr>
+</tbody>
+</table>
+<h2>B. 未導入Modの部品を試す23パターン（20作業パッケージ）</h2>
+<p>X01〜X20の20作業パッケージを、プレイヤーの操作が違うX03/X12/X13だけ分けて<strong>23パターン</strong>として数える。これらは<strong>実験と採否判断を含む企画範囲</strong>であり、20 Modをそのままpackへ追加する決定ではない。各件で部品の固定版・依存・動画利用条件・元Modで残す内容・不要な生成/レシピ/AIを止める手段を試す。部品が使えない場合も、狙ったプレイヤー操作は別経路で追う。枝番号の親X番号と受入Rは <code>IDEA_DELIVERY_CONTRACT.md</code> に一致する。</p>
 <table>
 <thead>
 <tr>
@@ -188,9 +357,15 @@
 <td>R-40B</td>
 </tr>
 <tr>
-<td>X03</td>
-<td>Immersive Engineering Chemthrower/Railgun × 他Modの液体・弾、工場</td>
-<td>液体のEntity/Block別反応と別ownerの弾を読む</td>
+<td>X03a</td>
+<td>Immersive Engineering Chemthrower × 他Modの液体、工場</td>
+<td>同じ液体をEntityとBlockへ吹き分ける</td>
+<td>R-40C</td>
+</tr>
+<tr>
+<td>X03b</td>
+<td>Immersive Engineering Railgun × 他Modの弾/owner、工場</td>
+<td>設備とPlayerの二つの発射者から来る弾道を読む</td>
 <td>R-40C</td>
 </tr>
 <tr>
@@ -242,15 +417,27 @@
 <td>R-42B</td>
 </tr>
 <tr>
-<td>X12</td>
-<td>Aether Zephyr弾/浮遊Block × 別owner/街への帰還</td>
-<td>空の遠征で得た一時足場の使い方を街で変える</td>
+<td>X12a</td>
+<td>Aether Zephyr弾 × 別owner、空の遠征</td>
+<td>弾の発射者を読み、街の塔とは違う射線に対処する</td>
 <td>R-42C</td>
 </tr>
 <tr>
-<td>X13</td>
-<td>Ice and Fire breath/石化 × 気候別のMob/罠</td>
-<td>敵と罠の両方から石化を学び、復帰を含め対処する</td>
+<td>X12b</td>
+<td>Aether浮遊Block × 街への帰還</td>
+<td>一時足場を遠征で学び、街の高所で使う</td>
+<td>R-42C</td>
+</tr>
+<tr>
+<td>X13a</td>
+<td>Ice and Fire breath × 気候別のMob/罠</td>
+<td>広がる攻撃の射線と遮蔽物を読む</td>
+<td>R-42D</td>
+</tr>
+<tr>
+<td>X13b</td>
+<td>Ice and Fire石化 × 気候別のMob/罠</td>
+<td>石化の予兆と解除・復帰を扱う</td>
 <td>R-42D</td>
 </tr>
 <tr>
@@ -299,10 +486,11 @@
 </table>
 <h2>全体での数え直し</h2>
 <ul>
-<li><strong>42レシピ = C22 + X20</strong>。現行packだけで完成した42の遊びという意味ではない。</li>
-<li><strong>六圏・18場面</strong>は配置と体験の下限。42レシピの複数件を一場面に組み、同じレシピを複数場面で使う場合もある。従って42と18を足さない。</li>
+<li><strong>現時点で場所と操作を特定した58件 = C35 + X23</strong>。現行packだけで完成した58の遊びという意味ではない。42件の旧版から既存実装の見落とし7件と現行pack候補6件を加え、Xの別操作3件を分けた。</li>
+<li><strong>六圏・18場面</strong>は配置と体験の下限。58パターンの複数件を一場面に組み、同じパターンを複数場面で使う場合もある。従って58と18を足さない。</li>
 <li><strong>五縫合</strong>（敵・弾・場所・道具・連鎖）は実装方法の分類。C/Xの件数と足さない。</li>
 <li><strong>X15</strong>は二Modを一つの操作の代替候補として数える。両者で別の操作が成立した場合は分割して増やす。</li>
+<li><strong>まだ件数に入れていない旧資料候補</strong>: Alex's Wave/Nuclear Explosion、Cataclysm Lightning Storm/Ignis Fireball/Void Rune、Mowzie's IceBall/Earth Spike/Boulder、BOMD Spikes/SporeBall、Iron'sのMob casterを他Mod Mobへ渡す方式。<code>CROSS_MOD_PARTS_CATALOG.md</code> のA/B/C確度と <code>IDEA_DELIVERY_CONTRACT.md</code> のP01〜P05で採用対象として追跡する。技術・権利、遊び、物語の三理由を示さず除外しない。場所・操作・受入Rを確定した時点でC番号を追加する。</li>
 <li>今後、部品や施設を追加して異なる操作が確定したら新IDを付け、<code>IDEA_DELIVERY_CONTRACT.md</code>、<code>REVISED_COMPLETION_PLAN.md</code>、公開Pagesに同じ作業単位で反映する。除外は <code>IDEA_INCLUSION_LEDGER.md</code> の三理由と証拠に限る。</li>
 </ul>
 </article>
