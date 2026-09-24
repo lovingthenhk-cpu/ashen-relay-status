@@ -13,7 +13,7 @@
     <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="mods.html">Mod採用表</a><a href="ideas.html">旧案の採用台帳</a><a href="seams.html" aria-current="page">縫合パターン58件</a><a href="delivery.html">次の作業と実装受入</a><a href="implementation.html">実装ファイル</a><a href="completion.html">完成工程</a></nav>
     <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
     <article class="document"><h1>Mod要素単位の縫合パターン台帳</h1>
-<p>更新日: 2026-09-24。<strong>場所と操作まで定義した縫合は現時点で58パターン</strong>。内訳は現行packの部品を組む <strong>C01〜C35の35件</strong>（道路経路の機械確認1、部品・一部ループ稼働17、計画17）と、未導入Modの <strong>X01〜X20という20作業パッケージ内の23操作</strong>（全件隔離試験待ち）。前版の42件は作業パッケージを数え、既存のR-01〜R-22の縫合7件を落とし、X03/X12/X13内の別操作を一件にまとめていた。58は完成数でも上限でもなく、旧資料にある未割当候補は末尾で追う。R-27W3のproductionはユーザー指示により未着手のまま。</p>
+<p>更新日: 2026-09-25。<strong>場所と操作まで定義した縫合は現時点で58パターン</strong>。内訳は現行packの部品を組む <strong>C01〜C35の35件</strong>（道路経路の機械確認1、部品・一部ループ稼働17、計画17）と、未導入Modの <strong>X01〜X20という20作業パッケージ内の23操作</strong>（全件隔離試験待ち）。前版の42件は作業パッケージを数え、既存のR-01〜R-22の縫合7件を落とし、X03/X12/X13内の別操作を一件にまとめていた。58は完成数でも上限でもなく、旧資料にある未割当候補は末尾で追う。R-27W3は後続の継続指示で着手済み。街道から塔への道は実装したが、額縁の初回表示と3 seed安定生成は未受入。</p>
 <p>照合元は <code>MODPACK_CONTENT_BLUEPRINT.md</code> の施設別の混ぜ方、<code>EXPANDED_GAME_VISION.md</code> の六圏・五縫合、<code>IDEA_DELIVERY_CONTRACT.md</code> のW/P/U/X行、<code>IDEA_INCLUSION_LEDGER.md</code> のネガティブリスト。実装証拠は <code>TESTING.md</code> と <code>reports/compat/</code> を正本とする。</p>
 <h2>数え方と状態</h2>
 <p>一件は「部品A × 部品B → 特定の場所でプレイヤーに生じる操作」が異なる縫合レシピ。同じ塔の色違い、同じ弾の属性違い、同じ仕組みを別seedへ置いたものは増やさない。Lost Citiesの道路とMod建築の接合、戦闘payloadと別Modのcarrier、報酬と別Modの装備更新も、プレイヤーの操作が異なれば数える。<code>W01〜W06</code>、<code>S01〜S05</code>、<code>G01〜G05</code> は圏・空間・方法の分類であり、58件に重複加算しない。X03a/b、X12a/b、X13a/bは元のX IDの枝であり、<code>IDEA_DELIVERY_CONTRACT.md</code> の20作業単位を増やした意味ではない。</p>
@@ -39,7 +39,7 @@
 <td>C02</td>
 <td>Lost Cities街路 × Apotheosis原生塔</td>
 <td>地下との二択として道から塔へ登り、Affix/Gemを持ち帰る</td>
-<td><strong>計画</strong>：R-27W3。現在は着手停止</td>
+<td><strong>実装中</strong>：R-27W3。道路経路と原生lootは接合済み。額縁の初回表示と3 seed安定生成は未受入</td>
 </tr>
 <tr>
 <td>C03</td>
@@ -494,7 +494,7 @@
 <li>今後、部品や施設を追加して異なる操作が確定したら新IDを付け、<code>IDEA_DELIVERY_CONTRACT.md</code>、<code>REVISED_COMPLETION_PLAN.md</code>、公開Pagesに同じ作業単位で反映する。除外は <code>IDEA_INCLUSION_LEDGER.md</code> の三理由と証拠に限る。</li>
 </ul>
 </article>
-    <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-09-24 · 物語の核心は掲載しません。</footer>
+    <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-09-25 · 物語の核心は掲載しません。</footer>
   </main>
 </body>
 </html>

@@ -42,7 +42,7 @@ for filename, label in PAGES[1:]:
     {nav_for(filename)}
     <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
     <article class="document">{body}</article>
-    <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-09-24 · 物語の核心は掲載しません。</footer>
+    <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-09-25 · 物語の核心は掲載しません。</footer>
   </main>
 </body>
 </html>
