@@ -4,16 +4,16 @@
 
 ## R-27W1〜W4：現世の街と入口
 
-R-27W1で判明した旧 `WroughtFacilityReservation.java` は非都市のランダム候補を選び、都市と孤立していた。R-27W2で**現世のLost Cities道路縁**へ候補を移し、実歩行面から原生小屋と室へ接続した。3 seedと再起動の機械検証は通過した。旧 `anchor_02.json` は `lostcities:lostcity` 次元の固定座標で、現世の施設を追跡できない。
+R-27W1で判明した旧 `WroughtFacilityReservation.java` は非都市のランダム候補を選び、都市と孤立していた。R-27W2で**現世のLost Cities道路縁**へ候補を移し、実歩行面から原生小屋と室へ接続した。3 seedと再起動の機械検証は通過した。R-27W4では独自中継所の新規現世生成を止め、進行用の記録箱を原生小屋の下草位置へ移した。旧worldの小屋も管理者診断で移行でき、プレイヤーが別ブロックを置いた場合は保持する。人が箱を開く操作は未確認。旧 `anchor_02.json` もlive packから外し、新規worldの固定別次元街区生成を停止した。
 
 | ファイル | 既存/案 | 仕事 |
 |---|---|---|
-| `addon/.../worldgen/WroughtFacilityReservation.java` | R-27W2実装・機械検証済み | `forlorn_hut_1` と `wroughtnaut_chamber`、梯子・通路・再実行防止を保ち、街路縁候補を安全に受け入れる |
+| `addon/.../worldgen/WroughtFacilityReservation.java` | R-27W2〜W4実装・機械検証済み | `forlorn_hut_1` と `wroughtnaut_chamber`、梯子・通路・再実行防止を保ち、街路縁候補を安全に受け入れる。原生小屋内の記録箱を配置・保全し、旧worldの下草だけ移行する |
 | `addon/.../worldgen/CityFacilityConnector.java` | 新規案 | Lost Citiesの道路端、施設入口、街区・構造の衝突を調べ、配置候補と拒否理由を記録する |
 | `addon/.../worldgen/CityPathWeld.java` | 塔向けの新規案 | 小屋への通路は既存classへ実装済み。塔入口と同じ道路を幅2以上の通路で接続し、帰路を検査 |
-| `pack/kubejs/data/lostcities/lostcities/worldstyles/standard.json` | 既存改修 | 都市に出す建物の参照を更新し、外観用 `vocab_*` の主役化を止める |
+| `pack/kubejs/data/lostcities/lostcities/worldstyles/standard.json` | R-27W4改修済み | 自作外観style12種と独自中継所の新規現世生成を止める。Lost Cities原生街区は維持する |
 | `pack/kubejs/data/ashen_relay/lostcities/predefinedcities/anchor_road_01.json` | R-27W2追加 | 現世のLost Cities原生style、半径160ブロック、強制独自建物0。道路縁の接合元 |
-| `pack/kubejs/data/ashen_relay/lostcities/predefinedcities/anchor_02.json` | 既存見直し | 固定別次元街区を主進行から外す。既存worldとadvancement参照を確認後に生成停止を判断 |
+| 旧 `predefinedcities/anchor_02.json` | R-27W4生成停止 | 固定別次元街区は主進行から外れ、旧JSONを非配布の監査fixtureへ移した。旧worldの未生成chunk境界と人の景観は未検証 |
 | `pack/kubejs/data/ashen_relay/lostcities/{buildings,parts,citystyles}/...` | 既存選別 | `link_entrance` / `link_hall` 等の接合片は必要に応じて残し、外観代用 `link_tower` と `vocab_*` の参照を段階的に解消 |
 | `scripts/r27w2-verify.sh` | R-27W2実装・実行済み | 3 seed、新規現世、自然生成、実ブロックの経路、原生boss、再起動を検査 |
 | `scripts/r27w-city-walk.py` | 後続案 | 人の目視を代用せず、塔と地下の二択・衝突と種類数を追加検査 |
@@ -24,14 +24,14 @@ R-27W1で判明した旧 `WroughtFacilityReservation.java` は非都市のラン
 
 | ファイル | 既存/案 | 仕事 |
 |---|---|---|
-| `addon/.../district/RelayTowerDistrict.java` | 既存改修 | `EntityType.SKELETON` を置く現行seedを専用射手へ移す |
-| `addon/.../mob/RelayMarksman.java` | 既存改修 | 名前付きスケルトンの経路をなくし、専用AIの付与と一回出現を管理 |
+| `addon/.../district/RelayTowerDistrict.java` | R-27M途中実装 | 新規塔seedをCataclysm登録済み `koboleton` EntityTypeへ変更。旧worldのタグ付きスケルトンは読込互換として維持 |
+| `addon/.../mob/RelayMarksman.java` | R-27M途中実装 | 原生Hostの近接Goalだけ外し、予兆弾の専用AIを付与。一回出現と再起動後のGoal再装着をサーバー確認 |
 | `addon/.../mob/RelayBoltSentryGoal.java` | 既存再利用 | 30 tick予兆、射線、70–110 tick再装填を新しい外見で維持 |
 | `addon/.../projectile/RelayMissileCarrier.java`、`RelayMissileHost.java` | 既存保全 | BOMD弾のownerと命中callback、Cataclysm `bone_fracture` |
 | `addon/.../mob/RelayMarksmanEntity.java` と `addon/.../client/RelayMarksmanRenderer.java` | **条件付き新規案** | 固定jarでmodel/rendererを実行時参照できる場合の専用Entity。使えなければ原生Mobホスト案を検証 |
 | `pack/kubejs/data/ashen_relay/loot_tables/chests/relay_tower_reward.json` | 既存監査 | 原生塔lootとAffix/Gem/空印が重複せず届くか確認 |
 
-モデルの直接コピーは決定していない。候補のEntityType、renderer公開範囲、AI差し替え、安全なhitbox、動画利用を調べてホストを決める。候補が決まらなければR-27Mは未完了。
+原生モデルとrendererは実行時参照し、コピーしない。固定版クライアントはリソースロードまでログ確認済みだが、モデルの実表示、塔内の当たり判定、実射撃とlootは未検証。R-27Mは未完了。
 
 ## R-27E1〜E3：異なる環境遭遇
 
