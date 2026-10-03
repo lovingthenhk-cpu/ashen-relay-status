@@ -25,7 +25,7 @@
 | 地下工場 | Cataclysm `ancient_factory` × Alex's `MAGNETIZING` × Mowzie's一時床 | 予兆装置、引力、復元する足場の間に安全帯を選ぶ | 工場素材→T.O武器系列 | 原生工場とzoneは現行、複合は予定 |
 | 水辺と海 | 都市の水位線 × Cataclysm `sunken_city` × Alex's水中Effect × T.O水系装備 | 海への準備、視界・空気・立体戦 | 海の固有drop→武器強化 | 原生施設は存在、都市からの案内は予定 |
 | 六つの洞窟 | Alex's原生バイオーム × T.O横断合成 | tabletの手掛かりを追い、環境ごとに武器を持ち替える | 洞窟素材→T.O段階武器 | 原生洞窟と合成は現行、都市案内は予定 |
-| 魔術外縁 | T.O `aqua_mage_tower` / `echo_shrine` / `void_cathedral` × Iron's呪文 × Apotheosis Gem | 原生の生成条件で施設を探し、呪文と武器を合わせる | T.O段階武器へ旧装備の強化を継承 | 水術塔の砂浜街路接合は1 seedで機械確認済み。他施設と上階攻略・外観は未受入 |
+| 魔術外縁 | T.O `aqua_mage_tower` / `echo_shrine` / `void_cathedral` × Iron's呪文 × Apotheosis Gem | 原生の生成条件で施設を探し、呪文と武器を合わせる | T.O段階武器へ旧装備の強化を継承 | 水術塔の砂浜街路接合は1 seedで機械確認済み。川沿いも湿地小屋とseedで振り分け、別seedの自然接合と再起動、旧小屋保全を機械確認。他施設と上階攻略・外観は未受入 |
 | 自然拠点 | Mowzie's `monastery` / `umvuthana_grove` × 局所的な別Mod攻撃 | 屋外の広さを使い、原生Mobの戦闘を壊さない範囲で追加遭遇 | 原生dropと次の遠征用能力 | 原生拠点は存在、追加遭遇は候補 |
 | 四つの任意遠征 | BOMDの寒冷地・地下・Nether・End施設 × Iron's/T.O戦技 | 各環境に合うビルドへ替えてボスを攻略 | Earthdive Spear用素材、継承先 | 四施設・進行・横断合成は実装済み |
 | 地区境界 | Lost Citiesの接合部 × 墓地の一時床 × 塔の予兆弾 | プレイヤーが起動し、二つの規則を順に越え、退路から帰る | 二地区の追加lootから選択 | R-27A予定 |
