@@ -91,7 +91,7 @@
 <tr>
 <td><code>addon/.../mob/RelayMarksman.java</code></td>
 <td>R-27M途中実装</td>
-<td>原生Hostの近接Goalだけ外し、予兆弾の専用AIを付与。一回出現と再起動後のGoal再装着をサーバー確認</td>
+<td>原生Hostの近接Goalと骨・古代金属dropを個体限定で止め、予兆弾の専用AIを付与。一回出現と再起動後のGoal再装着をサーバー確認</td>
 </tr>
 <tr>
 <td><code>addon/.../mob/RelayBoltSentryGoal.java</code></td>
@@ -115,7 +115,7 @@
 </tr>
 </tbody>
 </table>
-<p>原生モデルとrendererは実行時参照し、コピーしない。固定版クライアントはリソースロードまでログ確認済みだが、モデルの実表示、塔内の当たり判定、実射撃とlootは未検証。R-27Mは未完了。</p>
+<p>原生モデルとrendererは実行時参照し、コピーしない。固定版クライアントはリソースロードまでログ確認済みだが、専用Goalの30tick射撃、最終tickの標的喪失による中断、再装填、重複発射防止、原生Hostでの塔報酬をサーバーselftestで確認した。モデルの実表示、塔内の当たり判定、実戦と死亡から進捗までの経路は未検証。R-27Mは未完了。</p>
 <h2>R-27E1〜E3：異なる環境遭遇</h2>
 <table>
 <thead>

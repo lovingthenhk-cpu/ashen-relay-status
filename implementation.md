@@ -25,13 +25,13 @@ R-27W1で判明した旧 `WroughtFacilityReservation.java` は非都市のラン
 | ファイル | 既存/案 | 仕事 |
 |---|---|---|
 | `addon/.../district/RelayTowerDistrict.java` | R-27M途中実装 | 新規塔seedをCataclysm登録済み `koboleton` EntityTypeへ変更。旧worldのタグ付きスケルトンは読込互換として維持 |
-| `addon/.../mob/RelayMarksman.java` | R-27M途中実装 | 原生Hostの近接Goalだけ外し、予兆弾の専用AIを付与。一回出現と再起動後のGoal再装着をサーバー確認 |
+| `addon/.../mob/RelayMarksman.java` | R-27M途中実装 | 原生Hostの近接Goalと骨・古代金属dropを個体限定で止め、予兆弾の専用AIを付与。一回出現と再起動後のGoal再装着をサーバー確認 |
 | `addon/.../mob/RelayBoltSentryGoal.java` | 既存再利用 | 30 tick予兆、射線、70–110 tick再装填を新しい外見で維持 |
 | `addon/.../projectile/RelayMissileCarrier.java`、`RelayMissileHost.java` | 既存保全 | BOMD弾のownerと命中callback、Cataclysm `bone_fracture` |
 | `addon/.../mob/RelayMarksmanEntity.java` と `addon/.../client/RelayMarksmanRenderer.java` | **条件付き新規案** | 固定jarでmodel/rendererを実行時参照できる場合の専用Entity。使えなければ原生Mobホスト案を検証 |
 | `pack/kubejs/data/ashen_relay/loot_tables/chests/relay_tower_reward.json` | 既存監査 | 原生塔lootとAffix/Gem/空印が重複せず届くか確認 |
 
-原生モデルとrendererは実行時参照し、コピーしない。固定版クライアントはリソースロードまでログ確認済みだが、モデルの実表示、塔内の当たり判定、実射撃とlootは未検証。R-27Mは未完了。
+原生モデルとrendererは実行時参照し、コピーしない。固定版クライアントはリソースロードまでログ確認済みだが、専用Goalの30tick射撃、最終tickの標的喪失による中断、再装填、重複発射防止、原生Hostでの塔報酬をサーバーselftestで確認した。モデルの実表示、塔内の当たり判定、実戦と死亡から進捗までの経路は未検証。R-27Mは未完了。
 
 ## R-27E1〜E3：異なる環境遭遇
 
