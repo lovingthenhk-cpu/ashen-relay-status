@@ -359,6 +359,9 @@
 <p><code>NativeStreetJobs.java</code>を実装し、隔離試験で保留→保存/再起動→ロード後自動完了→完了保存を確認した。入口profileの<code>automatic:true</code>、新規chunk来歴、全piece/道路ロード待ち、一秒一件の処理、SavedDataによる保留/完了/棄却を担当する。旧施設読込から工事を始めず、自動道路は新規来歴のあるchunkだけを使う。先に生成・保存した旧道路へ新規塔が接合しようとする負例は変更0で拒否し、再起動後も棄却状態を保持。未訪問のchunkは任意の期限で永久棄却せず、古いdue順に処理する。自然砂利/砂の天井直下は木材で支え、落下による通路閉塞を防ぐ。<code>streetjobs</code>は管理者の状態診断。通常packへ火術塔の定義はまだ導入していない。施設間の全body予約、支柱・造形、複数seed分布と人の受入は引き続き残る。</p>
 <h3>本体の生成前予約（実装・隔離検証中）</h3>
 <p>旧い密な火術塔の試験では、隣の塔本体と地下部品の箱が3組交差していた。<code>NativeStreetReservations.java</code>を追加し、同wrapper群の近隣random-spread候補を全pieceとseed/頻度/exclusionで比較する。structure IDとanchor座標の固定優先順で交差する低優先候補を生成前に拒否し、ロード順へ依存しない。<code>StreetNativeStructure</code>の<code>reservation_radius</code>は全pieceを包む契約で、部屋を切り捨てる上限ではない。現在はbuild通過・同じ密な条件の新規worldで検証中。通常pack未導入。他Mod原生本体、旧FULL境界、優先候補の連鎖棄却が分布へ与える影響は残る。保存データ監査はpiece箱の交差とFULL不足を示す補助で、実block/外観の合格とはしない。</p>
+<p>本体予約の密な再現試験では、残した火術塔が原生8部品・道路往復81/82nodes・lootを保持し、低優先の隣接候補は生成前に拒否された。保存全pieceの箱交差0、再起動後も経路・変更0を確認。元Modの同座標計画は全11部品で有効なので、部屋の縮小で回避した結果ではない。</p>
+<p>通常生成の原生施設を守るため、wrapper JSONのavoid_structuresへ実IDと全pieceの範囲を指定する対応も追加・build通過。登録済み原生typeの元placement/頻度/exclusion/biome/全部品を計画し、重なるwrapper候補を避ける。元Modの自然生成/lootを止めない。現在は原生火術塔を隣接させた隔離試験中で、全他Modを対応済みとはしない。未監査の独自生成器は計画の副作用や範囲も個別確認する。</p>
+<p>旧chunk境界には<code>NativeFullChunkGuard.java</code>を追加・build通過。新しい施設の全pieceと地形調整の周囲を、完成chunkへまたがらないよう生成前に検査する。完成座標と保存NBTのStatusを使い、未ロードchunkを強制生成しない。読取失敗も拒否する。管理者fullchunkplanはpiece数と拒否理由を読み取りで確認する診断で、既存施設を再配置する機能ではない。現在は新規地形の正例と、未ロードの保存済みFULL境界を守る負例を隔離検証中。</p>
 </article>
     <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-04 · 物語の核心は掲載しません。</footer>
   </main>

@@ -139,3 +139,11 @@ R-40A〜D、R-41A〜E、R-42A〜F、R-43A〜Eの**20行それぞれ**の作業�
 ### 本体の生成前予約（実装・隔離検証中）
 
 旧い密な火術塔の試験では、隣の塔本体と地下部品の箱が3組交差していた。`NativeStreetReservations.java`を追加し、同wrapper群の近隣random-spread候補を全pieceとseed/頻度/exclusionで比較する。structure IDとanchor座標の固定優先順で交差する低優先候補を生成前に拒否し、ロード順へ依存しない。`StreetNativeStructure`の`reservation_radius`は全pieceを包む契約で、部屋を切り捨てる上限ではない。現在はbuild通過・同じ密な条件の新規worldで検証中。通常pack未導入。他Mod原生本体、旧FULL境界、優先候補の連鎖棄却が分布へ与える影響は残る。保存データ監査はpiece箱の交差とFULL不足を示す補助で、実block/外観の合格とはしない。
+
+
+本体予約の密な再現試験では、残した火術塔が原生8部品・道路往復81/82nodes・lootを保持し、低優先の隣接候補は生成前に拒否された。保存全pieceの箱交差0、再起動後も経路・変更0を確認。元Modの同座標計画は全11部品で有効なので、部屋の縮小で回避した結果ではない。
+
+通常生成の原生施設を守るため、wrapper JSONのavoid_structuresへ実IDと全pieceの範囲を指定する対応も追加・build通過。登録済み原生typeの元placement/頻度/exclusion/biome/全部品を計画し、重なるwrapper候補を避ける。元Modの自然生成/lootを止めない。現在は原生火術塔を隣接させた隔離試験中で、全他Modを対応済みとはしない。未監査の独自生成器は計画の副作用や範囲も個別確認する。
+
+
+旧chunk境界には`NativeFullChunkGuard.java`を追加・build通過。新しい施設の全pieceと地形調整の周囲を、完成chunkへまたがらないよう生成前に検査する。完成座標と保存NBTのStatusを使い、未ロードchunkを強制生成しない。読取失敗も拒否する。管理者fullchunkplanはpiece数と拒否理由を読み取りで確認する診断で、既存施設を再配置する機能ではない。現在は新規地形の正例と、未ロードの保存済みFULL境界を守る負例を隔離検証中。
