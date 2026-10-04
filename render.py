@@ -15,6 +15,7 @@ PAGES = [
     ("delivery.html", "次の作業と実装受入"),
     ("implementation.html", "実装ファイル"),
     ("completion.html", "完成工程"),
+    ("known-issues.html", "不具合・許容事項"),
 ]
 
 def nav_for(filename):

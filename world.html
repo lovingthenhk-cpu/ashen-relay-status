@@ -10,7 +10,7 @@
 </head>
 <body>
   <main>
-    <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html" aria-current="page">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="mods.html">Mod採用表</a><a href="ideas.html">旧案の採用台帳</a><a href="seams.html">縫合パターン58件</a><a href="delivery.html">次の作業と実装受入</a><a href="implementation.html">実装ファイル</a><a href="completion.html">完成工程</a></nav>
+    <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html" aria-current="page">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="mods.html">Mod採用表</a><a href="ideas.html">旧案の採用台帳</a><a href="seams.html">縫合パターン58件</a><a href="delivery.html">次の作業と実装受入</a><a href="implementation.html">実装ファイル</a><a href="completion.html">完成工程</a><a href="known-issues.html">不具合・許容事項</a></nav>
     <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
     <article class="document"><h1>世界と攻略先</h1>
 <p>このページは<strong>配置と体験の全計画</strong>。表の「現行」はコードまたはデータが存在する範囲で、目視と自然歩行の合格を意味しない。都市の見た目はプレイテストで不合格となり、R-27W1〜W4とR-28A〜Dで再設計する。</p>
@@ -206,6 +206,16 @@
 </table>
 <p>上表は最終的な一施設一戦を列挙する最小数であり、同じ塔の色違いや既存loot箱を増やすだけでは1場面に数えない。高層/城塞/工業で示した未確認の施設全体・外部Mod採用は各Rで調べ、採用不可なら同じ体験上の役目を持つ実在候補へ置き換える。失敗したからその場面を削ることはしない。</p>
 <p><a href="ideas.html">旧案の採用台帳</a>に、外縁・魔術・工業へ戻す追加Mod案と具体的な試験を掲載。18場面は下限であり上限ではない。</p>
+<h2>2026-10-05 プレイテスト後：中心街・開放通路・元Modの経路</h2>
+<p>ユーザーは建物をもっと中心街に置く案と、接続路の天井を開放する案を示した。</p>
+<ul>
+<li>現状の都市chunk非交差による外縁偏重を改善する。新規生成前にLost Cities中心街の施設用区画を予約し、既存の建物・プレイヤー建築を破壊せず原生施設を置ける方式を計画・実装する。全地下piece・固有loot・入口を維持し、中心街と外縁の両方に施設の種類を増やす。現在の外縁方式で中心街対応済みとはしない。</li>
+<li>地上の接続路は屋根なし／上空へ開放する方式を基本候補とする。地中・崖下では歩行空間が必要なので掘削し、開放可能な部分まで一律にトンネル天井を作らない。照明と短い導線を維持する。既存個体の天井を一括破壊しない。</li>
+<li>Lost Citiesに追加した他Mod建築の原生生成を一律停止しない。現行の原生生成は維持。停止済みのCodex製外観selectorと、元Modの建物生成を区別する。</li>
+<li>将来の個別停止は「元施設→移管先→残す敵・部屋・loot→地図/locator→進捗/クエスト→素材/レシピ/次施設→撤回方法」を一組で設計する。structure tagだけでは地図が新wrapperを探せるとは仮定せず、固定版の検索実装を確認する。</li>
+<li>停止前に移管先へ通常プレイで到達でき、固有dropから元の次の攻略・装備更新へ進めることを確認する。原生ID固定の到達判定はdelegate認識または対象限定adapterへ移管する。未対応や元Modの物語経路が不明な場合は原生生成を残す。停止・復帰は新規生成範囲の設定変更として扱い、既存施設を削除しない。</li>
+<li>城塞のfamily認識・到達・地区攻略/報酬は機械確認済みだが、地図等も含む全施設共通の移管は未完成。Alex's洞窟・BOMD四遠征など既存方針で残す原生探索は維持する。</li>
+</ul>
 </article>
     <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-04 · 物語の核心は掲載しません。</footer>
   </main>
