@@ -20,6 +20,14 @@ R-27W1で判明した旧 `WroughtFacilityReservation.java` は非都市のラン
 
 **未確定の実装選択**: 固定jarから地上9家族を候補化したが、同じ街で8種類に歩いて届く配置と外観は未検証。3 Mod・8種類の景観がR-28Dで作れなければ都市は未完了。色違い、案内板、街道、独自箱建物は種類に数えない。
 
+## R-27W4：原生structure-startの街道採用
+
+`StreetNativeStructure.java`と`NativeStructureTypes.java`を実装し、隔離fixtureで火術塔の全8部品が管理者配置なしに自然生成されることを確認。元Structureの全pieceを生成段階へ返し、地形への適応・processor・可変地下室を保つ。街道近傍と全piece/都市chunkの非交差を条件にし、元Modの自然施設・lootは維持する。試験用`worldgen/structure/street_pyromancer_tower.json`と対応structure_setはlive packでまだ有効にしない。道路・帰路・保存・衝突・分布を確認してから通常生成へ移す。
+
+## R-27W4：原生Jigsawの全体計画
+
+`NativeStructurePlanner.java`と管理者`structureplan`を追加し、元biomeで火術塔の全8部品と反復一致を確認。`structureparcels`で道路近傍の元biome・全piece/都市chunkの非交差候補を検証済み。広域は11候補、標準範囲は近い1候補。広域scanの停止時間を実測して標準radius24/明示最大96へ分け、自然spawnへ広域scanを組み込まない。`structureplan ... protection`は未ロードなら棄却し、loadedの全pieceで建材・箱・原生構造物・居住時間を保護する。隔離worldだけで保護条件を通した全8部品を管理者配置したが、この管理者配置の時点では自然追加や道路接合は未受入で、後続のfixtureで別に検証した。元Modの生成器から塔・階段・可変地下室の全pieceと占有範囲を取得し、block/entityを配置せずに表示する。元biomeを標準とし、明示的なbiome無視は隔離診断用。`NativeRouteProbe.java`と管理者`routeprobe`を使い、未接続のMob proxyとMCの経路探索で入口候補を調べる。クライアント入力やblock編集は行わず、人の実歩行の代わりにはしない。火術塔本体だけを完成建築へ数えず、保護条件と接合入口を全体で確認してから配置する。
+
 ## R-27W4：水辺の出会い方
 
 `AquaTowerConnector.java`は砂浜＋seedで割り当てた川、`MangroveHutConnector.java`は沼＋残りの川を担当する改修を実装。seed424242の自然接合、道路・原生loot/敵、再起動後の重複0、旧world小屋の保全を機械確認。同じ割当で競合を防ぎ、既存施設と保護・地形条件を維持する。物理的な水辺判定と新規小屋の候補判定を分け、旧施設の診断とentity ticketを保つ。8建築の下限の代わりには数えない。
@@ -91,3 +99,17 @@ R-27Sでは通常進行とは独立した条件付き追加経路の状態、排
 表のクラス名は作業の責務を示す**新規案**。固定版APIを確認して実名を決める。各Modの用途と停止対象は[旧案の採用台帳](ideas.html)に全件掲載。
 
 R-40A〜D、R-41A〜E、R-42A〜F、R-43A〜Eの**20行それぞれ**の作業面と施設受入は[次の作業と実装受入](delivery.html)に掲載。隔離試作後に施設の入口・遭遇・報酬へ繋げる。
+
+
+### 原生建築の共通接合基盤（R-27W4、途中）
+
+`NativeStreetProfile.java`が`data/<namespace>/native_street_profiles/<structure>.json`から元template、入口座標・向き、改変を許すgateway範囲を読み、`NativeStreetConnector.java`が保存された原生全pieceと街道・保護条件を照合する。`NativeStreetRoadPlanner.java`は幅3の道路と高低差・gatewayの全書込を事前計画する。元gatewayの状態は元ModのNBTを実行時に参照し、assetを複製しない。管理者`streetweld <structure>`は計画表示のみ、明示`apply`だけ試験worldへ編集する。最初のJSONは火術塔の隔離fixtureのみで、通常worldの自動配置は未有効。全回転、既存world境界、施設間予約、支柱・外観、再起動後の再実行と往復経路の検証を進める。元の地下室・敵・lootを共通化のために削らない。既存4施設を一括置換せず、新規方式を受け入れてから必要な部分を統合する。
+
+
+接合作業は`ashen-relay-structure-seams` skillへ手順化した。原生施設全体の調査→入口契約→共通道路preflight→保護負例→往復→再実行・再起動を同じ基準で回す。skill登録は施設の実装完了を意味しない。外観・実歩行の未検証を残し、元の部屋やlootを縮小しない。
+
+
+反復検査scriptは計画表示→明示接合→道路/入口の往復proxy→再適用で変更0を一括検査し、試験結果を保存する。原生RuleProcessorの位置付き変換を再現して誤棄却を減らす。敵/lootへ作用するprocessorを計画表示で再実行しない。保護負例、clean restart、全回転と人の外観/実歩行は別に受け入れる。
+
+
+火術塔の西向きfixtureで共通接合を初回機械確認した。通行頭上へ置いた保護ブロックは書込0で拒否。原生の全8部品を残した接合後、街道と入口外の往復proxyは到達、再実行の変更は0。入口の内側までの往復proxyと原生loot2個の保持、全体selftestも通過。clean restart後も全8部品・原生loot・戸口内外と街道の経路が残り、再実行の変更0を確認。全回転・自動接合・旧world境界・施設間予約・支柱と人の外観/実歩行は未受入。通常worldにはまだ生成しない。
