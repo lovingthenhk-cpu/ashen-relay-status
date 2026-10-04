@@ -147,3 +147,12 @@ R-40A〜D、R-41A〜E、R-42A〜F、R-43A〜Eの**20行それぞれ**の作業�
 
 
 旧chunk境界には`NativeFullChunkGuard.java`を追加・build通過。新しい施設の全pieceと地形調整の周囲を、完成chunkへまたがらないよう生成前に検査する。完成座標と保存NBTのStatusを使い、未ロードchunkを強制生成しない。読取失敗も拒否する。管理者fullchunkplanはpiece数と拒否理由を読み取りで確認する診断で、既存施設を再配置する機能ではない。隔離試験では新規地形に接合塔8部品と離れた原生塔9部品が自然生成し、両者のloot・保存・再起動後の経路と変更0を確認。未ロードの保存済みFULLと読込済みFULLは、元の8部品計画を保持したまま新規候補を拒否し、保護ブロックも保持。原生を近づけた負例では原生11部品を残し、接合塔を避けた。全他Mod・複数seed・人の外観をこれだけで合格にしない。
+
+
+### 建築追加の定型作業を一括化（R-27W4、2026-10-04）
+
+入口を実測した施設の契約を `native-street-contracts-irons.json` にまとめ、`prepare-native-street-fixtures.py`で原生pool/生成条件/入口内の容器を監査し、参照wrapper・structure set・入口profileを一括生成する。最初の試験はautomatic=false、出力は停止済み隔離instanceだけ。元NBTはコピーしない。既存の異なる定義やnative容器、梯子/jigsawを入口工事で消す契約は拒否する。
+
+`probe-native-streets.py`は同じserverの複数施設へ既存のpreview/apply/往復/reapply0または読み取りverifyを順に実行し、失敗を隠さず全件の結果と所要秒数をまとめる。保存後確認は一回のclean restartへまとめる。共通保護の既受入証拠は同じコードで再利用し、施設固有の入口・原生全piece/loot/entity・梯子/仕掛けを個別検査する。NativeLadderProbeは背面支持/連続/向き/乾燥/上端stateを読み取りだけで調べ、player登攀は合格にしない。
+
+二施設の監査/定義準備は約0.2秒、不正な容器gatewayは全出力前に拒否。現時点のbatch実試験は火術塔8pieceの道路往復成功と山岳塔生成なしを別々に報告できた。全体の追加時間の短縮率はまだ未計測。通常導入は4家族のまま。
