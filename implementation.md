@@ -303,3 +303,8 @@ Iron’s城塞の全10パーツを自然生成し、予約区画25チャンク�
 通常登録は6施設家族になった。従来の4家族に、Iron's城塞と山岳塔のstructure/profile/structure_setを各3JSON追加した。2施設は自然接合と保存再起動を隔離で機械確認しているが、通常saltでの遭遇分布は確認中。元Modの自然生成は残す。城塞は南campから主塔へ入り、既存の敵歩法・移動巻物の攻略ループへ接続する。山岳塔は元のポーチ・扉・上下階・cryomancer・10個の原生戦利品を保ち、寒冷地域の呪文・装備探索先とする。新しい戦技との組合せは後続工程に残す。
 
 初期spacing48の固定配置候補32箇所に有効候補がなかったため、spacing16/separation4/frequency1を試す。道路48block上限・本物入口・元biome・全piece・相互予約は緩めない。`probe-native-placement-candidates.py`が通常saltの実抽選候補だけを検査し、試験塩を合わせた成功を通常遭遇と混同しない。城塞のPehkui縮小、墓地・工場・寺院・ピラミッドなどの残件は維持。R-27W4/Mは未完了。[K-032](known-issues.html)で追う。
+
+
+### 通常城塞の配置地表を拡張（自然試験中）
+
+同じ通常saltの配置候補289箇所を比べ、元biomeで有効0、biomeのみを外した読取診断では13piece城塞1件が有効だった。接合版`street_evoker_fort`だけ、`tags/worldgen/biome/has_structure/urban_fort.json`を用いて元tag＋Minecraftの地表陸biomeへ範囲を拡張する。海洋・河川・地下は追加せず、原生Modの生成tag・敵・loot・攻略は維持する。全piece、本物入口、dry ground、高低差4、道路48、箱・既存建築の保護は同じ。固定saltは変更しない。山岳塔は同診断でも有効0なので寒冷・山岳biomeを広げていない。登録6家族、通常分布と人の受入は未完了。
