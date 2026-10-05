@@ -171,7 +171,8 @@
 <p>| K-023 | 施設配置が都市外縁へ偏り、中心街に入り込まない | 全pieceの都市chunk非交差という現行配置条件による。2026-10-05ユーザーが中心街配置を提案 | <strong>改善予定</strong>。新規中心街区画の事前予約を追加し、元施設と既存建築を守る。中心街対応は未実装 |</p>
 <p>| K-024 | コピーした隔離サーバーにconsole FIFOを準備し忘れ、管理コマンドへ応答しない | setupを省いたコピー手順の準備漏れ。ゲーム機能の不具合ではない | <strong>修正済み</strong>。harnessはFIFOでなければ起動前に拒否。元worldへ影響なし |</p>
 <p>| K-025 | 中心街の探索baselineに過去の遠方生成regionが混ざっていた | snapshot名からspawn-onlyと推測した準備ミス。FULL保護が88候補を拒否し、旧地形への工事は0 | <strong>試験準備の訂正中</strong>。既存のspawn-region抽出scriptで混入を除去。新baselineでもK-026が再現したため、混入だけを全原因とはしない。保護は緩めない |</p>
-<p>| K-026 | 入口の床材previewが未生成chunkを生成し、候補がFULL保護で自己棄却される | nativeStates→RuleProcessor.processが本物のServerLevel.getBlockStateを呼ぶと特定。新4region baselineとJava caller traceで再現。従来のread-only/worldWrites=false表記ではこの副作用を覆えていなかった | <strong>探索の正例で修正確認／自然生成は検証待ち</strong>。同108,-24が16piece有効、遠方ChunkEvent.Load trace0。周辺ページが10.5秒で21proposalを返した。location predicateがalways_trueのルールだけを、実ワールドへ到達しないpreview readerで再現。世界状態を使うルールは別adapterが必要。FULL保護は維持 |</p>
+<p>| K-026 | 入口の床材previewが未生成chunkを生成し、候補がFULL保護で自己棄却される | nativeStates→RuleProcessor.processが本物のServerLevel.getBlockStateを呼ぶと特定。新4region baselineとJava caller traceで再現。従来のread-only/worldWrites=false表記ではこの副作用を覆えていなかった | <strong>探索・自然生成・保存再起動で修正確認</strong>。同108,-24が16piece有効、遠方ChunkEvent.Load trace0。周辺ページが10.5秒で21proposalを返した。location predicateがalways_trueのルールだけを、実ワールドへ到達しないpreview readerで再現。世界状態を使うルールは別adapterが必要。FULL保護は維持 |</p>
+<p>| K-027 | 中断後の都市城塞で原生入口床の確認が拒否された | 全10piece/FULL不足0/他start交差0/loot22位置・表一致を保存監査。入口2列はdirt_pathを維持し、追加のcoarse_dirt列の頭上にsnow1層がある。自動jobは中断後の保存に残っていなかった | <strong>自然接続・負例・保存再起動で修正確認</strong>。新baselineの自動工事138cell/48blockと主塔までの往復が成功。雪2層・設置葉・gold床の3負例はwrites0。元AIR2＋opt-in限定。中断worldは保全。保存loot22位置・表一致 |</p>
 <h2>不具合と断定していないもの</h2>
 <ul>
 <li>城塞・火術塔の人の外観／歩行感、全回転・通常遭遇頻度、未導入施設は未検証・未実装として工程に残す。未確認だけを理由に軽微な見た目を全て修正する義務へ変えない。</li>

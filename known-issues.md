@@ -46,7 +46,9 @@
 
 | K-025 | 中心街の探索baselineに過去の遠方生成regionが混ざっていた | snapshot名からspawn-onlyと推測した準備ミス。FULL保護が88候補を拒否し、旧地形への工事は0 | **試験準備の訂正中**。既存のspawn-region抽出scriptで混入を除去。新baselineでもK-026が再現したため、混入だけを全原因とはしない。保護は緩めない |
 
-| K-026 | 入口の床材previewが未生成chunkを生成し、候補がFULL保護で自己棄却される | nativeStates→RuleProcessor.processが本物のServerLevel.getBlockStateを呼ぶと特定。新4region baselineとJava caller traceで再現。従来のread-only/worldWrites=false表記ではこの副作用を覆えていなかった | **探索の正例で修正確認／自然生成は検証待ち**。同108,-24が16piece有効、遠方ChunkEvent.Load trace0。周辺ページが10.5秒で21proposalを返した。location predicateがalways_trueのルールだけを、実ワールドへ到達しないpreview readerで再現。世界状態を使うルールは別adapterが必要。FULL保護は維持 |
+| K-026 | 入口の床材previewが未生成chunkを生成し、候補がFULL保護で自己棄却される | nativeStates→RuleProcessor.processが本物のServerLevel.getBlockStateを呼ぶと特定。新4region baselineとJava caller traceで再現。従来のread-only/worldWrites=false表記ではこの副作用を覆えていなかった | **探索・自然生成・保存再起動で修正確認**。同108,-24が16piece有効、遠方ChunkEvent.Load trace0。周辺ページが10.5秒で21proposalを返した。location predicateがalways_trueのルールだけを、実ワールドへ到達しないpreview readerで再現。世界状態を使うルールは別adapterが必要。FULL保護は維持 |
+
+| K-027 | 中断後の都市城塞で原生入口床の確認が拒否された | 全10piece/FULL不足0/他start交差0/loot22位置・表一致を保存監査。入口2列はdirt_pathを維持し、追加のcoarse_dirt列の頭上にsnow1層がある。自動jobは中断後の保存に残っていなかった | **自然接続・負例・保存再起動で修正確認**。新baselineの自動工事138cell/48blockと主塔までの往復が成功。雪2層・設置葉・gold床の3負例はwrites0。元AIR2＋opt-in限定。中断worldは保全。保存loot22位置・表一致 |
 
 ## 不具合と断定していないもの
 
@@ -57,3 +59,4 @@
 ## 更新手順
 
 発見時にID・場所・ユーザーへの影響・確認済み範囲・許容／保留／要修正を記す。修正時は証拠と残る条件を追記し、行を消さない。過去資料の旧問題を今も発生すると決めつけず、追加で見つかった記録は本書へ集約する。公開同期時はログ、ローカル接続情報、認証情報、物語の核心を掲載しない。
+
