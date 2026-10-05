@@ -44,6 +44,10 @@
 
 | K-024 | コピーした隔離サーバーにconsole FIFOを準備し忘れ、管理コマンドへ応答しない | setupを省いたコピー手順の準備漏れ。ゲーム機能の不具合ではない | **修正済み**。harnessはFIFOでなければ起動前に拒否。元worldへ影響なし |
 
+| K-025 | 中心街の探索baselineに過去の遠方生成regionが混ざっていた | snapshot名からspawn-onlyと推測した準備ミス。FULL保護が88候補を拒否し、旧地形への工事は0 | **試験準備の訂正中**。既存のspawn-region抽出scriptで混入を除去。新baselineでもK-026が再現したため、混入だけを全原因とはしない。保護は緩めない |
+
+| K-026 | 入口の床材previewが未生成chunkを生成し、候補がFULL保護で自己棄却される | nativeStates→RuleProcessor.processが本物のServerLevel.getBlockStateを呼ぶと特定。新4region baselineとJava caller traceで再現。従来のread-only/worldWrites=false表記ではこの副作用を覆えていなかった | **探索の正例で修正確認／自然生成は検証待ち**。同108,-24が16piece有効、遠方ChunkEvent.Load trace0。周辺ページが10.5秒で21proposalを返した。location predicateがalways_trueのルールだけを、実ワールドへ到達しないpreview readerで再現。世界状態を使うルールは別adapterが必要。FULL保護は維持 |
+
 ## 不具合と断定していないもの
 
 - 城塞・火術塔の人の外観／歩行感、全回転・通常遭遇頻度、未導入施設は未検証・未実装として工程に残す。未確認だけを理由に軽微な見た目を全て修正する義務へ変えない。
