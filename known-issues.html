@@ -174,6 +174,7 @@
 <p>| K-026 | 入口の床材previewが未生成chunkを生成し、候補がFULL保護で自己棄却される | nativeStates→RuleProcessor.processが本物のServerLevel.getBlockStateを呼ぶと特定。新4region baselineとJava caller traceで再現。従来のread-only/worldWrites=false表記ではこの副作用を覆えていなかった | <strong>探索・自然生成・保存再起動で修正確認</strong>。同108,-24が16piece有効、遠方ChunkEvent.Load trace0。周辺ページが10.5秒で21proposalを返した。location predicateがalways_trueのルールだけを、実ワールドへ到達しないpreview readerで再現。世界状態を使うルールは別adapterが必要。FULL保護は維持 |</p>
 <p>| K-027 | 中断後の都市城塞で原生入口床の確認が拒否された | 全10piece/FULL不足0/他start交差0/loot22位置・表一致を保存監査。入口2列はdirt_pathを維持し、追加のcoarse_dirt列の頭上にsnow1層がある。自動jobは中断後の保存に残っていなかった | <strong>自然接続・負例・保存再起動で修正確認</strong>。新baselineの自動工事138cell/48blockと主塔までの往復が成功。雪2層・設置葉・gold床の3負例はwrites0。元AIR2＋opt-in限定。中断worldは保全。保存loot22位置・表一致 |</p>
 <p>| K-028 | 原生ポーチの下付きhalf slabを経路検査・道路計画が足場と認めない | 山岳塔の本物扉→ポーチは8nodesで到達したが、同ポーチを出発点にするとstanding floorなし。原生cobblestone bottom slabは保持されていた | <strong>原生ポーチの双方向検査で修正確認</strong>。SlabBlockのBOTTOMを足場として扱い、元の半段を置換せず維持する。MC経路探索は実高さを評価。人の実歩行・自然接合は未検証 |</p>
+<p>| K-029 | 都市内の接続路が隣のLost Citiesビルへ向かう | 山岳自然trial192,47の都市予約12chunkは発動したが、街道の東側出口3040,72,747にwhite_stained_glass_paneがあり自動工事はwrites0で拒否。旧選定は街道側1chunkの建物IDだけを確認し、出口区画の建物を見ていなかった | <strong>候補選定を修正／検証中</strong>。入口・保護・距離を緩めず、街道側と出口側に加え曲がり角を含む全通路chunkで、予約parcel外の建物IDを共通selectorで避ける。既存ビルを削らない。失敗個体を接合成功に数えない |</p>
 <h2>不具合と断定していないもの</h2>
 <ul>
 <li>城塞・火術塔の人の外観／歩行感、全回転・通常遭遇頻度、未導入施設は未検証・未実装として工程に残す。未確認だけを理由に軽微な見た目を全て修正する義務へ変えない。</li>
