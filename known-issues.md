@@ -58,7 +58,7 @@
 
 | K-031 | 同時に自然生成するruined portalと山岳塔のpiece外接箱が重なる | trial262,59の停止監査でportal263,59と塔端の4204,63,944..4208,67,944に箱交差1件。loot10の位置・表は一致しFULL不足0 | **この個体は軽微事項として許容**。交差25cellの元templateはAIR20/未指定5で原生solid0。下端にportal地形と薄い雪が残るが、入口・loot10・NPC・梯子19への影響は確認されない。実ブロック非破壊と外接箱交差0を区別する。別個体で攻略へ影響すれば修正対象 |
 
-| K-032 | 接合試験の成功が通常生成での遭遇を保証していない | 固定された初期通常配置spacing48の2施設候補32箇所でvalid0。試験用saltを選んだ自然成功とは別に、通常saltの分布を検査する必要がある | **城塞は通常設定で自然接合・攻略・保存を機械確認／山岳の通常遭遇は未達**。spacing16/separation4、接合城塞だけ地表陸tagへ拡張。元Modの生成・入口・街道・全piece・相互保護は維持。通常13piece城塞は20blockの自動道・主塔往復・loot14・元NPC7・報酬一回性が成功。人の受入・3seedの分布は未確認 |
+| K-032 | 接合試験の成功が通常生成での遭遇を保証していない | 固定された初期通常配置spacing48の2施設候補32箇所でvalid0。試験用saltを選んだ自然成功とは別に、通常saltの分布を検査する必要がある | **城塞・山岳とも通常saltの自然接合・保存を機械確認、3seed分布は未達**。spacing16/separation4、接合城塞だけ地表陸tagへ拡張。元Modの生成・入口・街道・全piece・相互保護は維持。通常13piece城塞は20blockの自動道・主塔往復・loot14・元NPC7・報酬一回性が成功。山岳105,-28も元biome/都市内/43block自動道・原生62state・loot10・NPC UUIDの保存を確認。人の受入・3seed分布は未確認 |
 
 ## 不具合と断定していないもの
 
@@ -71,8 +71,10 @@
 発見時にID・場所・ユーザーへの影響・確認済み範囲・許容／保留／要修正を記す。修正時は証拠と残る条件を追記し、行を消さない。過去資料の旧問題を今も発生すると決めつけず、追加で見つかった記録は本書へ集約する。公開同期時はログ、ローカル接続情報、認証情報、物語の核心を掲載しない。
 
 
-| K-033 | 通常山岳候補のポーチが街道と逆側を向き、接続が長路になる | 通常261,59は元Mod単体1piece/CLOCKWISE_180。本物ポーチを使う最短案74blockで上限48により拒否。施設の切り抜きや壁抜きは行っていない | **中心回りの全体回転を実装・試験中**。単体rigid/no junction/元surface heightモデルに限定し、本物入口を街側へ向ける。元element/processor/loot/NPC・biome・保護は保持。複数pieceや未知の高さモデルは専用adapterが必要。既存保存個体は動かさない |
+| K-033 | 通常山岳候補のポーチが街道と逆側を向き、接続が長路になる | 通常261,59は元Mod単体1piece/CLOCKWISE_180。本物ポーチを使う最短案74blockで上限48により拒否。施設の切り抜きや壁抜きは行っていない | **通常自然接合・原生部品・保存再起動で機械確認**。単体rigid/no junction/元surface heightモデルに限定し、本物入口を街側へ向ける。元element/processor/loot/NPC・biome・保護は保持。複数pieceや未知の高さモデルは専用adapterが必要。既存保存個体は動かさない |
 
-| K-034 | 村の自然生成が、山岳塔の予定街道を消す | 通常86,58は自然1piece/予約20chunkの後auto no selected street/writes0。予定road82,58と隣接chunkにvillage_plains78,59 referenceがあり、実物は天然斜面。LCはworldgen時に村を避けるが配置前のraw cityは村を認識しない | **要修正・村全pieceの配置前予測を実装、runtime試験中**。村の通常生成・保護は残し、予定街道が村の全start範囲/隣接回避で消える候補を生成前に棄却する。未知Mod村や大きすぎる範囲は拒否。その他回避対象全般の予測・通常自然正例は未完了 |
+| K-034 | 村の自然生成が、山岳塔の予定街道を消す | 通常86,58は自然1piece/予約20chunkの後auto no selected street/writes0。予定road82,58と隣接chunkにvillage_plains78,59 referenceがあり、実物は天然斜面。LCはworldgen時に村を避けるが配置前のraw cityは村を認識しない | **要修正・村全pieceの配置前予測を実装、runtime試験中**。村の通常生成・保護は残し、予定街道が村の全start範囲/隣接回避で消える候補を生成前に棄却する。未知Mod村や大きすぎる範囲は拒否。山岳105,-28の通常自然正例と往復を確認。その他回避対象全般の予測は未完了 |
 
 | K-035 | 隔離試験worldが旧Lost Cities serverconfigを保持していた | rarecitiesは一致するが、回避IDとavoidStructuresAdjacentがproduction defaultconfigsと異なる | **検証条件を修正する**。旧証拠は保存し、自己所有隔離コピーで現行設定へ同期して再検証する。ユーザーworldを無断移行せず、production設定での分布受入は未確認とする |
+
+| K-036 | Lost Citiesの1段高い公園へ接続する道路の高さが合わない | seed12345/通常山岳105,-28は自然1piece・都市12区画予約まで成功したが街道y72に足場なしでauto writes0。保存road102,-29はy71 stone_bricks/y72 grass/y73 snow1、村回避referenceなし | **自然自動接合・往復・箱負例・保存再起動で機械確認**。LCのBuildingInfo.getCityGroundLevelとisElevatedParkSection＋effective parkElevationをdraft/connector共用で反映する。丘の上を街道とみなす自由高さ探索は行わず、実足場・箱・保護の全検査を残す |
