@@ -70,3 +70,9 @@
 
 発見時にID・場所・ユーザーへの影響・確認済み範囲・許容／保留／要修正を記す。修正時は証拠と残る条件を追記し、行を消さない。過去資料の旧問題を今も発生すると決めつけず、追加で見つかった記録は本書へ集約する。公開同期時はログ、ローカル接続情報、認証情報、物語の核心を掲載しない。
 
+
+| K-033 | 通常山岳候補のポーチが街道と逆側を向き、接続が長路になる | 通常261,59は元Mod単体1piece/CLOCKWISE_180。本物ポーチを使う最短案74blockで上限48により拒否。施設の切り抜きや壁抜きは行っていない | **中心回りの全体回転を実装・試験中**。単体rigid/no junction/元surface heightモデルに限定し、本物入口を街側へ向ける。元element/processor/loot/NPC・biome・保護は保持。複数pieceや未知の高さモデルは専用adapterが必要。既存保存個体は動かさない |
+
+| K-034 | 通常山岳塔の配置前計画と保存後の街道選択が一致しない | 86,58で自然1piece・都市予約20chunkの後、auto jobがno selected street/writes0。本物ポーチの街側回転は維持 | **要修正・切分け中**。draftとconnectorのLC layout contextを揃えてビルド済み。自然再試験は未完了、手動接合を自然成功に数えない |
+
+| K-035 | 隔離試験worldが旧Lost Cities serverconfigを保持していた | rarecitiesは一致するが、回避IDとavoidStructuresAdjacentがproduction defaultconfigsと異なる | **検証条件を修正する**。旧証拠は保存し、自己所有隔離コピーで現行設定へ同期して再検証する。ユーザーworldを無断移行せず、production設定での分布受入は未確認とする |
