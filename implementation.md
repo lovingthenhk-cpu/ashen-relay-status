@@ -335,3 +335,16 @@ Iron’s城塞の全10パーツを自然生成し、予約区画25チャンク�
 次は`street_pyromancer_tower`の通常導入。structure/profile/structure_setの3JSONを登録し、固定salt・spacing16/separation4で試験する。本物の焚き火側入口、主塔の指定範囲、全地下パーツを維持し、足元の苔の廃屋を同じ建物から分離する。道は上限48、高さ3、照明付き、浅い外側の天井は開放できる。Mowzieの原生室とApotheosis塔を優先し、既存建築・箱を保護する。原生Iron’sの通常生成と本来の全templateは残す。分離した廃屋の別施設化は条件付き候補で未実装。
 
 現在は登録7家族／通常自然接合の機械証拠6家族。火術塔の新しい都市設定の自然接合・通常分布・保存受入は試験中。寺院・ピラミッド・墓地・工場・地下祠、後続の敵能力や報酬の縫合、見た目8種類を含む後続工程は維持する。R-27W4/Mは未完了。
+
+#### 今回の具体的なファイル責務
+
+| ファイル・クラス | 役割と追加単位 |
+|---|---|
+| `NativeVillageStreetReservation.java` | 配置前にvanilla村の通常候補と全パーツを予測し、Lost Citiesが消す予定街道を拒否。村の生成や部屋は停止しない |
+| `NativeCityPlan.streetFeet` | 都市区画のground levelと公園の1段高い表面を取得。配置前と工事前の両方で使う |
+| `NativeStreetProfile` / `StreetNativeStructure.orientStandalone` | `preferred_entrance_facing`で全体rigid単体の本物入口を街側へ。山岳塔で中心回転、元processor・敵・loot・高さモデルを保持 |
+| `audit-native-access-blocks.py` | 停止した隔離worldの原生梯子・扉・trapdoorを回転後の位置/stateで照合。人の昇降は未検証とする |
+| `worldgen/structure/street_pyromancer_tower.json` | 原生Iron’s火術塔の全地下Jigsaw生成を委譲し、都市区画予約とMowzie室・Apotheosis塔の優先を設定 |
+| `native_street_profiles/street_pyromancer_tower.json` | door `[21,1,5]`、焚き火側approach `[20,1,9]`、outward south、元AIR gateway1列、主塔section `[17,0,0]..[33,27,10]`。原生材を残し、道48/高さ3/照明/浅い外側の開放天井 |
+| `worldgen/structure_set/street_pyromancer_tower.json` | 固定salt `27062743`、spacing16/separation4/frequency1の通常配置候補。試験用salt合わせは使わない |
+| `NativeTemplateSectionElement` / `NativeTemplateSectionProcessor` | 足元の苔の廃屋を主塔から分離する実行時参照。重要部品を範囲外へ落とす指定を拒否し、地下子パーツを維持。原生NBTをpackへ複製しない |
