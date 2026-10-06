@@ -12,15 +12,16 @@
   <main>
     <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="mods.html">Mod採用表</a><a href="ideas.html">旧案の採用台帳</a><a href="seams.html">縫合パターン58件</a><a href="delivery.html">次の作業と実装受入</a><a href="implementation.html">実装ファイル</a><a href="completion.html">完成工程</a><a href="known-issues.html" aria-current="page">不具合・許容事項</a></nav>
     <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
-    <article class="document"><h1>不具合・許容事項一覧</h1>
-<p>更新：2026-10-06。ユーザーが確認する不具合一覧の正本。公開ページ「不具合・許容事項」は本書。検証ログの詳細は <code>TESTING.md</code>、次の作業は <code>NEXT_WORK_ORDER.md</code> を参照。</p>
+    <article class="document">
+<h1>不具合・許容事項一覧</h1>
+<p>更新：2026-10-07。ユーザーが確認する不具合一覧の正本。公開ページ「不具合・許容事項」は本書。検証ログの詳細は <code>TESTING.md</code>、次の作業は <code>NEXT_WORK_ORDER.md</code> を参照。</p>
 <h2>2026-10-05 ユーザー指示：軽微な不具合を許容する</h2>
 <p>ユーザーは「道路によって木が不自然になる程度は許容する」「修正すべきか放置してよいか曖昧な不具合の受入境界を緩め、ガバがあるものも受け入れやすくする」「見つけた不具合をユーザーが確認できる一箇所の文書へまとめる」と指示した。</p>
 <ul>
 <li>木の切れ方、枝葉の残り方、軽微な地形・接合の見た目など、攻略・往復・報酬に影響しない問題は記録して採用を進める。曖昧な軽微問題は許容または保留を既定とし、修正を施設追加の前提にしない。</li>
 <li>自動検証が成功した範囲と、人がまだ確認していない範囲は記録で区別する。人の外観確認待ちだけで、機能が確認できた施設の導入や次施設の作業を一律停止しない。未確認を確認済みとは書かない。</li>
 <li>通路が通れない、必須攻略・報酬が壊れる、クラッシュ、保存データやプレイヤー建築を壊す問題は修正対象。ユーザーが明示した本物の入口・建物分離・長すぎる道の修正要求や、企画上の施設種類・遊びの追加はこの緩和で取り消さない。</li>
-<li>不具合の一覧正本は 本書。発見した時点で影響、状態、確認根拠、対応方針を記し、修正後も履歴を残す。検証の詳細は <code>TESTING.md</code>、公開ページはこの一覧の同期版とする。</li>
+<li>不具合の一覧正本は 本書。発見した時点で影響、状態、確認根拠、対応方針を記し、修正後も履歴を残す。検証の詳細は <code>docs/TESTING.md</code>、公開ページはこの一覧の同期版とする。</li>
 </ul>
 <h2>現在の問題と判断</h2>
 <p>「許容」はその問題を理由に採用を止めない。「保留」は影響を記録して先へ進み、必要性が出たら修正する。「要修正」は具体的な機能不良またはユーザーの修正要求。「未再確認」は旧記録があり、現在も発生するとは断定できない。未検証項目だけで不具合と断定しない。</p>
@@ -166,18 +167,140 @@
 <td>額縁の原生ランダム抽選と接近時補充・再起動を確認。自然材の判定例外を選択区画へ限定</td>
 <td><strong>機械修正済み</strong>。Gemがランダムなのは元Modの仕様</td>
 </tr>
+<tr>
+<td>K-023</td>
+<td>施設配置が都市外縁へ偏り、中心街に入り込まない</td>
+<td>全pieceの都市chunk非交差という現行配置条件による。2026-10-05ユーザーが中心街配置を提案</td>
+<td><strong>城塞一個体の自然接続・保存再起動で機械確認</strong>。原生全pieceの25都市区画を事前予約し、元loot22・48blockの街道接続を維持。通常分布・他seed・山岳塔の接合は未検証</td>
+</tr>
+<tr>
+<td>K-024</td>
+<td>コピーした隔離サーバーにconsole FIFOを準備し忘れ、管理コマンドへ応答しない</td>
+<td>setupを省いたコピー手順の準備漏れ。ゲーム機能の不具合ではない</td>
+<td><strong>修正済み</strong>。harnessはFIFOでなければ起動前に拒否。元worldへ影響なし</td>
+</tr>
+<tr>
+<td>K-025</td>
+<td>中心街の探索baselineに過去の遠方生成regionが混ざっていた</td>
+<td>snapshot名からspawn-onlyと推測した準備ミス。FULL保護が88候補を拒否し、旧地形への工事は0</td>
+<td><strong>試験準備を訂正済み</strong>。既存のspawn-region抽出scriptで混入を除去。新baselineでもK-026が再現したため、混入だけを全原因とはしない。保護は緩めない</td>
+</tr>
+<tr>
+<td>K-026</td>
+<td>入口の床材previewが未生成chunkを生成し、候補がFULL保護で自己棄却される</td>
+<td>nativeStates→RuleProcessor.processが本物のServerLevel.getBlockStateを呼ぶと特定。新4region baselineとJava caller traceで再現。従来のread-only/worldWrites=false表記ではこの副作用を覆えていなかった</td>
+<td><strong>探索・自然生成・保存再起動で修正確認</strong>。同108,-24が16piece有効、遠方ChunkEvent.Load trace0。周辺ページが10.5秒で21proposalを返した。location predicateがalways_trueのルールだけを、実ワールドへ到達しないpreview readerで再現。世界状態を使うルールは別adapterが必要。FULL保護は維持</td>
+</tr>
+<tr>
+<td>K-027</td>
+<td>中断後の都市城塞で原生入口床の確認が拒否された</td>
+<td>全10piece/FULL不足0/他start交差0/loot22位置・表一致を保存監査。入口2列はdirt_pathを維持し、追加のcoarse_dirt列の頭上にsnow1層がある。自動jobは中断後の保存に残っていなかった</td>
+<td><strong>自然接続・負例・保存再起動で修正確認</strong>。新baselineの自動工事138cell/48blockと主塔までの往復が成功。雪2層・設置葉・gold床の3負例はwrites0。元AIR2＋opt-in限定。中断worldは保全。保存loot22位置・表一致</td>
+</tr>
+<tr>
+<td>K-028</td>
+<td>原生ポーチの下付きhalf slabを経路検査・道路計画が足場と認めない</td>
+<td>山岳塔の本物扉→ポーチは8nodesで到達したが、同ポーチを出発点にするとstanding floorなし。原生cobblestone bottom slabは保持されていた</td>
+<td><strong>原生ポーチの双方向検査で修正確認</strong>。SlabBlockのBOTTOMを足場として扱い、元の半段を置換せず維持する。MC経路探索は実高さを評価。人の実歩行・自然接合は未検証</td>
+</tr>
+<tr>
+<td>K-029</td>
+<td>都市内の接続路が隣のLost Citiesビルへ向かう</td>
+<td>山岳自然trial192,47の都市予約12chunkは発動したが、街道の東側出口3040,72,747にwhite_stained_glass_paneがあり自動工事はwrites0で拒否。旧選定は街道側1chunkの建物IDだけを確認し、出口区画の建物を見ていなかった</td>
+<td><strong>新自然候補の43block自動接続・往復・保存再起動で機械確認</strong>。入口・保護・距離を緩めず、街道側と出口側に加え曲がり角を含む全通路chunkで、予約parcel外の建物IDを共通selectorで避ける。既存ビルを削らない。失敗個体を接合成功に数えない</td>
+</tr>
+<tr>
+<td>K-030</td>
+<td>通れる既存床へ照明を埋められないと道路全体を棄却する</td>
+<td>山岳trial262,59の既存smooth_stone_slab/double、4164,71,940で照明の置換を保護判定が拒否。自然1piece・12区画予約は成功、工事writes0</td>
+<td><strong>自然自動接続・保護負例・保存再起動で修正確認</strong>。保護対象の歩行可能な床は維持してその照明点を見送り、他の照明点と道路工事を続ける。床や箱の保護は緩めない</td>
+</tr>
+<tr>
+<td>K-031</td>
+<td>同時に自然生成するruined portalと山岳塔のpiece外接箱が重なる</td>
+<td>trial262,59の停止監査でportal263,59と塔端の4204,63,944..4208,67,944に箱交差1件。loot10の位置・表は一致しFULL不足0</td>
+<td><strong>この個体は軽微事項として許容</strong>。交差25cellの元templateはAIR20/未指定5で原生solid0。下端にportal地形と薄い雪が残るが、入口・loot10・NPC・梯子19への影響は確認されない。実ブロック非破壊と外接箱交差0を区別する。別個体で攻略へ影響すれば修正対象</td>
+</tr>
+<tr>
+<td>K-032</td>
+<td>接合試験の成功が通常生成での遭遇を保証していない</td>
+<td>固定された初期通常配置spacing48の2施設候補32箇所でvalid0。試験用saltを選んだ自然成功とは別に、通常saltの分布を検査する必要がある</td>
+<td><strong>城塞・山岳とも通常saltの自然接合・保存を機械確認、3seed分布は未達</strong>。spacing16/separation4、接合城塞だけ地表陸tagへ拡張。元Modの生成・入口・街道・全piece・相互保護は維持。通常13piece城塞は20blockの自動道・主塔往復・loot14・元NPC7・報酬一回性が成功。山岳105,-28も元biome/都市内/43block自動道・原生62state・loot10・NPC UUIDの保存を確認。人の受入・3seed分布は未確認</td>
+</tr>
+<tr>
+<td>K-033</td>
+<td>通常山岳候補のポーチが街道と逆側を向き、接続が長路になる</td>
+<td>通常261,59は元Mod単体1piece/CLOCKWISE_180。本物ポーチを使う最短案74blockで上限48により拒否。施設の切り抜きや壁抜きは行っていない</td>
+<td><strong>通常自然接合・原生部品・保存再起動で機械確認</strong>。単体rigid/no junction/元surface heightモデルに限定し、本物入口を街側へ向ける。元element/processor/loot/NPC・biome・保護は保持。複数pieceや未知の高さモデルは専用adapterが必要。既存保存個体は動かさない</td>
+</tr>
+<tr>
+<td>K-034</td>
+<td>村の自然生成が、山岳塔の予定街道を消す</td>
+<td>通常86,58は自然1piece/予約20chunkの後auto no selected street/writes0。予定road82,58と隣接chunkにvillage_plains78,59 referenceがあり、実物は天然斜面。LCはworldgen時に村を避けるが配置前のraw cityは村を認識しない</td>
+<td><strong>要修正・村全pieceの配置前予測を実装、runtime試験中</strong>。村の通常生成・保護は残し、予定街道が村の全start範囲/隣接回避で消える候補を生成前に棄却する。未知Mod村や大きすぎる範囲は拒否。山岳105,-28の通常自然正例と往復を確認。その他回避対象全般の予測は未完了</td>
+</tr>
+<tr>
+<td>K-035</td>
+<td>隔離試験worldが旧Lost Cities serverconfigを保持していた</td>
+<td>rarecitiesは一致するが、回避IDとavoidStructuresAdjacentがproduction defaultconfigsと異なる</td>
+<td><strong>検証条件を修正する</strong>。旧証拠は保存し、自己所有隔離コピーで現行設定へ同期して再検証する。ユーザーworldを無断移行せず、production設定での分布受入は未確認とする</td>
+</tr>
+<tr>
+<td>K-036</td>
+<td>Lost Citiesの1段高い公園へ接続する道路の高さが合わない</td>
+<td>seed12345/通常山岳105,-28は自然1piece・都市12区画予約まで成功したが街道y72に足場なしでauto writes0。保存road102,-29はy71 stone_bricks/y72 grass/y73 snow1、村回避referenceなし</td>
+<td><strong>自然自動接合・往復・箱負例・保存再起動で機械確認</strong>。LCのBuildingInfo.getCityGroundLevelとisElevatedParkSection＋effective parkElevationをdraft/connector共用で反映する。丘の上を街道とみなす自由高さ探索は行わず、実足場・箱・保護の全検査を残す</td>
+</tr>
+<tr>
+<td>K-037</td>
+<td>通常火術塔の候補が本物入口と短路契約を両立しない</td>
+<td>固定saltのseed12345/147・424242/143候補valid0。街道あり・native有効でも原生敷地と入口への道が48を超える候補がある</td>
+<td><strong>通常自然接合・保存で機械確認、分布は継続中</strong>。原生組立器で最初から本物入口をwestへ向け、地下全pieceを保つ。地下削除や距離上限の緩和は行わず、seed424242/-13,-107の全地下8piece/44block自動道/loot14/保存restartを確認。人の受入と3seed分布は未達</td>
+</tr>
+<tr>
+<td>K-038</td>
+<td>原生敷地予約で消えた区画内の道路を工事時に選び直す</td>
+<td>通常火術seed424242/-13,-107は配置前8piece有効・自然生成25予約まで成功したがautoは街道y72でwrites0。draftは自敷地交差道路を除外、connectorには同条件がなかった</td>
+<td><strong>共通streetOutsideParcelで自然自動接合・保存restartを機械確認</strong>。敷地全体の水平箱とstreet spanをdraft/工事で共用する。元地下8piece/loot14位置・表/FULL不足0/他start箱交差0は失敗worldの保存でも保持。auto114cell/44block・往復/箱負例/再起動を確認。手動工事で自然成功に読み替えない</td>
+</tr>
+<tr>
+<td>K-039</td>
+<td>通常火術塔の地下trapdoor3セルが水を含む</td>
+<td>原生アクセス85セル監査で82完全一致、地下の真紅trapdoor3セルのみwaterlogged=false→true、位置・向き・開閉/材質は保持。全地下8piece/loot14 exact、道44blockと入口往復・再起動は成功</td>
+<td><strong>ユーザーの水流入許容指示に従い記録して採用を進める</strong>。乾燥を必須化せず、実地下昇降/戦闘の人の受入は未確認として残す。必須帰路/lootを阻害することが確認された場合は修正する</td>
+</tr>
+<tr>
+<td>K-040</td>
+<td>城塞の短路が道路出口のsmooth_stone_slabで拒否される</td>
+<td>seed98765/通常fort-12,89は原生7piece/都市24of25/周囲4方向で自然生成したが、-240,72,1415のdouble slabにauto protectedclearance/writes0。同seed火術160,68は自然8piece/89cell44block/6proxy成功</td>
+<td><strong>公園/噴水の実partを配置前に予測して、この未接合候補の新規生成を棄却</strong>。旧front抑制だけではslab/cyanが残るため、唯一原因との仮説を訂正。NativeStreetDecorationは実通路との交差だけを拒否し、公園自体を一律消さない。街道材の種類は増やさず、exact city exitを既存セットの対象へ。元Mod・箱・他start・古いchunk保護を維持。山岳正例の予測松明誤棄却は元LCの照明無効時AIR置換を反映して解消、自然43block/6proxy/loot10保存。既存通常城塞も自然13piece/auto20block・往復・保存を確認。照明修正後は旧棄却候補が再度有効になり、起点差で長路になるK-043が残る。旧版の棄却を現在の保証には使わない。分布は未検証、既存の未接合個体は保全</td>
+</tr>
+<tr>
+<td>K-041</td>
+<td>寺院の原生組立が同じseed・位置で変わる／先頭pieceを中心と断定できない</td>
+<td>同117,123で452/461/589piece、同起動内の追加読取でも589→424。固定Mowzieの組立順のtie-breakはPair.hashCode、PieceStateはhashCode未override。先頭にはvanilla singleのmonastery_test_zoneも入る</td>
+<td><strong>未登録施設のadapterで対処中</strong>。元生成器の一回の全組立結果を保持して検査と配置へ渡す。別planのpiece数や先頭pieceを契約へ流用しない。空の装飾pieceと原生試験空間も維持。原生生成器の全体を書換えず、外形/processor/入口をその個体の全pieceから解決する。都市接合は未実装</td>
+</tr>
+<tr>
+<td>K-042</td>
+<td>寺院入口の階段を経路検査が足場として認識せず、別の階へ開始位置をずらす</td>
+<td>実生成済み寺院の入口床はbottom andesite stairs、頭上AIR。旧proxyは指定y159をy169へ補正し片道失敗、逆は4node成功。開始点が異なるため通行不良とは断定できない</td>
+<td><strong>局所往復・既存城塞の回帰で修正を機械確認</strong>。底付き原生階段も足場として認め、実collisionの経路評価は維持。入口の内外4往復方向で開始高さを保持し到達、城塞8検査も成功。階段を道路材へ置換していない。都市接合・人の歩行は未検証</td>
+</tr>
+<tr>
+<td>K-043</td>
+<td>配置前の道の起点と、生成後の歩ける街道起点が違い、短路契約を超える</td>
+<td>公園照明の誤棄却修正後、seed98765/城塞-12,89はplan valid7/native自然7pieceとなったがautoはroadChunk-14,86/52blockで上限48を超えwrites0。旧版で棄却済みという証拠をlatestの保証に流用できない</td>
+<td><strong>未解決・修正案撤回後に再調査中</strong>。元part/paletteから足場を読むforecastEntryと候補ごとの実足場選択を試したが、fresh自然火術の自動接続もno selected street/writes0になったため撤回。検証済みの元処理へ戻した。配置前/loaded起点・街道高さ/足場の一致を再調査する。上限48/箱/原生材/既存chunk保護は維持。失敗個体とログを保全し、手動救済工事を自然成功へ読み替えない</td>
+</tr>
+<tr>
+<td>K-044</td>
+<td>開発用の検証データ索引で、確認モードが出力を書き直す／競合時の途中更新</td>
+<td>GLM5.3の初回改善案を監督レビューで検出。確認モードが成功後の更新処理へ進み、索引2ファイルの更新時刻が変わった。ワールド・原本データは未変更</td>
+<td><strong>開発ツール・修正を機械確認</strong>。確認モードは更新処理前に終了。古い管理リンクは所有記録と対象が一致する場合だけ削除し、競合・不正な所有記録・出力先の異常は更新前に拒否。一時データ25項目と実索引の内容・mtime不変をCodexが再検証。外部からの同時変更やI/O障害に対する完全なトランザクションではない</td>
+</tr>
 </tbody>
 </table>
-<p>| K-023 | 施設配置が都市外縁へ偏り、中心街に入り込まない | 全pieceの都市chunk非交差という現行配置条件による。2026-10-05ユーザーが中心街配置を提案 | <strong>城塞一個体の自然接続・保存再起動で機械確認</strong>。原生全pieceの25都市区画を事前予約し、元loot22・48blockの街道接続を維持。通常分布・他seed・山岳塔の接合は未検証 |</p>
-<p>| K-024 | コピーした隔離サーバーにconsole FIFOを準備し忘れ、管理コマンドへ応答しない | setupを省いたコピー手順の準備漏れ。ゲーム機能の不具合ではない | <strong>修正済み</strong>。harnessはFIFOでなければ起動前に拒否。元worldへ影響なし |</p>
-<p>| K-025 | 中心街の探索baselineに過去の遠方生成regionが混ざっていた | snapshot名からspawn-onlyと推測した準備ミス。FULL保護が88候補を拒否し、旧地形への工事は0 | <strong>試験準備を訂正済み</strong>。既存のspawn-region抽出scriptで混入を除去。新baselineでもK-026が再現したため、混入だけを全原因とはしない。保護は緩めない |</p>
-<p>| K-026 | 入口の床材previewが未生成chunkを生成し、候補がFULL保護で自己棄却される | nativeStates→RuleProcessor.processが本物のServerLevel.getBlockStateを呼ぶと特定。新4region baselineとJava caller traceで再現。従来のread-only/worldWrites=false表記ではこの副作用を覆えていなかった | <strong>探索・自然生成・保存再起動で修正確認</strong>。同108,-24が16piece有効、遠方ChunkEvent.Load trace0。周辺ページが10.5秒で21proposalを返した。location predicateがalways_trueのルールだけを、実ワールドへ到達しないpreview readerで再現。世界状態を使うルールは別adapterが必要。FULL保護は維持 |</p>
-<p>| K-027 | 中断後の都市城塞で原生入口床の確認が拒否された | 全10piece/FULL不足0/他start交差0/loot22位置・表一致を保存監査。入口2列はdirt_pathを維持し、追加のcoarse_dirt列の頭上にsnow1層がある。自動jobは中断後の保存に残っていなかった | <strong>自然接続・負例・保存再起動で修正確認</strong>。新baselineの自動工事138cell/48blockと主塔までの往復が成功。雪2層・設置葉・gold床の3負例はwrites0。元AIR2＋opt-in限定。中断worldは保全。保存loot22位置・表一致 |</p>
-<p>| K-028 | 原生ポーチの下付きhalf slabを経路検査・道路計画が足場と認めない | 山岳塔の本物扉→ポーチは8nodesで到達したが、同ポーチを出発点にするとstanding floorなし。原生cobblestone bottom slabは保持されていた | <strong>原生ポーチの双方向検査で修正確認</strong>。SlabBlockのBOTTOMを足場として扱い、元の半段を置換せず維持する。MC経路探索は実高さを評価。人の実歩行・自然接合は未検証 |</p>
-<p>| K-029 | 都市内の接続路が隣のLost Citiesビルへ向かう | 山岳自然trial192,47の都市予約12chunkは発動したが、街道の東側出口3040,72,747にwhite_stained_glass_paneがあり自動工事はwrites0で拒否。旧選定は街道側1chunkの建物IDだけを確認し、出口区画の建物を見ていなかった | <strong>新自然候補の43block自動接続・往復・保存再起動で機械確認</strong>。入口・保護・距離を緩めず、街道側と出口側に加え曲がり角を含む全通路chunkで、予約parcel外の建物IDを共通selectorで避ける。既存ビルを削らない。失敗個体を接合成功に数えない |</p>
-<p>| K-030 | 通れる既存床へ照明を埋められないと道路全体を棄却する | 山岳trial262,59の既存smooth_stone_slab/double、4164,71,940で照明の置換を保護判定が拒否。自然1piece・12区画予約は成功、工事writes0 | <strong>自然自動接続・保護負例・保存再起動で修正確認</strong>。保護対象の歩行可能な床は維持してその照明点を見送り、他の照明点と道路工事を続ける。床や箱の保護は緩めない |</p>
-<p>| K-031 | 同時に自然生成するruined portalと山岳塔のpiece外接箱が重なる | trial262,59の停止監査でportal263,59と塔端の4204,63,944..4208,67,944に箱交差1件。loot10の位置・表は一致しFULL不足0 | <strong>この個体は軽微事項として許容</strong>。交差25cellの元templateはAIR20/未指定5で原生solid0。下端にportal地形と薄い雪が残るが、入口・loot10・NPC・梯子19への影響は確認されない。実ブロック非破壊と外接箱交差0を区別する。別個体で攻略へ影響すれば修正対象 |</p>
-<p>| K-032 | 接合試験の成功が通常生成での遭遇を保証していない | 固定された初期通常配置spacing48の2施設候補32箇所でvalid0。試験用saltを選んだ自然成功とは別に、通常saltの分布を検査する必要がある | <strong>城塞・山岳とも通常saltの自然接合・保存を機械確認、3seed分布は未達</strong>。spacing16/separation4、接合城塞だけ地表陸tagへ拡張。元Modの生成・入口・街道・全piece・相互保護は維持。通常13piece城塞は20blockの自動道・主塔往復・loot14・元NPC7・報酬一回性が成功。山岳105,-28も元biome/都市内/43block自動道・原生62state・loot10・NPC UUIDの保存を確認。人の受入・3seed分布は未確認 |</p>
 <h2>不具合と断定していないもの</h2>
 <ul>
 <li>城塞・火術塔の人の外観／歩行感、全回転・通常遭遇頻度、未導入施設は未検証・未実装として工程に残す。未確認だけを理由に軽微な見た目を全て修正する義務へ変えない。</li>
@@ -186,21 +309,8 @@
 </ul>
 <h2>更新手順</h2>
 <p>発見時にID・場所・ユーザーへの影響・確認済み範囲・許容／保留／要修正を記す。修正時は証拠と残る条件を追記し、行を消さない。過去資料の旧問題を今も発生すると決めつけず、追加で見つかった記録は本書へ集約する。公開同期時はログ、ローカル接続情報、認証情報、物語の核心を掲載しない。</p>
-<p>| K-033 | 通常山岳候補のポーチが街道と逆側を向き、接続が長路になる | 通常261,59は元Mod単体1piece/CLOCKWISE_180。本物ポーチを使う最短案74blockで上限48により拒否。施設の切り抜きや壁抜きは行っていない | <strong>通常自然接合・原生部品・保存再起動で機械確認</strong>。単体rigid/no junction/元surface heightモデルに限定し、本物入口を街側へ向ける。元element/processor/loot/NPC・biome・保護は保持。複数pieceや未知の高さモデルは専用adapterが必要。既存保存個体は動かさない |</p>
-<p>| K-034 | 村の自然生成が、山岳塔の予定街道を消す | 通常86,58は自然1piece/予約20chunkの後auto no selected street/writes0。予定road82,58と隣接chunkにvillage_plains78,59 referenceがあり、実物は天然斜面。LCはworldgen時に村を避けるが配置前のraw cityは村を認識しない | <strong>要修正・村全pieceの配置前予測を実装、runtime試験中</strong>。村の通常生成・保護は残し、予定街道が村の全start範囲/隣接回避で消える候補を生成前に棄却する。未知Mod村や大きすぎる範囲は拒否。山岳105,-28の通常自然正例と往復を確認。その他回避対象全般の予測は未完了 |</p>
-<p>| K-035 | 隔離試験worldが旧Lost Cities serverconfigを保持していた | rarecitiesは一致するが、回避IDとavoidStructuresAdjacentがproduction defaultconfigsと異なる | <strong>検証条件を修正する</strong>。旧証拠は保存し、自己所有隔離コピーで現行設定へ同期して再検証する。ユーザーworldを無断移行せず、production設定での分布受入は未確認とする |</p>
-<p>| K-036 | Lost Citiesの1段高い公園へ接続する道路の高さが合わない | seed12345/通常山岳105,-28は自然1piece・都市12区画予約まで成功したが街道y72に足場なしでauto writes0。保存road102,-29はy71 stone_bricks/y72 grass/y73 snow1、村回避referenceなし | <strong>自然自動接合・往復・箱負例・保存再起動で機械確認</strong>。LCのBuildingInfo.getCityGroundLevelとisElevatedParkSection＋effective parkElevationをdraft/connector共用で反映する。丘の上を街道とみなす自由高さ探索は行わず、実足場・箱・保護の全検査を残す |</p>
-<p>| K-037 | 通常火術塔の原生入口と48以内の道を両立する候補が得られない | 開始回転adapter後、通常143候補で3件有効・8地下部品の自然生成とloot14保存を確認 | <strong>自然自動接合・保存を機械確認、分布継続中</strong>。原生地下を削らず、元生成器で本物入口を街側へ向ける |
-| K-038 | 予約で消えた自敷地内の道を工事selectorが選び直す | 配置前と工事時の道路除外条件の不一致。最初の通常火術は書込ゼロで拒否 | <strong>共通streetOutsideParcelで自然再試験・保存成功</strong>。既存城塞8検査は成功。保護・地下・48上限を維持 |</p>
-<h3>火術の最新結果</h3>
-<p>K-037/K-038は通常自然8パーツ・44ブロック自動道・入口往復・箱保護・保存再起動で機械確認。原生loot14と同じ敵を保持し、人の受入と分布は未達。</p>
-<p>| K-039 | 火術地下trapdoor3セルのwaterlogged差 | 原生アクセス85中82完全一致、3セルは水のみ。再起動後の保存状態は85すべて同一 | <strong>ユーザーの水流入許容に従い記録して採用</strong>。必須帰路・戦利品への阻害が確認されたら修正。実地下昇降と戦闘は未確認 |</p>
-<p>| K-040 | 城塞の通路が街道の装飾に塞がれる | 通常7パーツ城塞の初回はslab、限定許可試行では次のcyan壁で書込ゼロ。旧ビルのfront抑制だけでは障害が残り、唯一原因との仮説を訂正 | <strong>公園・噴水の実partを生成前に照合し、該当候補を棄却</strong>。公園を一律排除せず、既存街道材の種類も増やさない。火術塔と山岳塔の自然接合を機械確認。山岳塔の予測松明の誤棄却は元LCの照明設定を反映して解消。城塞も自然13パーツ・20ブロック自動道・往復・戦利品保存を機械確認。分布と人の外観は未検証。旧未接合個体と保護対象を維持 |</p>
-<p>| K-041 | 寺院の原生組立が同じseed・位置でも変わる | 同位置の読取組立で452/461/589パーツ、同起動内でも589→424。元Modの同順位並べ替えはオブジェクトのhash値を含む | <strong>未登録施設のadapterで対応中</strong>。一度の実組立結果を検査・予約・配置へ保持し、別previewの数や先頭パーツを中心契約に流用しない。原生の空パーツ・試験空間は維持。都市接合は未実装 |</p>
-<p>| K-042 | 寺院入口の階段を経路検査が足場として認識せず、別の階へ開始位置をずらす | 実生成済み寺院の入口床はbottom andesite stairs、頭上AIR。旧proxyは指定y159をy169へ補正し片道失敗、逆は4node成功。開始点が異なるため通行不良とは断定できない | <strong>局所往復・既存城塞の回帰で修正を機械確認</strong>。底付き原生階段も足場として認め、実collisionの経路評価は維持。入口の内外4往復方向で開始高さを保持し到達、城塞8検査も成功。階段を道路材へ置換していない。都市接合・人の歩行は未検証 |</p>
-<p>| K-043 | 配置前の道の起点と、生成後の歩ける街道起点が違い、短路契約を超える | 公園照明の誤棄却修正後、seed98765/城塞-12,89はplan valid7/native自然7pieceとなったがautoはroadChunk-14,86/52blockで上限48を超えwrites0。旧版で棄却済みという証拠をlatestの保証に流用できない | <strong>未解決・修正案を撤回して停止</strong>。元part/paletteから足場を読むforecastEntryと候補ごとの実足場選択を試したが、fresh自然火術の自動接続もno selected street/writes0になったため撤回。検証済みの元処理へ戻した。配置前/loaded起点・街道高さ/足場の一致を再調査する。上限48/箱/原生材/既存chunk保護は維持。失敗個体とログを保全し、手動救済工事を自然成功へ読み替えない |</p>
 </article>
-    <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-04 · 物語の核心は掲載しません。</footer>
+    <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-07 · 物語の核心は掲載しません。</footer>
   </main>
 </body>
 </html>
