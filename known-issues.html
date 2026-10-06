@@ -279,7 +279,7 @@
 <td>K-041</td>
 <td>寺院の原生組立が同じseed・位置で変わる／先頭pieceを中心と断定できない</td>
 <td>同117,123で452/461/589piece、同起動内の追加読取でも589→424。固定Mowzieの組立順のtie-breakはPair.hashCode、PieceStateはhashCode未override。先頭にはvanilla singleのmonastery_test_zoneも入る</td>
-<td><strong>未登録施設の試案で対処中・既定無効</strong>。同じ接続情報の実comparatorへ新規stateを256回渡し順序の変動を確認。bounded cache案は破棄/元Mod生成/保存途中の穴で未採用。新しい限定adapterはpool/depthと原生の全展開を保ち、tieの順序を安定化する。一個体の管理者読取planで720piece全保存NBTが3回と再起動後に一致。選ばれる具体的な建物は旧版と同一ではなく、新規world seed424242/-43,209で通常biome事前plan2回と自然427piece全NBT指紋が一致し、23lootを保持。別seed・保存再起動・都市保護は未受入。空の装飾pieceと原生試験空間を維持。都市接合は未実装</td>
+<td><strong>未登録施設の試案で対処中・既定無効</strong>。同じ接続情報の実comparatorへ新規stateを256回渡し順序の変動を確認。bounded cache案は破棄/元Mod生成/保存途中の穴で未採用。新しい限定adapterはpool/depthと原生の全展開を保ち、tieの順序を安定化する。一個体の管理者読取planで720piece全保存NBTが3回と再起動後に一致。選ばれる具体的な建物は旧版と同一ではなく、新規world seed424242/-43,209で通常biome事前plan2回と自然427piece全NBT指紋が一致し、23lootを保持。保存再起動後は同427piece・23loot保持、全NBTはBBだけ260piece差（K-047）。別seed・都市保護は未受入。空の装飾pieceと原生試験空間を維持。都市接合は未実装</td>
 </tr>
 <tr>
 <td>K-042</td>
@@ -310,6 +310,12 @@
 <td>原生寺院とApotheosis塔の保存box交差</td>
 <td>seed424242寺院-43,209と塔-43,211。既定offの旧463pieceにも、順序試案trueの新規427pieceにもbox交差あり。新規23lootと三入口から中心の往復は成功</td>
 <td><strong>潜在衝突を記録・実block/外観影響は未確認</strong>。原生Mod同士の通常配置であり、試案が新しく起こしたと断定しない。都市採用の保護合格には使わず、全body/processorの他start事前検査で扱う。原本は保全</td>
+</tr>
+<tr>
+<td>K-047</td>
+<td>寺院の保存復元でnative assembly BBと物理BBが異なる</td>
+<td>新規427pieceの事前plan/初回committedの全NBT SHA a4d19fe1…、再起動committedはea36afc2…。全field比較では260pieceのBBだけ異なり、順序・位置・回転・他保存field一致、23loot保持。旧raw原本も保存element_typeはminecraft:single_pool_element</td>
+<td><strong>原生保存方式の差を記録・都市保護契約へ反映中</strong>。Mowzie独自elementはSingleのtypeを継承し、復元時に通常templateのBBを再計算。BB除外を全NBT一致とは呼ばない。physical template/processor範囲を別に保護し、元assembly boxを修正しない。第二seed597pieceでもBB341だけ差・他field一致、47loot保存保持。起動直後の初回比較診断は汎用error、後続正常で具体原因未確定。外観/未完了生成の復元は未受入</td>
 </tr>
 </tbody>
 </table>
