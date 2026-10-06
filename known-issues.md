@@ -78,3 +78,12 @@
 | K-035 | 隔離試験worldが旧Lost Cities serverconfigを保持していた | rarecitiesは一致するが、回避IDとavoidStructuresAdjacentがproduction defaultconfigsと異なる | **検証条件を修正する**。旧証拠は保存し、自己所有隔離コピーで現行設定へ同期して再検証する。ユーザーworldを無断移行せず、production設定での分布受入は未確認とする |
 
 | K-036 | Lost Citiesの1段高い公園へ接続する道路の高さが合わない | seed12345/通常山岳105,-28は自然1piece・都市12区画予約まで成功したが街道y72に足場なしでauto writes0。保存road102,-29はy71 stone_bricks/y72 grass/y73 snow1、村回避referenceなし | **自然自動接合・往復・箱負例・保存再起動で機械確認**。LCのBuildingInfo.getCityGroundLevelとisElevatedParkSection＋effective parkElevationをdraft/connector共用で反映する。丘の上を街道とみなす自由高さ探索は行わず、実足場・箱・保護の全検査を残す |
+
+| K-037 | 通常火術塔の原生入口と48以内の道を両立する候補が得られない | 開始回転adapter後、通常143候補で3件有効・8地下部品の自然生成とloot14保存を確認 | **自然自動接合・保存を機械確認、分布継続中**。原生地下を削らず、元生成器で本物入口を街側へ向ける |
+| K-038 | 予約で消えた自敷地内の道を工事selectorが選び直す | 配置前と工事時の道路除外条件の不一致。最初の通常火術は書込ゼロで拒否 | **共通streetOutsideParcelで自然再試験・保存成功**。既存城塞8検査は成功。保護・地下・48上限を維持 |
+
+### 火術の最新結果
+
+K-037/K-038は通常自然8パーツ・44ブロック自動道・入口往復・箱保護・保存再起動で機械確認。原生loot14と同じ敵を保持し、人の受入と分布は未達。
+
+| K-039 | 火術地下trapdoor3セルのwaterlogged差 | 原生アクセス85中82完全一致、3セルは水のみ。再起動後の保存状態は85すべて同一 | **ユーザーの水流入許容に従い記録して採用**。必須帰路・戦利品への阻害が確認されたら修正。実地下昇降と戦闘は未確認 |
