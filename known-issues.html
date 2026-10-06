@@ -279,7 +279,7 @@
 <td>K-041</td>
 <td>寺院の原生組立が同じseed・位置で変わる／先頭pieceを中心と断定できない</td>
 <td>同117,123で452/461/589piece、同起動内の追加読取でも589→424。固定Mowzieの組立順のtie-breakはPair.hashCode、PieceStateはhashCode未override。先頭にはvanilla singleのmonastery_test_zoneも入る</td>
-<td><strong>未登録施設のadapterで対処中</strong>。元生成器の一回の全組立結果を保持して検査と配置へ渡す。別planのpiece数や先頭pieceを契約へ流用しない。空の装飾pieceと原生試験空間も維持。原生生成器の全体を書換えず、外形/processor/入口をその個体の全pieceから解決する。都市接合は未実装</td>
+<td><strong>未登録施設の試案で対処中・既定無効</strong>。同じ接続情報の実comparatorへ新規stateを256回渡し順序の変動を確認。bounded cache案は破棄/元Mod生成/保存途中の穴で未採用。新しい限定adapterはpool/depthと原生の全展開を保ち、tieの順序を安定化する。一個体の管理者読取planで720piece全保存NBTが3回と再起動後に一致。選ばれる具体的な建物は旧版と同一ではなく、新規自然配置/別seed/保護は未受入。空の装飾pieceと原生試験空間を維持。都市接合は未実装</td>
 </tr>
 <tr>
 <td>K-042</td>
