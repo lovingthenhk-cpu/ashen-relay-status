@@ -14,7 +14,7 @@
     <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
     <article class="document">
 <h1>不具合・許容事項一覧</h1>
-<p>更新：2026-10-07。ユーザーが確認する不具合一覧の正本。公開ページ「不具合・許容事項」は本書の同期版。検証ログの詳細は <code>TESTING.md</code>、次の作業は <code>NEXT_WORK_ORDER.md</code> を参照。</p>
+<p>更新：2026-10-08。ユーザーが確認する不具合一覧の正本。公開ページ「不具合・許容事項」は本書の同期版。検証ログの詳細は <code>TESTING.md</code>、次の作業は <code>NEXT_WORK_ORDER.md</code> を参照。</p>
 <h2>2026-10-05 ユーザー指示：軽微な不具合を許容する</h2>
 <p>ユーザーは「道路によって木が不自然になる程度は許容する」「修正すべきか放置してよいか曖昧な不具合の受入境界を緩め、ガバがあるものも受け入れやすくする」「見つけた不具合をユーザーが確認できる一箇所の文書へまとめる」と指示した。</p>
 <ul>
@@ -316,6 +316,18 @@
 <td>寺院の保存復元でnative assembly BBと物理BBが異なる</td>
 <td>新規427pieceの事前plan/初回committedの全NBT SHA a4d19fe1…、再起動committedはea36afc2…。全field比較では260pieceのBBだけ異なり、順序・位置・回転・他保存field一致、23loot保持。旧raw原本も保存element_typeはminecraft:single_pool_element</td>
 <td><strong>原生保存方式の差を記録・都市保護契約へ反映中</strong>。Mowzie独自elementはSingleのtypeを継承し、復元時に通常templateのBBを再計算。BB除外を全NBT一致とは呼ばない。physical template/processor範囲を別に保護し、元assembly boxを修正しない。第二seed597pieceでもBB341だけ差・他field一致、47loot保存保持。起動直後の初回比較診断は汎用error、後続正常で具体原因未確定。外観/未完了生成の復元は未受入</td>
+</tr>
+<tr>
+<td>K-048</td>
+<td>原生jigsawの生成後の木材・石を道路保護から除外していた</td>
+<td>原生材保護がjigsawセルを一律除外しており、final_stateの原生logやandesiteを自然地形として道路が変更し得る。寺院固定templateにこれらの置換が実在。実際の破壊事例は未確認</td>
+<td><strong>コード修正・当該回帰確認</strong>。final_stateのblock IDだけ読み、AIR/VOID以外の位置を保護する。未知状態も保守的に保護。processorやinline NBTを再実行しない。ビルド・既存山岳43block往復/変更0・597piece全NBT保持・selftest成功。全施設/実交差負例は未検証</td>
+</tr>
+<tr>
+<td>K-049</td>
+<td>寺院jigsawのinline戦利品指定を従来の箱監査が対象に含めていなかった</td>
+<td>従来の23/47箱の合格はtemplateの直接LootTable NBTのみ。427piece自然個体ではinline final_stateの候補38位置中12位置に表が残り、26位置は箱/樽が存在してもLootTableなし・Items空。vanilla置換processorは解析したinline NBTを配置値へ渡さない</td>
+<td><strong>監査範囲を明記・追加診断、原因と対応は保留</strong>。inline候補を独立表示し直接箱の合格へ混ぜない。元Modの通常個体でも発生するか照合中。12位置に残る理由/他processorや重複pieceの影響は未確定。必須報酬破損とは未立証で、一律のloot注入や元Mod変更はしない</td>
 </tr>
 </tbody>
 </table>
