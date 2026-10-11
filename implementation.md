@@ -491,3 +491,8 @@ no-route負例は初回約2.1秒→再利用0.1秒で同じ棄却。通常原生
 | `nativechunkticket add/remove/status` | runtime-onlyの正常worldgen要求/非blocking FULL確認。専用の管理コマンドで直接structureを置かない | add/status/committed応答0.1秒。同期forceloadの60秒停止は保全。非同期化を生成時間短縮と呼ばない |
 
 通常登録8系列、7系列の通常設定での自然接合証拠と、寺院のhigh-density機能証拠を区別する。原生全体の通常生成停止、NPCルート移管、3seed分布、ピラミッド/墓地/工場/地下祠と後続の敵能力縫合を削らない。R-27W4/M未完了。
+
+
+## 2026-10-12 都市移管の設定単位と監査出力
+
+原生46setを実ID単位の台帳へ展開し、固定jar SHA・元placement・pack上書き・structure metadata・都市側の役割・未受入・撤回をJSONへ記録する監査scriptを追加。ワールドや巨大shapeは読まず、4停止設定と42未実装を区別する。独立template配置の水術塔/湿地小屋について停止設定下の通常接合・攻略素材・locatorを次に確認する。[全46件の対象一覧](mods.html)へ掲載。metadata監査を生成停止の実測としない。

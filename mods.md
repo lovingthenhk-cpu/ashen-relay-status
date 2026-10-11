@@ -78,3 +78,61 @@ Iron's Lib、Lionfish API、Citadel、Cerbons API、Apothic Attributes、Placebo
 4. 上記でできない処理だけ対象メソッドを固定したMixinを検討。現在、採用確定のMixinはない。
 
 外部ModのNBT、テクスチャ、モデルをpackへ複製する前に権利を監査する。可能な場合は公式jar内の登録済みIDとアセットを実行時に参照する。
+
+
+## 2026-10-12 原生構造set全46件の移管・停止対象
+
+固定版の46setを全件作業化。4件はfrequency=0設定済み、42件は移管/停止未完了。市外例外はまだ確定していない。必要な部品・戦闘AI・固有素材を残して都市へ集約し、案内/locator/進捗/元物語をパック側へ再構成する。既存建築を消去せず新規生成へ適用。表の都市側用途は実装済みと計画を含むため状態欄と合わせて読む。
+
+水術塔・湿地小屋・地下フェラス室・Apotheosis tower_mainは既存Javaがtemplateを直接参照して配置するため、原生setの自然配置と独立している。別Apotheosis3型の都市移管、Alex小屋templateを選ぶsetの対応、全locatorは未完了。次の停止候補は水術塔/湿地小屋で、停止設定下の通常接合/固有報酬/案内を検証する。
+
+| 元structure set ID | 現在の状態 | 都市側の用途/移管計画 |
+|---|---|---|
+| `apotheosis:tower_leaf` | 移管/停止未完了 | 都市塔の別外観候補（個別移管は未実装） |
+| `apotheosis:tower_main` | 移管/停止未完了 | 都市街路の射手塔 |
+| `apotheosis:tower_sand` | 移管/停止未完了 | 都市塔の別外観候補（個別移管は未実装） |
+| `apotheosis:tower_spruce` | 移管/停止未完了 | 都市塔の別外観候補（個別移管は未実装） |
+| `bosses_of_mass_destruction:gauntlet_arena` | 移管/停止未完了 | 都市から到達する管理遠征/必要な攻略環境 |
+| `bosses_of_mass_destruction:lich_tower` | 移管/停止未完了 | 都市から到達する管理遠征/必要な攻略環境 |
+| `bosses_of_mass_destruction:obsidilith_arena` | 移管/停止未完了 | 都市から到達する管理遠征/必要な攻略環境 |
+| `bosses_of_mass_destruction:void_blossom` | 移管/停止未完了 | 都市から到達する管理遠征/必要な攻略環境 |
+| `cataclysm:acropolis` | 移管/停止未完了 | 都市の地上/地下/工業/水辺または管理遠征 |
+| `cataclysm:ancient_factory` | 移管/停止未完了 | 都市の地上/地下/工業/水辺または管理遠征 |
+| `cataclysm:burning_arena` | 移管/停止未完了 | 都市の地上/地下/工業/水辺または管理遠征 |
+| `cataclysm:cursed_pyramid` | 移管/停止未完了 | 都市の地上/地下/工業/水辺または管理遠征 |
+| `cataclysm:frosted_prison` | 移管/停止未完了 | 都市の地上/地下/工業/水辺または管理遠征 |
+| `cataclysm:ruined_citadel` | 移管/停止未完了 | 都市の地上/地下/工業/水辺または管理遠征 |
+| `cataclysm:soul_black_smith` | 移管/停止未完了 | 都市の地上/地下/工業/水辺または管理遠征 |
+| `cataclysm:sunken_city` | 移管/停止未完了 | 都市の地上/地下/工業/水辺または管理遠征 |
+| `alexscaves:abyssal_ruins` | 移管/停止未完了 | 都市地下/水辺の洞窟施設または都市からの管理遠征 |
+| `alexscaves:acid_pit` | 移管/停止未完了 | 都市地下/水辺の洞窟施設または都市からの管理遠征 |
+| `alexscaves:cake_cave` | 移管/停止未完了 | 都市地下/水辺の洞窟施設または都市からの管理遠征 |
+| `alexscaves:dino_bowl` | 移管/停止未完了 | 都市地下/水辺の洞窟施設または都市からの管理遠征 |
+| `alexscaves:donut_arch` | 移管/停止未完了 | 都市地下/水辺の洞窟施設または都市からの管理遠征 |
+| `alexscaves:ferrocave` | 移管/停止未完了 | 都市地下/水辺の洞窟施設または都市からの管理遠征 |
+| `alexscaves:forlorn_bridge` | 移管/停止未完了 | 都市地下/水辺の洞窟施設または都市からの管理遠征 |
+| `alexscaves:forlorn_canyon` | 移管/停止未完了 | 都市地下/水辺の洞窟施設または都市からの管理遠征 |
+| `alexscaves:gingerbread_town` | 移管/停止未完了 | 都市地下/水辺の洞窟施設または都市からの管理遠征 |
+| `alexscaves:licowitch_tower` | 移管/停止未完了 | 都市地下/水辺の洞窟施設または都市からの管理遠征 |
+| `alexscaves:ocean_trench` | 移管/停止未完了 | 都市地下/水辺の洞窟施設または都市からの管理遠征 |
+| `alexscaves:soda_bottle` | 移管/停止未完了 | 都市地下/水辺の洞窟施設または都市からの管理遠征 |
+| `alexscaves:underground_cabin` | 移管/停止未完了 | 都市地下/水辺の洞窟施設または都市からの管理遠征 |
+| `alexscaves:volcano` | 移管/停止未完了 | 都市地下/水辺の洞窟施設または都市からの管理遠征 |
+| `irons_spellbooks:ancient_battleground` | 移管/停止未完了 | 都市の魔術施設/地下攻略先 |
+| `irons_spellbooks:catacombs` | 移管/停止未完了 | 都市の魔術施設/地下攻略先 |
+| `irons_spellbooks:citadel` | 移管/停止未完了 | 都市の魔術施設/地下攻略先 |
+| `irons_spellbooks:evoker_fort` | 停止設定済み・自然停止未実測 | 独立wrapperの街路施設 |
+| `irons_spellbooks:ice_spider_den` | 移管/停止未完了 | 都市の魔術施設/地下攻略先 |
+| `irons_spellbooks:impaled_icebreaker` | 移管/停止未完了 | 都市の魔術施設/地下攻略先 |
+| `irons_spellbooks:mangrove_hut` | 移管/停止未完了 | 湿地の街路小屋 |
+| `irons_spellbooks:mountain_tower` | 停止設定済み・自然停止未実測 | 独立wrapperの街路施設 |
+| `irons_spellbooks:pyromancer_tower` | 停止設定済み・自然停止未実測 | 独立wrapperの街路施設 |
+| `mowziesmobs:frostmaw_spawns` | 移管/停止未完了 | 都市周辺の管理戦闘区画/環境対応区画 |
+| `mowziesmobs:monasteries` | 停止設定済み・自然停止未実測 | 独立wrapperの街路施設 |
+| `mowziesmobs:umvuthana_groves` | 移管/停止未完了 | 都市周辺の管理戦闘区画/環境対応区画 |
+| `mowziesmobs:wrought_chambers` | 移管/停止未完了 | 都市地下のフェラス室 |
+| `traveloptics:aqua_mage_tower` | 移管/停止未完了 | 水辺の水術塔 |
+| `traveloptics:echo_shrine` | 移管/停止未完了 | 都市の魔術施設/必要環境への管理遠征 |
+| `traveloptics:void_cathedral` | 移管/停止未完了 | 都市の魔術施設/必要環境への管理遠征 |
+
+全件で固定placement/type/biome/生成step、都市側依存、元registry/template/processor/AI/dropの保持、撤回方法を記録。通常seedでの停止・都市遭遇・攻略・素材更新・保存を確認する。必要環境の市外例外はID/理由/都市からの導線/代替/見直し条件を明示する。recipe/loot/spawn/実績/説明本の全件監査は別の残件。
