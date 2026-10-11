@@ -14,7 +14,7 @@
     <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
     <article class="document">
 <h1>不具合・許容事項一覧</h1>
-<p>更新：2026-10-08。ユーザーが確認する不具合一覧の正本。公開ページ「不具合・許容事項」は本書の同期版。検証ログの詳細は <code>TESTING.md</code>、次の作業は <code>NEXT_WORK_ORDER.md</code> を参照。</p>
+<p>更新：2026-10-11。ユーザーが確認する不具合一覧の正本。公開ページ「不具合・許容事項」は本書の同期版。検証ログの詳細は <code>TESTING.md</code>、次の作業は <code>NEXT_WORK_ORDER.md</code> を参照。</p>
 <h2>2026-10-05 ユーザー指示：軽微な不具合を許容する</h2>
 <p>ユーザーは「道路によって木が不自然になる程度は許容する」「修正すべきか放置してよいか曖昧な不具合の受入境界を緩め、ガバがあるものも受け入れやすくする」「見つけた不具合をユーザーが確認できる一箇所の文書へまとめる」と指示した。</p>
 <ul>
@@ -327,7 +327,13 @@
 <td>K-049</td>
 <td>寺院jigsawのinline戦利品指定を従来の箱監査が対象に含めていなかった</td>
 <td>従来の23/47箱の合格はtemplateの直接LootTable NBTのみ。427piece自然個体ではinline final_stateの候補38位置中12位置に表が残り、26位置は箱/樽が存在してもLootTableなし・Items空。vanilla置換processorは解析したinline NBTを配置値へ渡さない</td>
-<td><strong>監査範囲を明記・追加診断、原因と対応は保留</strong>。inline候補を独立表示し直接箱の合格へ混ぜない。元Modの通常個体でも発生するか照合中。12位置に残る理由/他processorや重複pieceの影響は未確定。必須報酬破損とは未立証で、一律のloot注入や元Mod変更はしない</td>
+<td><strong>監査範囲を明記・追加診断、原因と対応は保留</strong>。inline候補を独立表示し直接箱の合格へ混ぜない。旧原生463pieceでもinline23候補中4位置に表なし・Items0を確認。順序試案だけに固有ではない。12位置に残る理由/他processorや重複pieceの影響は未確定。必須報酬破損とは未立証で、一律のloot注入や元Mod変更はしない</td>
+</tr>
+<tr>
+<td>K-050</td>
+<td>無効な入口JSONが具体理由を示さず汎用commandエラーになる</td>
+<td>noneのpreserveなし・foliage指定をconsoleで試すと汎用errorだけで、原因と保護棄却を確認しづらかった。valid none/旧measuredは正常読込</td>
+<td><strong>修正済み・限定受入</strong>。profileが原因を付加し、streetweld/repairが例外をwrites0へ整形。9064a6f4の正例2/負例4が具体理由付きで成功、既存山岳43block往復/変更0も維持。JSON全形式・repairの全負例までは未検証</td>
 </tr>
 </tbody>
 </table>
