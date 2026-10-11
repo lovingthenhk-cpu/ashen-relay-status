@@ -81,6 +81,8 @@
 
 | K-054 | 寺院の高密度試験で近隣候補の全組立を繰り返し、同期取得がwatchdog制限を超える | spacing1の読取計画とvanilla forceloadが60秒超で停止。thread dumpは近隣native assembly/同期FULL取得待ち。元worldの19MCA hash不変 | **高密度は本番不採用・性能は残件**。全room/短路/保護を維持し、owned高度再利用・二重調査削減・no-route bounded cache・biome後の組立を追加。非同期ticketで614の自然配置/31block自動道/全parcel/cold維持を確認したが初回約112秒。本番はspacing4/separation1で登録し候補密度を下げる。高速化の実測・本番遭遇率は未受入。watchdog解除や基準失敗の読み替えで合格にしない |
 
+| K-055 | GLM展示候補の初稿がMinecraft/LCの形式・資源量を十分に検証していなかった | 初稿は作者の静的問題0報告に対し、Codexの固定Minecraft NbtIoで全64件size型不一致。floor単純積層、鉄91block等の総量、setup root、集計counter、空flat layersも監督で確認 | **修正・隔離展示受入済み、外観/自然生成は未採用**。NBT64件再検査、105block/41loot価値根拠、実JSON集計と全15Loot本文を監査。鉄block0/diamond3。実起動で32候補/看板32/chest29/全Loot参照29を確認、保存rc0→冷再起動でも維持。counterを実加算へ、flat layersを明示して警告解消。初稿と失敗証拠は保全。本人の目視採否と通常Lost Cities配置は別の残件 |
+
 ## 不具合と断定していないもの
 
 - 城塞・火術塔の人の外観／歩行感、全回転・通常遭遇頻度、未導入施設は未検証・未実装として工程に残す。未確認だけを理由に軽微な見た目を全て修正する義務へ変えない。
