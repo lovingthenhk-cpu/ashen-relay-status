@@ -82,7 +82,7 @@ Iron's Lib、Lionfish API、Citadel、Cerbons API、Apothic Attributes、Placebo
 
 ## 2026-10-12 原生構造set全46件の移管・停止対象
 
-固定版の46setを全件作業化。4件はfrequency=0設定済み、42件は移管/停止未完了。市外例外はまだ確定していない。必要な部品・戦闘AI・固有素材を残して都市へ集約し、案内/locator/進捗/元物語をパック側へ再構成する。既存建築を消去せず新規生成へ適用。表の都市側用途は実装済みと計画を含むため状態欄と合わせて読む。
+固定版の46setを全件作業化。6件はfrequency=0設定済み、40件は移管/停止未完了。うち第二波2件は都市接合の再受入を検証中。市外例外はまだ確定していない。必要な部品・戦闘AI・固有素材を残して都市へ集約し、案内/locator/進捗/元物語をパック側へ再構成する。既存建築を消去せず新規生成へ適用。表の都市側用途は実装済みと計画を含むため状態欄と合わせて読む。
 
 水術塔・湿地小屋・地下フェラス室・Apotheosis tower_mainは既存Javaがtemplateを直接参照して配置するため、原生setの自然配置と独立している。別Apotheosis3型の都市移管、Alex小屋templateを選ぶsetの対応、全locatorは未完了。次の停止候補は水術塔/湿地小屋で、停止設定下の通常接合/固有報酬/案内を検証する。
 
@@ -124,15 +124,18 @@ Iron's Lib、Lionfish API、Citadel、Cerbons API、Apothic Attributes、Placebo
 | `irons_spellbooks:evoker_fort` | 停止設定済み・自然停止未実測 | 独立wrapperの街路施設 |
 | `irons_spellbooks:ice_spider_den` | 移管/停止未完了 | 都市の魔術施設/地下攻略先 |
 | `irons_spellbooks:impaled_icebreaker` | 移管/停止未完了 | 都市の魔術施設/地下攻略先 |
-| `irons_spellbooks:mangrove_hut` | 移管/停止未完了 | 湿地の街路小屋 |
+| `irons_spellbooks:mangrove_hut` | 停止設定追加・都市接合再検証中 | 湿地の街路小屋 |
 | `irons_spellbooks:mountain_tower` | 停止設定済み・自然停止未実測 | 独立wrapperの街路施設 |
 | `irons_spellbooks:pyromancer_tower` | 停止設定済み・自然停止未実測 | 独立wrapperの街路施設 |
 | `mowziesmobs:frostmaw_spawns` | 移管/停止未完了 | 都市周辺の管理戦闘区画/環境対応区画 |
 | `mowziesmobs:monasteries` | 停止設定済み・自然停止未実測 | 独立wrapperの街路施設 |
 | `mowziesmobs:umvuthana_groves` | 移管/停止未完了 | 都市周辺の管理戦闘区画/環境対応区画 |
 | `mowziesmobs:wrought_chambers` | 移管/停止未完了 | 都市地下のフェラス室 |
-| `traveloptics:aqua_mage_tower` | 移管/停止未完了 | 水辺の水術塔 |
+| `traveloptics:aqua_mage_tower` | 停止設定追加・都市接合再検証中 | 水辺の水術塔 |
 | `traveloptics:echo_shrine` | 移管/停止未完了 | 都市の魔術施設/必要環境への管理遠征 |
 | `traveloptics:void_cathedral` | 移管/停止未完了 | 都市の魔術施設/必要環境への管理遠征 |
 
 全件で固定placement/type/biome/生成step、都市側依存、元registry/template/processor/AI/dropの保持、撤回方法を記録。通常seedでの停止・都市遭遇・攻略・素材更新・保存を確認する。必要環境の市外例外はID/理由/都市からの導線/代替/見直し条件を明示する。recipe/loot/spawn/実績/説明本の全件監査は別の残件。
+
+
+第二波の水術塔/湿地小屋は、全Mod起動と固定Minecraftのfrequency gateで0棄却/1対照採択を確認。中断した検証ワールドでは建築/通路/Lootが存在した一方、固有NPCが0で未受入となり、新規ワールドで再検証している。[K-060](known-issues.html)に記録。既存プレイ/展示ワールドへ停止設定を同期したり建築を消去したりしていない。

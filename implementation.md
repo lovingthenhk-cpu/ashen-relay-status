@@ -495,4 +495,4 @@ no-route負例は初回約2.1秒→再利用0.1秒で同じ棄却。通常原生
 
 ## 2026-10-12 都市移管の設定単位と監査出力
 
-原生46setを実ID単位の台帳へ展開し、固定jar SHA・元placement・pack上書き・structure metadata・都市側の役割・未受入・撤回をJSONへ記録する監査scriptを追加。ワールドや巨大shapeは読まず、4停止設定と42未実装を区別する。独立template配置の水術塔/湿地小屋について停止設定下の通常接合・攻略素材・locatorを次に確認する。[全46件の対象一覧](mods.html)へ掲載。metadata監査を生成停止の実測としない。
+原生46setを実ID単位の台帳へ展開し、固定jar SHA・元placement・pack上書き・structure metadata・都市側の役割・未受入・撤回をJSONへ記録する監査scriptを追加。ワールドや巨大shapeは読まず、6停止設定と40未実装、第二波の未受入を区別する。独立template配置の水術塔/湿地小屋について停止設定下の通常接合・攻略素材・locatorを次に確認する。[全46件の対象一覧](mods.html)へ掲載。metadata監査を生成停止の実測としない。
