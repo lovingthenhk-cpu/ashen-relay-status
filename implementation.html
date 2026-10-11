@@ -452,7 +452,7 @@
 <h3>通常山岳塔の都市接合と、次の火術塔</h3>
 <p>元biomeと通常saltの山岳塔が、予定敷地12区画中10区画の都市内へ自然生成した。周囲4方向にも都市がある候補で、1段高い公園から本物のポーチへ43ブロックの照明付き道を自動接続。ポーチとトウヒ扉内の往復、保存・再起動の変更ゼロ、原生loot10・cryomancer・19段の梯子を含むアクセス部品62個を保持した。通路に箱を置く負例も書込ゼロで拒否し、箱を残す。人の外観・実際の昇降・戦闘は未確認。</p>
 <p>次は<code>street_pyromancer_tower</code>の通常導入。structure/profile/structure_setの3JSONを登録し、固定salt・spacing16/separation4で試験する。本物の焚き火側入口、主塔の指定範囲、全地下パーツを維持し、足元の苔の廃屋を同じ建物から分離する。道は上限48、高さ3、照明付き、浅い外側の天井は開放できる。Mowzieの原生室とApotheosis塔を優先し、既存建築・箱を保護する。原生Iron’sの通常生成と本来の全templateは残す。分離した廃屋の別施設化は条件付き候補で未実装。</p>
-<p>現在は登録7家族／各家族の通常自然接合を最低1例機械確認。火術塔は3seedの自然接合・保存を確認し、全回転・通常分布・人の受入は未完了。寺院・ピラミッド・墓地・工場・地下祠、後続の敵能力や報酬の縫合、見た目8種類を含む後続工程は維持する。R-27W4/Mは未完了。</p>
+<p>現在は登録7家族／通常自然接合の機械証拠6家族。火術塔の新しい都市設定の自然接合・通常分布・保存受入は試験中。寺院・ピラミッド・墓地・工場・地下祠、後続の敵能力や報酬の縫合、見た目8種類を含む後続工程は維持する。R-27W4/Mは未完了。</p>
 <h4>今回の具体的なファイル責務</h4>
 <table>
 <thead>
@@ -505,35 +505,68 @@
 <h3>別シードと次の寺院部品</h3>
 <p>火術塔の第二シードでも、市街25区画中24区画・周囲4方向に都市がある候補で自然8パーツ、上限48ブロックの道を自動接続した。道路・入口往復と保存再起動、原生戦利品13箇所と同じ敵を確認。三つ目のシードと人の外観・実昇降・戦闘は未確認。</p>
 <p>次の寺院はMowzieの独自組立器・山頂高度120〜200を維持する。中心21×11×21だけで完成とせず、19×12×6/19×12×7のdoorway、外側の階段と全体を調べ、実際の入口から街への導線を選ぶ。独自bounds offset・processor・三角抽選と近隣拠点回避を監査し、必要な専用adapterを作る。未登録・未配置で、8番目完成とは数えない。原生生成・高所の挑戦・戦利品は保持する。</p>
-<p>寺院の次の実装候補は<code>NativeMonasteryParcelAdapter</code>（元の組立判定箱を変えず全建築外形を都市から保護）、<code>NativeMonasteryEntrance</code>（複数doorwayから外側の本物の床と出口を選ぶ）、検証後の<code>native_street_profiles/street_monastery.json</code>。都市予約と実接合は未実装。外形・processor潜在領域・原生階段接続の読取診断を実装し、保存済みの同一個体で中央の門と塔側二つの門を一つの接続グラフから診断。三入口の局所往復と、各内側から寺院中心部までの往復を経路proxyで機械確認。人の歩行感・新規自然接合は未確認。元Modの高度・自然生成・高所の攻略を維持し、中心の小さい箱だけで施設全体を守れたことにしない。</p>
+<p>寺院の次の実装候補は<code>NativeMonasteryParcelAdapter</code>（元の組立判定箱を変えず全建築外形を都市から保護）、<code>NativeMonasteryEntrance</code>（複数doorwayから外側の本物の床と出口を選ぶ）、検証後の<code>native_street_profiles/street_monastery.json</code>。都市予約と実接合は未実装。外形・processor潜在領域・原生階段接続の読取診断を実装し、実生成済みの同一個体で入口候補の局所往復を機械確認。元Modの高度・自然生成・高所の攻略を維持し、中心の小さい箱だけで施設全体を守れたことにしない。</p>
 <h3>火術3シードと街道装飾の事前照合</h3>
 <p>火術塔は通常salt・元biomeの3シードで自然8パーツ、44/48/44ブロックの自動道、入口往復、原生loot14/13/25箇所と同じ敵の保存・再起動を機械確認した。全施設の広域頻度・全回転・人の外観/昇降/戦闘とは別の受入で、Rは未完了。</p>
 <p>第三シードの城塞は、市街24/25区画に原生7パーツが自然生成したが、道側の装飾で工事が止まった（K-040）。<code>NativeCityParcelMixin.generateFrontPart</code>で予約区画由来の旧frontを抑制しても、対象slabとcyan壁は残った。そこで<code>NativeStreetDecoration</code>を追加し、公園・噴水の実part、局所paletteの128候補、街道高さを通路の頭上セルに照合する。配置前と接合時で同じ判定を使い、該当する未接合候補は生成前に棄却する。公園の一律削除やcyan壁の掘削許可は行わず、既存街道材の種類を保つ。最新判定でも火術塔の自然8パーツ・44ブロック自動道・往復の機械検査が成功。山岳塔も、元LCの照明無効時に松明をAIRへ置換する処理を予測へ反映した後、自然1パーツ・43ブロック自動道・6往復検査が成功。城塞も自然13パーツ・20ブロック自動道・8往復検査と戦利品14箇所の保存を確認。全施設分布、人の外観は未検証。</p>
 <p>寺院の<code>NativeMonasteryParcelAdapter</code>は、全パーツの実テンプレート外形を元の組立用範囲と比較する読取診断まで実装。元生成器の全409パーツで実外形診断が成功し、189パーツが組立用範囲をはみ出すことを確認した。都市配置とprocessorの追加書込領域の保護は未実装。元基礎処理は下方、装飾処理は横方向にもテンプレート外へ生成するため、これらを含めて予約・保護してから導入する。</p>
-<p>寺院では同じseedと位置でも組立結果が変わる問題（K-041）を調査。原生の全展開・pool優先度・depth・条件・processorを保持する限定順序adapterを試作し、同じ管理者読取計画の全720パーツの保存NBTが3回と再起動後に一致した。選ばれる建物は旧版と同じとは限らず、試案は既定無効。新規ワールドの別地点で通常biomeの事前計画と自然生成の全427パーツNBTが一致し、元templateで直接指定された23宝箱を保持。別seed・保存・都市保護の受入後に採否を決める。再起動後も427パーツと23宝箱を保持したが、全NBTは260パーツのBBだけ異なる。全field比較で座標・回転・他fieldの一致を確認。元Modのsingle部品復元で箱が再計算される差をK-047に記録。全NBT一致や都市保護合格とは扱わない。別seedでも通常条件の事前計画二回597パーツが一致し、新chunk通常配置とはBBだけの差、元templateで直接指定された47宝箱を保持。全field差を残した比較と、トップ階層BBだけを除外したdomain/version付きlayout診断を両方表示する。元の別Mod塔との保存box交差も記録し、外観や実ブロックへの影響は未確認。都市接合は未実装。中心・入口は全パーツから識別し、試験空間・空パーツも維持する。</p>
-<p><code>NativeMonasteryParcelAdapter.checkPotentialProtectionEnvelope</code>は、実templateと基礎・装飾の潜在上限をFULLロード済みchunkだけで確認し、保存startと参照、共通の居住時間・自然材・コンテナ/player検査へ進む読取preview。既存寺院との交差と未ロード区画を配置せず拒否し、元宝箱を保持した。実processor再生・clear区画・都市予約は未受入で、<code>processorEnvelopeChecked=false</code>を維持する。</p>
-<p><code>NativeMonasteryEntrance.Endpoint</code>と<code>resolveEndpoint</code>は門のrootと階段の終端を区別し、終端piece番号・元local床/向きから実部品を束縛する。終端のsource照合CLIで第二seedの五出口・四回転の座標整合を確認。次に共通入口profileへ渡して短い街道候補を選ぶ。都市登録と自動掘削は未実装。</p>
-<table><thead><tr><th>対象</th><th>具体的な仕事</th><th>状態と受入</th></tr></thead><tbody>
-<tr><td><code>NativeMonasteryOrderContext</code>・<code>NativeMonasteryOrderedState</code>・<code>NativeMonasteryOrderMixin</code>・<code>NativeMonasteryPieceStateMixin</code></td><td>同順位connectorを座標と一回のassembly内のordinalで安定化し、native consumerを一回実行。ThreadLocal scopeはfinallyで復元</td><td>既定無効の試案。世界を跨ぐcacheは使わず、再起動・別seed・元Mod通常生成・保存・保護を検証する</td></tr>
-<tr><td><code>NativeAssemblyFingerprint</code></td><td>全pieceの順序・保存NBTの型・整列keyからSHA-256を出し、再組立を照合</td><td>診断実装。数・外接箱・指紋の一致は自然配置や外観の合格ではない</td></tr>
-<tr><td><code>audit-monastery-processor-envelope.py</code></td><td>一個体の全source templateから下方基礎と装飾面の潜在座標を元BEへ照合</td><td>読取CLI実装。元463pieceの7075基礎/80装飾と252BEの交差0。未来地形・既存都市BE/entity・実processor順序は未確認</td></tr>
-</tbody></table>
+<p>寺院では、同じseedと位置でも元の組立順によってパーツ数が変わることを確認（K-041）。実生成の一度の組立結果を、外形・processorの保護・入口の検査と配置に使う。最初のパーツが原生の試験空間の場合もあるため、中心と入口は全パーツからtemplate IDで識別する。元Mod全体の組立順を変更したり、試験空間・空パーツを省略したりして成功を作らない。</p>
 <h3>入口階段と射手の残る検証（2026-10-06）</h3>
 <p>原生寺院の階段を経路proxyが足場として認識せず、開始位置を別階へずらす検査不具合を修正（K-042）。原生階段は変更せず、入口の内側・外側への往復と既存城塞8検査を確認した。寺院の街道接合や人の歩行確認とは区別する。塔の専用射手は他Modの原生外見と専用AI・別Mod弾・payload・個体限定drop調整まで実装済み。発射直前の実遮蔽物によるchannel中断と、遮蔽物が消えた後の待ち時間をselftestへ追加し、全Mod専用サーバーで成功を確認した。R-27W4とR-27Mは未完了。</p>
 <p>塔の専用射手は、原生Hostを保存して再起動後も同じ個体/40HP・専用AIを保持すること、実死亡で進捗と巻物再入手条件を解禁することを確認した。報酬は強化素材・空印・Gem・Affix装備・弾の巻物。再起動後も同じ5報酬Itemと攻略済み一回分を保持し、重複配置を拒否した。管理者seedと未接続ServerPlayer proxyによる機械確認であり、自然player-tick配置・外観・実戦・FTB操作は未受入。</p>
 <p>接合の街道起点は、配置前の仮起点と実足場の差で長路になる問題K-043を修正中。元公園/噴水から起点を予測し候補ごとの実足場で距離を判定する案を試したが、既存火術の自動接続も失ったため撤回し、検証済みの処理へ戻した。K-043は未解決。48block上限や原生材・箱・既存worldの保護を緩めない。</p>
-<p><code>NativeMonasteryCityRoutes</code>と<code>structureplan monastery cityroutes / cityscan</code>を実装。元biome条件で全パーツを組み立て、本物の階段終端から街道・48ブロック上限・高さ・都市建物と装飾の保護を調べる。cursor付き探索では同じpage内の組立を再利用し、候補と拒否理由、組立と道路計算の時間を別記録する。既存条件の探索では接続候補0。実測は原生組立約10.2秒、道路検査約0.24秒で、組立が主要な負荷だった。寺院の部屋を削る対処は行わない。寺院の都市予約・配置・実processor保護は未実装で、登録済み7施設系列を増やしたとは扱わない。</p>
-<p>寺院のstreet_spanを既存施設と同じ1へ揃えても、最初の3pageは接続候補0。同じ位置の跨page再組立を検出したため、proposalVersion2では全候補の初出順unique anchorを先に列挙して分割する。候補や部屋を削らず、mutable assemblyのrequest間cacheを使わない。旧cursorは0から再開。変更後は同範囲の1049固有anchorを3page・約30秒で全処理し、合法11anchorの跨page重複0を確認した。接続候補は0で、都市登録は依然未完了。</p>
+<h2>寺院の候補探索（2026-10-11）</h2>
+<p><code>NativeMonasteryCityRoutes</code> / <code>cityroutes</code> / <code>cityscan</code>を実装。元biome・高度・全パーツと48ブロック上限、都市建物・装飾の保護を維持。空gateway JSONは正例2/負例4を理由付きで確認（K-050）。街道previewは五出口で候補なし・編集0、都市登録は未実装。旧原生寺院にもinline箱の表なしがあり、試案固有とは断定しない。</p>
+<p>探索実測は元組立約10.2秒、道路検査約0.24秒。street_spanを1へ揃えても最初の3pageは接続0。次のproposalVersion2は候補全件の初出順unique anchorでpage分割し、同位置の跨page再組立を省く。mutable assemblyをrequest間cacheせず、候補・部屋を減らさない。更新後はcursor0から再開する。寺院は未登録、採用済み7施設系列。</p>
+<p>proposalVersion2の実サーバー検証：1049固有anchorを3page/約30秒で全処理、合法11anchorの跨page重複0。接続候補0であり寺院の都市導入は未完了。</p>
 <h2>寺院の四方接続と途中保存（2026-10-11、R-27W4/M未完了）</h2>
 <p><code>NativeStreetRoadFrame</code>は道路計算を四方へ対応させ、元建物を移動・回転しない。元biome・全部屋・48ブロック上限・傾斜・都市建物と装飾の保護を維持し、434パーツの候補で北側街道から本物の階段終端へ33ブロックの経路を確認した。幾何候補であり、工事・都市登録の成功ではない。共通loaded道路Planへ素材・照明判定を接続し、旧山岳塔の43ブロック往復を4検査・編集0で確認。入口scanと工事最後の保護判定も共有し、実工事への接続を進める。</p>
 <p><code>NativeMonasteryPartialGenerationProbe</code>は隔離試験用・既定無効。実際のSTRUCTURE_STARTSを保存し、再起動後に生成を完了させる検査では597パーツ・直接指定宝箱47個を保持し、原生配置対象76687位置が保存済みcontrolと一致した。一方、初期原生elementで一部の部屋を配置してから保存した混在checkpointでは578位置に差があり、板・照明等の欠落を含むため未合格。436位置は保存前から未配置で、初回部品BBがそのchunkに交差していない。全差の原因や攻略への影響は未確定。宝箱47個、既存NPCの個体ID、原生templateのNPC1・額縁7・防具立て3は保持した。</p>
 <p><code>NativeMonasteryPlacementCopy</code> / <code>placementcopy</code>を検査用に追加。元の全assemblyを展開した後、別pieceをvanilla保存constructorで復元して初期配置と保存後の物理範囲を揃える案。元sourceを変更せず、順序・位置・回転・template・processor・junctionなどBB以外の保存fieldが変われば拒否する。読取prototypeで、実生成へ未適用。原生Mod側の通常生成や攻略ルートは維持。実processor・都市区画予約・未完成生成の復元・通常都市登録・自然配置と往復・報酬・再起動の検証が残る。登録済みは7施設系列、寺院は8施設目に数えない。人の外観・歩行・戦闘は未確認。</p>
+<h2>寺院の配置copy・保存区画契約（2026-10-11、通常都市登録前）</h2>
+<p>隔離した初期placement copyで一部を生成・保存・再起動した結果、原生対象セルの差は578から23へ減り、大量の板や照明の欠落を解消した。元の597パーツ、直接宝箱47個、NPC1・額縁7・防具立て3、既存NPCの個体IDを保持。中央入口と六段階段は往復proxy検査に通過した。残23は地盤/基礎marker8・雪9・壁ボタン向き5・隣接装飾1として記録し、軽微差を許容して進める。厳密な全ブロック一致、人の歩行/戦闘、全processorの受入ではない。実験は既定無効で、原生Modの通常生成を変更する設定ではない。</p>
+<p><code>NativeStreetConnector.inspectSelectedFrame</code> / <code>NativeMonasteryStreetContract.previewFrame</code> / <code>streetframe</code>は四方向の実道路preflight。未FULL区画と参照startのanchorを先に棄却し、元素材・都市建物・装飾・player/container・他構造を共通Planと最後の保護判定へ渡す。applyや自動登録なし。未束縛終端・縦方位・非都市街道の拒否、既存山岳塔往復/編集0、元native初期assemblyの不変を確認した。新frameの実都市工事の正例は後続。</p>
+<table>
+<thead>
+<tr>
+<th>ファイル/データ</th>
+<th>責務・現状</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NativeMonasteryParcelMetadata</code></td>
+<td>version1、全piece数、本物終端index、道路edge/方位、元assembly空間とphysical/processor parcelのboundsを保存。欠損・未知version・逆bounds・不正方位/indexを拒否。434パーツ/本物終端384/北33ブロックの契約保存復元・反復load一致/source不変を確認。配置・都市登録なし。</td>
+</tr>
+<tr>
+<td><code>NativeMonasteryParcelCarrier</code> / <code>NativeMonasteryParcelPieceMixin</code></td>
+<td>別placement copyの既存最初のpieceへ契約を保存。原生rawには追加NBTを書かず、metadata用の空建物/pieceを増やさない。</td>
+</tr>
+<tr>
+<td><code>NativeMonasteryParcelContract</code> / <code>parcelcopy</code></td>
+<td>同じ全native assemblyから短い本物街道を選択し、原生意図空間と物理/processor範囲を合成。合成parcel内に入るstreetは拒否。source不変/全piece/契約の再読込を検査。配置・登録なし。</td>
+</tr>
+<tr>
+<td><code>StreetNativeStructure</code>の寺院専用契約</td>
+<td>専用flag既定falseのbranchを実装、隔離runtime受入前。元delegate/biome/terrain/全部屋を維持。owned呼出だけで順序を安定化し、原生rawを変えない。</td>
+</tr>
+<tr>
+<td>owned限定の<code>StructureStart</code>境界adapter</td>
+<td>保存parcelをvanilla参照、Lost Cities予約、FullChunkGuard、他構造予約へ共有するコードを実装、隔離runtime受入前。元assemblyの意図的空間を消さず、任意の拡大marginで接続街道を潰さない。</td>
+</tr>
+<tr>
+<td><code>NativeStreetJobs</code>の保存frame branch</td>
+<td>予定。本物終端・方位を読む共通道路工事。新chunk由来、未FULL pending、保存再開、一回だけの工事を検証。</td>
+</tr>
+<tr>
+<td><code>street_monastery.json</code> / structure_set JSON</td>
+<td>予定。実processor/全保護/通常自然都市配置/往復/loot/再起動を隔離検証してから有効化。元Modの通常生成とNPC攻略ルートは移管受入まで保持。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>R-27W4/Mは未完了、採用済み7施設系列。</strong> 寺院の都市登録と全攻略・人の体験、後続施設/遭遇/武器更新の予定は維持している。</p>
 </article>
-    <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-07 · 物語の核心は掲載しません。</footer>
-  <h3>動的終端と道路の共有処理（2026-10-08）</h3>
-<p><code>NativeMonasteryStreetContract</code>が五つの原生出口を終端部品へ束縛し、共有入口の座標検査を使う。<code>gateway_mode=none</code>は原生材保持を必須とし、元gatewayを掘らず編集0。各出口の48ブロック上限・自動配置無効を機械確認した。既存山岳塔も43ブロック往復・追加編集0を確認。JSON loaderは空gatewayと旧measuredの正例2件・負例4件を拒否理由付きで確認した（K-050）。物理gateway・全JSON形式・都市配置は未受入。</p>
-<p><code>structureplan mowziesmobs:monastery streetpreview</code>を実装しビルド確認。FULL保存済み寺院の終端付近から街道候補を探し、既存施設と同じ<code>NativeStreetConnector.inspectSelected</code>の道路計画・原生材・箱・プレイヤー保護を使う。読取専用でapplyや通常登録は有効にしない。実サーバーで五つの出口すべてを処理し、街道候補なし・編集0を確認。道路接続の成功を示すものではない。既存山岳塔の43ブロック往復と、寺院597パーツの全保存NBTを保持した。</p>
-<p>K-048として接合ブロックの<code>final_state</code>で生成される原生木材・石も道路から保護する修正を実装し、既存道路・寺院保存・selftestの回帰を確認。K-049として箱の監査範囲を明記し、inline戦利品指定は直接NBTの箱と別に報告する。元Mod処理・全inline箱の保持は未確定。旧原生463パーツでもinline23候補のうち4箇所は表なし・Items0だったため、順序試案だけに固有の問題とは断定しない。未確認を合格に混ぜない。施設種類や元の部屋数を削減していない。</p>
-</main>
+    <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-04 · 物語の核心は掲載しません。</footer>
+  </main>
 </body>
 </html>

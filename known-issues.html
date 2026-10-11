@@ -12,8 +12,7 @@
   <main>
     <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="mods.html">Mod採用表</a><a href="ideas.html">旧案の採用台帳</a><a href="seams.html">縫合パターン58件</a><a href="delivery.html">次の作業と実装受入</a><a href="implementation.html">実装ファイル</a><a href="completion.html">完成工程</a><a href="known-issues.html" aria-current="page">不具合・許容事項</a></nav>
     <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
-    <article class="document">
-<h1>不具合・許容事項一覧</h1>
+    <article class="document"><h1>不具合・許容事項一覧</h1>
 <p>更新：2026-10-11。ユーザーが確認する不具合一覧の正本。公開ページ「不具合・許容事項」は本書の同期版。検証ログの詳細は <code>TESTING.md</code>、次の作業は <code>NEXT_WORK_ORDER.md</code> を参照。</p>
 <h2>2026-10-05 ユーザー指示：軽微な不具合を許容する</h2>
 <p>ユーザーは「道路によって木が不自然になる程度は許容する」「修正すべきか放置してよいか曖昧な不具合の受入境界を緩め、ガバがあるものも受け入れやすくする」「見つけた不具合をユーザーが確認できる一箇所の文書へまとめる」と指示した。</p>
@@ -315,7 +314,7 @@
 <td>K-047</td>
 <td>寺院の保存復元でnative assembly BBと物理BBが異なる</td>
 <td>新規427pieceの事前plan/初回committedの全NBT SHA a4d19fe1…、再起動committedはea36afc2…。全field比較では260pieceのBBだけ異なり、順序・位置・回転・他保存field一致、23loot保持。旧raw原本も保存element_typeはminecraft:single_pool_element</td>
-<td><strong>原生保存方式の差を記録・都市保護契約へ反映中</strong>。Mowzie独自elementはSingleのtypeを継承し、復元時に通常templateのBBを再計算。BB除外を全NBT一致とは呼ばない。physical template/processor範囲を別に保護し、元assembly boxを修正しない。第二seed597pieceでもBB341だけ差・他field一致、47loot保存保持。起動直後の初回比較診断は汎用error、後続正常で具体原因未確定。STRUCTURE_STARTSで保存した第二seed597pieceも、cold restartでBB341だけ差・他field/layout保持、その後FULL/47直接loot・中央入口往復を確認。STARTSから再開した原生76687配置セルはcontrolとblockstate一致。全potential envelopeは自然地形等13494差で同一ではない。初期原生elementから一部配置して保存した混在checkpointでは578原生対象セル差（板・照明等のAIR化を含む）。そのうち436セルは初回piece BBが対象chunkに交差せず、保存前から欠落し再起動後も不変。宝箱47・NPC1/個体UUID・額縁7・防具立て3は保持。初期配置と保存復元の境界箱を揃える別placement copyを未登録の読取試案として検査中。全578の因果/攻略影響・都市wrapper/processor保護/人の外観は未受入</td>
+<td><strong>原生保存方式の差を記録・都市保護契約へ反映中</strong>。Mowzie独自elementはSingleのtypeを継承し、復元時に通常templateのBBを再計算。BB除外を全NBT一致とは呼ばない。physical template/processor範囲を別に保護し、元assembly boxを修正しない。第二seed597pieceでもBB341だけ差・他field一致、47loot保存保持。起動直後の初回比較診断は汎用error、後続正常で具体原因未確定。STRUCTURE_STARTSで保存した第二seed597pieceも、cold restartでBB341だけ差・他field/layout保持、その後FULL/47直接loot・中央入口往復を確認。STARTSから再開した原生76687配置セルはcontrolとblockstate一致。全potential envelopeは自然地形等13494差で同一ではない。初期原生elementから一部配置して保存した混在checkpointでは578原生対象セル差（板・照明等のAIR化を含む）。そのうち436セルは初回piece BBが対象chunkに交差せず、保存前から欠落し再起動後も不変。宝箱47・NPC1/個体UUID・額縁7・防具立て3は保持。初期配置と保存復元の境界箱を揃える別placement copyを未登録の読取試案として検査中。隔離placement copyで初回から物理BBを揃えた比較では578→23差に減り、大量の板・照明欠落を解消。残23は地盤/基礎marker8・雪9・壁ボタン向き5・AIRへ置換するsponge位置の隣接装飾1で、軽微差として許容/記録。全76687セルの厳密一致はfalseを維持。中央入口と六段階段内の往復proxyを確認、47loot/NPC UUID保持。全578の因果・全攻略/都市wrapper/processor保護/人の外観は未受入</td>
 </tr>
 <tr>
 <td>K-048</td>
@@ -335,6 +334,12 @@
 <td>noneのpreserveなし・foliage指定をconsoleで試すと汎用errorだけで、原因と保護棄却を確認しづらかった。valid none/旧measuredは正常読込</td>
 <td><strong>修正済み・限定受入</strong>。profileが原因を付加し、streetweld/repairが例外をwrites0へ整形。9064a6f4の正例2/負例4が具体理由付きで成功、既存山岳43block往復/変更0も維持。JSON全形式・repairの全負例までは未検証</td>
 </tr>
+<tr>
+<td>K-051</td>
+<td>寺院parcel保存Mixinが専用サーバーの実行時名を解決できず起動失敗</td>
+<td>build436157はコンパイル成功、隔離起動でaddAdditionalSaveDataのtargetなし/No refMap loaded。固定Forgeプロジェクトは既存external Mixinがremap=falseで、refmap生成未設定</td>
+<td><strong>機械検証で修正済み</strong>。b17d0の隔離サーバー起動、434piece契約の保存再読込/反復load/source不変、raw初期597/0db・保存597/8e1・旧山岳43の回帰を確認。固定1.20.1のMojang/MCP mappingからruntime名m_183620_を照合し、dev名/runtime名を明示してrequire=1を維持。原生world読み込み前の隔離起動で失敗、通常生成/プレイヤーworldの採用へ進めない。失敗consoleを保全し、起動/metadata保存再読込/元raw全NBT不変を確認する</td>
+</tr>
 </tbody>
 </table>
 <h2>不具合と断定していないもの</h2>
@@ -346,7 +351,7 @@
 <h2>更新手順</h2>
 <p>発見時にID・場所・ユーザーへの影響・確認済み範囲・許容／保留／要修正を記す。修正時は証拠と残る条件を追記し、行を消さない。過去資料の旧問題を今も発生すると決めつけず、追加で見つかった記録は本書へ集約する。公開同期時はログ、ローカル接続情報、認証情報、物語の核心を掲載しない。</p>
 </article>
-    <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-07 · 物語の核心は掲載しません。</footer>
+    <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-04 · 物語の核心は掲載しません。</footer>
   </main>
 </body>
 </html>
