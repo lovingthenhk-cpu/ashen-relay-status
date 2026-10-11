@@ -346,6 +346,12 @@
 <td>隔離434pieceの初回cold→全周辺FULL後、北33block道路jobsがprotected open skyで書込0拒否。座標(-537,113,-244)は元room_roof_tower piece9のdark_oak_trapdoorと確認。必要headspaceではなく任意の吹き抜け処理が衝突</td>
 <td><strong>隔離自動工事で修正を確認・保存/再起動受入中</strong>。42d777でmixed checkpointの別copyからcold再開、全434pieceを保持して33block/104編集の自動道路がcompleted。全native素材と必要な歩行高さは保護し、上方に原生屋根がある列は吹き抜けにせず屋根付き接続を残す。箱/player/他start/歩行空間の保護を緩めない。失敗world/jobと元template座標を保全し、別mixed checkpoint copyで検証する。通常都市未登録</td>
 </tr>
+<tr>
+<td>K-053</td>
+<td>寺院fixtureが原生JSONのstepをコピーし、Java側の生成段階overrideを保持していなかった</td>
+<td>pinned MonasteryStructureはstep()をUNDERGROUND_DECORATIONにoverrideするが、原生JSONはsurface_structures。旧434piece fixtureは後者をコピー。区画/道路/保存/41直接lootの既存検査はそのfixture条件での結果</td>
+<td><strong>修正・隔離受入済み</strong>。実delegateのstep/terrain一致を生成前に要求。正しいunderground_decorationの別未生成fixtureでmixed→cold→42FULL/434全保存field・区画契約/33block道路104編集/直接loot41/NPC1・frame1を保持。full保存後のcoldも編集0/同completed job1 receipt/元NPC UUID保持。旧surface結果はその条件の記録として保全。通常都市未登録・人の受入未検証</td>
+</tr>
 </tbody>
 </table>
 <h2>不具合と断定していないもの</h2>
