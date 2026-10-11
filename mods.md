@@ -1,5 +1,16 @@
 # Modと部品の採用表
 
+## 2026-10-11 最新方針：都市へ集約・元生成停止・物語を一本化
+
+Lost Cities外の独立構造物はなるべく生成させず、都市内に多数・多様な施設を配置する。元Modの建築・敵・技・アイテムを部品として参照し、元Mod独自の物語・案内・攻略順はAshen Relayの進行へ組み替える。旧「原生生成/元ストーリーを維持」の記述は変更前の方針。
+
+**実装した設定**：Iron’s城塞・山岳塔・火術塔とMowzie寺院の元structure setにfrequency=0を追加。独立した都市wrapperと必要な原生登録は維持。全Mod起動とselftest、元山岳template参照を確認。既存の建築は消去しない。自然生成での停止/移管後分布の実測は未完了。
+
+**未完了の必須作業**：元配置を共有するApotheosis塔4型、水術塔、湿地小屋、小屋＋地下室は都市側の配置へ分離して元生成を停止する。ピラミッド・墓地・工場・地下祠と今後の施設も都市移管/元生成停止を対にする。各Modの不要なstructure set・spawn・loot流入・recipe・旧物語の案内/実績/locatorを実ID別に監査し停止/移管する。必要な戦闘・技・武器更新や企画の種類は削らない。海・次元等の必要環境は都市の対応地区または管理遠征へ移し、不可避の市外例外だけ理由と都市からの導線を明記する。
+
+**都市調整は必須**：疎な都市設定を完成形とせず、市街の広さ・密度・街区接続を調整。固定profileを確認し、同じ3seed/同じ範囲で市街面積・連結面積・都市間隔・施設の実生成/種類/徒歩帰路/負荷を比較する。施設別Lootも魔術・工業・水辺と攻略段階へ合わせて調整する。R-27W4/MからR-28Dの受入に含める。具体値未確定、密度調整と全施設Loot/物語移管は未実装。
+
+
 固定版のModを丸ごと「有効」または「削除」と扱わない。各行で**原生攻略として残すもの、Ashen Relayへ借りるもの、止める/調整するもの**を対応させる。停止欄は計画であり、現在すでに停止したという意味ではない。採用する実行時参照、動画利用、将来配布の条件は別途R-31で再監査する。
 
 ## 世界・施設・ボス
@@ -8,12 +19,12 @@
 |---|---|---|---|---|
 | The Lost Cities `7.5.2` | 現世の道路と街区の基盤 | city/road判定、原生standard citystyle、worldstyle、building/part、接合語彙 | 道路と自然な区画 | 見た目を支配している独自 `vocab_*` 12棟と `link_tower` のselector参照をR-27Wで解消。`anchor_02` は主導線から外す。既存worldの建物は消さない |
 | Alex's Caves `2.0.2` | 六洞窟の探索、異なる環境素材 | `alexscaves:forlorn_hut_1` 9×9×9、`MAGNETIZING`、`BUBBLED`、`DEEPSIGHT` | 六洞窟、tablet導線、固有武器・drop | 洞窟全体は止めない。外部施設でのEffectは限定区画・短時間だけ |
-| Mowzie's Mobs `1.8.2` | フェラスを最初の強敵にする | `mowziesmobs:wroughtnaut_chamber` 19×7×19、`EntityBlockSwapper.swapBlock` | ボスAI、斧・兜、自然拠点 | 接合施設が重複すると実測された場所だけ頻度調整。変換床から梯子・箱・出口を除外 |
-| Apotheosis `7.4.8` | 拾った装備のAffix/Socket/Gemで更新動機を作る | `tower_main/leaf/sand/spruce`、Affix/Gem装備 | 原生塔と強化入手 | 射手を変更した場合、その1体だけ元AI/dropの重複を止める。塔やAffix全体は止めない |
-| Iron's Spells 'n Spellbooks `3.16.3` | 呪文、巻物、詠唱、装備型呪文、地下と城塞 | `catacombs`、`evoker_fort`、LivingEntity caster | 原生施設、呪文、原生loot | 追加敵/追加lootは指定施設内だけ。Mobやスペル全体の停止なし |
+| Mowzie's Mobs `1.8.2` | フェラスを最初の強敵にする | `mowziesmobs:wroughtnaut_chamber` 19×7×19、`EntityBlockSwapper.swapBlock` | ボスAI、斧・兜、自然拠点 | 寺院の元生成停止設定を追加。他の移管拠点も元生成停止/都市移管へ。変換床から梯子・箱・出口を除外 |
+| Apotheosis `7.4.8` | 拾った装備のAffix/Socket/Gemで更新動機を作る | `tower_main/leaf/sand/spruce`、Affix/Gem装備 | 原生塔と強化入手 | 射手を変更した場合、その1体だけ元AI/dropの重複を止める。塔の元生成は都市側配置の分離後に停止。Affix/Gemは維持 |
+| Iron's Spells 'n Spellbooks `3.16.3` | 呪文、巻物、詠唱、装備型呪文、地下と城塞 | `catacombs`、`evoker_fort`、LivingEntity caster | 原生施設、呪文、原生loot | 追加敵/追加lootは指定施設内だけ。城塞/山岳塔/火術塔の元生成停止設定を追加。不要要素は実ID別に監査 |
 | L_Ender's Cataclysm `3.16` | 大型ボス、工場、海と固有武器 | `ancient_factory`、`sunken_city`、`bone_fracture`、予兆攻撃 | 原生施設・ボス・固有drop | 工場の装置室1室だけに追加遭遇を置き、元装置・保護ブロックを上書きしない |
 | Bosses of Mass Destruction `1.1.2` | 寒冷地・地下・Nether・Endの四遠征 | `MagicMissileProjectile` と命中callback、Earthdive Spear素材 | 四施設、ボス、原生drop、通常レシピ | Ashen Relay追加報酬の二重支給のみ一回性状態で防ぐ |
-| T.O Magic 'n Extras `6.3.0` | ボス技の呪文化、4系列×3段階の武器、横断合成 | `aqua_mage_tower` / `echo_shrine` / `void_cathedral`、Cataclysm/Alex's素材を使う合成 | 原生施設・武器・通常レシピ | 確認された重複loot/recipeだけ局所調整。都市へ強制移植する施設は寸法と生成条件を確認 |
+| T.O Magic 'n Extras `6.3.0` | ボス技の呪文化、4系列×3段階の武器、横断合成 | `aqua_mage_tower` / `echo_shrine` / `void_cathedral`、Cataclysm/Alex's素材を使う合成 | 原生施設・武器・通常レシピ | 都市へ施設配置を移管し、元生成/不要loot/recipeを停止。必要環境と寸法を確認 |
 | Dungeons Enhanced（未導入） | 都市の小型接合元として隔離試験する候補 | `watch_tower` / `ruined_building` 候補 | 採用する施設だけ、原生攻略としての価値を個別判断 | 不要なstructure setを固定jarの実IDごと停止する案。依存、権利、動画、性能のゲート通過前は導入しない |
 
 ## 戦闘、進行、制作を支えるMod
