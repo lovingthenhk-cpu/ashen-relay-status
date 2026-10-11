@@ -394,3 +394,5 @@ Iron’s城塞の全10パーツを自然生成し、予約区画25チャンク�
 `NativeMonasteryCityRoutes` / `cityroutes` / `cityscan`を実装。元biome・高度・全パーツと48ブロック上限、都市建物・装飾の保護を維持。空gateway JSONは正例2/負例4を理由付きで確認（K-050）。街道previewは五出口で候補なし・編集0、都市登録は未実装。旧原生寺院にもinline箱の表なしがあり、試案固有とは断定しない。
 
 探索実測は元組立約10.2秒、道路検査約0.24秒。street_spanを1へ揃えても最初の3pageは接続0。次のproposalVersion2は候補全件の初出順unique anchorでpage分割し、同位置の跨page再組立を省く。mutable assemblyをrequest間cacheせず、候補・部屋を減らさない。更新後はcursor0から再開する。寺院は未登録、採用済み7施設系列。
+
+proposalVersion2の実サーバー検証：1049固有anchorを3page/約30秒で全処理、合法11anchorの跨page重複0。接続候補0であり寺院の都市導入は未完了。

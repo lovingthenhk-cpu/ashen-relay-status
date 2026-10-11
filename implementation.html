@@ -523,7 +523,7 @@
 <p>塔の専用射手は、原生Hostを保存して再起動後も同じ個体/40HP・専用AIを保持すること、実死亡で進捗と巻物再入手条件を解禁することを確認した。報酬は強化素材・空印・Gem・Affix装備・弾の巻物。再起動後も同じ5報酬Itemと攻略済み一回分を保持し、重複配置を拒否した。管理者seedと未接続ServerPlayer proxyによる機械確認であり、自然player-tick配置・外観・実戦・FTB操作は未受入。</p>
 <p>接合の街道起点は、配置前の仮起点と実足場の差で長路になる問題K-043を修正中。元公園/噴水から起点を予測し候補ごとの実足場で距離を判定する案を試したが、既存火術の自動接続も失ったため撤回し、検証済みの処理へ戻した。K-043は未解決。48block上限や原生材・箱・既存worldの保護を緩めない。</p>
 <p><code>NativeMonasteryCityRoutes</code>と<code>structureplan monastery cityroutes / cityscan</code>を実装。元biome条件で全パーツを組み立て、本物の階段終端から街道・48ブロック上限・高さ・都市建物と装飾の保護を調べる。cursor付き探索では同じpage内の組立を再利用し、候補と拒否理由、組立と道路計算の時間を別記録する。既存条件の探索では接続候補0。実測は原生組立約10.2秒、道路検査約0.24秒で、組立が主要な負荷だった。寺院の部屋を削る対処は行わない。寺院の都市予約・配置・実processor保護は未実装で、登録済み7施設系列を増やしたとは扱わない。</p>
-<p>寺院のstreet_spanを既存施設と同じ1へ揃えても、最初の3pageは接続候補0。同じ位置の跨page再組立を検出したため、proposalVersion2では全候補の初出順unique anchorを先に列挙して分割する。候補や部屋を削らず、mutable assemblyのrequest間cacheを使わない。旧cursorは0から再開。変更後の実サーバー検証を進めている。</p>
+<p>寺院のstreet_spanを既存施設と同じ1へ揃えても、最初の3pageは接続候補0。同じ位置の跨page再組立を検出したため、proposalVersion2では全候補の初出順unique anchorを先に列挙して分割する。候補や部屋を削らず、mutable assemblyのrequest間cacheを使わない。旧cursorは0から再開。変更後は同範囲の1049固有anchorを3page・約30秒で全処理し、合法11anchorの跨page重複0を確認した。接続候補は0で、都市登録は依然未完了。</p>
 </article>
     <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-07 · 物語の核心は掲載しません。</footer>
   <h3>動的終端と道路の共有処理（2026-10-08）</h3>
