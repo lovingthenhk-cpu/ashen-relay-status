@@ -404,7 +404,7 @@ proposalVersion2の実サーバー検証：1049固有anchorを3page/約30秒で�
 
 `NativeMonasteryPartialGenerationProbe`は隔離試験用・既定無効。実際のSTRUCTURE_STARTSを保存し、再起動後に生成を完了させる検査では597パーツ・直接指定宝箱47個を保持し、原生配置対象76687位置が保存済みcontrolと一致した。一方、初期原生elementで一部の部屋を配置してから保存した混在checkpointでは578位置に差があり、板・照明等の欠落を含むため未合格。436位置は保存前から未配置で、初回部品BBがそのchunkに交差していない。全差の原因や攻略への影響は未確定。宝箱47個、既存NPCの個体ID、原生templateのNPC1・額縁7・防具立て3は保持した。
 
-`NativeMonasteryPlacementCopy` / `placementcopy`を検査用に追加。元の全assemblyを展開した後、別pieceをvanilla保存constructorで復元して初期配置と保存後の物理範囲を揃える案。元sourceを変更せず、順序・位置・回転・template・processor・junctionなどBB以外の保存fieldが変われば拒否する。読取prototypeで、実生成へ未適用。原生Mod側の通常生成や攻略ルートは維持。実processor・都市区画予約・未完成生成の復元・通常都市登録・自然配置と往復・報酬・再起動の検証が残る。登録済みは7施設系列、寺院は8施設目に数えない。人の外観・歩行・戦闘は未確認。
+`NativeMonasteryPlacementCopy` / `placementcopy`を検査用に追加。元の全assemblyを展開した後、別pieceをvanilla保存constructorで復元して初期配置と保存後の物理範囲を揃える案。元sourceを変更せず、順序・位置・回転・template・processor・junctionなどBB以外の保存fieldが変われば拒否する。通常生成・本番都市へ未適用。隔離配置試験は下記。原生Mod側の通常生成や攻略ルートは維持。実processor・都市区画予約・未完成生成の復元・通常都市登録・自然配置と往復・報酬・再起動の検証が残る。登録済みは7施設系列、寺院は8施設目に数えない。人の外観・歩行・戦闘は未確認。
 
 
 ## 寺院の配置copy・保存区画契約（2026-10-11、通常都市登録前）
@@ -418,9 +418,17 @@ proposalVersion2の実サーバー検証：1049固有anchorを3page/約30秒で�
 | `NativeMonasteryParcelMetadata` | version1、全piece数、本物終端index、道路edge/方位、元assembly空間とphysical/processor parcelのboundsを保存。欠損・未知version・逆bounds・不正方位/indexを拒否。434パーツ/本物終端384/北33ブロックの契約保存復元・反復load一致/source不変を確認。配置・都市登録なし。 |
 | `NativeMonasteryParcelCarrier` / `NativeMonasteryParcelPieceMixin` | 別placement copyの既存最初のpieceへ契約を保存。原生rawには追加NBTを書かず、metadata用の空建物/pieceを増やさない。 |
 | `NativeMonasteryParcelContract` / `parcelcopy` | 同じ全native assemblyから短い本物街道を選択し、原生意図空間と物理/processor範囲を合成。合成parcel内に入るstreetは拒否。source不変/全piece/契約の再読込を検査。配置・登録なし。 |
-| `StreetNativeStructure`の寺院専用契約 | 専用flag既定falseのbranchを実装、隔離runtime受入前。元delegate/biome/terrain/全部屋を維持。owned呼出だけで順序を安定化し、原生rawを変えない。 |
-| owned限定の`StructureStart`境界adapter | 保存parcelをvanilla参照、Lost Cities予約、FullChunkGuard、他構造予約へ共有するコードを実装、隔離runtime受入前。元assemblyの意図的空間を消さず、任意の拡大marginで接続街道を潰さない。 |
-| `NativeStreetJobs`の保存frame branch | 予定。本物終端・方位を読む共通道路工事。新chunk由来、未FULL pending、保存再開、一回だけの工事を検証。 |
+| `StreetNativeStructure`の寺院専用契約 | 専用flag既定falseのbranchを実装。隔離draftで434パーツと保存境界/scope復帰を確認。元delegate/biome/terrain/全部屋を維持。owned呼出だけで順序を安定化し、原生rawを変えない。 |
+| `NativeStructureReservationBounds` / `NativeMonasteryParcelStartMixin` | 保存parcelをvanilla参照、Lost Cities予約、FullChunkGuard、他構造予約へ共有するコードを実装。隔離した生成段階で434パーツと都市上書き回避を確認。元assemblyの意図的空間を消さず、任意の拡大marginで接続街道を潰さない。 |
+| `NativeMonasteryOrderContext` | owned wrapperの呼出内だけ順序を安定化し、終了/例外時に元scopeへ復帰。global実験falseでも434パーツと保存境界を確認。 |
+| `NativeVillageStreetReservation` | 四方向の街道範囲を元村の生成/隣接除外へ照合。旧westの条件を維持。 |
+| `NativeStreetJobs`の保存frame branch | 本物終端・方位を読む共通道路工事を実装。専用automatic flagは既定falseで独立停止可。隔離生成で未FULL pendingを保存し、cold起動後の再開/工事は検証中。 |
 | `street_monastery.json` / structure_set JSON | 予定。実processor/全保護/通常自然都市配置/往復/loot/再起動を隔離検証してから有効化。元Modの通常生成とNPC攻略ルートは移管受入まで保持。 |
+
+試験用の生成設定だけで434パーツが生成され、42区画のうち20FULL・10照明準備・12洞窟生成という途中状態を保存した。元の意図空間と地盤処理範囲の契約、北側の本物終端、未完了の道路ジョブを保持。順序の安定化はowned呼出だけで、原生Modの通常生成設定は変更していない。試験用saltで選んだ配置なので、通常都市の出現分布・他施設回避の合格には使わない。
+
+隔離fixtureの途中保存から再開し、北側街道から本物の階段終端へ33ブロック・104編集の道路が自動接続した。上方の原生屋根飾りは残し、吹き抜けは任意の処理とする。街道と終端の往復33ノード、塔内までの往復37ノードをproxyで確認。42区画がFULLになった後も434パーツの全保存fieldと区画契約が途中保存と一致し、直接指定の戦利品41個、NPC1・額縁1、既存NPCの個体IDを保持した。inline戦利品の52候補中41で表がない問題は別に記録し、全報酬の合格とはしていない。人の外観・実操作・全戦闘は未確認。
+
+`ownedstreetpreview [untracked]`は登録済みのowned startから保存frameを読む診断。通常の道路ジョブと同じ保護判定を、書込なしで確認する。完成後のcold起動で再preview編集0・同じ完了job保持を確認。未追跡区画・通路上の樽・完成済み地形への再生成は書込0で拒否した。周辺を未ロードにした場合も書込0で拒否した。他startの追加負例と通常都市登録は引き続き工程で追う。
 
 **R-27W4/Mは未完了、採用済み7施設系列。** 寺院の都市登録と全攻略・人の体験、後続施設/遭遇/武器更新の予定は維持している。

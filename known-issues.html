@@ -326,7 +326,7 @@
 <td>K-049</td>
 <td>寺院jigsawのinline戦利品指定を従来の箱監査が対象に含めていなかった</td>
 <td>従来の23/47箱の合格はtemplateの直接LootTable NBTのみ。427piece自然個体ではinline final_stateの候補38位置中12位置に表が残り、26位置は箱/樽が存在してもLootTableなし・Items空。vanilla置換processorは解析したinline NBTを配置値へ渡さない</td>
-<td><strong>監査範囲を明記・追加診断、原因と対応は保留</strong>。inline候補を独立表示し直接箱の合格へ混ぜない。旧原生463pieceでもinline23候補中4位置に表なし・Items0を確認。順序試案だけに固有ではない。12位置に残る理由/他processorや重複pieceの影響は未確定。必須報酬破損とは未立証で、一律のloot注入や元Mod変更はしない</td>
+<td><strong>監査範囲を明記・追加診断、原因と対応は保留</strong>。inline候補を独立表示し直接箱の合格へ混ぜない。旧原生463pieceでもinline23候補中4位置に表なし・Items0を確認。順序試案だけに固有ではない。12位置に残る理由/他processorや重複pieceの影響は未確定。必須報酬破損とは未立証で、一律のloot注入や元Mod変更はしない。2026-10-11の434piece都市fixtureでは直接loot41全PASSだが、inline52候補中41で表なし。直接箱の保存保持とinline割当を分け、全報酬の受入とはしない</td>
 </tr>
 <tr>
 <td>K-050</td>
@@ -338,7 +338,13 @@
 <td>K-051</td>
 <td>寺院parcel保存Mixinが専用サーバーの実行時名を解決できず起動失敗</td>
 <td>build436157はコンパイル成功、隔離起動でaddAdditionalSaveDataのtargetなし/No refMap loaded。固定Forgeプロジェクトは既存external Mixinがremap=falseで、refmap生成未設定</td>
-<td><strong>機械検証で修正済み</strong>。b17d0の隔離サーバー起動、434piece契約の保存再読込/反復load/source不変、raw初期597/0db・保存597/8e1・旧山岳43の回帰を確認。固定1.20.1のMojang/MCP mappingからruntime名m_183620_を照合し、dev名/runtime名を明示してrequire=1を維持。原生world読み込み前の隔離起動で失敗、通常生成/プレイヤーworldの採用へ進めない。失敗consoleを保全し、起動/metadata保存再読込/元raw全NBT不変を確認する</td>
+<td><strong>機械検証で修正済み</strong>。b17d0の隔離サーバー起動、434piece契約の保存再読込/反復load/source不変、raw初期597/0db・保存597/8e1・旧山岳43の回帰を確認。固定1.20.1のMojang/MCP mappingからruntime名m_183620_を照合し、dev名/runtime名を明示してrequire=1を維持。失敗buildは原生world読み込み前に停止し、通常生成/プレイヤーworldへ採用していない。失敗consoleを保全し、起動/metadata保存再読込/元raw全NBT不変を確認する</td>
+</tr>
+<tr>
+<td>K-052</td>
+<td>寺院の短路が、歩行空間より上の原生屋根飾りで拒否される</td>
+<td>隔離434pieceの初回cold→全周辺FULL後、北33block道路jobsがprotected open skyで書込0拒否。座標(-537,113,-244)は元room_roof_tower piece9のdark_oak_trapdoorと確認。必要headspaceではなく任意の吹き抜け処理が衝突</td>
+<td><strong>隔離自動工事で修正を確認・保存/再起動受入中</strong>。42d777でmixed checkpointの別copyからcold再開、全434pieceを保持して33block/104編集の自動道路がcompleted。全native素材と必要な歩行高さは保護し、上方に原生屋根がある列は吹き抜けにせず屋根付き接続を残す。箱/player/他start/歩行空間の保護を緩めない。失敗world/jobと元template座標を保全し、別mixed checkpoint copyで検証する。通常都市未登録</td>
 </tr>
 </tbody>
 </table>
@@ -351,7 +357,7 @@
 <h2>更新手順</h2>
 <p>発見時にID・場所・ユーザーへの影響・確認済み範囲・許容／保留／要修正を記す。修正時は証拠と残る条件を追記し、行を消さない。過去資料の旧問題を今も発生すると決めつけず、追加で見つかった記録は本書へ集約する。公開同期時はログ、ローカル接続情報、認証情報、物語の核心を掲載しない。</p>
 </article>
-    <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-04 · 物語の核心は掲載しません。</footer>
+    <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-11 · 物語の核心は掲載しません。</footer>
   </main>
 </body>
 </html>
