@@ -13,6 +13,9 @@
     <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="mods.html">Mod採用表</a><a href="ideas.html">旧案の採用台帳</a><a href="seams.html">縫合パターン58件</a><a href="delivery.html" aria-current="page">次の作業と実装受入</a><a href="implementation.html">実装ファイル</a><a href="completion.html">完成工程</a><a href="known-issues.html">不具合・許容事項</a></nav>
     <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
     <article class="document"><h1>次の作業と受入条件</h1>
+<h2>2026-10-11 追加制作：ビル・置物・小構造物の候補展示</h2>
+<p>GLM5.3へ初回32候補（ビル12・変な置物12・小構造物8）と低価値Lootの制作を依頼。固定版のレシピ/取得方法、本作の進行文書、ネット情報、指定した普通の石・木材・ガラス等を根拠に素材価値を判定する。名称や装飾用途だけで安価と判断せず、回収可能な総量も確認。稀なdiamond blockは初回全体4以下/一候補1以下の予算。</p>
+<p>番号付きの別展示worldへ並べ、本人が目視で採否を選ぶ。Codexは巨大な形状定義の全文ではなく、実JSONから抽出したblock種類/個数を監査し、Loot JSONは全件確認する。現在は32件の初稿提出・素材/形式の監督レビュー中。展示の起動、外観の採否、Lost Cities通常生成への組込はまだ未完了。既存の他Mod原生施設・戦闘・攻略の追加計画を置き換えたり減らしたりしない。</p>
 <h2>2026-10-11 最新方針：都市へ集約・元生成停止・物語を一本化</h2>
 <p>Lost Cities外の独立構造物はなるべく生成させず、都市内に多数・多様な施設を配置する。元Modの建築・敵・技・アイテムを部品として参照し、元Mod独自の物語・案内・攻略順はAshen Relayの進行へ組み替える。旧「原生生成/元ストーリーを維持」の記述は変更前の方針。</p>
 <p><strong>実装した設定</strong>：Iron’s城塞・山岳塔・火術塔とMowzie寺院の元structure setにfrequency=0を追加。独立した都市wrapperと必要な原生登録は維持。全Mod起動とselftest、元山岳template参照を確認。既存の建築は消去しない。自然生成での停止/移管後分布の実測は未完了。</p>
