@@ -396,3 +396,12 @@ Iron’s城塞の全10パーツを自然生成し、予約区画25チャンク�
 探索実測は元組立約10.2秒、道路検査約0.24秒。street_spanを1へ揃えても最初の3pageは接続0。次のproposalVersion2は候補全件の初出順unique anchorでpage分割し、同位置の跨page再組立を省く。mutable assemblyをrequest間cacheせず、候補・部屋を減らさない。更新後はcursor0から再開する。寺院は未登録、採用済み7施設系列。
 
 proposalVersion2の実サーバー検証：1049固有anchorを3page/約30秒で全処理、合法11anchorの跨page重複0。接続候補0であり寺院の都市導入は未完了。
+
+
+## 寺院の四方接続と途中保存（2026-10-11、R-27W4/M未完了）
+
+`NativeStreetRoadFrame`は道路計算を四方へ対応させ、元建物を移動・回転しない。元biome・全部屋・48ブロック上限・傾斜・都市建物と装飾の保護を維持し、434パーツの候補で北側街道から本物の階段終端へ33ブロックの経路を確認した。幾何候補であり、工事・都市登録の成功ではない。共通loaded道路Planへ素材・照明判定を接続し、旧山岳塔の43ブロック往復を4検査・編集0で確認。入口scanと工事最後の保護判定も共有し、実工事への接続を進める。
+
+`NativeMonasteryPartialGenerationProbe`は隔離試験用・既定無効。実際のSTRUCTURE_STARTSを保存し、再起動後に生成を完了させる検査では597パーツ・直接指定宝箱47個を保持し、原生配置対象76687位置が保存済みcontrolと一致した。一方、初期原生elementで一部の部屋を配置してから保存した混在checkpointでは578位置に差があり、板・照明等の欠落を含むため未合格。436位置は保存前から未配置で、初回部品BBがそのchunkに交差していない。全差の原因や攻略への影響は未確定。宝箱47個、既存NPCの個体ID、原生templateのNPC1・額縁7・防具立て3は保持した。
+
+`NativeMonasteryPlacementCopy` / `placementcopy`を検査用に追加。元の全assemblyを展開した後、別pieceをvanilla保存constructorで復元して初期配置と保存後の物理範囲を揃える案。元sourceを変更せず、順序・位置・回転・template・processor・junctionなどBB以外の保存fieldが変われば拒否する。読取prototypeで、実生成へ未適用。原生Mod側の通常生成や攻略ルートは維持。実processor・都市区画予約・未完成生成の復元・通常都市登録・自然配置と往復・報酬・再起動の検証が残る。登録済みは7施設系列、寺院は8施設目に数えない。人の外観・歩行・戦闘は未確認。

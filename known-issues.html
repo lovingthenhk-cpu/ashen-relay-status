@@ -315,7 +315,7 @@
 <td>K-047</td>
 <td>寺院の保存復元でnative assembly BBと物理BBが異なる</td>
 <td>新規427pieceの事前plan/初回committedの全NBT SHA a4d19fe1…、再起動committedはea36afc2…。全field比較では260pieceのBBだけ異なり、順序・位置・回転・他保存field一致、23loot保持。旧raw原本も保存element_typeはminecraft:single_pool_element</td>
-<td><strong>原生保存方式の差を記録・都市保護契約へ反映中</strong>。Mowzie独自elementはSingleのtypeを継承し、復元時に通常templateのBBを再計算。BB除外を全NBT一致とは呼ばない。physical template/processor範囲を別に保護し、元assembly boxを修正しない。第二seed597pieceでもBB341だけ差・他field一致、47loot保存保持。起動直後の初回比較診断は汎用error、後続正常で具体原因未確定。外観/未完了生成の復元は未受入</td>
+<td><strong>原生保存方式の差を記録・都市保護契約へ反映中</strong>。Mowzie独自elementはSingleのtypeを継承し、復元時に通常templateのBBを再計算。BB除外を全NBT一致とは呼ばない。physical template/processor範囲を別に保護し、元assembly boxを修正しない。第二seed597pieceでもBB341だけ差・他field一致、47loot保存保持。起動直後の初回比較診断は汎用error、後続正常で具体原因未確定。STRUCTURE_STARTSで保存した第二seed597pieceも、cold restartでBB341だけ差・他field/layout保持、その後FULL/47直接loot・中央入口往復を確認。STARTSから再開した原生76687配置セルはcontrolとblockstate一致。全potential envelopeは自然地形等13494差で同一ではない。初期原生elementから一部配置して保存した混在checkpointでは578原生対象セル差（板・照明等のAIR化を含む）。そのうち436セルは初回piece BBが対象chunkに交差せず、保存前から欠落し再起動後も不変。宝箱47・NPC1/個体UUID・額縁7・防具立て3は保持。初期配置と保存復元の境界箱を揃える別placement copyを未登録の読取試案として検査中。全578の因果/攻略影響・都市wrapper/processor保護/人の外観は未受入</td>
 </tr>
 <tr>
 <td>K-048</td>
