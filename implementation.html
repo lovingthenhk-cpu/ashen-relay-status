@@ -590,6 +590,39 @@
 <h3>寺院の近隣予測：接続路なしの結果だけを再利用</h3>
 <p><code>NativeMonasteryNoRouteCache</code>を追加。owned安定組立で確定した「都市接続路なし」の結果だけを8192件まで保持し、同じ失敗地点の全部屋調査を繰り返さない。成功builderやloot、既存建築・ロード状態の安全判定は保持しない。資源再読込/ワールド終了で破棄し、再読込前の計算が新しい記録へ書き込まない。以前の原生可変組立cache案とは条件が異なり、原生通常生成へ適用しない。build済み、同結果の再利用・再読込破棄・原生非干渉の専用サーバー検証中。通常抽選の合格個体はまだ未受入。</p>
 <p>no-route負例は初回約2.1秒→再利用0.1秒で同じ棄却。通常原生planの前後で記録件数/利用数は不変、資源再読込で全0へ、再評価は実計算へ戻ることを確認。成功434パーツ/保存区画の復元は維持し、成功builderは格納しない。候補を間引く抽選では接続可能な地点を取りこぼしたため、固定saltの全chunk候補試験へ戻り、実際の判定負荷と配置成功を確認する。全chunkに建物を置く設定ではない。</p>
+<h3>2026-10-11 寺院の通常登録（登録8系列、通常分布は未受入）</h3>
+<table>
+<thead>
+<tr>
+<th>実装ファイル</th>
+<th>責務・Mod部品の維持/移管/停止</th>
+<th>検証・残条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>worldgen/structure/street_monastery.json</code></td>
+<td>Mowzieの元monastery全room/NBT/processor/model/loot/Sculptor・Bluffをdelegate参照。都市保護parcel/終端metadataと自動街道をowned個体へ付加。raw元Modの通常生成とAI/試験は維持</td>
+<td>高密度通常saltで614/CW90の自然配置、30FULL、east31block/385編集、4往復、loot16/16、NPC1/frame8/stand5、全保存field・UUID・job dataのcold維持を確認。本番spacing4の遭遇分布/人の外観と操作は未受入</td>
+</tr>
+<tr>
+<td><code>worldgen/structure_set/street_monastery.json</code></td>
+<td>通常salt27062744/spacing4/separation1/frequency1。旧high-density負荷試験spacing1を本番へ入れない</td>
+<td>旧592普通候補0有効を失敗履歴として残す。通常出現率と冷間負荷の改善を続ける。全seed/全回転の網羅待ちで登録を止めない</td>
+</tr>
+<tr>
+<td><code>NativeMonasteryOrderContext.ownedValidPoint</code> / order Mixin</td>
+<td>ownedだけ元lazy stubをbiome filter後にmaterializeし、native queueの既存ordinal scopeを維持</td>
+<td>global実験falseで通常614生成。rawがownedへ変わるglobal設定は追加しない。旧0664の基準取得はwatchdog失敗で、旧全NBT一致は未確認</td>
+</tr>
+<tr>
+<td><code>nativechunkticket add/remove/status</code></td>
+<td>runtime-onlyの正常worldgen要求/非blocking FULL確認。専用の管理コマンドで直接structureを置かない</td>
+<td>add/status/committed応答0.1秒。同期forceloadの60秒停止は保全。非同期化を生成時間短縮と呼ばない</td>
+</tr>
+</tbody>
+</table>
+<p>通常登録8系列、7系列の通常設定での自然接合証拠と、寺院のhigh-density機能証拠を区別する。原生全体の通常生成停止、NPCルート移管、3seed分布、ピラミッド/墓地/工場/地下祠と後続の敵能力縫合を削らない。R-27W4/M未完了。</p>
 </article>
     <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-11 · 物語の核心は掲載しません。</footer>
   </main>

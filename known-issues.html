@@ -70,7 +70,7 @@
 <td>K-005</td>
 <td>城塞の配置前道路予測64ブロックと、保存個体の実道路36ブロックが一致しない</td>
 <td>seed12345の同座標再現試験。保存個体の道路・主塔往復は成功</td>
-<td><strong>保留／調査対象</strong>。保存個体を遊ぶ妨げではない。予測差のある条件で自然配置が成立したとは書かない</td>
+<td><strong>保留／調査対象</strong>。保存個体を遊ぶ妨げではない。予測差のある条件で自然配置が成立したとは書かない  寺院の工事記録31blockに対しcold previewは隣のwalkable開始セルで30block。編集0・実道路の往復は維持し、元の工事記録を改変しない。</td>
 </tr>
 <tr>
 <td>K-006</td>
@@ -334,7 +334,7 @@
 <td>K-049</td>
 <td>寺院jigsawのinline戦利品指定を従来の箱監査が対象に含めていなかった</td>
 <td>従来の23/47箱の合格はtemplateの直接LootTable NBTのみ。427piece自然個体ではinline final_stateの候補38位置中12位置に表が残り、26位置は箱/樽が存在してもLootTableなし・Items空。vanilla置換processorは解析したinline NBTを配置値へ渡さない</td>
-<td><strong>監査範囲を明記・追加診断、原因と対応は保留</strong>。inline候補を独立表示し直接箱の合格へ混ぜない。旧原生463pieceでもinline23候補中4位置に表なし・Items0を確認。順序試案だけに固有ではない。12位置に残る理由/他processorや重複pieceの影響は未確定。必須報酬破損とは未立証で、一律のloot注入や元Mod変更はしない。2026-10-11の434piece都市fixtureでは直接loot41全PASSだが、inline52候補中41で表なし。直接箱の保存保持とinline割当を分け、全報酬の受入とはしない</td>
+<td><strong>監査範囲を明記・追加診断、原因と対応は保留</strong>。inline候補を独立表示し直接箱の合格へ混ぜない。旧原生463pieceでもinline23候補中4位置に表なし・Items0を確認。順序試案だけに固有ではない。12位置に残る理由/他processorや重複pieceの影響は未確定。必須報酬破損とは未立証で、一律のloot注入や元Mod変更はしない。2026-10-11の434piece都市fixtureでは直接loot41全PASSだが、inline52候補中41で表なし。直接箱の保存保持とinline割当を分け、全報酬の受入とはしない  通常614個体もinline候補27中19に表なし。直接loot16/16のPASSはこれを含まない。</td>
 </tr>
 <tr>
 <td>K-050</td>
@@ -362,7 +362,7 @@
 </tr>
 </tbody>
 </table>
-<p>| K-054 | 寺院の密度試験で近隣候補の全組立を繰り返し、server tickがwatchdog制限を超える | spacing1の読取試験で220候補の後、合法候補の相互予約判定が60秒を超えて隔離サーバー停止。stackは近隣native jigsawのnoise高度計算。本人worldは未操作 | <strong>要修正・本番未採用</strong>。失敗world/logを保全。候補範囲と同じ地形計算の重複を減らし、全room・短路・相互保護を維持して新しい隔離worldで再検証。watchdog解除で合格にしない。ownedの高度/二重調査を削減し、接続路なしだけをbounded再利用。単独負例2.104秒→0.1秒、reload破棄/原生非干渉/成功434維持を機械確認。通常密度の性能・自然配置は再試験中。biome gate後にowned assemblyを遅延してもvanilla forceloadの同期getChunk待ちでwatchdog停止したため、確認用の非同期region ticketを追加。生成完了・性能改善は未確認 |</p>
+<p>| K-054 | 寺院の高密度試験で近隣候補の全組立を繰り返し、同期取得がwatchdog制限を超える | spacing1の読取計画とvanilla forceloadが60秒超で停止。thread dumpは近隣native assembly/同期FULL取得待ち。元worldの19MCA hash不変 | <strong>高密度は本番不採用・性能は残件</strong>。全room/短路/保護を維持し、owned高度再利用・二重調査削減・no-route bounded cache・biome後の組立を追加。非同期ticketで614の自然配置/31block自動道/全parcel/cold維持を確認したが初回約112秒。本番はspacing4/separation1で登録し候補密度を下げる。高速化の実測・本番遭遇率は未受入。watchdog解除や基準失敗の読み替えで合格にしない |</p>
 <h2>不具合と断定していないもの</h2>
 <ul>
 <li>城塞・火術塔の人の外観／歩行感、全回転・通常遭遇頻度、未導入施設は未検証・未実装として工程に残す。未確認だけを理由に軽微な見た目を全て修正する義務へ変えない。</li>
