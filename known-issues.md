@@ -71,6 +71,8 @@
 | K-052 | 寺院の短路が、歩行空間より上の原生屋根飾りで拒否される | 隔離434pieceの初回cold→全周辺FULL後、北33block道路jobsがprotected open skyで書込0拒否。座標(-537,113,-244)は元room_roof_tower piece9のdark_oak_trapdoorと確認。必要headspaceではなく任意の吹き抜け処理が衝突 | **隔離自動工事で修正を確認・保存/再起動受入中**。42d777でmixed checkpointの別copyからcold再開、全434pieceを保持して33block/104編集の自動道路がcompleted。全native素材と必要な歩行高さは保護し、上方に原生屋根がある列は吹き抜けにせず屋根付き接続を残す。箱/player/他start/歩行空間の保護を緩めない。失敗world/jobと元template座標を保全し、別mixed checkpoint copyで検証する。通常都市未登録 |
 | K-053 | 寺院fixtureが原生JSONのstepをコピーし、Java側の生成段階overrideを保持していなかった | pinned MonasteryStructureはstep()をUNDERGROUND_DECORATIONにoverrideするが、原生JSONはsurface_structures。旧434piece fixtureは後者をコピー。区画/道路/保存/41直接lootの既存検査はそのfixture条件での結果 | **修正・隔離受入済み**。実delegateのstep/terrain一致を生成前に要求。正しいunderground_decorationの別未生成fixtureでmixed→cold→42FULL/434全保存field・区画契約/33block道路104編集/直接loot41/NPC1・frame1を保持。full保存後のcoldも編集0/同completed job1 receipt/元NPC UUID保持。旧surface結果はその条件の記録として保全。通常都市未登録・人の受入未検証 |
 
+| K-054 | 寺院の密度試験で近隣候補の全組立を繰り返し、server tickがwatchdog制限を超える | spacing1の読取試験で220候補の後、合法候補の相互予約判定が60秒を超えて隔離サーバー停止。stackは近隣native jigsawのnoise高度計算。本人worldは未操作 | **要修正・本番未採用**。失敗world/logを保全。候補範囲と同じ地形計算の重複を減らし、全room・短路・相互保護を維持して新しい隔離worldで再検証。watchdog解除で合格にしない |
+
 ## 不具合と断定していないもの
 
 - 城塞・火術塔の人の外観／歩行感、全回転・通常遭遇頻度、未導入施設は未検証・未実装として工程に残す。未確認だけを理由に軽微な見た目を全て修正する義務へ変えない。
