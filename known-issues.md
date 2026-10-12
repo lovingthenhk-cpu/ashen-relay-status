@@ -108,3 +108,5 @@
 | K-062 | Codexの隔離専用設定検査コマンドがholder参照を展開してStackOverflowで停止 | StructurePlacement.CODECを普通のJsonOpsでencodeし、exclusion_zoneのstructure set参照が再帰展開。補助コマンド実行後の隔離serverにcrash report。全次元保存/ラッパーrc0でも正常終了とは扱わない | **検査側を訂正・実確認済み**。RegistryOpsで参照をIDとしてserializeし、liveの元6set頻度0・独立wrapper4件頻度1を確認。補助scriptは本番パックに入っていない。クラッシュ/ログ/途中証拠を保全。本人world/展示world/新建物の定義は変更しない。起動/自然橋196セル/往復・塔/小屋coldの成功と区別して記録 |
 
 | K-063 | 自然2階倉庫の梯子は屋根へ貫通せず、直上空間検査の期待が過剰 | 11セル支持/乾燥は成功するが最上端の上は屋根。2階で区切っても上に梯子が続くためcapCollisionEmpty=false | **検査期待を限定・建築変更不要**。必須の2階箱へは梯子横の立ち位置から実経路が成功。屋根へ出る機能は要求しない。プレイヤー登攀は未検証、失敗期待の証拠も保存。必須階の横出口まで塞がる場合は修正対象 |
+
+| K-064 | 元生成停止後のIron’s取引地図が都市移管先を検索しない | 固定Priest/Pyromancerが城塞/湿地小屋の元ID地図を販売し、FurledMapItemがそのStructure holderを直接検索する。都市城塞wrapperと直接配置小屋を検索対象に含めない | **要移管・実操作未検証**。新規元生成を復活させず都市案内adapter/直接配置入口indexを実装する。既存原生建築が検索できる場合も都市移管済みとはしない。作業票STRUCTURE-LOCATOR-MIGRATION、bytecode証拠保存 |
