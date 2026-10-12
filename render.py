@@ -2,6 +2,7 @@
 """Render the public plan pages from local Markdown sources."""
 from pathlib import Path
 from html import escape
+import sys
 from markdown_it import MarkdownIt
 
 ROOT = Path(__file__).resolve().parent
@@ -26,7 +27,13 @@ def nav_for(filename):
 
 
 md = MarkdownIt('commonmark').enable('table')
+selected = set(sys.argv[1:])
+known = {filename for filename, _ in PAGES[1:]}
+if selected - known:
+    raise SystemExit(f"unknown page(s): {', '.join(sorted(selected - known))}")
 for filename, label in PAGES[1:]:
+    if selected and filename not in selected:
+        continue
     body = md.render((ROOT / filename.replace('.html', '.md')).read_text())
     html = f'''<!doctype html>
 <html lang="ja">
