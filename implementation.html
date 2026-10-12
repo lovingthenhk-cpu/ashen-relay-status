@@ -640,7 +640,9 @@
 <h2>2026-10-12 都市移管の設定単位と監査出力</h2>
 <p>原生46setを実ID単位の台帳へ展開し、固定jar SHA・元placement・pack上書き・structure metadata・都市側の役割・未受入・撤回をJSONへ記録する監査scriptを追加。ワールドや巨大shapeは読まず、6停止設定と40未実装、第二波の未受入を区別する。独立template配置の水術塔/湿地小屋について停止設定下の通常接合・攻略素材・locatorを次に確認する。<a href="mods.html">全46件の対象一覧</a>へ掲載。metadata監査を生成停止の実測としない。</p>
 <h3>元生成停止後の案内移管（修正未実装）</h3>
-<p>Iron’sの城塞/湿地小屋の取引地図が元Structure IDだけを検索することを固定版コードで確認。城塞は都市wrapperへ解決するadapter、直接配置小屋は実生成した都市入口を保存する<code>NativeFacilityLocations</code>相当のSavedDataと案内adapterを実装する。旧地図NBT、別次元、未発見施設、無関係な地図、保存再起動、アイテム非消費と検索負荷を検証する。元の独立生成を再開して回避しない。現時点ではコード経路の監査段階で、修正/実操作は未検証。</p>
+<p>Iron’sの城塞/湿地小屋の取引地図が元Structure IDだけを検索することを固定版コードで確認。城塞は都市wrapperへ解決するadapter、直接配置小屋は実生成した都市入口を保存する<code>NativeFacilityLocations</code>相当のSavedDataと案内adapterを実装する。旧地図NBT、別次元、未発見施設、無関係な地図、保存再起動、アイテム非消費と検索負荷を検証する。元の独立生成を再開して回避しない。城塞のCityMapTargetsを部分実装し、固定codecの現行/旧地図と不変例5ケースを確認。小屋のindex、城塞の実検索/表示は未完了。</p>
+<h3>単体原生施設の一括導入を開始</h3>
+<p>固定Modの616テンプレートを機械索引化し、寸法とjigsaw数で単体候補を抽出する。小寸法/jigsaw0の119件には部分部屋・装飾・例示データも含み、完成建築数ではない。最初にApotheosis leaf/sand/spruceの3型を一括調査する。9JSONの都市wrapper/入口profile/配置setを隔離下書きとして準備し、原生の全template・Loot・ランダムGem processorを実行時参照する。3型の本番登録・元生成停止・実配置受入はまだ未完了。地区の認識は既存NativeStructureFamilyで共有する。</p>
 </article>
     <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-12 · 物語の核心は掲載しません。</footer>
   </main>

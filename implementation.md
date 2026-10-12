@@ -503,4 +503,8 @@ no-route負例は初回約2.1秒→再利用0.1秒で同じ棄却。通常原生
 
 ### 元生成停止後の案内移管（修正未実装）
 
-Iron’sの城塞/湿地小屋の取引地図が元Structure IDだけを検索することを固定版コードで確認。城塞は都市wrapperへ解決するadapter、直接配置小屋は実生成した都市入口を保存する`NativeFacilityLocations`相当のSavedDataと案内adapterを実装する。旧地図NBT、別次元、未発見施設、無関係な地図、保存再起動、アイテム非消費と検索負荷を検証する。元の独立生成を再開して回避しない。現時点ではコード経路の監査段階で、修正/実操作は未検証。
+Iron’sの城塞/湿地小屋の取引地図が元Structure IDだけを検索することを固定版コードで確認。城塞は都市wrapperへ解決するadapter、直接配置小屋は実生成した都市入口を保存する`NativeFacilityLocations`相当のSavedDataと案内adapterを実装する。旧地図NBT、別次元、未発見施設、無関係な地図、保存再起動、アイテム非消費と検索負荷を検証する。元の独立生成を再開して回避しない。城塞のCityMapTargetsを部分実装し、固定codecの現行/旧地図と不変例5ケースを確認。小屋のindex、城塞の実検索/表示は未完了。
+
+### 単体原生施設の一括導入を開始
+
+固定Modの616テンプレートを機械索引化し、寸法とjigsaw数で単体候補を抽出する。小寸法/jigsaw0の119件には部分部屋・装飾・例示データも含み、完成建築数ではない。最初にApotheosis leaf/sand/spruceの3型を一括調査する。9JSONの都市wrapper/入口profile/配置setを隔離下書きとして準備し、原生の全template・Loot・ランダムGem processorを実行時参照する。3型の本番登録・元生成停止・実配置受入はまだ未完了。地区の認識は既存NativeStructureFamilyで共有する。

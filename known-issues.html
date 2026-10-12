@@ -380,7 +380,7 @@
 <p>| K-061 | 普通の採用街区の砂岩/石英/銅を旧R-21静的marker専有チェックが拒否 | 32採用後、6paletteで4一般建材IDが重なり9件の静的FAIL。productionにR-21単独ID判定はなく、旧診断の専有仮定が普通の建築へ広がっていた | <strong>監査の適用範囲を訂正</strong>。今回の6palette/4材料の装飾用途だけ明示例外、旧vocabulary所属/marker検査は維持。新街区をR-21機能に数えない。今後の診断では施設/style所属を併用する。本人が採用した外観は置換しない |</p>
 <p>| K-062 | Codexの隔離専用設定検査コマンドがholder参照を展開してStackOverflowで停止 | StructurePlacement.CODECを普通のJsonOpsでencodeし、exclusion_zoneのstructure set参照が再帰展開。補助コマンド実行後の隔離serverにcrash report。全次元保存/ラッパーrc0でも正常終了とは扱わない | <strong>検査側を訂正・実確認済み</strong>。RegistryOpsで参照をIDとしてserializeし、liveの元6set頻度0・独立wrapper4件頻度1を確認。補助scriptは本番パックに入っていない。クラッシュ/ログ/途中証拠を保全。本人world/展示world/新建物の定義は変更しない。起動/自然橋196セル/往復・塔/小屋coldの成功と区別して記録 |</p>
 <p>| K-063 | 自然2階倉庫の梯子は屋根へ貫通せず、直上空間検査の期待が過剰 | 11セル支持/乾燥は成功するが最上端の上は屋根。2階で区切っても上に梯子が続くためcapCollisionEmpty=false | <strong>検査期待を限定・建築変更不要</strong>。必須の2階箱へは梯子横の立ち位置から実経路が成功。屋根へ出る機能は要求しない。プレイヤー登攀は未検証、失敗期待の証拠も保存。必須階の横出口まで塞がる場合は修正対象 |</p>
-<p>| K-064 | 元生成停止後のIron’s取引地図が都市移管先を検索しない | 固定Priest/Pyromancerが城塞/湿地小屋の元ID地図を販売し、FurledMapItemがそのStructure holderを直接検索する。都市城塞wrapperと直接配置小屋を検索対象に含めない | <strong>要移管・実操作未検証</strong>。新規元生成を復活させず都市案内adapter/直接配置入口indexを実装する。既存原生建築が検索できる場合も都市移管済みとはしない。作業票STRUCTURE-LOCATOR-MIGRATION、bytecode証拠保存 |</p>
+<p>| K-064 | 元生成停止後のIron’s取引地図が都市移管先を検索しない | 固定Priest/Pyromancerが城塞/湿地小屋の元ID地図を販売し、FurledMapItemがそのStructure holderを直接検索する。都市城塞wrapperと直接配置小屋を検索対象に含めない | <strong>城塞ID移管は部分実装・実操作未検証</strong>。現行/旧地図codecと不変例の5ケース確認。小屋は直接配置入口indexと案内移管が未実装、城塞の実検索/UIも残る。新規元生成を復活させない。既存原生建築が検索できる場合も都市移管済みとはしない。作業票STRUCTURE-LOCATOR-MIGRATION、bytecode証拠保存 |</p>
 </article>
     <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-12 · 物語の核心は掲載しません。</footer>
   </main>
