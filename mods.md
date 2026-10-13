@@ -4,9 +4,9 @@
 
 Lost Cities外の独立構造物はなるべく生成させず、都市内に多数・多様な施設を配置する。元Modの建築・敵・技・アイテムを部品として参照し、元Mod独自の物語・案内・攻略順はAshen Relayの進行へ組み替える。旧「原生生成/元ストーリーを維持」の記述は変更前の方針。
 
-**実装した設定**：Iron’s城塞・山岳塔・火術塔、Mowzie寺院、水術塔、湿地小屋、Apotheosis塔4型の元structure set、計10setをfrequency=0に変更。都市wrapperまたは都市の直接template配置と必要な原生登録は維持。砂のApotheosis塔は都市での通常抽選・自動街道接合・冷保存を確認。既存の建築は消去しない。全種・全seedでの停止と移管後分布は未測定。
+**実装した設定**：Iron’s城塞・山岳塔・火術塔、Mowzie寺院・フェラス室、水術塔、湿地小屋、Apotheosis塔4型の元structure set、計11setをfrequency=0に変更。都市wrapperまたは都市の直接template配置と必要な原生登録は維持。砂のApotheosis塔は都市での通常抽選・自動街道接合・冷保存を確認。既存の建築は消去しない。全種・全seedでの停止と移管後分布は未測定。
 
-**未完了の必須作業**：残る36構造setと小屋＋地下室の依存、ピラミッド・墓地・工場・地下祠などの都市移管/元生成停止を対にする。Apotheosis葉/トウヒ塔の自然配置・元Loot/Gem/地区戦闘も確認する。各Modの不要なspawn・loot流入・recipe・旧物語の案内/実績/locatorを実ID別に監査し停止/移管する。必要な戦闘・技・武器更新や企画の種類は削らない。海・次元等の必要環境は都市の対応地区または管理遠征へ移し、不可避の市外例外だけ理由と都市からの導線を明記する。
+**未完了の必須作業**：残る35構造setとAlex’s小屋の元生成依存、ピラミッド・墓地・工場・地下祠などの都市移管/元生成停止を対にする。Apotheosis葉/トウヒ塔の自然配置・元Loot/Gem/地区戦闘も確認する。各Modの不要なspawn・loot流入・recipe・旧物語の案内/実績/locatorを実ID別に監査し停止/移管する。必要な戦闘・技・武器更新や企画の種類は削らない。海・次元等の必要環境は都市の対応地区または管理遠征へ移し、不可避の市外例外だけ理由と都市からの導線を明記する。
 
 **都市調整は必須**：疎な都市設定を完成形とせず、市街の広さ・密度・街区接続を調整。固定profileを確認し、同じ3seed/同じ範囲で市街面積・連結面積・都市間隔・施設の実生成/種類/徒歩帰路/負荷を比較する。施設別Lootも魔術・工業・水辺と攻略段階へ合わせて調整する。R-27W4/MからR-28Dの受入に含める。具体値未確定、密度調整と全施設Loot/物語移管は未実装。
 
@@ -19,8 +19,8 @@ Lost Cities外の独立構造物はなるべく生成させず、都市内に多
 |---|---|---|---|---|
 | The Lost Cities `7.5.2` | 現世の道路と街区の基盤 | city/road判定、原生standard citystyle、worldstyle、building/part、接合語彙 | 道路と自然な区画 | 見た目を支配している独自 `vocab_*` 12棟と `link_tower` のselector参照をR-27Wで解消。`anchor_02` は主導線から外す。既存worldの建物は消さない |
 | Alex's Caves `2.0.2` | 六洞窟の探索、異なる環境素材 | `alexscaves:forlorn_hut_1` 9×9×9、`MAGNETIZING`、`BUBBLED`、`DEEPSIGHT` | 六洞窟、tablet導線、固有武器・drop | 洞窟全体は止めない。外部施設でのEffectは限定区画・短時間だけ |
-| Mowzie's Mobs `1.8.2` | フェラスを最初の強敵にする | `mowziesmobs:wroughtnaut_chamber` 19×7×19、`EntityBlockSwapper.swapBlock` | ボスAI、斧・兜、自然拠点 | 寺院の元生成停止設定を追加。他の移管拠点も元生成停止/都市移管へ。変換床から梯子・箱・出口を除外 |
-| Apotheosis `7.4.8` | 拾った装備のAffix/Socket/Gemで更新動機を作る | `tower_main/leaf/sand/spruce`、Affix/Gem装備 | 原生塔と強化入手 | 射手を変更した場合、その1体だけ元AI/dropの重複を止める。塔の元生成は都市側配置の分離後に停止。Affix/Gemは維持 |
+| Mowzie's Mobs `1.8.2` | フェラスを最初の強敵にする | `mowziesmobs:wroughtnaut_chamber` 19×7×19、`EntityBlockSwapper.swapBlock` | ボスAI、斧・兜、都市接合室の原生template | 寺院とフェラス室の元生成停止設定を追加。他の移管拠点も元生成停止/都市移管へ。変換床から梯子・箱・出口を除外 |
+| Apotheosis `7.4.8` | 拾った装備のAffix/Socket/Gemで更新動機を作る | `tower_main/leaf/sand/spruce`、Affix/Gem装備 | 塔4型の原生template/pool、強化入手 | 射手を変更した場合、その1体だけ元AI/dropの重複を止める。塔4型の元setは停止設定済み。Affix/Gemは維持 |
 | Iron's Spells 'n Spellbooks `3.16.3` | 呪文、巻物、詠唱、装備型呪文、地下と城塞 | `catacombs`、`evoker_fort`、LivingEntity caster | 原生施設、呪文、原生loot | 追加敵/追加lootは指定施設内だけ。城塞/山岳塔/火術塔の元生成停止設定を追加。不要要素は実ID別に監査 |
 | L_Ender's Cataclysm `3.16` | 大型ボス、工場、海と固有武器 | `ancient_factory`、`sunken_city`、`bone_fracture`、予兆攻撃 | 原生施設・ボス・固有drop | 工場の装置室1室だけに追加遭遇を置き、元装置・保護ブロックを上書きしない |
 | Bosses of Mass Destruction `1.1.2` | 寒冷地・地下・Nether・Endの四遠征 | `MagicMissileProjectile` と命中callback、Earthdive Spear素材 | 四施設、ボス、原生drop、通常レシピ | Ashen Relay追加報酬の二重支給のみ一回性状態で防ぐ |
@@ -80,18 +80,18 @@ Iron's Lib、Lionfish API、Citadel、Cerbons API、Apothic Attributes、Placebo
 外部ModのNBT、テクスチャ、モデルをpackへ複製する前に権利を監査する。可能な場合は公式jar内の登録済みIDとアセットを実行時に参照する。
 
 
-## 2026-10-12 原生構造set全46件の移管・停止対象
+## 2026-10-13 原生構造set全46件の移管・停止対象
 
-固定版の46setを全件作業化。6件はfrequency=0設定済み、40件は移管/停止未完了。うち第二波2件は都市接合の再受入を検証中。市外例外はまだ確定していない。必要な部品・戦闘AI・固有素材を残して都市へ集約し、案内/locator/進捗/元物語をパック側へ再構成する。既存建築を消去せず新規生成へ適用。表の都市側用途は実装済みと計画を含むため状態欄と合わせて読む。
+固定版の46setを全件作業化。11件はfrequency=0設定済み、35件は移管/停止未完了。フェラス室の設定は隔離全Mod起動とselftestを確認したが、新規都市接合と全seedの元生成停止は未実測。市外例外はまだ確定していない。必要な部品・戦闘AI・固有素材を残して都市へ集約し、案内/locator/進捗/元物語をパック側へ再構成する。既存建築を消去せず新規生成へ適用。表の都市側用途は実装済みと計画を含むため状態欄と合わせて読む。
 
-水術塔・湿地小屋・地下フェラス室・Apotheosis tower_mainは既存Javaがtemplateを直接参照して配置するため、原生setの自然配置と独立している。別Apotheosis3型の都市移管、Alex小屋templateを選ぶsetの対応、全locatorは未完了。次の停止候補は水術塔/湿地小屋で、停止設定下の通常接合/固有報酬/案内を検証する。
+水術塔・湿地小屋・地下フェラス室・Apotheosis tower_mainは既存Javaがtemplateを直接参照して配置するため、原生setの自然配置と独立している。Apotheosis別3型は都市wrapperへ登録し、砂型の自然接合だけ確認。Alex小屋templateを選ぶsetの対応、全locatorは未完了。
 
 | 元structure set ID | 現在の状態 | 都市側の用途/移管計画 |
 |---|---|---|
-| `apotheosis:tower_leaf` | 移管/停止未完了 | 都市塔の別外観候補（個別移管は未実装） |
-| `apotheosis:tower_main` | 移管/停止未完了 | 都市街路の射手塔 |
-| `apotheosis:tower_sand` | 移管/停止未完了 | 都市塔の別外観候補（個別移管は未実装） |
-| `apotheosis:tower_spruce` | 移管/停止未完了 | 都市塔の別外観候補（個別移管は未実装） |
+| `apotheosis:tower_leaf` | 停止設定済み・自然接合未検証 | 都市塔の別外観wrapper |
+| `apotheosis:tower_main` | 停止設定済み | 都市街路の射手塔 |
+| `apotheosis:tower_sand` | 停止設定済み・都市自然接合確認 | 都市塔の別外観wrapper |
+| `apotheosis:tower_spruce` | 停止設定済み・自然接合未検証 | 都市塔の別外観wrapper |
 | `bosses_of_mass_destruction:gauntlet_arena` | 移管/停止未完了 | 都市から到達する管理遠征/必要な攻略環境 |
 | `bosses_of_mass_destruction:lich_tower` | 移管/停止未完了 | 都市から到達する管理遠征/必要な攻略環境 |
 | `bosses_of_mass_destruction:obsidilith_arena` | 移管/停止未完了 | 都市から到達する管理遠征/必要な攻略環境 |
@@ -130,7 +130,7 @@ Iron's Lib、Lionfish API、Citadel、Cerbons API、Apothic Attributes、Placebo
 | `mowziesmobs:frostmaw_spawns` | 移管/停止未完了 | 都市周辺の管理戦闘区画/環境対応区画 |
 | `mowziesmobs:monasteries` | 停止設定済み・自然停止未実測 | 独立wrapperの街路施設 |
 | `mowziesmobs:umvuthana_groves` | 移管/停止未完了 | 都市周辺の管理戦闘区画/環境対応区画 |
-| `mowziesmobs:wrought_chambers` | 移管/停止未完了 | 都市地下のフェラス室 |
+| `mowziesmobs:wrought_chambers` | 停止設定済み・新規都市接合未検証 | 都市地下のフェラス室。原生template/ボス/lootは維持 |
 | `traveloptics:aqua_mage_tower` | 停止設定追加・都市接合再検証中 | 水辺の水術塔 |
 | `traveloptics:echo_shrine` | 移管/停止未完了 | 都市の魔術施設/必要環境への管理遠征 |
 | `traveloptics:void_cathedral` | 移管/停止未完了 | 都市の魔術施設/必要環境への管理遠征 |
