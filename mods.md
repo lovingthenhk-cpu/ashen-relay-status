@@ -86,6 +86,8 @@ Iron's Lib、Lionfish API、Citadel、Cerbons API、Apothic Attributes、Placebo
 
 水術塔・湿地小屋・地下フェラス室・Apotheosis tower_mainは既存Javaがtemplateを直接参照して配置するため、原生setの自然配置と独立している。Apotheosis別3型は都市wrapperへ登録し、砂型の自然接合だけ確認。Alex小屋templateを選ぶsetの対応、全locatorは未完了。
 
+**46setの外にある生成経路**：フェラス室の地上入口に使う`alexscaves:forlorn_hut_1`は`underground_cabin` setから出ない。`forlorn_hollows` biomeの`forlorn_ruins` featureが小屋7型とidolを選ぶ。残りの小屋/像を都市で生かし、featureだけ停止する方法とLoot移管を調べる。現在は未実装。`underground_cabin`7型は別施設家族として扱う。
+
 | 元structure set ID | 現在の状態 | 都市側の用途/移管計画 |
 |---|---|---|
 | `apotheosis:tower_leaf` | 停止設定済み・自然接合未検証 | 都市塔の別外観wrapper |

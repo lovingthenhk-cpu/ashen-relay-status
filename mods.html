@@ -273,6 +273,7 @@
 <h2>2026-10-13 原生構造set全46件の移管・停止対象</h2>
 <p>固定版の46setを全件作業化。11件はfrequency=0設定済み、35件は移管/停止未完了。フェラス室の設定は隔離全Mod起動とselftestを確認したが、新規都市接合と全seedの元生成停止は未実測。市外例外はまだ確定していない。必要な部品・戦闘AI・固有素材を残して都市へ集約し、案内/locator/進捗/元物語をパック側へ再構成する。既存建築を消去せず新規生成へ適用。表の都市側用途は実装済みと計画を含むため状態欄と合わせて読む。</p>
 <p>水術塔・湿地小屋・地下フェラス室・Apotheosis tower_mainは既存Javaがtemplateを直接参照して配置するため、原生setの自然配置と独立している。Apotheosis別3型は都市wrapperへ登録し、砂型の自然接合だけ確認。Alex小屋templateを選ぶsetの対応、全locatorは未完了。</p>
+<p><strong>46setの外にある生成経路</strong>：フェラス室の地上入口に使う<code>alexscaves:forlorn_hut_1</code>は<code>underground_cabin</code> setから出ない。<code>forlorn_hollows</code> biomeの<code>forlorn_ruins</code> featureが小屋7型とidolを選ぶ。残りの小屋/像を都市で生かし、featureだけ停止する方法とLoot移管を調べる。現在は未実装。<code>underground_cabin</code>7型は別施設家族として扱う。</p>
 <table>
 <thead>
 <tr>
