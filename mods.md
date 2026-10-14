@@ -86,7 +86,7 @@ Iron's Lib、Lionfish API、Citadel、Cerbons API、Apothic Attributes、Placebo
 
 水術塔・湿地小屋・地下フェラス室・Apotheosis tower_mainは既存Javaがtemplateを直接参照して配置するため、原生setの自然配置と独立している。Apotheosis別3型は都市wrapperへ登録し、砂型の自然接合だけ確認。Alex小屋templateを選ぶsetの対応、全locatorは未完了。
 
-**46setの外にある生成経路**：フェラス室の地上入口に使う`alexscaves:forlorn_hut_1`は`underground_cabin` setから出ない。`forlorn_hollows` biomeの`forlorn_ruins` featureが小屋7型とidolを選ぶ。小屋0/2/3/5に戦利品marker各1、小屋4/6に各2があり、元featureは原生の樽へ専用LootTableを後付けする。都市で原生templateを参照するときもこの処理を移管し、残りの小屋/像を都市で生かしてからfeatureだけ停止する。8型の参照poolとLoot移管processorを隔離試作し、実配置で元の対象8樽だけにLootが付き、非対象空樽1個が空のままと確認。原生NBTは複製せず参照し、小屋ごとの向きを保つ。小屋0/3/4/5の街路定義を隔離試作し、3と5では通常saltの自然生成→照明付き道路47/32ブロックのauto接合→入口往復/専用Loot→冷保存を確認。最初の別候補は道上限/鉄格子保護で工事を拒否し、小屋0/4でも通常saltの自然auto接合22/38ブロック・入口往復・原生Loot・再preview変更0を確認し、4型の成功例が揃った。コピーの新ビルドcold起動で4型の旧成功応答が完全一致。共通街路選択は最初の候補が保護/距離で失敗した場合に別候補も全保護条件で試す処理へ変更し、既存成功/selftest/箱保護の負例は確認したが、別候補で改善した実例は未確認。小屋2/6の上階扉と原生階段を使う契約6JSONを隔離に追加し検証中。都市の本番採用・idol広場・元feature停止は未実装。`underground_cabin`7型は別施設家族として扱う。
+**46setの外にある生成経路**：Alex’sの小屋7型と像はforlorn_hollows biomeのforlorn_ruins feature由来で、underground_cabin setとは別。指定樽だけのLoot処理と全8templateの種類を都市へ移管し、元featureだけを停止した。具体的な定義・素材・受入と残件は下の2026-10-14節。
 
 | 元structure set ID | 現在の状態 | 都市側の用途/移管計画 |
 |---|---|---|
@@ -149,22 +149,14 @@ Iron's Lib、Lionfish API、Citadel、Cerbons API、Apothic Attributes、Placebo
 
 本人採用の普通建築32をLCの建物選択へ追加し、全32登録/代表自然橋の196セルと往復を確認。既存の原生施設とは別枠。さらにGLM最大設定で凝ったMod建材の温室・水処理施設1件を制作中。途中自己集計4Mod/28建材/Mod比率98%は監督前の数値で、新1件の自然採用は未決定。
 
-### 2026-10-14 都市採集遺構5型を本番登録
+## 2026-10-14：都市の採集遺構と市外生成の停止
 
-Lost Cities街路 × Alex’s原生小屋0/2/3/4/5 × Apotheosis Gem粉の補給点として、30定義JSON＋専用Loot1JSONを本番へ追加。5型は造形のバリエーションで、5つの攻略系列とは数えない。原生の外形/梯子/階差/指定樽を参照し、骨/糸/紙/木炭/パンとAlex布片/消耗品・まれなGem粉を拾って次の探索や既存の継承触媒に使う。都市版の箱から元cave_tabletを流入させず、必要なtablet機能/洞窟準備はR-29Bの都市導線へ移管予定。元の表/洞窟/登録アイテムは維持する。
+**本番登録**：Lost Cities街路 × Alex’s原生小屋0/2/3/4/5/6の6造形＋像1。既存フェラス入口の小屋1と合わせ、元8templateの種類を保持する。原生NBTは実行時参照、7型×6定義＋都市Loot1＋元feature停止1＝44JSON。5つ/6つの新ボス攻略系列という数え方はしない。
 
-隔離の通常saltで5型の自然auto接合・外足場往復・元Loot・変更0・cold保持を代表確認。2型の上階入口は35ブロックの接合、6型は原生囲い/装飾にぶつかる契約を再設計中。新しい本番定義/専用Lootは全Modで検証中。人の外観/扉/梯子/階段/箱操作は未検証。6型・idol広場・元forlorn_ruins feature停止、都市密度/施設別loot、残る大型施設と能力の組合せは残り、R-27W4/M未完了。
+**遊び**：短い照明付き道路から原生の遺構へ寄り道し、Alex布片/消耗品と少量のApotheosis Gem粉・生活素材を回収して都市へ帰る。小屋2は上階北入口、小屋6は庭を回り込んで原生階段、像は箱を増やさない広場の目印。紙3＋本1＋布片2＋Gem粉1で対象biome情報付きの調査石板1を作れる。元の無差別な案内lootを戻さず、必要な調査機能を都市素材の組合せへ移した。R-29Bの物語上の案内・遠征・帰還全体は未完了。
 
-2026-10-14続行：小屋6は壁を壊さず庭西縁へ接続する契約を追加し、本番定義は6型×6＋Loot1＝37JSONとなった。隔離で道路23blockのread-only planと庭から原生階段上への経路を確認、本番の新規自然auto/coldは検証中。元featureとidolの作業は未完了。
+**機械確認**：通常saltの自然autoは小屋6型と像の代表個体で確認。小屋2の35block/小屋6の23blockは本番定義で往復・専用Loot・変更0・冷保存を確認。像は42blockの自然接合/往復/cold、原生固体1808ID一致。専用Lootの実抽選、石板レシピの実assemble/対象NBT/Gem粉なし不成立、selftest成功。市街側の像1個体は既存石材保護で工事を拒否した履歴を残す。
 
-6型の本番通常salt自然auto23cell/23block、街路↔原生階段上の往復、都市Loot2樽、skull/柱/trapdoor/redstone保持と再preview0が成功。cold後も全項目とjobs completed4/rejected0を保持。全回転・広域頻度・本人の実操作は未検証。像は原生床のある西縁を広場の着地点として隔離契約へ追加、通常候補の検証中。本番登録/元feature停止は未実装。
+**停止**：forge/biome_modifier/suppress_native_forlorn_ruins.jsonでforlorn_hollowsのunderground_decorationからforlorn_ruinsだけ除外。全Modの停止前後の生feature配列は対象1件だけの差分、同じ洞窟のguano_pile/他の全featureと対照toxic_cavesは不変。停止下でも都市小屋の自然auto/往復/都市2Lootが存続し、保存後も保持。元登録/template/元LootTable/洞窟全体/既存建築は消さない。46setの11停止/35残に、このfeature1件を混ぜない。
 
-像も通常saltの自然auto42block・往復・変更0/selftest/cold、原生固体1808ID一致を確認し、本番へ参照/広場契約6JSONを追加（小屋6造形＋像1、計43JSON）。市街側の1候補は石材保護で工事を拒否した履歴を残す。元feature停止で必要なtablet入手を失わないよう、紙3＋本1＋Alex布片2＋Apotheosis Gem粉1→Forlorn biome付き石板1の都市研究レシピを追加して検証中。R-29Bの案内/遠征/帰還全体は未完了。元featureだけを除くForge biome modifierも隔離検証中で、本番停止はまだ実施していない。
-
-### 2026-10-14 小屋群/像の移管と元feature停止
-
-小屋0/2/3/4/5/6の6造形と像1を本番の街道接合へ追加し、既存フェラス入口の小屋1と合わせて元8templateの種類を保持。原生NBTは参照し、7型×6定義＋専用都市Loot1＋停止modifier1＝44JSON、研究石板レシピをKubeJSへ追加。6造形を6攻略系列とは数えない。原生戦闘・地下・旧案の規模を削らない。
-
-像は通常saltで自然auto42block、往復/変更0/selftest/cold、原生固体1808ID一致。小屋6は自然auto23block・原生階段往復・都市2Loot・装飾保持/cold。都市箱はAlex消耗品/布片×Apotheosis Gem粉＋生活素材。元cave_tabletを無差別箱へ戻さず、紙3/本1/布片2/Gem粉1→対象biome付き石板1の研究レシピを実assemble/NBT/Gem粉必要性で検証した。R-29Bの案内/遠征/帰還の全体は未完了。
-
-forge/biome_modifier/suppress_native_forlorn_ruins.jsonでalexscaves:forlorn_hollowsのunderground_decorationにあるforlorn_ruinsだけ停止。隔離全Modの生feature配列を停止前後で照合し、差分1件だけ・隣のguano_pile/他の全feature維持・対照toxic_caves不変・selftest成功を確認。本番へ反映した。元登録/template/元LootTable/洞窟全体/現存建築は維持。46setの11停止/35残という計数にはfeature1件を加算しない。全seed生成率/本人の景観・扉・階段・箱操作/本番遭遇頻度は未検証。
+**残件**：本人の景観・扉/梯子/階段/箱操作、全回転・広域の遭遇頻度・都市密度・施設別Loot調整、Apotheosis残2型、他の大型施設・敵能力の組合せ・残る元生成の停止。R-27W4/Mは未完了。
