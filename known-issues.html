@@ -444,7 +444,7 @@
 <td>K-064</td>
 <td>元生成停止後のIron’s取引地図が都市移管先を検索しない</td>
 <td>固定Priest/Pyromancerが城塞/湿地小屋の元ID地図を販売し、FurledMapItemがそのStructure holderを直接検索する。都市城塞wrapperと直接配置小屋を検索対象に含めない</td>
-<td><strong>城塞ID移管は部分実装・実操作未検証</strong>。現行/旧地図codecと不変例の5ケース確認。小屋の入口indexと実地図移管を実装し、旧小屋・現行/legacy・cold・未知非消費・破損除外・未ロード案内を確認。新規生成記録と人のUIは未確認、城塞の実検索/UIも残る。新規元生成を復活させない。既存原生建築が検索できる場合も都市移管済みとはしない。作業票STRUCTURE-LOCATOR-MIGRATION、bytecode証拠保存</td>
+<td><strong>城塞ID移管は部分実装・実操作未検証</strong>。現行/旧地図codecと不変例の5ケース確認。小屋の入口indexと実地図移管を実装し、旧小屋・現行/legacy・cold・未知非消費・破損除外・未ロード案内を確認。新規生成記録もcold後の地図作成まで確認。人のUIは未確認、城塞の実検索/UIも残る。新規元生成を復活させない。既存原生建築が検索できる場合も都市移管済みとはしない。作業票STRUCTURE-LOCATOR-MIGRATION、bytecode証拠保存</td>
 </tr>
 <tr>
 <td>K-065</td>
@@ -492,7 +492,7 @@
 <td>K-072</td>
 <td>新しい都市小屋地図が既存小屋を取り込まない（開発中）</td>
 <td>隔離コピーで元小屋はmangroveverify=okだが、新indexのbackfillは0件で地図は非消費のまま。試遊中serverには未反映</td>
-<td><strong>旧小屋の取り込みと地図を修正確認</strong>。現在の生成候補を再選定せずloaded敷地から読取。現行/legacy地図の実入口、unknown非消費、cold保持、破損入口除外、未ロード入口の案内でchunk数不変。新規生成記録/人のUIは未検証。補助scriptの失敗も保全</td>
+<td><strong>旧小屋の取り込みと地図を修正確認</strong>。現在の生成候補を再選定せずloaded敷地から読取。現行/legacy地図の実入口、unknown非消費、cold保持、破損入口除外、未ロード入口の案内でchunk数不変。新規自然生成後index記録/coldも確認。人のUIは未検証。補助scriptの失敗も保全</td>
 </tr>
 <tr>
 <td>K-073</td>
