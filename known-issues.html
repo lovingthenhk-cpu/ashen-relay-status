@@ -509,8 +509,20 @@
 <tr>
 <td>K-075</td>
 <td>貨物局prototypeの施設認識が模倣可能な署名だけ</td>
-<td>コード読取では3隣接材とgrid座標で受付を認識し、自然生成済み施設の所有登録はない。任意の玩家工作を認識し得る。実悪用は未検証</td>
-<td>production採用前の対応。展示prototypeは明示座標で隔離し、LC自然採用では実生成区画/保存登録と署名を併用する。原生台をパック全域で止めない。静的推測を実再現と呼ばない</td>
+<td>コード読取では3隣接材とgrid座標で受付を認識し、自然生成済み施設の所有登録はない。任意の玩家工作を認識し得る。隔離で5つの安価なblockだけの偽受付が布片を消費/n1登録することを実再現</td>
+<td>production採用前の対応。実PostGenCityChunkEventと4区画FULLの登録を納品条件に追加し検証中。展示は専用JVM/online0の明示登録のみ。原生台をパック全域で止めない。偽受付の失敗world/状態を消さず保全</td>
+</tr>
+<tr>
+<td>K-076</td>
+<td>貨物局の低価値表へApotheosis全体Lootが装備を注入</td>
+<td>実箱開封で作者表にないapoth_rchest付きcommon Affix盾を確認。表の静的item監査だけでは実ドロップを限定できない</td>
+<td><strong>試作9表だけ除外を実確認</strong>。affix_loot/gemsの同ID条件を追加。9表×64実容器rollはAffix/Gem0、元simple_dungeon64rollでAffix41/Gem19を保持。2個体目の実箱開封も低価値表だけ。production未反映。最初の実Lootと失敗を保存</td>
+</tr>
+<tr>
+<td>K-077</td>
+<td>貨物局の部分生成を跨ぐcoldで認証の残り区画が登録されない</td>
+<td>generation→FULLのnoticeだけをメモリで待ち、部分5/15で停止後に残り区画をFULLにしてもmask5のまま。東端末の実建築はあり、納品は安全に非消費で拒否</td>
+<td>修正中。生成観測seen maskをSavedDataへ先に保存し、ChunkLoadで保存された観測だけからFULLを確定する。noise/ブロック模倣の自動認証はしない。旧失敗worldを保全、新規部分→cold→残区画で確認する</td>
 </tr>
 </tbody>
 </table>
