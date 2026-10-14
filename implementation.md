@@ -526,3 +526,13 @@ Lost Cities街路 × Alex’s原生小屋0/2/3/4/5 × Apotheosis Gem粉の補給
 2026-10-14続行：小屋6は壁を壊さず庭西縁へ接続する契約を追加し、本番定義は6型×6＋Loot1＝37JSONとなった。隔離で道路23blockのread-only planと庭から原生階段上への経路を確認、本番の新規自然auto/coldは検証中。元featureとidolの作業は未完了。
 
 6型の本番通常salt自然auto23cell/23block、街路↔原生階段上の往復、都市Loot2樽、skull/柱/trapdoor/redstone保持と再preview0が成功。cold後も全項目とjobs completed4/rejected0を保持。全回転・広域頻度・本人の実操作は未検証。像は原生床のある西縁を広場の着地点として隔離契約へ追加、通常候補の検証中。本番登録/元feature停止は未実装。
+
+像も通常saltの自然auto42block・往復・変更0/selftest/cold、原生固体1808ID一致を確認し、本番へ参照/広場契約6JSONを追加（小屋6造形＋像1、計43JSON）。市街側の1候補は石材保護で工事を拒否した履歴を残す。元feature停止で必要なtablet入手を失わないよう、紙3＋本1＋Alex布片2＋Apotheosis Gem粉1→Forlorn biome付き石板1の都市研究レシピを追加して検証中。R-29Bの案内/遠征/帰還全体は未完了。元featureだけを除くForge biome modifierも隔離検証中で、本番停止はまだ実施していない。
+
+### 2026-10-14 小屋群/像の移管と元feature停止
+
+小屋0/2/3/4/5/6の6造形と像1を本番の街道接合へ追加し、既存フェラス入口の小屋1と合わせて元8templateの種類を保持。原生NBTは参照し、7型×6定義＋専用都市Loot1＋停止modifier1＝44JSON、研究石板レシピをKubeJSへ追加。6造形を6攻略系列とは数えない。原生戦闘・地下・旧案の規模を削らない。
+
+像は通常saltで自然auto42block、往復/変更0/selftest/cold、原生固体1808ID一致。小屋6は自然auto23block・原生階段往復・都市2Loot・装飾保持/cold。都市箱はAlex消耗品/布片×Apotheosis Gem粉＋生活素材。元cave_tabletを無差別箱へ戻さず、紙3/本1/布片2/Gem粉1→対象biome付き石板1の研究レシピを実assemble/NBT/Gem粉必要性で検証した。R-29Bの案内/遠征/帰還の全体は未完了。
+
+forge/biome_modifier/suppress_native_forlorn_ruins.jsonでalexscaves:forlorn_hollowsのunderground_decorationにあるforlorn_ruinsだけ停止。隔離全Modの生feature配列を停止前後で照合し、差分1件だけ・隣のguano_pile/他の全feature維持・対照toxic_caves不変・selftest成功を確認。本番へ反映した。元登録/template/元LootTable/洞窟全体/現存建築は維持。46setの11停止/35残という計数にはfeature1件を加算しない。全seed生成率/本人の景観・扉・階段・箱操作/本番遭遇頻度は未検証。
