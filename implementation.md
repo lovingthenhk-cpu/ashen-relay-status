@@ -516,3 +516,13 @@ Iron’sの城塞/湿地小屋の取引地図が元Structure IDだけを検索�
 ### 原生小屋群の隔離移管（2026-10-14）
 
 原生8型の参照pool/structure/loot processor計24JSONと、低い入口4型のwrapper/profile/set計12JSONを隔離に実装。通常saltで0/3/4/5の自然auto接合、往復、対象Loot、変更0とcold保存を確認した。上階入口2型の6JSONを追加し、原生の階差/階段/redstoneを壊さず接合できるか検証中。共通NativeStreetConnectorは旧成功を優先し、失敗時に残る適格街路を試す。ビルド・既存4成功一致・selftest・箱保護は確認、後続候補による改善は未確認。本番登録・idol広場・元feature停止・本人の歩行受入は残る。
+
+### 2026-10-14 都市採集遺構5型を本番登録
+
+Lost Cities街路 × Alex’s原生小屋0/2/3/4/5 × Apotheosis Gem粉の補給点として、30定義JSON＋専用Loot1JSONを本番へ追加。5型は造形のバリエーションで、5つの攻略系列とは数えない。原生の外形/梯子/階差/指定樽を参照し、骨/糸/紙/木炭/パンとAlex布片/消耗品・まれなGem粉を拾って次の探索や既存の継承触媒に使う。都市版の箱から元cave_tabletを流入させず、必要なtablet機能/洞窟準備はR-29Bの都市導線へ移管予定。元の表/洞窟/登録アイテムは維持する。
+
+隔離の通常saltで5型の自然auto接合・外足場往復・元Loot・変更0・cold保持を代表確認。2型の上階入口は35ブロックの接合、6型は原生囲い/装飾にぶつかる契約を再設計中。新しい本番定義/専用Lootは全Modで検証中。人の外観/扉/梯子/階段/箱操作は未検証。6型・idol広場・元forlorn_ruins feature停止、都市密度/施設別loot、残る大型施設と能力の組合せは残り、R-27W4/M未完了。
+
+2026-10-14続行：小屋6は壁を壊さず庭西縁へ接続する契約を追加し、本番定義は6型×6＋Loot1＝37JSONとなった。隔離で道路23blockのread-only planと庭から原生階段上への経路を確認、本番の新規自然auto/coldは検証中。元featureとidolの作業は未完了。
+
+6型の本番通常salt自然auto23cell/23block、街路↔原生階段上の往復、都市Loot2樽、skull/柱/trapdoor/redstone保持と再preview0が成功。cold後も全項目とjobs completed4/rejected0を保持。全回転・広域頻度・本人の実操作は未検証。像は原生床のある西縁を広場の着地点として隔離契約へ追加、通常候補の検証中。本番登録/元feature停止は未実装。
