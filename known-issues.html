@@ -526,6 +526,37 @@
 </tr>
 </tbody>
 </table>
+<h2>検証補助の問題（2026-10-15）</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>問題</th>
+<th>影響と証拠</th>
+<th>状態・対応</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>K-078</td>
+<td>current隔離setupのdefaultconfigsだけ凍結source</td>
+<td>current KubeJS/addonを試しても、新規worldのprofileが凍結値のままになり得る。今回の6比較は最初からpack defaultsを明示指定していた</td>
+<td><strong>修正確認</strong>。currentだけpack defaultsをoverlayし、current/frozenの2新規setupで対応sourceとのbyte一致を確認。既存worldは編集しない</td>
+</tr>
+<tr>
+<td>K-079</td>
+<td>都市計画JSONを保存途中で読む</td>
+<td>JsonIOでfileが出た直後の614400byteを読んでJSONDecodeError。初稿driverは保存停止し、後で完成原本を確認できた</td>
+<td><strong>修正確認</strong>。完了logとJSONparseを待つ。完成済み停止fixtureを保全して残りへ進み、6比較完了。集計/worldを再生成しない</td>
+</tr>
+<tr>
+<td>K-080</td>
+<td>城塞検証scriptの不要なcloseContainerがKubeJS wrapperにない</td>
+<td>実case処理後、最終JSON出力前にTypeError。ゲーム実装のcontainer処理は変更しない</td>
+<td><strong>補助scriptを修正、別コピーで9case成功</strong>。失敗fixtureを保存停止して保全。未知時の実使用証拠は先に保存する。マップは容器を開かないため当該呼出を除去</td>
+</tr>
+</tbody>
+</table>
 </article>
     <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-04 · 物語の核心は掲載しません。</footer>
   </main>

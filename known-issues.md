@@ -115,3 +115,11 @@
 | K-075 | 貨物局prototypeの施設認識が模倣可能な署名だけ | コード読取では3隣接材とgrid座標で受付を認識し、自然生成済み施設の所有登録はない。任意の玩家工作を認識し得る。隔離で5つの安価なblockだけの偽受付が布片を消費/n1登録することを実再現 | **代表条件で修正確認**。実PostGenCityChunkEventと4区画FULLの登録を納品条件に追加。自然生成で実納品成功、模倣受付は非消費/元操作を保持。展示は専用JVM/online0の明示登録のみ。原生台をパック全域で止めない。偽受付の失敗world/状態を消さず保全 |
 | K-076 | 貨物局の低価値表へApotheosis全体Lootが装備を注入 | 実箱開封で作者表にないapoth_rchest付きcommon Affix盾を確認。表の静的item監査だけでは実ドロップを限定できない | **試作9表だけ除外を実確認**。affix_loot/gemsの同ID条件を追加。9表×64実容器rollはAffix/Gem0、元simple_dungeon64rollでAffix41/Gem19を保持。2個体目の実箱開封も低価値表だけ。production未反映。最初の実Lootと失敗を保存 |
 | K-077 | 貨物局の部分生成を跨ぐcoldで認証の残り区画が登録されない | generation→FULLのnoticeだけをメモリで待ち、部分5/15で停止後に残り区画をFULLにしてもmask5のまま。東端末の実建築はあり、納品は安全に非消費で拒否 | **新規代表で修正確認**。seen15/full5を保存→coldでseen15保持→残区画FULL→mask15/source=generationと実布片納品n1が成功。生成観測をSavedDataに先行保存しChunkLoadで既存証拠だけ確定。noise/ブロック模倣の自動認証はしない。旧失敗worldを保全、新規部分→cold→残区画で確認する |
+
+## 検証補助の問題（2026-10-15）
+
+| ID | 問題 | 影響と証拠 | 状態・対応 |
+|---|---|---|---|
+| K-078 | current隔離setupのdefaultconfigsだけ凍結source | current KubeJS/addonを試しても、新規worldのprofileが凍結値のままになり得る。今回の6比較は最初からpack defaultsを明示指定していた | **修正確認**。currentだけpack defaultsをoverlayし、current/frozenの2新規setupで対応sourceとのbyte一致を確認。既存worldは編集しない |
+| K-079 | 都市計画JSONを保存途中で読む | JsonIOでfileが出た直後の614400byteを読んでJSONDecodeError。初稿driverは保存停止し、後で完成原本を確認できた | **修正確認**。完了logとJSONparseを待つ。完成済み停止fixtureを保全して残りへ進み、6比較完了。集計/worldを再生成しない |
+| K-080 | 城塞検証scriptの不要なcloseContainerがKubeJS wrapperにない | 実case処理後、最終JSON出力前にTypeError。ゲーム実装のcontainer処理は変更しない | **補助scriptを修正、別コピーで9case成功**。失敗fixtureを保存停止して保全。未知時の実使用証拠は先に保存する。マップは容器を開かないため当該呼出を除去 |
