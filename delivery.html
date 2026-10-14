@@ -542,6 +542,10 @@
 <p><strong>機械確認</strong>：通常saltの自然autoは小屋6型と像の代表個体で確認。小屋2の35block/小屋6の23blockは本番定義で往復・専用Loot・変更0・冷保存を確認。像は42blockの自然接合/往復/cold、原生固体1808ID一致。専用Lootの実抽選、石板レシピの実assemble/対象NBT/Gem粉なし不成立、selftest成功。市街側の像1個体は既存石材保護で工事を拒否した履歴を残す。</p>
 <p><strong>停止</strong>：forge/biome_modifier/suppress_native_forlorn_ruins.jsonでforlorn_hollowsのunderground_decorationからforlorn_ruinsだけ除外。全Modの停止前後の生feature配列は対象1件だけの差分、同じ洞窟のguano_pile/他の全featureと対照toxic_cavesは不変。停止下でも都市小屋の自然auto/往復/都市2Lootが存続し、保存後も保持。元登録/template/元LootTable/洞窟全体/既存建築は消さない。46setの11停止/35残に、このfeature1件を混ぜない。</p>
 <p><strong>残件</strong>：本人の景観・扉/梯子/階段/箱操作、全回転・広域の遭遇頻度・都市密度・施設別Loot調整、Apotheosis残2型、他の大型施設・敵能力の組合せ・残る元生成の停止。R-27W4/Mは未完了。</p>
+<h2>2026-10-15 都市移植塔の気候条件と代表自然受入</h2>
+<p>葉/トウヒの都市wrapper2JSONだけを現世の海洋除外tagへ拡張した。原生の気候tagと元4set frequency0、native pool/processor、全形状/入口/塩/AI/Loot/Gemと保護は維持。ねらいは気候別の抽選を都市の混成景観へ組み替え、異なる原生様式を同じ街で探索できること。川/浜/湿地も対象に含まれ、地形の安全は既存の工事検査で判断する。</p>
+<p>同seed/同19抽選座標の隔離比較は旧0valid→新1valid。新しい通常saltのトウヒ[-827,-634]は自然auto134cell/40block、葉[-783,-635]は116cell/37blockで往復/Loot/再preview0成功。近隣の別トウヒも自然41block。cold後も代表2塔の往復/原生Loot/変更0、額縁8枚のUUID/位置/Item NBTを完全保持。Gemは原生ランダムで特定IDを固定の期待値にしない。全Mod selftest成功。採用後の本番と隔離のKubeJS380file/addon jarは完全一致。</p>
+<p>固定ID優先で後順位施設の候補が押し出される可能性は残る。既存Forlorn6型/像/砂の代表8計画は全てvalidを保持したが、全分布/地区構成を証明しない。R-28Dの都市密度・型配分調整、人の外観/扉/登攀/戦闘、各塔の地区AI報酬実行は残る。3造形を3種類の新攻略ゲームとは数えず、R-27W4/Mは未完了。</p>
 </article>
     <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-04 · 物語の核心は掲載しません。</footer>
   </main>

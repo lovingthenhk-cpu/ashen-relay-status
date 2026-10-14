@@ -537,3 +537,11 @@ Iron’sの城塞/湿地小屋の取引地図が元Structure IDだけを検索�
 | `server_scripts/ashen_relay_recipes.js`の`forlorn_research_tablet` | 都市の布片×Gem粉×本/紙から対象biome情報付き石板を作り、必要な調査機能を移す |
 | `NativeStreetConnector.inspectSelected/inspectStreetCandidate` | 旧第一候補成功を維持し、失敗時に残る適格街路を距離/同順位順で全保護検査。全書込は`finishPlan`を通す。4旧成功一致/3旧拒否維持/箱保護/selftest成功、後続候補による改善実例は未確認 |
 | `AshenRelayCommands.biomefeatures` / `verifyCatalystCraft` | 生feature配列の無編集診断と、研究レシピ実assemble/NBT/Gem粉なし不成立の自己試験。利用者の景観/操作を代用しない |
+
+## 2026-10-15 都市移植塔の気候条件と代表自然受入
+
+葉/トウヒの都市wrapper2JSONだけを現世の海洋除外tagへ拡張した。原生の気候tagと元4set frequency0、native pool/processor、全形状/入口/塩/AI/Loot/Gemと保護は維持。ねらいは気候別の抽選を都市の混成景観へ組み替え、異なる原生様式を同じ街で探索できること。川/浜/湿地も対象に含まれ、地形の安全は既存の工事検査で判断する。
+
+同seed/同19抽選座標の隔離比較は旧0valid→新1valid。新しい通常saltのトウヒ[-827,-634]は自然auto134cell/40block、葉[-783,-635]は116cell/37blockで往復/Loot/再preview0成功。近隣の別トウヒも自然41block。cold後も代表2塔の往復/原生Loot/変更0、額縁8枚のUUID/位置/Item NBTを完全保持。Gemは原生ランダムで特定IDを固定の期待値にしない。全Mod selftest成功。採用後の本番と隔離のKubeJS380file/addon jarは完全一致。
+
+固定ID優先で後順位施設の候補が押し出される可能性は残る。既存Forlorn6型/像/砂の代表8計画は全てvalidを保持したが、全分布/地区構成を証明しない。R-28Dの都市密度・型配分調整、人の外観/扉/登攀/戦闘、各塔の地区AI報酬実行は残る。3造形を3種類の新攻略ゲームとは数えず、R-27W4/Mは未完了。
