@@ -111,3 +111,5 @@
 | K-071 | 新規都市城塞の1候補で投影入口床の検査が拒否される | 原生床がない/変わったというpreflightで工事write0拒否。別の城塞の代表成功と区別 | **構造物の例外として保留・原因未確定**。入口床/projection/地形を後で照合。進行必須素材を当該個体だけに依存させず、原生/都市建材を削って補修しない |
 | K-072 | 新しい都市小屋地図が既存小屋を取り込まない（開発中） | 隔離コピーで元小屋はmangroveverify=okだが、新indexのbackfillは0件で地図は非消費のまま。試遊中serverには未反映 | **旧小屋の取り込みと地図を修正確認**。現在の生成候補を再選定せずloaded敷地から読取。現行/legacy地図の実入口、unknown非消費、cold保持、破損入口除外、未ロード入口の案内でchunk数不変。新規自然生成後index記録/coldも確認。人のUIは未検証。補助scriptの失敗も保全 |
 | K-073 | GLM貨物局試作の開封済み報酬箱を再arm | 未採用prototype。開封でLootTableが消えた箱へ、処理済み端末再クリックで表を再設定できる。Python mirrorは開封を扱わず見逃した | 修正対象、production未反映。GLM同aliasに報酬状態/開封・空箱・交換箱・再起動の訂正を指示。実engine未検証、構造物9割ルールの対象外 |
+| K-074 | 貨物局prototypeのKubeJS管理コマンドが登録されない | 固定KubeJSのArgumentTypeWrappersにinteger()がなく、commandRegistryで実error。静的構文/Brigadier値取得確認だけでは見つからなかった | **Codexがsupported builderへ訂正、実確認**。IntegerArgumentType.integer()とCommandsを実Java class参照に変更。execute prefix付きstatusの実行とreset既定拒否を確認。production未反映、失敗ログ保全 |
+| K-075 | 貨物局prototypeの施設認識が模倣可能な署名だけ | コード読取では3隣接材とgrid座標で受付を認識し、自然生成済み施設の所有登録はない。任意の玩家工作を認識し得る。実悪用は未検証 | production採用前の対応。展示prototypeは明示座標で隔離し、LC自然採用では実生成区画/保存登録と署名を併用する。原生台をパック全域で止めない。静的推測を実再現と呼ばない |
