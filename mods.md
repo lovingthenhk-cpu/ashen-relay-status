@@ -86,7 +86,7 @@ Iron's Lib、Lionfish API、Citadel、Cerbons API、Apothic Attributes、Placebo
 
 水術塔・湿地小屋・地下フェラス室・Apotheosis tower_mainは既存Javaがtemplateを直接参照して配置するため、原生setの自然配置と独立している。Apotheosis別3型は都市wrapperへ登録し、砂型の自然接合だけ確認。Alex小屋templateを選ぶsetの対応、全locatorは未完了。
 
-**46setの外にある生成経路**：フェラス室の地上入口に使う`alexscaves:forlorn_hut_1`は`underground_cabin` setから出ない。`forlorn_hollows` biomeの`forlorn_ruins` featureが小屋7型とidolを選ぶ。小屋0/2/3/5に戦利品marker各1、小屋4/6に各2があり、元featureは原生の樽へ専用LootTableを後付けする。都市で原生templateを参照するときもこの処理を移管し、残りの小屋/像を都市で生かしてからfeatureだけ停止する。8型の参照poolとLoot移管processorを隔離試作し、実配置で元の対象8樽だけにLootが付き、非対象空樽1個が空のままと確認。原生NBTは複製せず参照し、小屋ごとの向きを保つ。小屋0/3/4/5の街路定義を隔離試作し、3と5では通常saltの自然生成→照明付き道路47/32ブロックのauto接合→入口往復/専用Loot→冷保存を確認。最初の別候補は道上限/鉄格子保護で工事を拒否し、小屋0/4の自然成功は未確認。都市の本番採用・残型の入口・元feature停止は未実装。`underground_cabin`7型は別施設家族として扱う。
+**46setの外にある生成経路**：フェラス室の地上入口に使う`alexscaves:forlorn_hut_1`は`underground_cabin` setから出ない。`forlorn_hollows` biomeの`forlorn_ruins` featureが小屋7型とidolを選ぶ。小屋0/2/3/5に戦利品marker各1、小屋4/6に各2があり、元featureは原生の樽へ専用LootTableを後付けする。都市で原生templateを参照するときもこの処理を移管し、残りの小屋/像を都市で生かしてからfeatureだけ停止する。8型の参照poolとLoot移管processorを隔離試作し、実配置で元の対象8樽だけにLootが付き、非対象空樽1個が空のままと確認。原生NBTは複製せず参照し、小屋ごとの向きを保つ。小屋0/3/4/5の街路定義を隔離試作し、3と5では通常saltの自然生成→照明付き道路47/32ブロックのauto接合→入口往復/専用Loot→冷保存を確認。最初の別候補は道上限/鉄格子保護で工事を拒否し、小屋0/4でも通常saltの自然auto接合22/38ブロック・入口往復・原生Loot・再preview変更0を確認し、4型の成功例が揃った。コピーの新ビルドcold起動で4型の旧成功応答が完全一致。共通街路選択は最初の候補が保護/距離で失敗した場合に別候補も全保護条件で試す処理へ変更し、既存成功/selftest/箱保護の負例は確認したが、別候補で改善した実例は未確認。小屋2/6の上階扉と原生階段を使う契約6JSONを隔離に追加し検証中。都市の本番採用・idol広場・元feature停止は未実装。`underground_cabin`7型は別施設家族として扱う。
 
 | 元structure set ID | 現在の状態 | 都市側の用途/移管計画 |
 |---|---|---|

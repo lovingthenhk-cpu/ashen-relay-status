@@ -645,6 +645,8 @@
 <p>Iron’sの城塞/湿地小屋の取引地図が元Structure IDだけを検索することを固定版コードで確認。城塞は都市wrapperへ解決するadapter、直接配置小屋は実生成した都市入口を保存する<code>NativeFacilityLocations</code>相当のSavedDataと案内adapterを実装する。旧地図NBT、別次元、未発見施設、無関係な地図、保存再起動、アイテム非消費と検索負荷を検証する。元の独立生成を再開して回避しない。城塞のCityMapTargetsを部分実装し、固定codecの現行/旧地図と不変例5ケースを確認。小屋のindex、城塞の実検索/表示は未完了。</p>
 <h3>単体原生施設の一括導入を開始</h3>
 <p>固定Modの616テンプレートを機械索引化し、寸法とjigsaw数で単体候補を抽出する。小寸法/jigsaw0の119件には部分部屋・装飾・例示データも含み、完成建築数ではない。最初にApotheosis leaf/sand/spruceの3型を一括調査する。9JSONの都市wrapper/入口profile/配置setを隔離下書きとして準備し、原生の全template・Loot・ランダムGem processorを実行時参照する。3型の本番登録・元生成停止・実配置受入はまだ未完了。地区の認識は既存NativeStructureFamilyで共有する。</p>
+<h3>原生小屋群の隔離移管（2026-10-14）</h3>
+<p>原生8型の参照pool/structure/loot processor計24JSONと、低い入口4型のwrapper/profile/set計12JSONを隔離に実装。通常saltで0/3/4/5の自然auto接合、往復、対象Loot、変更0とcold保存を確認した。上階入口2型の6JSONを追加し、原生の階差/階段/redstoneを壊さず接合できるか検証中。共通NativeStreetConnectorは旧成功を優先し、失敗時に残る適格街路を試す。ビルド・既存4成功一致・selftest・箱保護は確認、後続候補による改善は未確認。本番登録・idol広場・元feature停止・本人の歩行受入は残る。</p>
 </article>
     <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-04 · 物語の核心は掲載しません。</footer>
   </main>

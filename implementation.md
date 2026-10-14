@@ -512,3 +512,7 @@ Iron’sの城塞/湿地小屋の取引地図が元Structure IDだけを検索�
 ### 単体原生施設の一括導入を開始
 
 固定Modの616テンプレートを機械索引化し、寸法とjigsaw数で単体候補を抽出する。小寸法/jigsaw0の119件には部分部屋・装飾・例示データも含み、完成建築数ではない。最初にApotheosis leaf/sand/spruceの3型を一括調査する。9JSONの都市wrapper/入口profile/配置setを隔離下書きとして準備し、原生の全template・Loot・ランダムGem processorを実行時参照する。3型の本番登録・元生成停止・実配置受入はまだ未完了。地区の認識は既存NativeStructureFamilyで共有する。
+
+### 原生小屋群の隔離移管（2026-10-14）
+
+原生8型の参照pool/structure/loot processor計24JSONと、低い入口4型のwrapper/profile/set計12JSONを隔離に実装。通常saltで0/3/4/5の自然auto接合、往復、対象Loot、変更0とcold保存を確認した。上階入口2型の6JSONを追加し、原生の階差/階段/redstoneを壊さず接合できるか検証中。共通NativeStreetConnectorは旧成功を優先し、失敗時に残る適格街路を試す。ビルド・既存4成功一致・selftest・箱保護は確認、後続候補による改善は未確認。本番登録・idol広場・元feature停止・本人の歩行受入は残る。
