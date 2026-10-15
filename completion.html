@@ -10,11 +10,11 @@
 </head>
 <body>
   <main>
-    <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="mods.html">Mod採用表</a><a href="ideas.html">旧案の採用台帳</a><a href="seams.html">縫合パターン58件</a><a href="delivery.html">次の作業と実装受入</a><a href="implementation.html">実装ファイル</a><a href="completion.html" aria-current="page">完成工程</a><a href="known-issues.html">不具合・許容事項</a></nav>
+    <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="mods.html">Mod採用表</a><a href="ideas.html">旧案の採用台帳</a><a href="seams.html">縫合パターン58件</a><a href="delivery.html">次の作業と実装受入</a><a href="implementation.html">実装ファイル</a><a href="completion.html" aria-current="page">完成工程</a><a href="estimate.html">残工数の見積もり</a><a href="known-issues.html">不具合・許容事項</a></nav>
     <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
     <article class="document"><h1>完成までの全工程</h1>
 <h2>現在地（2026-10-16）</h2>
-<p><strong>R-27W4＋R-27Mは未完了。全体は概算2〜3割程度。</strong> 現行企画の攻略先・複合戦闘・報酬/進行・全体受入まで含む粗い見積もりで、測定値やR番号の単純比ではない。都市密度は新規world用に初回反映し、城塞地図の実使用/保存/自然生成後の自動登録まで代表機械確認。墓地/工場/地下祠、能力縫合、全案内/物語移管、分布/負荷/人の景観などが残る。R-28Dは分布調整だけ一部先行。詳細は<a href="index.html">概要</a>。</p>
+<p><strong>R-27W4＋R-27Mは未完了。</strong> 全体2〜3割という概算は工数の裏付けがないため撤回し、<a href="estimate.html">残作業の暫定工数</a>を掲載。次の三施設版は3〜6時間、第一波は約80〜175時間、全掲載企画は約190〜420時間の机上見積もり。後の区切りは前の区切りを含み、二重加算しない。待機や人の受入待ちは別。都市密度は新規world用に初回反映し、城塞地図の実使用/保存/自然生成後の自動登録まで代表機械確認。墓地/工場/地下祠、能力縫合、全案内/物語移管、分布/負荷/人の景観などが残る。R-28Dは分布調整だけ一部先行。詳細は<a href="index.html">概要</a>。</p>
 <h2>2026-10-11 最新方針：都市へ集約・元生成停止・物語を一本化</h2>
 <p>Lost Cities外の独立構造物はなるべく生成させず、都市内に多数・多様な施設を配置する。元Modの建築・敵・技・アイテムを部品として参照し、元Mod独自の物語・案内・攻略順はAshen Relayの進行へ組み替える。旧「原生生成/元ストーリーを維持」の記述は変更前の方針。</p>
 <p><strong>実装した設定</strong>：Iron’s城塞・山岳塔・火術塔とMowzie寺院の元structure setにfrequency=0を追加。独立した都市wrapperと必要な原生登録は維持。全Mod起動とselftest、元山岳template参照を確認。既存の建築は消去しない。自然生成での停止/移管後分布の実測は未完了。</p>
@@ -431,6 +431,8 @@
 <p>部分生成を跨ぐcoldで認証が不足するK-077を見つけ、生成観測を先に保存してロード後にFULLを確定する修正を検証中。通常頻度/人の外観・操作・本番採用は未完了。静的1099/55の数を実体験の保証にせず、旧施設/墓地/工場/地下祠等を削らない。</p>
 <h3>2026-10-15 都市集約profileを新規ワールド用へ反映</h3>
 <p>新規ワールド用の都市集約profileを初回反映。中心抽選0.004・半径80〜176（他のrarecities設定は保持）で、3seedの市街計画と最大連結が増加。代表自然小屋は37ブロックで自動接続し、保存再起動後の往復・再工事ゼロ・selftestを確認。既存ワールドは変更なし。全施設分布/広域負荷/人の景観は未完了。R-27W4/M・R-28Dは未完了。</p>
+<h2>直近の完成区切り（2026-10-16）</h2>
+<p>通常都市の同じworldで火術塔・射手塔・城塞を巡る版を優先する。必須は①三施設の入口/街路移動/帰路の案内、②既存の敵・攻撃・報酬を同じ版へ揃える、③既存worldを保全した利用版と既知問題の案内。全Mod監査や新しい汎用化をすべて先行条件にせず、既存の検証証拠を再利用する。墓地/工場/祠・他Mod進行の移管・U08・地区能力・広域負荷などの全企画は後続の契約へ残す。これはR全体や全企画の完成宣言ではない。</p>
 </article>
     <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-04 · 物語の核心は掲載しません。</footer>
   </main>
