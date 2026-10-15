@@ -123,3 +123,9 @@
 | K-078 | current隔離setupのdefaultconfigsだけ凍結source | current KubeJS/addonを試しても、新規worldのprofileが凍結値のままになり得る。今回の6比較は最初からpack defaultsを明示指定していた | **修正確認**。currentだけpack defaultsをoverlayし、current/frozenの2新規setupで対応sourceとのbyte一致を確認。既存worldは編集しない |
 | K-079 | 都市計画JSONを保存途中で読む | JsonIOでfileが出た直後の614400byteを読んでJSONDecodeError。初稿driverは保存停止し、後で完成原本を確認できた | **修正確認**。完了logとJSONparseを待つ。完成済み停止fixtureを保全して残りへ進み、6比較完了。集計/worldを再生成しない |
 | K-080 | 城塞検証scriptの不要なcloseContainerがKubeJS wrapperにない | 実case処理後、最終JSON出力前にTypeError。ゲーム実装のcontainer処理は変更しない | **補助scriptを修正、別コピーで9case成功**。失敗fixtureを保存停止して保全。未知時の実使用証拠は先に保存する。マップは容器を開かないため当該呼出を除去 |
+
+| K-081 | 都市の平面連結と実際の徒歩接続が一致しない | seed424242の二塔間は往復proxy成功。射手塔[-164,73,-4]↔城塞側[-148,103,136]は必要余白loaded下で両方向失敗（expanded4544/5111、予算16384未達）。z47/48の公園床はy78→102の24block壁。調査範囲のnative slope0、native階段4件は別位置。迂回路全体の不存在までは未証明 | **代表条件で修正確認・新規生成向け採用**。sample1/avg3だけでは解決しないため未採用。通常profileの新規worldで幅2梯子が自然8辺に付き、代表24blockの支持/乾燥と上下の街路proxy、cold後の同8件保持を確認。頭上2セルの旧版red→修正版greenを確認し、既定有効版のcoldも成功。本番profile・本人worldは未変更。既存worldのbackfillはしない。三施設の機械導線は確認済み、人の操作と全都市の接続は未完了。証拠は開発台帳へ記録 |
+
+| K-082 | 擁壁梯子の生成通知が最終tick後の停止で失われる可能性 | PostGenの観測はtickでSavedDataへ移す。停止直前の未処理通知はメモリだけなので、冷起動ではその区画を生成観測済みと認められず、梯子が付かないことがあり得る。実再現・成功率は未測定 | **構造物のまれな欠落として保留**。既存worldの模倣backfillで安全性を下げない。通常の観測139/pending13のcold保持は確認。採用を全通知の完全保証で止めないが、必須導線で発生した実例は個別対処 |
+
+| K-083 | 擁壁の天端wallの横腕が更新前の形を残す可能性 | 最小天端をfull足場へ替えるflags2施工は隣接wallの接続プロパティを更新しない。GLM静的指摘、外観の実見は未確認 | **軽微な外観として許容**。支持/梯子/上出口の機械検査と区別し、施設追加を止めない。人の確認結果があれば追記 |

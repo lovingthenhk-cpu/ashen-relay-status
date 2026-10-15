@@ -12,112 +12,52 @@
   <main>
     <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="mods.html">Mod採用表</a><a href="ideas.html">旧案の採用台帳</a><a href="seams.html">縫合パターン58件</a><a href="delivery.html">次の作業と実装受入</a><a href="implementation.html">実装ファイル</a><a href="completion.html">完成工程</a><a href="estimate.html" aria-current="page">残工数の見積もり</a><a href="known-issues.html">不具合・許容事項</a></nav>
     <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
-    <article class="document"><h1>残作業の暫定工数見積もり</h1>
-<p>更新: 2026-10-16。ユーザー依頼により、一度作業を棚卸しして整理。対象は現行の拡大企画全体。R-27W4/Mは未完了。</p>
-<h2>読み方</h2>
-<ul>
-<li>以下は<strong>残る実作業の机上見積もり</strong>。ログから測定した生産性予測や納期の約束ではない。残件ごとに実装・統合・必要な機械検証・記録の作業枠を割り当てた。</li>
-<li>Codex単独を基本とする。GLMの並行作業で短縮できるとは織り込まず、実績が出れば更新する。既存のビルド/自己テスト/自然生成/保存の合格証拠は再利用し、同じ検証をやり直す時間を含めない。</li>
-<li>人の目視/操作の待ち、指定sleep、利用上限による停止、外部の許可待ちを含めない。人の受入が残るRを、機械準備だけで完了とは書かない。</li>
-<li>未導入Modの互換/権利/内部APIは不確定。上限を超える可能性があり、表の上限は最悪ケース保証ではない。下記の確度は統計的な信頼区間ではない。</li>
-<li>先の「全体2〜3割」は工数未積算で残り時間の根拠にならないため撤回した。過去の実作業時間は集計しておらず、「これまでの倍か」は判定できない。</li>
-</ul>
-<h2>重複を避けた残工数</h2>
+    <article class="document"><h1>残作業の比較（所要時間は未算定）</h1>
+<p>更新: 2026-10-16。R-27W4/Mは未完了。</p>
+<h2>結論と数え方</h2>
 <table>
 <thead>
 <tr>
-<th>区分</th>
 <th>範囲</th>
-<th>残る制作・受入</th>
-<th style="text-align:right">暫定作業枠</th>
-<th>確度</th>
+<th style="text-align:right">文書上の作業単位</th>
+<th style="text-align:right">これまでの本数との比</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>A</td>
-<td>次の三施設版</td>
-<td>同一通常worldの火術塔/射手塔/城塞の案内・街路往復、既存戦闘/lootの実接続不足、利用版と既知問題の準備</td>
-<td style="text-align:right">3〜6時間</td>
-<td>中。施設/局所接合/地図/保存は実装・代表検証済み、施設間の連続街路は未確認</td>
+<td>これまでに実施・記録した分</td>
+<td style="text-align:right">50</td>
+<td style="text-align:right">1</td>
 </tr>
 <tr>
-<td>B</td>
-<td>A以外のR-27W4/M残件</td>
-<td>苔廃屋の独立利用、寺院の通常遭遇/冷間負荷の区切り、射手の残受入と文書整合。人の受入待ちは別</td>
-<td style="text-align:right">4〜10時間</td>
-<td>中〜低。新規の施設別問題が出る可能性</td>
+<td>第一波R-36までの未完了分</td>
+<td style="text-align:right">28</td>
+<td style="text-align:right">約0.56倍</td>
 </tr>
 <tr>
-<td>C</td>
-<td>R-27E1〜E3/A/B/S</td>
-<td>墓地の復元床、工場の磁力と安全帯、城塞の短時間縮小/移動、地区loot/境界戦/既存状態の統合</td>
-<td style="text-align:right">18〜36時間</td>
-<td>低。基盤と個々の技はあるが、実施設で遊ぶ組合せはこれから</td>
+<td>その後の企画の分</td>
+<td style="text-align:right">24</td>
+<td style="text-align:right">約0.48倍</td>
 </tr>
 <tr>
-<td>D</td>
-<td>R-28A〜D</td>
-<td>墓地・工場・城塞・水辺/塔の地区化。未移管施設の入口/都市配置、地区ごとの攻略と帰路、配分</td>
-<td style="text-align:right">18〜40時間</td>
-<td>低。形状/生成/地形の個別差が大きい。A〜Cで作った機能は作り直さない</td>
-</tr>
-<tr>
-<td>E</td>
-<td>R-29A〜C</td>
-<td>T.O/六洞窟/海/Mowzie/BOMDの準備・案内・都市への持ち帰り。元生成/locator/素材経路の移管</td>
-<td style="text-align:right">12〜28時間</td>
-<td>低。実ID依存が残る。既存の戦闘・素材・研究石板は再利用</td>
-</tr>
-<tr>
-<td>F</td>
-<td>R-30A〜C、R-31A/B</td>
-<td>序中後のloot/武器更新/合成、観測・FTB・発見後の記録・死亡/迷子救済を各経路へ接続</td>
-<td style="text-align:right">12〜28時間</td>
-<td>中〜低。継承/精錬/台帳/既存報酬コードは作り直さない</td>
-</tr>
-<tr>
-<td>G</td>
-<td>R-32〜36</td>
-<td>戦術と資源収支、広域生成/衝突/負荷、最終技術/権利/企画被覆の受入と必要な修正</td>
-<td style="text-align:right">12〜26時間</td>
-<td>低。90分以上の非idle試験等を含む。不具合の大きさは未確定</td>
-</tr>
-<tr>
-<td>H</td>
-<td>R-37〜39</td>
-<td>六圏/18場面、空間別の敵・弾・場所・道具・連鎖、戦技再演/共鳴/装備選択の拡張</td>
-<td style="text-align:right">24〜50時間</td>
-<td>低。第一波で作った部品を再利用し、別の遊び/場所への展開分だけ</td>
-</tr>
-<tr>
-<td>I</td>
-<td>R-40〜43</td>
-<td>X01〜X20の未導入Mod候補：互換/利用条件/停止手段、隔離操作、施設への統合。使えない部品は同じ操作の代替経路へ</td>
-<td style="text-align:right">80〜180時間</td>
-<td><strong>最も低い</strong>。20パッケージに平均4〜9時間を仮置き。各候補の固定版/権利/試作後に必ず再見積もり</td>
-</tr>
-<tr>
-<td>J</td>
-<td>R-44</td>
-<td>全旧案の被覆・六圏を通す経路・証拠/引き継ぎ/公開計画の最終照合</td>
-<td style="text-align:right">6〜12時間</td>
-<td>低。未達を新規発見した場合は表外へ隠さず追加する</td>
+<td>未完了の合計</td>
+<td style="text-align:right">52</td>
+<td style="text-align:right">約1.04倍</td>
 </tr>
 </tbody>
 </table>
-<h3>合計</h3>
+<p><strong>本数の比較であり、時間や難しさを揃えた工数倍率ではない。</strong> 実施記録には監査・修正・受入も含み、50種類の完成コンテンツという意味ではない。進行中の単位には実装済み部分も残る。基盤を再利用できる追加と、未導入Modの未知の作業も混在する。</p>
 <ul>
-<li><strong>次の遊べる区切り：Aの3〜6時間。</strong> 全R完成とは異なる。</li>
-<li><strong>現在Rの機械的残件：A＋Bの7〜16時間。</strong> 人の目視待ちは含めない。これで後続Rを消すことはない。</li>
-<li><strong>第一波R-36まで：A〜Gで79〜174時間（目安80〜175時間）。</strong> 上のA＋Bを内包するため、別に足さない。</li>
-<li><strong>現在掲載する全企画：A〜Jで189〜416時間（目安190〜420時間）。</strong> 第一波を内包する。これより短いと保証する根拠は現状ない。</li>
+<li>実施50：R-00〜R-26のレポート48件＋R-27W1/W2の2件。人の全体受入を50件済みと数えない。</li>
+<li>第一波28：<a href="completion.html">第一波の計画</a>の30単位から上のW1/W2を除く。W3は追加production停止指示を維持し、未確認条件の存在を隠さない。</li>
+<li>以後24：R-37〜39の3群＋X01〜X20の20単位＋R-44の1群。粒度が揃っておらず、本数は重み付き工数ではない。</li>
 </ul>
-<p>最大の不確定要因はIの未導入20パッケージと、地区/施設へ統合したときの問題。APIを呼べるという確認だけで、攻略・報酬・保存・他Mod要素停止まで完成したことにはしない。</p>
-<h2>次の区切りの運用</h2>
-<p>Aをまず3〜6時間の作業枠として進め、終了時にP1〜P3の完了/未完を示す。時間内に終わらない場合は、その具体的な阻害要因と残工数を出し直す。同じRで際限なく汎用化・例外潰しを続けない。構造物の軽微例外は既知問題として進め、進行不能・報酬破損・保存破壊は修正する。</p>
-<p>全体を勝手に縮小しない。まずAを届ける順序にし、広範囲の追加調査を全件その前提にしない。全企画の見積もりは、各候補と残件の実績で更新する。</p>
-<p>詳細の予定と状態は<a href="completion.html">完成工程</a>、<a href="delivery.html">次の作業</a>、<a href="implementation.html">実装</a>、<a href="known-issues.html">不具合</a>を参照。</p>
+<h2>先の数字の訂正</h2>
+<p>『全体2〜3割』と『全体190〜420時間、次版3〜6時間』などの時間予測は撤回した。実績単価を集計せずに時間枠を割り当てた机上数値であり、納期や残時間の根拠に使わない。旧配分は内部履歴へ保存した。</p>
+<p>信頼できる時間予測には、過去の類似作業の実装/ビルド/検証/修正の実時間を、中断/指定sleep/人の受入待ちと分けて集計する必要がある。初回の共通基盤制作と再利用による追加も分ける。現在その集計はなく、『過去と同じ時間がもう一度必要』とは言えない。</p>
+<h2>直近の実作業</h2>
+<p>三施設版を先行する。火術塔・射手塔・城塞の局所自然接合は確認済み。都市の擁壁による施設間の断絶K-081を、地形の平坦化ではなく新規生成の擁壁昇降路で試験中。人の外観/操作/楽しさの未確認を機械合格と混ぜない。旧案・施設種類・後続Rは削らない。</p>
+<p>具体的な残件と受入は<a href="completion.html">全工程</a>と<a href="delivery.html">次の作業</a>で追う。</p>
 </article>
     <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-04 · 物語の核心は掲載しません。</footer>
   </main>
