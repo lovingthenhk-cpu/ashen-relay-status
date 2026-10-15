@@ -15,8 +15,8 @@
       <p class="eyebrow">MINECRAFT 1.20.1 · FORGE 47.4.23 · 実装計画</p>
       <h1>Ashen Relay</h1>
       <p class="lead">Lost Citiesの道路から、他Modの塔、地下墓地、工場、城塞、海と洞窟へ。そこで受けた異質な攻撃を、武器や呪文として持ち帰って次の攻略へ使うModPack。</p>
-      <div class="status"><span></span> 未完成 · R-27W3/W4目視待ち / R-27M着手 · 第一波30単位・第二波R-37〜44</div>
-      <p class="notice"><strong>この1ページが計画の全量ではありません。</strong> 下の8ページに六圏、場所と操作を特定した縫合パターン58件、旧案の採用台帳、次の作業、全作業群と受入を掲載しました。追加の仕事が確定したら完成工程にも追記します。物語の核心と隠し条件は掲載しません。</p>
+      <div class="status"><span></span> 未完成 · R-27W4＋R-27M進行中 · 全体は概算2〜3割 · R-28Dの分布調整を一部先行</div>
+      <p class="notice"><strong>この1ページが計画の全量ではありません。</strong> 各詳細ページに六圏、場所と操作を特定した縫合パターン58件、旧案の採用台帳、次の作業、全作業群と受入を掲載しました。追加の仕事が確定したら完成工程にも追記します。物語の核心と隠し条件は掲載しません。</p>
     </header>
 
     <section aria-labelledby="map-title"><h2 id="map-title">計画の各ページ</h2><div class="page-grid">
@@ -25,19 +25,25 @@
       <a class="page-card" href="mods.html"><strong>Mod採用表</strong><span>固定Modの担当、借りる部品、原生で残す要素、個別に止める要素。</span></a>
       <a class="page-card" href="ideas.html"><strong>旧案の採用台帳</strong><span>旧資料の案を原則採用対象に戻し、三つの除外理由と各Modの試験場所を列挙。</span></a>
       <a class="page-card" href="seams.html"><strong>縫合パターン58件</strong><span>現行packの部品35件と、追加Modの隔離試験候補23操作。場所、操作、実装状態を一覧化。</span></a>
-      <a class="page-card" href="delivery.html"><strong>次の作業と実装受入</strong><span>このチャットの決定事項、R-27W1/W2の結果とR-27W3からの順序、旧案20件のクラス/JSON案と施設受入。</span></a>
+      <a class="page-card" href="delivery.html"><strong>次の作業と実装受入</strong><span>このチャットの決定事項、R-27W4/Mの現在地と後続の順序、旧案20件のクラス/JSON案と施設受入。</span></a>
       <a class="page-card" href="implementation.html"><strong>実装ファイル</strong><span>R-27で触るJava、Lost Cities JSON、loot、advancement、FTBと新規案。</span></a>
       <a class="page-card" href="completion.html"><strong>完成工程</strong><span>M-1〜M-9、第一波30単位、第二波R-37〜44の作業群と受入。</span></a>
     </div></section>
 
     <section aria-labelledby="now-title">
-      <div class="section-heading"><h2 id="now-title">現在地</h2><strong>2026-10-04</strong></div>
-      <p>装備の強化継承、4種類の敵・弾・場所の遭遇、BOMDの任意遠征、複数Modのボス報酬と進行分岐は実装済みです。R-27W2では現世のLost Cities道路からAlex's Cavesの小屋とMowzie's Mobsの地下室を接続しました。R-27W3では同じ街道に原生Apotheosis塔への道と宝箱を接合し、木の幹を地盤高と誤認する問題を修正しました。元の失敗worldの複製とfresh 3 seedで道路から地下・塔への経路、初回と再起動後の額縁4個・Gem4個を専用サーバーで確認しました。外観と人が実際に歩いた感覚は未確認のため、R-27W3は未完了です。</p>
-      <p>R-27W4では現世の通常生成から自作外観style12種と独自中継所を外し、Lost Cities本体の標準建物へ戻しました。進行用の記録箱はAlex’s Caves原生小屋へ移し、新規worldと旧world複製で箱・loot table・地下と塔への経路をサーバー確認しました。孤立していた旧別次元の固定街区も新規生成を停止し、同次元の旧中心chunkに独自建物が出ないことを隔離サーバーで確認しました。さらにIron’s Spellbooks原生湿地小屋を河川沿い、T.O原生水術塔を砂浜沿いの都市道路へ接合しました。各1 seedで原生loot・敵/NPC・入口への経路と再起動をサーバー確認しました。さらなる建築種類の追加、都市景観の人による受入は続きます。</p>
-      <p>通常生成データは8施設系列を登録しました。従来7系列は通常設定で自然接合と保存を機械確認し、追加した寺院は高密度試験で614パーツ・31ブロックの自動街道・報酬とNPC・保存再起動を確認しました。寺院の本番密度の遭遇分布と生成負荷は未受入です。城塞は主塔への往復と追加敵・報酬の一回性、山岳塔は都市公園から本物のポーチへの43ブロックの道を確認。火術塔も本物の焚き火入口・全地下8パーツ・原生loot14を残して44ブロックの道を自動接続し、箱保護と保存再起動を確認しました。足元の苔の廃屋は主塔から分離し、独立利用は未実装です。水を含む地下trapdoor3セルは許容事項として記録。人の外観・昇降・戦闘と3seed分布は未確認です。見た目8種類、ピラミッド・地下施設、後続の能力縫合は計画に残り、R-27W4/Mは未完了です。</p>
-      <p>塔の射手はCataclysmの原生Mobを外見のHostとして使い、近接Goalを専用の予兆弾AIへ交換しました。サーバーで出現と再起動、予兆中断・再装填・一発の発射、塔のGemと巻物報酬を確認しました。原生の骨・古代金属dropは専用個体だけ止めています。実戦、見た目、戦闘感は未受入です。</p>
-      <p><a href="completion.html">完成工程の全件を見る →</a></p>
-      <p class="muted">以前の「約30%」は2026-09-17時点の旧監査による概算です。今回の再編後の完成率として使いません。外観、歩行感、面白さは、人の確認が済むまで未検証です。</p>
+      <div class="section-heading"><h2 id="now-title">現在地</h2><strong>2026-10-16</strong></div>
+      <p><strong>現在はR-27W4とR-27Mが未完了です。</strong> 他Mod建築の都市移管と、他Modの外見・専用射手AI・弾・状態効果・報酬の縫合を進めています。都市の分布調整はR-28Dの条件を一部先行しており、R-28Dへ全面移行したわけではありません。</p>
+      <p><strong>現行企画全体の完成度は概算2〜3割程度です。</strong> 測定した進捗率ではなく、未実装の攻略先・複合戦闘・報酬と武器更新・進行の展開・体験受入まで含めた粗い見積もりです。R番号や建物数の単純な割合からは算出していません。</p>
+      <ul>
+        <li><strong>都市を広げる初回設定：</strong>3seedの同じ範囲で市街と連続した街区が増加。中心抽選0.004・半径80〜176を新規ワールド用に反映しました。既存ワールドは変更していません。</li>
+        <li><strong>都市小屋・城塞の案内：</strong>接合成功の保存入口へ中立的な地図で案内。城塞では実アイテム使用を含む9ケース、保存再起動、遠方の未ロード入口への案内でチャンク数不変を確認しました。</li>
+        <li><strong>自然生成からの登録：</strong>新規seed424242で城塞16piece・36ブロックの自動接続後、地図使用前に入口が登録されました。同じ初期市街で火術塔とトウヒ塔の自動接続も確認しています。</li>
+        <li><strong>射手・報酬：</strong>Cataclysm由来のMobに専用AIと複数Modの攻撃要素を接続。代表地区の出現・反復防止・実drop・保存を確認しました。すべての施設の実戦や外観を合格にしたものではありません。</li>
+        <li><strong>GLM制作の廃線貨物局：</strong>制作・訂正・助言は終了。納品/実開封/反復/保存/自然LC組立を隔離確認済みですが、本番未採用です。GLMの実行中タスクはありません。</li>
+      </ul>
+      <p>墓地・工場・地下祠・四地区の展開、能力同士の複合戦闘、施設別lootと武器更新、元Modの案内/物語/不要生成の移管、広域の施設分布/負荷/人の景観・操作受入が残っています。原生寺院の通常頻度、苔の廃屋の独立利用なども削減していません。</p>
+      <p><a href="completion.html">完成工程</a> · <a href="world.html">世界と攻略先</a> · <a href="implementation.html">実装と検証</a> · <a href="known-issues.html">残る不具合・例外</a></p>
+      <p class="muted">人の外観・歩行・楽しさは機械検証と分けて記録します。R-27W3追加production作業の停止指示は維持しています。完了していないRを完了扱いにしません。</p>
     </section>
 
     <section aria-labelledby="loop-title">
@@ -57,20 +63,20 @@
         <thead><tr><th>場所</th><th>Modの組み合わせと遊び</th><th>持ち帰るもの</th><th>状態</th></tr></thead>
         <tbody>
           <tr><td>現世の街道と地下</td><td>Lost Citiesの道 × Alex's Cavesの地下小屋 × Mowzie's Mobsのフェラス地下室。小屋から梯子と通路で降りる。</td><td>固有の斧・兜、共鳴素材。塔で拾った武器との比較と継承。</td><td>現世道路との接続は3 seedで機械検証済み。外観と実際の歩行は未確認。</td></tr>
-          <tr><td>街道の塔</td><td>Apotheosisの塔 × 他Mod由来の射手モデル × BOMDの弾 × CataclysmのBone Fracture。遮蔽物と射線を使う。</td><td>Affix武器、Gem、弾系能力。地下探索用の別ビルド。</td><td>塔・射撃AI・街道接続と初回のGem額縁は機械確認済み。外観・実歩行は未受入。射手の外見はR-27M。</td></tr>
-          <tr><td>地下墓地</td><td>Iron's Spellsのcatacombs × Mowzie'sの一時的なブロック変換 × Cataclysmの予兆攻撃。変わる床と退路を読む。</td><td>巻物、ルーン、装備型呪文。敵の技を後に自分の呪文へ。</td><td>原生施設と攻撃は実装済み。一時床の実施設導入はR-27E1。</td></tr>
+          <tr><td>街道の塔</td><td>Apotheosisの塔 × 他Mod由来の射手モデル × BOMDの弾 × CataclysmのBone Fracture。遮蔽物と射線を使う。</td><td>Affix武器、Gem、弾系能力。地下探索用の別ビルド。</td><td>塔・射撃AI・街道接続と初回のGem額縁は機械確認済み。代表の機械確認済み。外見・戦闘感の全体受入はR-27Mに残る。</td></tr>
+          <tr><td>地下墓地</td><td>Iron's Spellsのcatacombs × Mowzie'sの一時的なブロック変換 × Cataclysmの予兆攻撃。変わる床と退路を読む。</td><td>巻物、ルーン、装備型呪文。敵の技を後に自分の呪文へ。</td><td>原生要素と攻撃の縦切りは実装済み。都市墓地への移管と一時床の実施設導入は未完了。</td></tr>
           <tr><td>城塞</td><td>Iron's Spellsのevoker fort × 敵が使うrelay_step × Pehkui縮小。門、広間、狭所で位置取りを変える。</td><td>移動巻物と継承可能な装備型呪文。</td><td>敵の移動は実装済み。縮小との複合は計画。</td></tr>
           <tr><td>地下工場</td><td>Cataclysmのancient_factory × Alex's Cavesの磁力 × Mowzie'sの一時床。装置と安全帯の間で移動する。</td><td>工場素材と位置取りを変える能力を都市の武器へ。</td><td>工場の領域攻撃は実装済み。磁力・一時床はR-27E2。</td></tr>
           <tr><td>海と洞窟</td><td>Cataclysmのsunken_city × Alex's Cavesの水中Effect × T.O水系装備。六つの洞窟では原生のtablet探索を使う。</td><td>T.O段階強化武器、洞窟素材、異なる環境に合うビルド。</td><td>原生施設と合成経路は存在。都市からの案内と複合戦闘は計画。</td></tr>
           <tr><td>都市外遠征</td><td>Mowzie's自然拠点とBOMD四施設。寒冷地、地下、Nether、Endで同じ装備を使い回せない攻略にする。</td><td>BOMDのEarthdive Spear、固有drop、継承する次の器。</td><td>BOMD四遠征と横断合成は実装済み。戦術差をR-32で評価。</td></tr>
         </tbody>
       </table></div>
-      <p class="muted">地下工場は地下、sunken_cityは海、次元固有施設は本来の次元に置きます。街はそこへ向かう接続と手掛かりを持ちます。生成条件を無視して施設を市街地へ強制移植する計画ではありません。</p>
+      <p class="muted">必要な建築・敵・技を都市の地上/地下/水辺へ集約し、元Modの独立通常生成は移管と対で止めます。環境や次元が不可欠な例外は、理由と都市からの管理遠征の導線を記録します。</p>
     </section>
 
     <section aria-labelledby="parts-title">
       <h2 id="parts-title">Modを部品として使う</h2>
-      <p>借りるのは必要な構造物、接合元、モデル、アイテム、弾、Effectです。各Modの要素を「原生攻略として維持」「Ashen Relayの配置・報酬へ移す」「重複するので停止」に分けます。BOMDの四遠征と原生drop・レシピ、Alex's Cavesの洞窟探索は残します。Dungeons Enhancedは小型構造を街の接合元に使う候補ですが、未導入です。採用する場合も27種類を一斉に自然生成させず、不要なstructure setを個別に止める案を検証します。</p>
+      <p>借りるのは必要な構造物、接合元、モデル、アイテム、弾、Effectです。建築・戦闘・素材の機能を維持/移管し、元の物語と攻略順はAshen Relayへ組み替えます。BOMD四系統やAlex's Cavesの必要な探索/武器更新を残し、元配置・不要な生成/spawn/loot/recipeは実IDごとに停止します。Dungeons Enhancedは小型構造を街の接合元に使う候補ですが、未導入です。採用する場合も27種類を一斉に自然生成させず、不要なstructure setを個別に止める案を検証します。</p>
       <p>停止方法は設定、データパック、イベント、必要箇所だけのMixinの順に調べます。構造物NBTやモデルは公式Modを実行時参照し、コピーが必要な場合は権利と動画利用条件を確認します。現時点で「停止予定」は実装済みを意味しません。</p>
     </section>
 
@@ -122,8 +128,8 @@
     <section class="timeline" aria-labelledby="roadmap-title">
       <h2 id="roadmap-title">これからの順序</h2>
       <ol>
-        <li class="current"><span>01</span><div><strong>R-27W1〜W4 · 最初の街</strong><small>建築を棚卸しし、道路から地下・塔へ歩ける最初の街区を作る。</small></div></li>
-        <li class="planned"><span>02</span><div><strong>R-27M/E1〜E3 · 異なる戦闘</strong><small>射手外見、一時床、磁力、城塞のサイズ戦を場所へ結ぶ。</small></div></li>
+        <li class="current"><span>01</span><div><strong>R-27W4 · 多様な建築を都市へ</strong><small>建築を棚卸しし、道路から地下・塔へ歩ける最初の街区を作る。</small></div></li>
+        <li class="planned"><span>02</span><div><strong>R-27M進行中／E1〜E3予定 · 異なる戦闘</strong><small>射手外見、一時床、磁力、城塞のサイズ戦を場所へ結ぶ。</small></div></li>
         <li class="planned"><span>03</span><div><strong>R-28A〜D · 四地区</strong><small>魔術・工業・城塞・水辺を作り、8種類の外部建築を受け入れる。</small></div></li>
         <li class="planned"><span>04</span><div><strong>R-29〜31 · 遠征と武器</strong><small>都市外の遠征、序中後の装備更新、記録と案内を統合。</small></div></li>
         <li class="planned"><span>05</span><div><strong>R-32〜35 · 調整と検証</strong><small>戦術・生成・性能・技術・権利を段階的に受け入れる。</small></div></li>
@@ -132,7 +138,7 @@
       <p class="muted">この一覧は段階の見出しです。R-27A/B/Sも含む第一波30 unitと第二波の作業群、六圏と旧案の受入条件は<a href="completion.html">完成工程</a>に掲載しています。旧資料のMod案は原則採用対象とし、jar導入は互換・権利・停止方法の試験後に個別決定します。</p>
     </section>
 
-    <footer><p>Last updated <time datetime="2026-09-28">2026-09-28</time> · 公開ページ。物語の核心と隠し条件は掲載しません。</p></footer>
+    <footer><p>Last updated <time datetime="2026-10-16">2026-10-16</time> · 公開ページ。物語の核心と隠し条件は掲載しません。</p></footer>
   </main>
 </body>
 </html>
