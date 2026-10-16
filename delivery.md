@@ -8,6 +8,12 @@
 
 人の梯子操作/外観、全都市の接続・分布・負荷は未完了。**R-27W4/M全体の完了ではない。** 戦闘・原生戦利品・地区報酬は既存の実装と証拠を再利用。次は計画済みの墓地の一時床を、MowzieのAPIと保存・復元・退路の保護で接続する隔離試作へ進む。旧案や後続の施設種類は削っていない。
 
+### 墓地の一時床：実原生室まで接続（R-27E1未完了）
+
+Mowzieの一時置換APIをIron’sの大納骨室へ接続。3秒の予兆後に3×3床が5秒だけ抜け、落差は1ブロック、周囲の安全帯と入口・箱は残す。制御コアは第三者が置いたチェストと中身を保持し、床上に何かがいる間は復元を延期、復元用実体が消えても保存記録から戻す。ACTIVE中の保存→再起動でも9セルが復元された。
+
+実生成室の1方向で発動と復元を確認。別方向の水抜けのある室は加工せず拒否。保存後に2室周囲588セルと元の未開封loot容器200個のテーブル・seedを照合して変更なし。接近発動と同じ訪問中の重複防止を接続し、サーバー側疑似プレイヤーで確認した。人の実操作・実player tick、死亡/再入場の全工程、都市墓地の入口接合と複合攻撃は未完了。施設種類が増えたという意味ではない。
+
 残作業の比較は[本数と限界](estimate.html)。根拠のなかった時間予測は撤回済み。
 
 
@@ -127,13 +133,13 @@ Rの開始時に このページ の対象IDを列挙し、元資料の該当箇
 | ID / R | プレイヤーが遊ぶもの | 主な作業面と受入 |
 |---|---|---|
 | W01 / R-27W3〜R-28A、R-37A | 高層魔術。街路→原生塔/魔術施設→屋上橋→帰還。高所の射線と魔法設備を使い分ける | `CityFacilityConnector.java`案、LC building/part/citystyle JSON、塔loot。異なる入口と報酬、帰路を3 seedで確認 |
-| W02 / R-27W2・E1、R-37B | 地下継ぎ目。小屋の梯子、フェラス室、Iron's墓地、一時床を歩いてつなぐ | `WroughtFacilityReservation.java`既存、`CatacombFloorCycle.java`案、接合parts。入口/箱/梯子を守り再起動後に床を復元 |
+| W02 / R-27W2・E1、R-37B | 地下継ぎ目。小屋の梯子、フェラス室、Iron's墓地、一時床を歩いてつなぐ | `WroughtFacilityReservation.java`既存、`CatacombFloorCycle.java`既存コア（実室接続・人の受入は部分）、接合parts。入口/箱/梯子を守り再起動後に床を復元 |
 | W03 / R-27E2・R-28B、R-37C | 工業。工場と都市の設備をつなぎ、磁力、液体、弾、機械主体の戦いを順に覚える | `RelayFactoryDistrict.java`既存、`FactoryMagnetCycle.java`案、設備adapter、loot/recipe JSON。安全帯と原生装置を維持 |
 | W04 / R-27E3・R-28C、R-37D | 城塞。門、狭路、広間で敵の歩法と短時間縮小を対処し、後に自分で使う | `RelayFortDistrict.java`、Pehkui接続、Iron's原生施設、移動報酬。閉じ込めなし・元サイズ復帰 |
 | W05 / R-29B、R-37E | 浸水。都市の堤防を手掛かりに海の原生施設へ遠征し、水中能力を帰りの街でも使う | LC水辺parts、route advancement/FTB、Cataclysm/Alex's/T.Oのloot/recipe。水中の原生生成を壊さない |
 | W06 / R-29C、R-37F | 外縁。寒冷・自然拠点・洞窟・Nether/Endを装備の持ち替えで巡る | 原生structureの生成維持、route/loot/recipe。遠征の固有drop→都市で更新→別環境への帰還を二経路以上 |
 | S01 / R-38A | 狭路。城塞の短距離移動と一時縮小を、退路のある幅で読む | `RelayFortDistrict.java`、Pehkui。失敗後と効果終了後に元の通路へ戻れる |
-| S02 / R-38B | 閉鎖室。墓地と工場で床/装置の予兆から安全帯を選ぶ | `CatacombFloorCycle.java`案、`FlameZoneHost.java`。入口と箱を保護 |
+| S02 / R-38B | 閉鎖室。墓地と工場で床/装置の予兆から安全帯を選ぶ | `CatacombFloorCycle.java`既存コア（実室接続・人の受入は部分）、`FlameZoneHost.java`。入口と箱を保護 |
 | S03 / R-38C | 屋外。自然拠点で広い射線の弾/設置攻撃を避ける | 原生屋外施設、Projectile cleanup。施設外へ弾が残らない |
 | S04 / R-38D | 垂直。塔・梯子・縦坑で上下移動し、落下後も復帰する | `CityPathWeld.java`案、塔と小屋の入口。上下両方向の帰路 |
 | S05 / R-38E | 境界。二圏の規則を順番に越える任意戦 | `SeamEncounter.java`案、一回報酬JSON。二規則を初見で同時最大強度にしない |
@@ -152,7 +158,7 @@ Rの開始時に このページ の対象IDを列挙し、元資料の該当箇
 |---|---|---|
 | P01 / R-27E2、R-38G | Alex's Effect/Magnet/Waveを工場・浸水・境界の局所周期へ。NuclearExplosionは保護領域を壊さない方法を隔離試験 | `FactoryMagnetCycle.java`案、zone/接合ブロック、効果終了と地形保持。無制限破壊方式は受入れない |
 | P02 / R-27M/E、R-38F/G、R-39D | Cataclysm Effect/Flame Strike/Lightning Storm/Ignis Fireballを塔・工場・城塞の異なる予兆とPlayer用能力へ | `RelayMissileCarrier.java`、`FlameZonePayload.java`既存、戦技案、spells/loot。原生ボスAI/dropを置換しない |
-| P03 / R-27E1、R-38H、R-39D | Mowzie's BlockSwapper/Sunstrike/IceBallを復元床・屋外予兆・寒冷装備へ | `CatacombFloorCycle.java`案、保護block tag、再起動復元。原生フェラスの戦いは残す |
+| P03 / R-27E1、R-38H、R-39D | Mowzie's BlockSwapper/Sunstrike/IceBallを復元床・屋外予兆・寒冷装備へ | `CatacombFloorCycle.java`既存コア（実室接続・人の受入は部分）、保護block tag、再起動復元。原生フェラスの戦いは残す |
 | P04 / R-27M、R-38G、R-39D | BOMD Magic Missile/RiftBurst/Spikes/SporeBallを塔・境界・獲得戦技で別ownerへ | 既存 `RelayMissileHost.java`、戦技adapter案、loot。owner/命中/cleanup/再取得と四原生施設を検査 |
 | P05 / R-27E3、R-30、R-39 | Iron's caster、T.Oスペル、Apo Affix/Gem、Pehkuiを城塞と武器移行へ | `ImprintItem.java`・`RelayWeaponLedger.java`既存、recipe/loot。既存T.Oスペルの重複と恒久縮小を防ぐ |
 
