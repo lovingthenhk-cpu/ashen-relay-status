@@ -84,7 +84,7 @@ R-27W1で判明した旧 `WroughtFacilityReservation.java` は非都市のラン
 
 | ファイル | 既存/案 | 仕事 |
 |---|---|---|
-| `addon/.../zone/CatacombFloorCycle.java` | 新規案 | Mowzie's `EntityBlockSwapper.swapBlock` で墓地一室の床を一時変化・復元。入口、箱、梯子は保護 |
+| `addon/.../zone/CatacombFloorCycle.java` / `CatacombFloorRoom.java` | コアと原生実室接続を実装・機械確認、R全体未完了 | Mowzieの床を予兆→一時変化→安全復元。箱内容保持/actor消失復旧/占有延期/再起動復元、原生大納骨室、接近訪問の重複防止。実player tick/死亡復活/都市入口/人の操作は未検証 |
 | `addon/.../zone/FactoryMagnetCycle.java` | 新規案 | Alex's `MAGNETIZING` を工場一室の短い周期に限定。常時安全な帯を残す |
 | `addon/.../zone/FlameZoneHost.java`、`FlameZonePayload.java` | 既存調整 | 工場の既存予兆装置と磁力・足場の順序を組む |
 | `addon/.../district/RelayDistrictPlacement.java`、`RelayFactoryDistrict.java` | 既存改修 | 実在するcatacombs/factoryのstructure start内だけ追加遭遇を起動 |
