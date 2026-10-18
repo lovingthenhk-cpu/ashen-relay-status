@@ -172,3 +172,10 @@ Iron's Lib、Lionfish API、Citadel、Cerbons API、Apothic Attributes、Placebo
 ### 2026-10-15 城塞地図の実案内と保存
 
 城塞の元ID/旧形式/既に都市IDへ移管された地図を、接合成功の入口を示す中立filled_mapへ変換。実アイテム使用を含む9ケース、未知時の非消費、物語文面の非混入、既存入口の取り込み/破損除外/復元を確認。再起動後も索引1件を読み、入口をロードせず遠方から実座標へ案内、チャンク数2209→2209。元同期locatorは呼ばない。新規生成成功jobの自動索引は実装済み・fresh証拠は次に確認。人のUI/実NPC取引、他Mod全案内/物語・素材移管は未完了。
+
+
+### 2026-10-18 都市墓地の配置と案内を移管
+
+Iron’sの元catacombs structure setは新規独立生成を停止し、都市版wrapper・原生小屋入口・梯子・短通路を採用しました。原生の地下assembly/敵/通常Loot/登録IDは保持します。攻略family・到達条件・Wayward Compass tagを都市版へ対応。元と都市holderの保持とplacement設定は再起動後のregistryで確認。全locatorの実操作・元物語/案内の移管・分布調整は継続します。
+
+運河交換場はAlex’s Caves/Cataclysm/Iron’s/Mowzie’s/Apotheosisの建材・設備・物資を混ぜた候補です。第2版のLC自然3×3と駅隣接の限定歩行接続を検査中で、本番生成へは未採用です。鉄道の第一対象はLost Cities地下鉄の通常レールとAlex’s Caves磁気レールの車両直通です。歩行接続だけでは未達とし、既存本線を保護して支線を設計します。報酬はCodex監修第3版の16表を実生成検証してパックへ反映しました。
