@@ -633,6 +633,18 @@
 <td>large_crypt_1の測定中心を認識するが5x5床外周にmoss_block4と草/苔カーペット/ツツジがあり、床ギミックはwrites0で未発動。施工破損やwrapper起因とは未断定</td>
 <td><strong>要調査・当該室のギミック未受入</strong>。元装飾を消して合格させず、安全な室内選点と原生変種の扱いをGLMへ優先調査/限定実装として委任。</td>
 </tr>
+<tr>
+<td>K-094</td>
+<td>通常都市の高架公園で、予測した足元より実表面が1ブロック高く入口施工を拒否</td>
+<td>seed424242の通常salt[0,-57]、街路[-3,-62]はcity=true/building=null/elevated=true。予測feet109に幅3の入口0、110には19候補。実grass_blockが108/109にあり草が110。writes0拒否</td>
+<td><strong>要修正・通常設定受入は未完了</strong>。原生公園partと固定版生成を確認し、地下入口だけ厳密な+1候補を検討。streetFeet全体や保護/高さ制限は緩めない。</td>
+</tr>
+<tr>
+<td>K-095</td>
+<td>隔離試験で200区画超の一括forceload中に60秒watchdogが停止</td>
+<td>通常profile第二候補を204区画まとめて要求した管理コマンド中、Server threadはForceLoadCommand→同期chunk待ち。自然なプレイヤー移動での再現は未確認</td>
+<td><strong>試験負荷の問題として記録・原因範囲を分離</strong>。world/クラッシュ証拠を保存し、watchdogは無効化せず小分け要求へ。通常探索性能が合格したとはしない。</td>
+</tr>
 </tbody>
 </table>
 </article>
