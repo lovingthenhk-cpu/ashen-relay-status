@@ -316,3 +316,10 @@ Cataclysmの工場20パーツにAlex’s Cavesの梯子小屋1件を接合し、
 Cataclysm工場の空チェスト6個/樽6個を、新規生成時だけ報酬付きにする。`FactoryContainerLootProcessor`を`NativeStructureTypes`へ登録し、原生`ancient_factory/d,e,start_pool,w`の4poolだけを専用processor listへ変更。元templateは実行時参照し、水対策processorを先に維持する。`factory_components`はAlex回収材・再鍛造材と補給、`factory_armory`は古代金属と磁性素材・再鍛造材・インクを収める。ボス固有dropや地区一回報酬は変更しない。
 
 標準buildと全Mod起動後、通常生成の12容器への専用table割当を確認。樽1/箱1を実際に開封し、回収材/古代金属/磁性素材/インクの出現と、同じ個体の二度目の展開で補充されないことを確認した。専用fixtureで既存Loot/収納物/施錠/null/非容器の非上書きと原NBT不変を確認。同じworldの再起動後、開封済み2容器の中身は完全一致し、残り10容器も未開封tableを保持。既存worldへ補充しない。R-28B全体は未完了。
+
+
+## 2026-10-22 工場ボスの死亡爆発から戦利品を保持
+
+元Harbingerの満HP/NoAI試験個体を実ダメージで倒すと、抽選直後に存在した保証巻物/刻印が死亡演出の爆発で消える不具合を発見しました。`BossDeathLootProtection`を`ExplosionEvent.Detonate`へ接続し、死亡済みのHarbingerによる爆発から落下アイテムだけを除外します。永続的な無敵化や報酬の再抽選は行いません。
+
+修正後の1HP試験個体で死亡直後から160tickまで署名付きdeath_laser巻物/刻印と元witherite・他Mod固有品を確認。実爆発の4対照では、生存中のHarbinger・別の敵・発生源なしのitem破壊を維持し、死亡済みHarbingerだけitem保持、生存対象へのダメージは全条件で維持しました。満HPの失敗と1HPの修正陽性は区別し、人の戦闘難度/実プレイヤーの進捗保存まで合格にしていません。R-28B全体と工場の磁力遭遇は未完了です。
