@@ -10,9 +10,11 @@
 </head>
 <body>
   <main>
-    <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="mods.html">Mod採用表</a><a href="ideas.html">旧案の採用台帳</a><a href="seams.html">縫合パターン58件</a><a href="delivery.html">次の作業と実装受入</a><a href="implementation.html" aria-current="page">実装ファイル</a><a href="completion.html">完成工程</a><a href="estimate.html">残工数の見積もり</a><a href="known-issues.html">不具合・許容事項</a></nav>
+    <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="progression.html">攻略と製作・終点</a><a href="mods.html">Mod採用表</a><a href="ideas.html">旧案の採用台帳</a><a href="seams.html">縫合パターン58件</a><a href="delivery.html">次の作業と実装受入</a><a href="implementation.html" aria-current="page">実装ファイル</a><a href="completion.html">完成工程</a><a href="estimate.html">残工数の見積もり</a><a href="known-issues.html">不具合・許容事項</a></nav>
     <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
     <article class="document"><h1>実装ファイルの全計画</h1>
+<h2>2026-10-23 優先順を改訂：攻略と製作を先に設計</h2>
+<p><strong>全体のレシピ体系は未完成です。</strong> <a href="progression.html">攻略と製作・終点</a>に、E0通常到達/E1五空間の複合戦/E2装備・戦技完成、P0～P5、T.O四系列とBOMD槍の実材料、素材の用途、回収材レシピ2件の設計、G0～G6の受入を掲載しました。次はG1の依存/数量台帳→G2のレシピと報酬→G3の案内/継承を優先します。設計決定を追加実装済みとは扱いません。六圏・18場面・旧案全件・既存Rの残作業は保持します。</p>
 <h3>2026-10-12 修正版32候補を本人が全採用・通常生成へ登録</h3>
 <p>本人が修正版32件（ビル12・置物12・小構造物8）を全採用。通常生成用に74part/32building/32palette/15condition/15低価値Lootを登録し、新しい普通citystyleの選択リストへ32件を追加した。既存のLost Citiesの普通/砂漠styleと原生攻略施設を保持する。Mod建材16種類・4Mod・24候補、Mod Loot13種類・12表。ダイヤ装飾3候補は通常weight0.05、その他は1.0、citystyle factor0.25で回収頻度を抑える。</p>
 <p>全32の実registryロードと参照解決を確認。通常seed・通常塩で新しい橋が選ばれ、管理者の建物配置を使わない自然生成で同じ定義の196セル・Mod柱・照明と入口往復を確認した。旧展示と採否記録を保全。<strong>自然配置の全32/全seed・人の自然配置での操作感は未検証</strong>で、未測定の成功率を90%と書かない。</p>
@@ -804,7 +806,7 @@
 <p><code>seam_encounters/catacomb_entry.json</code>で対象室・距離・時間・2報酬表を指定。<code>seam_crypt_materials</code>はインク/術式素材、<code>seam_tower_materials</code>は再鍛造材/Gem dust/空印の初回選択報酬とし、既存の初回地区記録やボス固有品を再配布しません。専用advancement/FTB案内を接続します。床復元を確認せず射手へ進むcontroller、管理者コマンドだけの起動、登録だけの試作は完成に数えません。</p>
 <p>死亡/離脱/取消/保存再起動/別owner/二重使用/初回報酬選択を原生室で検証します。dirtyをディスク原子性と呼ばず、人の予兆の読みやすさ・退避・楽しさは別途未確認として残します。これはS05の第一縦切りであり、R-38Eの複数境界への拡張を削りません。</p>
 </article>
-    <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-04 · 物語の核心は掲載しません。</footer>
+    <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-23 · 物語の核心は掲載しません。</footer>
   </main>
 </body>
 </html>

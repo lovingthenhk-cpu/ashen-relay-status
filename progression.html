@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="description" content="Ashen Relayの攻略と製作・終点。実装済み・計画・受入条件を区別して掲載。">
+  <title>攻略と製作・終点 — Ashen Relay</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="progression.html" aria-current="page">攻略と製作・終点</a><a href="mods.html">Mod採用表</a><a href="ideas.html">旧案の採用台帳</a><a href="seams.html">縫合パターン58件</a><a href="delivery.html">次の作業と実装受入</a><a href="implementation.html">実装ファイル</a><a href="completion.html">完成工程</a><a href="estimate.html">残工数の見積もり</a><a href="known-issues.html">不具合・許容事項</a></nav>
+    <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
+    <article class="document"><h1>攻略・製作・エンドコンテンツの設計</h1>
+<p>更新: 2026-10-23。目的: 終点から逆算し、探索先・必要素材・製作品・次の挑戦をつなぐ。状態: <strong>現行の設計決定、実装は部分的</strong>。
+原要求は<a href="gameplay.html">プレイループ</a>、全案は<a href="ideas.html">採用台帳</a>、実装追跡は<a href="delivery.html">実装受入</a>、制作工程は<a href="completion.html">完成計画</a>。以下には製作物・ボス・終盤の遊びの計画を具体的に掲載します。物語の核心・結末・隠し条件は掲載しません。</p>
+<h2>1. まず現状を正す</h2>
+<ul>
+<li>独自レシピは現在、研究石板・空の継承印・継承触媒の3件。元Modに横断合成や武器強化はあるが、全施設の入手量と製作目標を一体で設計した状態ではない。</li>
+<li>工場の容器Lootは実装・代表検証済み。ただし「素材が存在し用途がある」だけでは経済設計の受入にしない。現Lootは仮配分として扱い、本書の用途・数量・次の攻略への接続を満たしてから調整完了とする。</li>
+<li>以下の確定は<strong>採用するゲーム設計</strong>という意味。新しいレシピ、報酬保証、複合戦、案内が既に動くという意味ではない。今回production設定、コード、既存worldは変更しない。</li>
+<li>素材・武器の事実確認は固定jarの41レシピと12Loot表の静的抽出に基づく。固定版データから入出力とLootの内容を確認。runtimeでの全経路開通・実ドロップ率・難度は別途検証する。</li>
+</ul>
+<h2>2. 何を終点にするか</h2>
+<table>
+<thead>
+<tr>
+<th>終点</th>
+<th>プレイヤーが達成すること</th>
+<th>完成品として必要な内容</th>
+<th>現状</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E0 通常到達</td>
+<td>九信号の攻略と既存記録・継承の利用を経て、既存の終盤到達を選ぶ</td>
+<td>ボス順は自由。九信号は種類の記録で、素材を九回消費する鍵にしない。既存条件・選択の排他・再取得を保持</td>
+<td>状態・報酬の既存実装あり。都市経路/装備経済との通し確認は未完了</td>
+</tr>
+<tr>
+<td>E1 戦闘の到達点</td>
+<td>五空間型の任意複合戦を突破し、自分のビルドを完成させる</td>
+<td>下表の5試験。単独で覚えた規則を二つずつ使う。新しい巨大建物/新ボスの追加を前提にせず既存の都市施設で行う</td>
+<td>床/射手/磁力/縮小の部品は一部実装。試験群全体は未実装</td>
+</tr>
+<tr>
+<td>E2 装備・技の到達点</td>
+<td>主武器と別距離の副武器を育て、強化を移して異なる環境で使う</td>
+<td>T.O四系列、BOMD槍、固有武器、Affix/Gem、Iron's/T.O呪文、追加戦技再演2種類以上を選べる</td>
+<td>元Modの武器と継承の部分実装あり。供給/案内/選択比較は未完了</td>
+</tr>
+</tbody>
+</table>
+<p>E0だけで開発全体の完成とはしない。E1/E2、六圏18場面、旧案全行の実装・試験または三理由の除外証拠までが開発範囲。プレイヤーに四武器系列の全最大強化、全Modの技術ツリー、全収集を通常到達条件として要求しない。物語の到達後も都市探索・ボス再戦・製作・継承を続けられる。</p>
+<h3>E1 五つの到達試験（全て設計、未完成）</h3>
+<table>
+<thead>
+<tr>
+<th>試験 / 既存空間</th>
+<th>組み合わせと操作</th>
+<th>報酬の用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>狭路 / 城塞門と広間</td>
+<td>Iron's城塞＋歩法追跡役＋Pehkui縮小。狭路へ誘う/広間へ退くを切り替え、原寸復帰中に次の射線を読む</td>
+<td>移動・近接向けの強化素材を選び、工業または高層戦へ戻る</td>
+</tr>
+<tr>
+<td>閉鎖室 / 地下墓地</td>
+<td>Iron's実室＋Mowzie床復元＋Cataclysm設置攻撃。床予兆→復元確認→次の攻撃と順に進む</td>
+<td>インク/ルーン系か継承支援材を選択</td>
+</tr>
+<tr>
+<td>屋外 / 工業街区</td>
+<td>Cataclysm工場の既存装置＋Alex磁力＋owner付き投射。安全帯・装備・射線を使い分ける</td>
+<td>磁気装備/機械武器系列の準備材。ボス固有品そのものは出さない</td>
+</tr>
+<tr>
+<td>垂直 / 魔術塔と屋上橋</td>
+<td>原生塔＋BOMD弾＋Cataclysm効果。遮蔽物・上下の退路・移動スペルを組み合わせる</td>
+<td>遠射/呪文強化かGem更新材を選択</td>
+</tr>
+<tr>
+<td>境界 / 二地区の接続部</td>
+<td>学習済みの床と複合射手を明示起動で順に処理。初期版S05の後、磁力/移動の組を追加</td>
+<td>ビルド別の選択報酬、再演技の試用・更新。終了前に安全出口と所有物の復元を確認</td>
+</tr>
+</tbody>
+</table>
+<p>各試験に通常・熟練・達人の3段階を設計する。通常は単独規則を順番に、熟練は短い重なり、達人は二規則の切替と資源管理を要求する。無限HP上昇や全攻撃同時発動では難度を作らない。段階の具体的な秒数/威力は独立の戦闘票で検証して決める。通常到達の必須品を最難段階の報酬に閉じ込めない。近接主体と呪文/遠射主体それぞれで成立する手段を用意する。</p>
+<h2>3. そこまでの道のり</h2>
+<p>これは推奨難度帯であり、他の順番で攻略することを禁止する鍵ではない。武器種ごとに少なくとも二つの更新候補を提示する。</p>
+<table>
+<thead>
+<tr>
+<th>段階</th>
+<th>選べる攻略先</th>
+<th>得るもの/作るもの</th>
+<th>次へ持ち込むもの</th>
+<th>出口条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P0 都市で準備</td>
+<td>一般ビル、寄り道塔、小屋、貨物/運河拠点</td>
+<td>食料/鉄/紙/低位呪文、空印、Gem粉。近接武器または低位魔法装備を準備</td>
+<td>回復・遠射・最低一つの退路。建材回収だけでも拠点を整備できる</td>
+<td>装備を使って帰還でき、次の候補を2件知る。ボス撃破不要</td>
+</tr>
+<tr>
+<td>P1 最初の専門装備</td>
+<td>地下フェラス、Apotheosis塔、初級魔術施設</td>
+<td>フェラス斧/兜、Affix/Gem、ルーン/巻物。空印で基本の抽出と再装着、刻印から触媒</td>
+<td>重量近接/魔法/遠射の分岐。別施設の素材が継承へ効く</td>
+<td>一つの更新を実際に装備し、投資を次の器へ移せる</td>
+</tr>
+<tr>
+<td>P2 四地区を横断</td>
+<td>墓地、城塞、工場道中、水辺・高層</td>
+<td>床/歩法/射線/磁力の規則を学ぶ。古代槍、磁気盾、追尾矢、Spellbook更新の候補</td>
+<td>地下→魔法、工場→磁気装備、城塞→移動能力を別圏へ持つ</td>
+<td>異なる距離の武器または装備＋呪文を2通り用意。各攻略先が素材の次用途を示す</td>
+</tr>
+<tr>
+<td>P3 大型攻略と任意遠征</td>
+<td>九信号の未攻略先、六洞窟の環境攻略、BOMD四系統、T.O施設</td>
+<td>元ボス固有武器/素材、署名巻物、共鳴刻印、T.O素体/強化材、BOMD槍素材</td>
+<td>持ち帰って継承し、まだ苦手な環境に合わせて組み直す</td>
+<td>ボス固有品の入手元を把握し、選んだ上位武器を少なくとも一段更新</td>
+</tr>
+<tr>
+<td>P4 終盤到達</td>
+<td>残る主要ボス/記録経路、既存終盤操作</td>
+<td>既存条件に従ってE0へ。全武器完成は要求しない</td>
+<td>完成した主ビルドと副手段で未攻略の圏へ戻れる</td>
+<td>既存の信号/記録/利用条件が通常プレイで揃う。抽選だけで進行不能にならない</td>
+</tr>
+<tr>
+<td>P5 熟練・収集</td>
+<td>E1五試験、二圏境界、再戦/未踏施設</td>
+<td>選択したT.O系列の最終強化、戦技再演、Affix/Gemの組直し、別武器へ部分継承</td>
+<td>同じ難度でも別ビルドで解ける。重複品は精錬・継承・次の製作へ</td>
+<td>5空間型の攻略と、異なる2ビルドの有効性を示せる。全図鑑埋めは任意の遊び</td>
+</tr>
+</tbody>
+</table>
+<h3>九信号の位置づけ</h3>
+<p>主要9種はフェラス、Frostmaw、Umvuthi、Netherite Monstrosity、Ender Guardian、Harbinger、Leviathan、Ancient Remnant、Maledictus。既存の種類・到達条件は維持。推奨順は地形・装備から提示し、固定の九連戦にしない。BOMD四体、Luxtructosaurus等の素材攻略は別の装備分岐であり、九信号へ無断追加しない。</p>
+<h2>4. 装備の完成経路（固定版レシピとの接続）</h2>
+<p><code>traveloptics</code>がT.O、<code>bosses_of_mass_destruction</code>がBOMDの実namespace。以下はjar静的確認と採用設計。元Modの攻略順/ストーリーは採用せず、素材を得る場所は都市移管/環境例外の台帳へ対応させる。</p>
+<table>
+<thead>
+<tr>
+<th>系列</th>
+<th>素体と材料の経路</th>
+<th>最終までの更新</th>
+<th>本パックでの役割/未完了</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cursed Wraithblade</td>
+<td>Maledictus追加Lootに <code>traveloptics:cursed_wraithblade</code> と <code>echo_winglet</code> の抽選あり</td>
+<td>素体→level_one→two→three。各鍛冶で前段＋echo_winglet1＋<code>cataclysm:cursium_ingot</code>1</td>
+<td>城塞/呪術側の上位剣。確定入手経路と都市案内は要実装。確率入手だけを必須進行に使わない</td>
+</tr>
+<tr>
+<td>Mechanized Wraithblade</td>
+<td><code>cataclysm:laser_gatling</code>＋Cursed Wraithbladeを <strong>Cataclysm weapon_fusion</strong> で融合</td>
+<td>各段で前段＋<code>traveloptics:last_glow</code>1＋<code>cataclysm:witherite_ingot</code>1</td>
+<td>工場だけでは完結しない横断武器。Harbinger追加Lootにlast_glow抽選。素体を融合へ消費するので剣を残す選択と継承の案内が必要</td>
+</tr>
+<tr>
+<td>Gauntlet of Extinction</td>
+<td>Luxtructosaurus追加Lootに <code>traveloptics:gauntlet_of_extinction</code> 抽選</td>
+<td>各段で前段＋<code>alexscaves:tectonic_shard</code>1＋<code>traveloptics:tectonic_ingot</code>1。インゴット1はamber_curiosity4＋arcane_ingot4＋tectonic_shard1</td>
+<td>洞窟環境と魔法加工を横断する拳。3段合計では強化分だけでamber12/arcane12/shard6。素体と材料の再取得/都市からの導線が未完了</td>
+</tr>
+<tr>
+<td>Trident of the Eternal Maelstrom</td>
+<td>hullbreaker_scales4＋arcane_ingot1→hullbreaker_steel1。steel3＋<code>cataclysm:coral_bardiche</code>1＋<code>irons_spellbooks:weapon_parts</code>1→素体</td>
+<td>各段で前段＋<code>alexscaves:immortal_embryo</code>1＋hullbreaker_steel1</td>
+<td>水辺の複数攻略を渡る槍。素体～最終のsteelは6、scale24/arcane6にembryo3などが必要。供給量の調整前に「すぐ作れる」と案内しない</td>
+</tr>
+<tr>
+<td>Earthdive Spear</td>
+<td><code>bosses_of_mass_destruction:void_thorn</code>1＋<code>obsidian_heart</code>1＋棒1</td>
+<td>元の槍にAffix/Gem/対応する強化を継承</td>
+<td>BOMD二攻略を横断する機動槍。T.O四系列の下位互換にせず操作差を残す。都市からの各任意遠征の接続が残る</td>
+</tr>
+<tr>
+<td>早中期の近接/魔法</td>
+<td>フェラス固有品、Iron's装備/Spellbook、<code>cataclysm:ancient_spear</code>等</td>
+<td>古代槍はancient_metal_ingot4。Apoの付与/再鍛造、Iron's巻物/ルーン、継承で投資を移す</td>
+<td>上位四系列までの空白を埋める。元の固有武器は最終まで選択肢に残す。実性能比較は未完了</td>
+</tr>
+</tbody>
+</table>
+<p>鍛冶の合計値はJSONの一回あたり消費を加算した静的予算。template消費のruntime挙動、元武器NBT継承、ドロップmodifierの発動・召喚費用を含む全経路は未検証。特に融合時のAffix/Gem/内蔵呪文消失を実機確認し、必要なら先に空印へ退避する。未確認を「鍛冶すれば全部保持」と説明しない。</p>
+<h2>5. 素材には具体的な消費先を付ける</h2>
+<table>
+<thead>
+<tr>
+<th>素材群</th>
+<th>供給する場所</th>
+<th>最初に示す消費先</th>
+<th>上位の用途と制限</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>metal_swarf / scrap_metal</td>
+<td>工場の回収箱、貨物/運河の回収材</td>
+<td>swarfを精錬→scrap。金属足場/板/樽、下記の回収材版空印</td>
+<td>設備・移動・継承の準備。必須ボス素材を無制限に生成する通貨にはしない</td>
+</tr>
+<tr>
+<td>青ネオジム</td>
+<td>工場部品箱、運河の機械区画</td>
+<td>元レシピ: 青2＋鉄6＋棒1→磁気浮上レール6</td>
+<td>拠点間移動、磁石、磁気装備。青だけで上位武器を完成させない</td>
+</tr>
+<tr>
+<td>赤ネオジム</td>
+<td>工場装備箱、運河機械区画</td>
+<td>元レシピ: 赤1＋矢8→追尾矢8</td>
+<td>赤3＋青3＋heart_of_iron1→Resistor Shield。heartの正当な入手先の案内が必要</td>
+</tr>
+<tr>
+<td>古代金属</td>
+<td>工場装備箱</td>
+<td>4個で古代槍、他の骨素材と防具</td>
+<td>道中で武器更新を作る。Harbinger固有witheriteとは分ける</td>
+</tr>
+<tr>
+<td>Gem粉/再鍛造材</td>
+<td>寄り道塔、装備の分解、強化箱</td>
+<td>継承触媒、再鍛造/ソケット系の既存加工</td>
+<td>装備を替える費用を支える。必要量と実消費操作を一覧で表示</td>
+</tr>
+<tr>
+<td>arcane_essence/インク/ルーン</td>
+<td>墓地/魔術塔/工場の副抽選</td>
+<td>空印、巻物/Spellbook、装備型呪文</td>
+<td>T.O合金に使うarcane_ingotへつながる。精髄とインゴットを同じ物として予算化しない</td>
+</tr>
+<tr>
+<td>ボス固有品/希少素材</td>
+<td>対応ボス/環境の攻略、限定再戦報酬</td>
+<td>上表の素体・融合・鍛冶</td>
+<td>一般箱/一般建築の装飾から出さない。各取得元と必要数を公開する</td>
+</tr>
+<tr>
+<td>重複武器/刻印</td>
+<td>攻略後の余剰、既存の再取得経路</td>
+<td>残響精錬、部分継承、別ビルドの器</td>
+<td>同じボスの無目的周回を要求しない。精錬から固有品への循環と増殖を検査</td>
+</tr>
+</tbody>
+</table>
+<h3>初回の追加レシピとして採用する設計（まだJSON/JS未実装）</h3>
+<table>
+<thead>
+<tr>
+<th>予定recipe ID</th>
+<th>入力→出力</th>
+<th>狙い/元レシピ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ashen_relay:salvage_blank_imprint</code></td>
+<td>metal_swarf4＋arcane_essence2＋紙1→blank_imprint1、作業台の不定形</td>
+<td>工場の回収材を継承練習へ使う。既存のアメジスト4/精髄4/紙1の経路も残し、工場必須にしない</td>
+</tr>
+<tr>
+<td><code>ashen_relay:salvage_levitation_rail</code></td>
+<td>scrap_metal_plate4＋青ネオジム2＋棒1→magnetic_levitation_rail6、作業台の不定形</td>
+<td>工場の廃材で都市交通を伸ばす。元の鉄版も残す。板の作業台/石切りで歩留まりが違う点を数量計算へ含める</td>
+</tr>
+</tbody>
+</table>
+<p>この2件は第一実装であり、全レシピ体系の上限ではない。元の素材経路を生かす箇所は無意味な独自中間材で延ばさない。上位四系列と戦技再演/高度継承の経済は下記G4/G5で全件実装する。</p>
+<h2>6. 箱・ボス報酬を製作目標から逆算する</h2>
+<ul>
+<li>道中箱は生活材/装備更新材/希少な副抽選に役割を分ける。工場の回収材が目立つ場合でも、入口時点で「空印・交通・装備のどれに使えるか」を表示する。</li>
+<li><strong>設計初期値</strong>: 工場を一棟探索した時、回収材版空印2個（swarf8/精髄4/紙2）と、古代槍1本（金属4）を目標にできる配分。素材全量を一施設に集約せず、精髄/紙は都市の別寄り道でも補える。工場12箱のうち古代金属6箱×1～3は既存配分で6～18。回収材/精髄は抽選で不足するため、用途確定後に総量を補正する。</li>
+<li>必須進行の鍵と初回の署名巻物は保証/進捗で取得し、希少抽選だけにしない。非必須上位装備も、初回攻略後の有限・確定な再取得経路を追加する。方式は対応ボスの再戦実績と専用報酬であり、日用品を万能通貨にしない。</li>
+<li>再取得の初期案: 対応ボス3回の正当な再戦勝利を記録し、未取得の素体/鍛冶媒体1個を選択できる経路。元ドロップは維持。回数は未測定の調整初期値で、3回×複数素材を全系列に強要しない。記録の所有者・再取得・消費は要実装/検証。</li>
+<li>高位素材は製作品ごとの必要数と入手条件を表示する。4系列全部の必要数を一つの必須ノルマへ足さない。工場Lootを良くするために他ボスの完成武器や最終素材を道中箱へばらまかない。</li>
+<li>既存開封箱の補充/既存worldの書換えはしない。新規箱・新規取得経路へ適用する。</li>
+</ul>
+<h2>7. 制作順を組み替える</h2>
+<table>
+<thead>
+<tr>
+<th>作業ID / 対応R</th>
+<th>次に作る成果</th>
+<th>主なファイル/責務</th>
+<th>受入</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G0 / 今回の整理</td>
+<td>終点・段階・素材用途・制作順を決定</td>
+<td>本書、NEXT_WORK_ORDER、各blueprint、公開ページ</td>
+<td>設計と実装の表示が一致、旧案を消さず下流Rへ対応</td>
+</tr>
+<tr>
+<td>G1 / R-27A・R-30A先行</td>
+<td>全攻略先の製作目標表と依存監査</td>
+<td>製作経路台帳（作成予定）。全主要素材/素体の実ID、取得元、設備、個数、元生成停止後の代替を記録</td>
+<td>登録/タグ/serializerと実入手の正負、循環/入手不能/融合損失を確認。単なるjar内存在を通過にしない</td>
+</tr>
+<tr>
+<td>G2 / R-27A・R-28B</td>
+<td>回収材2レシピと最初の報酬再配分</td>
+<td>既存<code>ashen_relay_recipes.js</code>、factory/canalのloot JSON、FTB chapter、必要なlang</td>
+<td>全pack実craft/消費/出力、箱一棟予算、旧経路保持、既存箱非補充</td>
+</tr>
+<tr>
+<td>G3 / R-30A/B・R-31A</td>
+<td>P0～P3の案内と継承費用を結ぶ</td>
+<td>FTB Quests/advancement/記録、既存<code>ImprintItem.java</code>と触媒の登録/利用経路を確認して必要箇所だけ改修</td>
+<td>どの素材をどこで使うかゲーム内で分かる。2ビルド・元武器の投資・未到達の核心を守る</td>
+</tr>
+<tr>
+<td>G4 / R-29・R-30B/C・R-39G</td>
+<td>T.O四系列/BOMD槍/固有武器の全製作経路</td>
+<td>元recipeの局所調整、loot、再戦用<code>BossMaterialRecovery</code>/SavedData案、素材ごとのtags</td>
+<td>最終までの実craft・再戦・再取得・cold。未導入Mod素材を通常到達の必須にしない</td>
+</tr>
+<tr>
+<td>G5 / R-38・R-39D/E/F</td>
+<td>E1の5試験と戦技再演2種以上</td>
+<td>既存<code>SeamEncounter</code>設計/床所有API、Goal/Zone、再演Spell案、報酬JSON</td>
+<td>任意起動/退路/中断復旧/一回報酬/選択/通常～達人。自動確認と本人の体感を分離</td>
+</tr>
+<tr>
+<td>G6 / R-31/32・R-44</td>
+<td>E0～E2を新規通常worldで通す</td>
+<td>completion/manifest/TESTING、既存終盤状態・回帰</td>
+<td>制作メニューではなく実攻略から到達。全採用台帳の残件を追跡、未達を完成にしない</td>
+</tr>
+</tbody>
+</table>
+<p>R番号は元の責務へ紐付け、Gは今回の実行順の索引。G1～G3を次のproduction優先にする。現在進めていたE2磁力の監督/床所有API/境界戦は保全し、未完了として残す。構造物追加を先行させ続けて用途設計を後回しにしない。致命的な現行バグの修正は別途優先する。</p>
+<h2>8. 旧案・拡張Modを何に使うか</h2>
+<p>六圏・18場面・58縫合・W/S/G/U/P/N/Xの既存採用行は削除しない。追加Modを調べる際も本書の消費先へ接続する。</p>
+<ul>
+<li>X01 Apoli / X02 Ars / X06 Hex: 魔術/境界試験の発射形・条件・狙点と再演。P2から提示、P5で組み替える。</li>
+<li>X03 IE / X05 Mekanism / X07 Pneumatic / X08 Create / X09 IF / X15 CC・ID: 工業の液体・弾・汚染・設備・観測。P2～P3の装備準備と設備攻略、P5の別解。各Modの全工業化を必須にはしない。</li>
+<li>X04 Occultism / X11 Botania / X14 EvilCraft: 高位継承・境界準備の代替資源/儀式。P3/P5へ。中断・回収と旧装備の安全を守る。</li>
+<li>X10 Twilight / X12 Aether / X13 Ice and Fire: 環境に応じた別攻略・別技の獲得をP3/P5へ。都市入口からの導線、必要環境の例外理由、元ストーリー停止を個別判断。</li>
+<li>X16 Dungeons Enhanced / X18 Graveyard / X19 WDA / X20 Integrated WDA: 都市景観と攻略先の種類をP0～P5に配分。建物数だけ増やさず各場所に更新先を置く。</li>
+<li>X17 Simply Swords/Integrated: 主副武器の器を各段階へ追加し継承互換を確認。旧「カテゴリが足りるから不採用」は現行の除外理由にしない。</li>
+</ul>
+<p>未導入の各方式は固定版/権利/互換/停止手段の試験待ち。試験前から既存終盤への必須素材にしない。失敗時も狙った操作・経路を別部品へ引き継ぎ、工数だけで削らない。</p>
+</article>
+    <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-23 · 物語の核心は掲載しません。</footer>
+  </main>
+</body>
+</html>

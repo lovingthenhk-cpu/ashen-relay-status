@@ -10,6 +10,7 @@ PAGES = [
     ("index.html", "概要"),
     ("world.html", "世界と攻略先"),
     ("gameplay.html", "プレイループ"),
+    ("progression.html", "攻略と製作・終点"),
     ("mods.html", "Mod採用表"),
     ("ideas.html", "旧案の採用台帳"),
     ("seams.html", "縫合パターン58件"),
@@ -51,7 +52,7 @@ for filename, label in PAGES[1:]:
     {nav_for(filename)}
     <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
     <article class="document">{body}</article>
-    <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-04 · 物語の核心は掲載しません。</footer>
+    <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-23 · 物語の核心は掲載しません。</footer>
   </main>
 </body>
 </html>

@@ -10,9 +10,11 @@
 </head>
 <body>
   <main>
-    <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="mods.html" aria-current="page">Mod採用表</a><a href="ideas.html">旧案の採用台帳</a><a href="seams.html">縫合パターン58件</a><a href="delivery.html">次の作業と実装受入</a><a href="implementation.html">実装ファイル</a><a href="completion.html">完成工程</a><a href="estimate.html">残工数の見積もり</a><a href="known-issues.html">不具合・許容事項</a></nav>
+    <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="progression.html">攻略と製作・終点</a><a href="mods.html" aria-current="page">Mod採用表</a><a href="ideas.html">旧案の採用台帳</a><a href="seams.html">縫合パターン58件</a><a href="delivery.html">次の作業と実装受入</a><a href="implementation.html">実装ファイル</a><a href="completion.html">完成工程</a><a href="estimate.html">残工数の見積もり</a><a href="known-issues.html">不具合・許容事項</a></nav>
     <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
     <article class="document"><h1>Modと部品の採用表</h1>
+<h2>2026-10-23 優先順を改訂：攻略と製作を先に設計</h2>
+<p><strong>全体のレシピ体系は未完成です。</strong> <a href="progression.html">攻略と製作・終点</a>に、E0通常到達/E1五空間の複合戦/E2装備・戦技完成、P0～P5、T.O四系列とBOMD槍の実材料、素材の用途、回収材レシピ2件の設計、G0～G6の受入を掲載しました。次はG1の依存/数量台帳→G2のレシピと報酬→G3の案内/継承を優先します。設計決定を追加実装済みとは扱いません。六圏・18場面・旧案全件・既存Rの残作業は保持します。</p>
 <h2>2026-10-11 最新方針：都市へ集約・元生成停止・物語を一本化</h2>
 <p>Lost Cities外の独立構造物はなるべく生成させず、都市内に多数・多様な施設を配置する。元Modの建築・敵・技・アイテムを部品として参照し、元Mod独自の物語・案内・攻略順はAshen Relayの進行へ組み替える。旧「原生生成/元ストーリーを維持」の記述は変更前の方針。</p>
 <p><strong>実装した設定</strong>：Iron’s城塞・山岳塔・火術塔、Mowzie寺院・フェラス室、水術塔、湿地小屋、Apotheosis塔4型の元structure set、計11setをfrequency=0に変更。都市wrapperまたは都市の直接template配置と必要な原生登録は維持。砂のApotheosis塔は都市での通常抽選・自動街道接合・冷保存を確認。既存の建築は消去しない。全種・全seedでの停止と移管後分布は未測定。</p>
@@ -536,7 +538,7 @@
 <p>Iron’sの元catacombs structure setは新規独立生成を停止し、都市版wrapper・原生小屋入口・梯子・短通路を採用しました。原生の地下assembly/敵/通常Loot/登録IDは保持します。攻略family・到達条件・Wayward Compass tagを都市版へ対応。元と都市holderの保持とplacement設定は再起動後のregistryで確認。全locatorの実操作・元物語/案内の移管・分布調整は継続します。</p>
 <p>運河交換場はAlex’s Caves/Cataclysm/Iron’s/Mowzie’s/Apotheosisの建材・設備・物資を混ぜた候補です。第2版のLC自然3×3と駅隣接の限定歩行接続を検査中で、本番生成へは未採用です。鉄道の第一対象はLost Cities地下鉄の通常レールとAlex’s Caves磁気レールの車両直通です。歩行接続だけでは未達とし、既存本線を保護して支線を設計します。報酬はCodex監修第3版の16表を実生成検証してパックへ反映しました。</p>
 </article>
-    <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-04 · 物語の核心は掲載しません。</footer>
+    <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-23 · 物語の核心は掲載しません。</footer>
   </main>
 </body>
 </html>
