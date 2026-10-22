@@ -17,6 +17,24 @@
 
 上記は実現する体験。加工を長くするための中間素材や、全ボスを順番に倒す鍵を増やすことを目標にしない。六圏18場面・全旧案と接続し、同じ5部屋の反復に縮めない。
 
+## 九信号の原生報酬も更新候補に残す
+
+T.O四系列を全装備の置換先にしない。以下は固定版の元Loot表にあるitem参照（条件・個数・追加modifier・実取得は別途）。既存の共鳴刻印と署名巻物は上乗せであり、この原生報酬を消さない。音楽ディスク/羽は表から省略した。
+
+| 攻略先 | 元Loot表の主な実ID | 装備経路での役割 |
+|---|---|---|
+| ferrous_wroughtnaut | `mowziesmobs:wrought_axe`, `mowziesmobs:wrought_helmet` | 固有斧/兜を器として継承し、重量近接の選択肢を残す |
+| frostmaw | `mowziesmobs:ice_crystal` | 氷結道具と既存のテーマ巻物で、冷気/距離管理の選択を残す |
+| umvuthi | `mowziesmobs:sol_visage` | 原生装備と太陽系の既存巻物を別ビルドへ使う |
+| netherite_monstrosity | `cataclysm:infernal_forge`, `cataclysm:lava_power_cell`, `cataclysm:monstrous_horn` | 原生Forge武器/防具素材と火系巻物。既存融合の別枝も調べる |
+| ender_guardian | `cataclysm:gauntlet_of_guard` | 原生拳を維持し、既存の他ボス素材との融合枝へ接続する |
+| the_harbinger | `cataclysm:witherite_block` | ブロック→インゴット→銃/設備/融合。death_laser署名巻物も既存経路 |
+| the_leviathan | `cataclysm:abyssal_egg`, `cataclysm:tidal_claws` | 原生の爪の操作と水中対処を保持し、海槍だけを唯一の更新先にしない |
+| ancient_remnant | `cataclysm:ancient_metal_block`, `cataclysm:remnant_skull`, `cataclysm:sandstorm_in_a_bottle` | 金属/固有道具と既存の嵐系融合枝。原生素材と道中回収材を区別する |
+| maledictus | `cataclysm:cursium_ingot` | 原生cursiumとT.O剣/媒体、固有技の巻物で別の更新先を選べる |
+
+固有武器の実性能/射程/アクションは原生実装を調べ、同じ攻撃力の比較だけで下位互換として捨てない。元の印象的な技と、移植できる強化を分けて案内する。
+
 ## 判明した供給上の要点
 
 - Harbingerの元Loot表は **witherite_blockを1個**。解体でwitherite_ingot9個。曖昧な「witherite1」とインゴット1を混同しない。gatlingに2＋機械剣3段に3なら、**既に融合設備を使える場合の武器分だけ**なら一回のブロック9から5個を使う静的予算になる。ただし素体の剣とlast_glow3個は別の依存。
@@ -117,6 +135,17 @@
 | `ashen_relay:blank_imprint` | 0 | 0 | 8 | `data/ashen_relay/loot_tables/chests/convergence_a_reward.json` |
 | `ashen_relay:resonant_imprint` | 0 | 0 | 3 | `data/ashen_relay/loot_tables/chests/convergence_a_reward.json` |
 | `ashen_relay:inheritance_catalyst` | 0 | 0 | 1 | `data/ashen_relay/loot_tables/chests/convergence_b_reward.json` |
+
+## 継承の費用と既存の解放条件（ソース確認）
+
+| 操作 | 現在の条件/費用 | 製作経路で必要な説明 |
+|---|---|---|
+| 通常エンチャントの抽出/装着 | 空印。上位の地区連鎖条件/触媒は不要。完全適用時は印を1個消費 | P0/P1の基本練習に使える。上位の全特性が最初から移せると説明しない |
+| Affix/Gem/装備型呪文の抽出 | 4地区中の異なる2地区clearで既存連鎖を解放。抽出時に継承触媒1個 | 触媒は共鳴刻印1＋Gem粉4＋精髄4。追加のFTB章順を設けず、任意の2地区という既存選択を保持 |
+| 上位特性の完全装着 | 同じ既存連鎖条件、適合する器へ。完全適用で印1個を消費 | 抽出と装着の両方で触媒を二重消費する説明にしない。新武器が既に呪文containerを持つ場合など、適合条件を確認 |
+| 部分継承 | 武器台帳tier1以上。部分適用にecho_shardをtier1/2で2、tier3で1消費。残余は印に保持 | 台帳tier閾値は異なる武器3/6/9。別武器を使う動機につなぎ、残余と費用を明示。上位特性の既存連鎖条件も満たす必要がある |
+
+根拠は`ImprintItem.java` use/requiresCatalyst/consumeCatalyst、`RelayChainSuture.java` REQUIRED_DISTRICTS/DISTRICT_ADVANCEMENTS、`RelayWeaponLedger.java`の閾値/費用。ソース上の現行動作を確認したもので今回のsurvival実操作ではない。融合前の退避を案内する際は、空印だけで十分か、触媒/既存連鎖/部分継承が必要かを対象武器の実データで判定する。
 
 ## 案内と記録を出す順序（G3へ渡す仕様）
 
