@@ -599,6 +599,11 @@
 <h3>工場の実磁力と恒久避難帯（2026-10-22）</h3>
 <p>原生の装置室で、作動前に静止していた金属片が磁力作動中に約2.47ブロック、鉄装備付きの防具立てが約1.32ブロック移動することを実測しました。非磁性の棒と、避難帯の同じ磁性物・装備検体は動かず、避難帯全体が磁石の作用範囲外であることも確認。磁石POI/磁力成分/床支持を併せて照合しています。</p>
 <p>これは防具立てを使った生存エンティティの物理検証で、追跡中の敵・人の操作感の合格ではありません。ソース変更なし。工場磁力は引き続き既定OFFで、foreign箱の保存保護と未ロード冷起動からの遅延復元を専用worldで確認中です。</p>
+<h2>次の任意境界戦：最初の一組（未実装）</h2>
+<p>R-27E3の残条件は、都市へ接合したIron's墓地の計測済み室で、Mowzie's一時床と塔のMod複合射手を順番に体験する任意戦です。メインハンドの空印をしゃがんで使用して参加し、床の予兆60tick→開放100tick→実復元完了→休止60tick→Koboleton外見＋既存射手AI＋BOMD弾＋Cataclysm効果の射手1体を攻略します。空印は消費せず、恒久退路と失敗後の再挑戦を残します。新しい独自建築や名前付きスケルトンへ置き換えません。</p>
+<p><code>SeamEncounter.java</code>/<code>SeamEncounterData.java</code>が段階・参加UUID・所有床lease token・射手/弾UUID・中断・報酬保留を保存。<code>CatacombFloorRoom</code>の計測済み候補を公開し、<code>CatacombFloorCycle</code>へ所有付き開始/照会/個別取消/終了証跡を追加します。level全体のrestoreを個別取消に流用せず、別の床/原生住人/foreign箱を触りません。明示使用と報酬選択は<code>SeamEncounterInteraction</code>/既存コマンド層へ。</p>
+<p><code>seam_encounters/catacomb_entry.json</code>で対象室・距離・時間・2報酬表を指定。<code>seam_crypt_materials</code>はインク/術式素材、<code>seam_tower_materials</code>は再鍛造材/Gem dust/空印の初回選択報酬とし、既存の初回地区記録やボス固有品を再配布しません。専用advancement/FTB案内を接続します。床復元を確認せず射手へ進むcontroller、管理者コマンドだけの起動、登録だけの試作は完成に数えません。</p>
+<p>死亡/離脱/取消/保存再起動/別owner/二重使用/初回報酬選択を原生室で検証します。dirtyをディスク原子性と呼ばず、人の予兆の読みやすさ・退避・楽しさは別途未確認として残します。これはS05の第一縦切りであり、R-38Eの複数境界への拡張を削りません。</p>
 </article>
     <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-04 · 物語の核心は掲載しません。</footer>
   </main>
