@@ -11,6 +11,7 @@ PAGES = [
     ("world.html", "世界と攻略先"),
     ("gameplay.html", "プレイループ"),
     ("progression.html", "攻略と製作・終点"),
+    ("recipes.html", "素材と加工経路"),
     ("mods.html", "Mod採用表"),
     ("ideas.html", "旧案の採用台帳"),
     ("seams.html", "縫合パターン58件"),
