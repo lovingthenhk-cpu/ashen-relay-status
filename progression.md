@@ -1,7 +1,7 @@
 # 攻略・製作・エンドコンテンツの設計
 
 更新: 2026-10-23。目的: 終点から逆算し、探索先・必要素材・製作品・次の挑戦をつなぐ。状態: **現行の設計決定、実装は部分的**。
-攻略順・製作経路・素材の用途・報酬予算を掲載します。原要求は[FOUNDATION](gameplay.html)、企画の全範囲は[採用台帳](ideas.html)、実装追跡は[実装契約](delivery.html)、制作順は[完成計画](completion.html)。物語の核心・結末・隠し条件は掲載しません。
+本書は攻略順・製作経路・素材の用途・報酬予算の正本。原要求は[FOUNDATION](gameplay.html)、企画の全範囲は[採用台帳](ideas.html)、実装追跡は[実装契約](delivery.html)、制作順は[完成計画](completion.html)。物語の核心・結末・隠し条件は掲載しません。
 
 ## 趣旨との照合（2026-10-23 再読後）
 
@@ -174,3 +174,9 @@ R番号は元の責務へ紐付け、Gは今回の実行順の索引。G1～G3�
 原生の抽選だけで最初の器を試せない偏りを緩めるため、FTB Questsに一回限りの回収票3件を追加。Maledictusの既存撃破記録→traveloptics:cursed_wraithblade1、Harbinger→traveloptics:last_glow1、Luxtructosaurusの専用撃破記録→traveloptics:gauntlet_of_extinction1。元drop・段階強化の大きな要求数・通常終盤条件は変更せず、この回収票を別攻略の必須gateにしない。九信号の判定へLuxを足さない。
 
 3章34questの実読込、隔離したメモリ内TeamDataで未完了CANT_CLAIM→完了CAN_CLAIM→支給1個→再請求でも1個→serialize/deserialize後も1個を3件確認。FTBの通常のteam/受取規則を利用する。実ボス撃破、ディスク上の本人team cold復元、人のGUI操作、他の全系列の再取得までは未検証。一般的な初回保証全体やR-30Bの完了とは扱わない。
+
+## 2026-10-27 水辺の武器回収とGem継承の限定受入
+
+新規の都市水術塔では指定Bruteの実手持ち武器を確定回収する。通常配置1件・同UUIDの実死亡・Count1/Damage0・元の箱/他住人・再読込/保存を機械確認。既存塔への遡及はしない。外側の非永続対照のcold存続は未確認で、外観/戦闘の体感や都市密度の受入ではない。
+
+呪剣の実生成Affix＋common samurai Gem＋SharpnessIIIを継承印へ退避し、実融合後の機械剣へ再適用してソケット/Gem/全payload/固有術式保持を確認した。触媒1/印1を消費。これは一つのGem/Affix組合せと合成投資の確認であり、全互換・実取得・人の操作ではない。製作帳へ初回回収/費用/Gemと二つの次候補を同期した。
