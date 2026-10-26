@@ -13,7 +13,7 @@
     <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="progression.html">攻略と製作・終点</a><a href="recipes.html" aria-current="page">素材と加工経路</a><a href="mods.html">Mod採用表</a><a href="ideas.html">旧案の採用台帳</a><a href="seams.html">縫合パターン58件</a><a href="delivery.html">次の作業と実装受入</a><a href="implementation.html">実装ファイル</a><a href="completion.html">完成工程</a><a href="estimate.html">残工数の見積もり</a><a href="known-issues.html">不具合・許容事項</a></nav>
     <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
     <article class="document"><h1>製作経路台帳</h1>
-<p>更新: 2026-10-23。目的: 素材から製作品・別の攻略先までを追い、未接続箇所を閉じる。状態: <strong>G1の静的棚卸し、runtime受入は未完了</strong>。
+<p>更新: 2026-10-23。目的: 素材から製作品・別の攻略先までを追い、未接続箇所を閉じる。状態: <strong>G1の26元レシピとG2の回収材2レシピは実メニュー確認済み。実取得は未完了。強化移植はエンチャント＋実Affixの一例を確認</strong>。
 正本: 進行/採用設計は<a href="progression.html">攻略・製作</a>、全範囲は<a href="ideas.html">採用台帳</a>。本書は実IDと取得/加工依存の台帳であり、計画を別に増やさない。</p>
 <h2>趣旨を満たす経路</h2>
 <table>
@@ -190,8 +190,9 @@
 <p>製作費用のうち「初回に新しい武器を触るための素材」「同じ武器を伸ばす媒体」「別武器へ投資を移す費用」を分離する。媒体を3個使う事実が、そのまま同じボスを3回以上倒す義務を意味しないよう、地区共鳴(U03)・境界選択(U05)・台帳(U02)の報酬を対応する供給へ割り当てる。どのボスを一回倒すとどの候補を選べるか、どの別圏の観測/攻略で次の媒体を得るかを先に記す。数量だけのpity追加を実装の既定にしない。</p>
 <p>次の設計票では、上記の高額依存ごとに「初回素体の保証または選択経路」「2段目を別の場所で使って得る媒体」「最終更新で複合攻略を使う経路」を候補として比較する。未確認の実IDや原生drop率を穴埋めに使わず、元の合成/再戦で集める自由も残す。現時点ではその追加供給は未実装・未確定であり、表の量だけを達成目標としてクエストへ流し込まない。</p>
 <h2>継承の原要求に直接関係するリスク</h2>
-<p><code>WeaponfusionRecipe</code>のassembleはresultをcopyし、slot0（base）のtagだけをcopyする。<code>WeaponfusionMenu</code>は機械融合金床を使い、取得時にslot0/slot1を各1個消費する。T.Oの機械剣レシピはbase=laser_gatling、addition=cursed_wraithbladeなので、<strong>銃側のNBTを引き継ぐ処理はあるが、剣側のNBTを自動統合する処理はない</strong>（静的確認、最終packでの実メニュー/互換性は未確認）。</p>
+<p><code>WeaponfusionRecipe</code>のassembleはresultをcopyし、slot0（base）のtagだけをcopyする。<code>WeaponfusionMenu</code>は機械融合金床を使い、取得時にslot0/slot1を各1個消費する。T.Oの機械剣レシピはbase=laser_gatling、addition=cursed_wraithbladeなので、<strong>銃側のNBTを引き継ぐ処理はあるが、剣側のNBTを自動統合する処理はない</strong>（最終packの実メニューでbaseタグ保持/剣タグ非統合を確認。Sharpness IIIと実生成のmana_regen Affixの抽出→実融合→再適用を確認。Gem/他Affix/人の操作は未確認）。</p>
 <p>本パックでは、追加側の強化を持った剣を無告知で消費させない。融合前に「銃側を引継ぎ、剣側の強化は先に空印へ退避」と表示し、既存継承の抽出→融合→再装着を一本の製作票にする。器に残る固有能力と移せる特性を区別する。互換のない特性は部分継承の残余として保持できるか確認する。新たな全NBTの無差別mergeを既定の解決にしない。</p>
+<p>G3の限定受入では実T.O呪剣のSharpness IIIとApotheosis生成のmana_regen Affixを印へ抽出し、実融合メニューで機械剣を取得して再適用した。Affix抽出は触媒1、完全適用は印1を消費し、エンチャントだけなら触媒を使わない。両武器固有の術式は保持した。単独原生呪文も後付けと同型だったため、IPresetSpellContainer武器の呪文を抽出対象から外した（K-122）。通常の後付け術式の既存selftestも通過。材料は合成投入であり、実取得/Gem/全Affix/人の操作を受入済みにしない。</p>
 <h2>現行工場Lootを製作目標に照合</h2>
 <p>12容器（樽6/箱の半分6）に現在の表を各1回適用する<strong>理論上の平均</strong>。外部Loot注入を含めず、乱数が一様な場合の重み/個数から算出した値で、本人が得た量や実測成功率ではない。</p>
 <table>
@@ -206,7 +207,7 @@
 <tr>
 <td>metal_swarf</td>
 <td style="text-align:right">25.2</td>
-<td>回収材版空印2個に8（レシピ予定）。残りを全て空印へ変える前提にせず、足場/板/設備と次の器への投資へ</td>
+<td>回収材版空印2個に8（レシピ実装済み）。残りを全て空印へ変える前提にせず、足場/板/設備と次の器への投資へ</td>
 </tr>
 <tr>
 <td>青ネオジム</td>
@@ -226,11 +227,60 @@
 <tr>
 <td>arcane_essence</td>
 <td style="text-align:right">約15.43</td>
-<td>空印2個に4（予定）。拳IIIの96や海槍IIIの64を工場だけで集める目標にしない。墓地/魔術攻略と接続</td>
+<td>空印2個に4（実装済み）。拳IIIの96や海槍IIIの64を工場だけで集める目標にしない。墓地/魔術攻略と接続</td>
 </tr>
 </tbody>
 </table>
 <p>回収材が目立つという本人の指摘は量からも説明できるが、平均値だけで受入/不合格にしない。最初に作れる物を案内し、他圏の材料との役割差、新しい武器/技を試す頻度、余剰材を持ち帰る負担を確認してLootを決める。紙はこの二表にないため、空印製作を工場単独で閉じると説明しない。</p>
+<h2>取得監査から決める都市側の補完（状態は各行参照）</h2>
+<p>GLMの固定データ/bytecode調査をCodexが照合した。一般のentity Lootに一律player-kill必須という監査中の記述は採用しない。vanillaのrecentlyHitはLootContextへ渡され、各表/装備drop/元Mob独自条件が判定する。例えばMagnetronのcoreには独自のPlayer帰属条件があり、Brute装備dropにはvanilla条件がある。実取得は未受入。</p>
+<table>
+<thead>
+<tr>
+<th>依存</th>
+<th>静的に確認できた経路とリスク</th>
+<th>採用する補完の方向 / 次の検証</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coral_bardiche</td>
+<td>Deepling Bruteの装備drop。都市水術塔の原生NBTにも武器付きBrute1体/handDropChance0.08がある。箱/レシピには直接の取得元なし</td>
+<td>市内の水術塔Bruteをこの武器の意図的な取得先へ。移管個体の元手持ち品を攻略後に確実に回収できる方式を採用する設計。全自然Bruteや原生武器登録を変更しない。個体tag/生成二重化/耐久/死亡帰属/既存world非遡及を検証してから実装</td>
+</tr>
+<tr>
+<td>ミスリル/arcane_salvage</td>
+<td>原鉱/古代残骸→溶鉱炉→scrap4でingot1。原鉱等にforgeのnetherite-tier要件。Nether城塞やEnd聖堂にも少量箱経路があるが、今回の直接参照索引で市内専用供給は未発見</td>
+<td>都市工場の装備・魔術保守材枠へ<strong>一棟計12 mithril_scrapの有限供給</strong>を実装。装備箱の物理6容器へ各2を追加し、実LootTable抽選で計12を確認した。海槍のweapon_parts1分。全一般箱へ入れず、元の採掘/遠征経路も残す。新規配置の再実行と人の取得体験・他用途の性能影響は未確認。未測定の確定バランスではない</td>
+</tr>
+<tr>
+<td>heart_of_iron</td>
+<td>磁性洞窟のMagnetronの独自崩壊処理でcoreブロックを落とし、採掘で回収。単にLoot表があるだけでは取得できない</td>
+<td>当面は磁性洞窟の環境/原生spawnを保持し、都市から装備準備→探索→回収→帰還の導線を作る。これは元Modの物語採用ではない。都市内の別Host化は元ブロック/保護/再取得を試してから。一般箱でcoreを配る方式を既定にしない</td>
+</tr>
+<tr>
+<td>tectonic_shard</td>
+<td>火山のvolcanic_core装置＋ominous_catalystでLuxtructosaurusを呼ぶ。元表は1回7～11個＋Looting。現在の拳3段で使う6は一回分で足りる静的予算</td>
+<td>shard要求を自動的に下げない。原生装置の管理遠征/都市予約への移管、召喚/帰還/破壊抑制が成立するまで火山structure停止を先行しない。今は火山未停止。市外を永久に残す決定ではなく、必要経路を移す作業として追う</td>
+</tr>
+<tr>
+<td>amber_curiosity</td>
+<td>太古洞窟のamber採掘、Silk Touchなし、Fortuneで抽選。触媒にも1個使う</td>
+<td>合金用12個だけでなく初回召喚の1個も必要数へ含める。要求数の削減か、都市の観測/加工を含む別供給かは実産出量と作業偏りで比較。大きな製作目標自体は維持候補</td>
+</tr>
+<tr>
+<td>immortal_embryo / hullbreaker_scales</td>
+<td>abyssal_chasmのHullbreaker。原生表のembryo1、T.O追加表のscales6～10。3回ならembryo3/鱗18～30で、要求24は平均と同程度だが必ず揃うとは言えない</td>
+<td>海素材二つを別ノルマに数えない。現在のsteel入力4をまず維持して供給を確認し、不足分の狙い撃ち/別攻略での補完をU03へ。実spawnと追加modifier発動、都市からの海への案内を確認</td>
+</tr>
+<tr>
+<td>機械融合金床</td>
+<td>既存レシピの金属6。no fuel/XPという元classの静的処理、置いた設備を使用</td>
+<td>一回の金属block9で私設金床6＋gatling2＋第一強化1まで進む道筋を提示。IIIまでの11や媒体取得は別段階。未設置の共用設備を予算から勝手に除外しない</td>
+</tr>
+</tbody>
+</table>
+<p>補完後も「都市の部品→別圏の原生素材→新しい器/技→強化を移して次の場面で使う」という趣旨を保持する。元の場所/元ストーリーを守るために都市供給を諦めず、必要な戦闘/環境/固有能力も消さない。数値は実入手/実craft前の設計初期値であり、本人worldへの更新は含めない。</p>
 <h2>対象素材の静的索引</h2>
 <p>固定jar＋addon/data＋pack/kubejs/dataの直接参照。タグ経由の全消費・Java drop・KubeJS生成レシピ・実registryの存在/到達はこの数字に含まない。0は「この索引で直接のJSON経路がない」の意味。スクリプト経路は次節に記す。</p>
 <table>
@@ -616,8 +666,6 @@
 <li>原生生成停止後の取得を「元の場所にあるから大丈夫」と扱わない。実構造/環境、locator、到達条件、再戦・固有drop、製作設備、帰路の一組で確認する。</li>
 <li>次のG1受入は、上の供給/加工の実registryとrecipe-manager、T.O modifierの対象、融合NBT、coral_bardiche/heart_of_iron/mithrilの実取得経路。さらに出力から原料へ戻せる循環を調べる。未確認素材のために他の全経路を止めず、行ごとに状態を付ける。</li>
 </ul>
-<h2>検証の範囲</h2>
-<p>固定版jarとパックデータの直接参照・入力数・Loot内容、融合処理の固定classを静的確認しています。39素材の全経路の実入手/実craft/最終registryの確認は未完了です。</p>
 </article>
     <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-23 · 物語の核心は掲載しません。</footer>
   </main>

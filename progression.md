@@ -15,9 +15,9 @@
 
 ## 1. まず現状を正す
 
-- 独自レシピは現在、研究石板・空の継承印・継承触媒の3件。元Modに横断合成や武器強化はあるが、全施設の入手量と製作目標を一体で設計した状態ではない。
+- 独自レシピは現在、研究石板・空の継承印・継承触媒に回収材版の空印・磁気浮上レールを加えた5件。元Modに横断合成や武器強化はあるが、全施設の入手量と製作目標を一体で設計した状態ではない。
 - 工場の容器Lootは実装・代表検証済み。ただし「素材が存在し用途がある」だけでは経済設計の受入にしない。現Lootは仮配分として扱い、本書の用途・数量・次の攻略への接続を満たしてから調整完了とする。
-- 以下の確定は**採用するゲーム設計**という意味。新しいレシピ、報酬保証、複合戦、案内が既に動くという意味ではない。今回production設定、コード、既存worldは変更しない。
+- 以下の確定は**採用するゲーム設計**という意味。新しいレシピ、報酬保証、複合戦、案内が既に動くという意味ではない。G2の回収材2レシピ・工場ミスリル供給・既存クエストの用途案内は実装し、自己所有の隔離サーバーで確認済み。本人worldへ更新・補充はしていない。
 - 素材・武器の事実確認は固定jarの41レシピと12Loot表の静的抽出に基づく。固定版データから入出力とLootを確認。runtimeでの全経路開通・実ドロップ率・難度は別途検証する。
 
 ## 2. 何を終点にするか
@@ -78,13 +78,13 @@ E1のうち少なくとも二経路は、単なる材料増量に加え、未収
 | 系列 | 素体と材料の経路 | 最終までの更新 | 本パックでの役割/未完了 |
 |---|---|---|---|
 | Cursed Wraithblade | Maledictus追加Lootに `traveloptics:cursed_wraithblade` と `echo_winglet` の抽選あり | 素体→level_one→two→three。各鍛冶で前段＋echo_winglet1＋`cataclysm:cursium_ingot`1 | 城塞/呪術側の上位剣。確定入手経路と都市案内は要実装。確率入手だけを必須進行に使わない |
-| Mechanized Wraithblade | `cataclysm:laser_gatling`＋Cursed Wraithbladeを **Cataclysm weapon_fusion** で融合 | 各段で前段＋`traveloptics:last_glow`1＋`cataclysm:witherite_ingot`1 | 工場だけでは完結しない横断武器。Harbinger追加Lootにlast_glow抽選。融合はbaseの銃側NBTをcopyするが追加の剣側は自動統合しない（静的確認）。剣を残す選択と事前の抽出/継承案内が必要 |
+| Mechanized Wraithblade | `cataclysm:laser_gatling`＋Cursed Wraithbladeを **Cataclysm weapon_fusion** で融合 | 各段で前段＋`traveloptics:last_glow`1＋`cataclysm:witherite_ingot`1 | 工場だけでは完結しない横断武器。Harbinger追加Lootにlast_glow抽選。融合はbaseの銃側NBTをcopyするが追加の剣側は自動統合しない（静的調査と実メニューで確認）。剣を残す選択と事前の抽出/継承案内が必要 |
 | Gauntlet of Extinction | Luxtructosaurus追加Lootに `traveloptics:gauntlet_of_extinction` 抽選 | 各段で前段＋`alexscaves:tectonic_shard`1＋`traveloptics:tectonic_ingot`1。インゴット1はamber_curiosity4＋arcane_ingot4＋tectonic_shard1 | 洞窟環境と魔法加工を横断する拳。3段合計では強化分だけでamber12/arcane12/shard6。素体と材料の再取得/都市からの導線が未完了 |
 | Trident of the Eternal Maelstrom | hullbreaker_scales4＋arcane_ingot1→hullbreaker_steel1。steel3＋`cataclysm:coral_bardiche`1＋`irons_spellbooks:weapon_parts`1→素体 | 各段で前段＋`alexscaves:immortal_embryo`1＋hullbreaker_steel1 | 水辺の複数攻略を渡る槍。素体～最終のsteelは6、scale24に加え、部品分を含めarcane_ingot8/ミスリル3/embryo3が必要。供給量の調整前に「すぐ作れる」と案内しない |
 | Earthdive Spear | `bosses_of_mass_destruction:void_thorn`1＋`obsidian_heart`1＋棒1 | 元の槍にAffix/Gem/対応する強化を継承 | BOMD二攻略を横断する機動槍。T.O四系列の下位互換にせず操作差を残す。都市からの各任意遠征の接続が残る |
 | 早中期の近接/魔法 | フェラス固有品、Iron's装備/Spellbook、`cataclysm:ancient_spear`等 | 古代槍はancient_metal_ingot4。Apoの付与/再鍛造、Iron's巻物/ルーン、継承で投資を移す | 上位四系列までの空白を埋める。元の固有武器は最終まで選択肢に残す。実性能比較は未完了 |
 
-鍛冶の合計値はJSONの一回あたり消費を加算した静的予算。template消費のruntime挙動、元武器NBT継承、ドロップmodifierの発動・召喚費用を含む全経路は未検証。特に融合時のAffix/Gem/内蔵呪文消失を実機確認し、必要なら先に空印へ退避する。未確認を「鍛冶すれば全部保持」と説明しない。
+鍛冶の合計値はJSONの一回あたり消費を加算した静的予算。元レシピ26件の実メニュー出力・不正入力拒否・各素材1回消費を確認。鍛冶のbaseタグ保持と融合の銃側のみのタグ保持も確認済み。ただし本物のAffix/Gem/内蔵呪文の互換性、ドロップmodifierの発動・召喚費用を含む全経路は未検証。特に融合時のAffix/Gem/内蔵呪文消失を実機確認し、必要なら先に空印へ退避する。未確認を「鍛冶すれば全部保持」と説明しない。
 
 ## 5. 素材には具体的な消費先を付ける
 
@@ -99,12 +99,14 @@ E1のうち少なくとも二経路は、単なる材料増量に加え、未収
 | ボス固有品/希少素材 | 対応ボス/環境の攻略、限定再戦報酬 | 上表の素体・融合・鍛冶 | 一般箱/一般建築の装飾から出さない。各取得元と必要数を公開する |
 | 重複武器/刻印 | 攻略後の余剰、既存の再取得経路 | 残響精錬、部分継承、別ビルドの器 | 同じボスの無目的周回を要求しない。精錬から固有品への循環と増殖を検査 |
 
-### 初回の追加レシピとして採用する設計（まだJSON/JS未実装）
+### 初回の追加レシピ（実装・専用サーバーメニュー確認済み）
 
-| 予定recipe ID | 入力→出力 | 狙い/元レシピ |
+| recipe ID | 入力→出力 | 狙い/元レシピ |
 |---|---|---|
 | `ashen_relay:salvage_blank_imprint` | metal_swarf4＋arcane_essence2＋紙1→blank_imprint1、作業台の不定形 | 工場の回収材を継承練習へ使う。既存のアメジスト4/精髄4/紙1の経路も残し、工場必須にしない |
 | `ashen_relay:salvage_levitation_rail` | scrap_metal_plate4＋青ネオジム2＋棒1→magnetic_levitation_rail6、作業台の不定形 | 工場の廃材で都市交通を伸ばす。元の鉄版も残す。板の作業台/石切りで歩留まりが違う点を数量計算へ含める |
+
+G2の最初の縦切りとして、上記2件と旧空印/触媒の実メニュー消費・不正入力拒否を確認した。工場装備箱は物理的な6容器に各mithril_scrap2、計12を追加し、実LootTableの6回抽選で確認。配置処理・旧3poolは維持し、既存箱の補充はしない。人の製作操作・通しの取得体験・全体バランスは未受入。専用サーバーで機械検証済み。G2全体/親Rの完了を意味しない。
 
 ### 2026-10-23 最新の調整方針：大きな目標を残し、数量は委任
 
