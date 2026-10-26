@@ -13,7 +13,7 @@
     <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="progression.html">攻略と製作・終点</a><a href="recipes.html" aria-current="page">素材と加工経路</a><a href="mods.html">Mod採用表</a><a href="ideas.html">旧案の採用台帳</a><a href="seams.html">縫合パターン58件</a><a href="delivery.html">次の作業と実装受入</a><a href="implementation.html">実装ファイル</a><a href="completion.html">完成工程</a><a href="estimate.html">残工数の見積もり</a><a href="known-issues.html">不具合・許容事項</a></nav>
     <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
     <article class="document"><h1>製作経路台帳</h1>
-<p>更新: 2026-10-23。目的: 素材から製作品・別の攻略先までを追い、未接続箇所を閉じる。状態: <strong>G1の26元レシピとG2の回収材2レシピは実メニュー確認済み。実取得は未完了。強化移植はエンチャント＋実Affixの一例を確認</strong>。
+<p>更新: 2026-10-27。目的: 素材から製作品・別の攻略先までを追い、未接続箇所を閉じる。状態: <strong>G1の26元レシピとG2の回収材2レシピは実メニュー確認済み。通常探索の通しは未完了。強化移植は実Affix/Gem一例、水塔の実装備dropと磁性核の実採掘/盾製作を限定確認</strong>。
 正本: 進行/採用設計は<a href="progression.html">攻略・製作</a>、全範囲は<a href="ideas.html">採用台帳</a>。本書は実IDと取得/加工依存の台帳であり、計画を別に増やさない。</p>
 <h2>趣旨を満たす経路</h2>
 <table>
@@ -67,6 +67,12 @@
 <td>Iron's/T.O caster＋Cataclysm/BOMD等のpayload＋既存Host/Carrier</td>
 <td>敵から学んだ能力を別の武器/巻物で使い、別Hostが使う同じ規則にも対処する</td>
 <td>T.O未収録の再演2種以上と取得/使用/再取得を作る。属性違いの弾だけで数を満たさない</td>
+</tr>
+<tr>
+<td>都市研究→磁性核→別の場所で押し引き</td>
+<td>都市工場のAlexネオジム＋Apo Gem粉の研究map＋原生Magnetron＋抵抗の盾＋Cataclysm Host</td>
+<td>核を採掘して盾へ加工し、極性を選んで敵との距離を変える。塔か工場へ持ち帰る</td>
+<td>合成標本の実死亡/採掘→実製作→native pulseを確認。自然探索/満HP戦/実射手との対戦/人の操作は未検証</td>
 </tr>
 </tbody>
 </table>
@@ -239,7 +245,7 @@
 <p>4ボスの元Loot表へ各8回の合成entity contextを渡し、現在のパックでT.O追加表が適用されることを確認。last_glow、echo_winglet、呪剣、拳甲、鱗を観測した。Hullbreakerの全8回は鱗6～10の範囲。試験回数から確率や必要討伐数を推定しない。実物Mobはworldへ追加せず、実死亡/通常取得の証拠ではない。</p>
 <p>任意の「装備の製作帳」に四系列の材料総数、加工設備、入手元と未整備の経路、融合前の剣側強化退避を掲載。チェックマークは資料を読んだ印のみで、素材を消費せず報酬も出さない。新たな攻略依存や全系列完成の義務は追加しない。人の表示/読みやすさは未検証。</p>
 <h2>取得監査から決める都市側の補完（状態は各行参照）</h2>
-<p>GLMの固定データ/bytecode調査をCodexが照合した。一般のentity Lootに一律player-kill必須という監査中の記述は採用しない。vanillaのrecentlyHitはLootContextへ渡され、各表/装備drop/元Mob独自条件が判定する。例えばMagnetronのcoreには独自のPlayer帰属条件があり、Brute装備dropにはvanilla条件がある。実取得は未受入。</p>
+<p>GLMの固定データ/bytecode調査をCodexが照合した。一般のentity Lootに一律player-kill必須という監査中の記述は採用しない。vanillaのrecentlyHitはLootContextへ渡され、各表/装備drop/元Mob独自条件が判定する。例えばMagnetronのcoreには独自の実体帰属条件（加害実体/直接実体/過去のPlayer）があり、Brute装備dropにはvanilla条件がある。実取得は未受入。</p>
 <table>
 <thead>
 <tr>
@@ -681,6 +687,10 @@
 <h2>2026-10-27 水辺の武器回収とGem継承の限定受入</h2>
 <p>新規の都市水術塔では指定Bruteの実手持ち武器を確定回収する。通常配置1件・同UUIDの実死亡・Count1/Damage0・元の箱/他住人・再読込/保存を機械確認。既存塔への遡及はしない。外側の非永続対照のcold存続は未確認で、外観/戦闘の体感や都市密度の受入ではない。</p>
 <p>呪剣の実生成Affix＋common samurai Gem＋SharpnessIIIを継承印へ退避し、実融合後の機械剣へ再適用してソケット/Gem/全payload/固有術式保持を確認した。触媒1/印1を消費。これは一つのGem/Affix組合せと合成投資の確認であり、全互換・実取得・人の操作ではない。製作帳へ初回回収/費用/Gemと二つの次候補を同期した。</p>
+<h2>G4/R-29B 磁性の核から抵抗の盾へ（2026-10-27、限定受入）</h2>
+<p>工場の紺/緋ネオジム→都市研究地図→磁性洞窟のマグネトロン→鉄の心臓→抵抗の盾→塔/工場で間合いを変える選択を一本の任意経路として案内する。盾の元レシピはheart_of_iron1＋scarlet_neodymium_ingot3＋azure_neodymium_ingot3。原生レシピ/敵/アイテムクラスを参照し、新しい万能中間材や一般箱への核配布は追加しない。工場Lootと地図は都市側の入口、磁性の環境/原生spawnはこの経路の必要部分として当面維持する。</p>
+<p>所有サーバーの合成した未形成/no-AI標本で、Player帰属の死亡→落下核1→着地block1→実Survival採掘で心臓1、無帰属magicでは0を確認。その実採掘stackを実CraftingMenuへ入れて盾1を製作し、一回消費を確認。native useの極性切替とelapsed10相当のnative onUseTickを別々のCataclysm Koboletonへ呼び、各6damageと正負反転するZ速度を観測した。これは射手Hostと同じ元種に盾を使う機能確認であり、実射手GoalやBOMD弾との対戦は未受入。</p>
+<p>「抵抗の盾と核の製作票」を既存の任意製作帳へ追加し、材料/使い方/次の二候補/レールとの材料選択/帰還準備を掲載。チェックは読了印のみ、報酬/必須依存を追加しない。全pack3章35quest読込、52試験セル復元、owned tickets解除、保存後Forced空、rc0を確認。人の長押し/表示/操作感、自然spawnからの満HP戦、全敵耐性、都市からの実探索往復は未検証。火山召喚/六洞窟全体/R-29B/R-30Bは未完了。</p>
 </article>
     <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-23 · 物語の核心は掲載しません。</footer>
   </main>
