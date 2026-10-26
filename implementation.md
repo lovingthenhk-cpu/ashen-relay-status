@@ -794,3 +794,10 @@ R-27E3の残条件は、都市へ接合したIron's墓地の計測済み室で�
 ### 2026-10-27追記：磁性素材から距離操作へ
 
 工場/研究地図→磁性核→抵抗の盾→塔か工場で押し引きを使う任意経路を追加。実死亡/着地/採掘stackを盾へ実製作し、native極性切替とパルスがCataclysmの敵へ作用する代表機能を確認しました。任意製作票6件/全3章35quest。新しい素材ノルマや一般箱への核配布は追加しません。自然探索往復/人の使用/実射手AIとの対戦/全敵耐性は未検証で、火山召喚や六洞窟全体の完成とはしません。
+
+
+### G4/R-29B 火山移管の次の実装（未実装）
+
+次は原生VolcanoStructureの全pieceを地下に予約し、借用入口/共通接合→原生core/召喚戦→都市へ帰還する契約を実配置で測る。予定責務はVolcanicCityContract.java（全占有/入口）、VolcanicCoreLease.java（core/arena/boss所有と中断）、ManagedVolcanicCoreMixin.java（city coreだけの消費前gate/環境弾制限）、ManagedVolcanicArenaProtection.java（街路/他者建築保護）、volcano_city.json/入口JSON。native cooldown24000と元dropを維持し、通常九信号に追加しない。まだ本番wrapper/arena/保護/ritualは未実装。原生生成停止を先行しない。
+
+原生の一時BE API試験では実Lux1体を生成して同じコマンド内で直ちに退役し、cooldown24000/二回目拒否/保存形式復元後拒否を確認。block/溶岩/触媒を置いておらず、実召喚器/戦闘/都市移管の成功とは区別する。実装と未検証事項を分けて追跡します。
