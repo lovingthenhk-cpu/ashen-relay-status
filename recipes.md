@@ -42,7 +42,7 @@ T.O四系列を全装備の置換先にしない。以下は固定版の元Loot�
 - arcane_ingot1はarcane_essence8＋arcane_ingot_baseタグ1。固定jarのタグは鉄/銅/金。海槍経路のarcane8は精髄64＋対応金属8に相当し、別途mithrilの加工/取得が必要。
 - mithril_ingotはmithril_scrap4。raw_mithrilまたはarcane_salvageの溶鉱炉経路があり、ingot→scrap4の戻しもある。鉱石のworldgen、salvageの実回収、都市移管後の供給は未受入。
 - heart_of_ironの参照がblock Lootだけでも、自然配置や装置からの実取得は別途確認が必要。coral_bardicheのJSON取得元が見つからなくても、Java装備drop等があり得るため入手不能とは断定しない。
-- T.Oの素体と鍛冶媒体は追加Lootの抽選。固定jarのglobal modifier一覧にHarbinger/Maledictus/Hullbreaker/Luxtructosaurusの4件を確認し、各元entity Loot→追加表の条件/参照、KeyLootModifierのaddAllまで静的確認した。最終packでの登録/死亡時発動を確認して初めて実経路として受入する。抽選weightをそのまま最終ドロップ率と説明しない。
+- T.Oの素体と鍛冶媒体は追加Lootの抽選。固定jarのglobal modifier一覧にHarbinger/Maledictus/Hullbreaker/Luxtructosaurusの4件を確認し、各元entity Loot→追加表の条件/参照、KeyLootModifierのaddAllまで静的確認した。最終packの実LootTable＋合成entity contextで4件の追加適用を確認（各8回、固定seed）。通常の実死亡・召喚・都市からの到達は未確認で、全取得経路の受入とは分ける。抽選weightをそのまま最終ドロップ率と説明しない。
 
 ## 終点までの材料予算（元レシピの選択経路を展開）
 
@@ -74,6 +74,7 @@ T.O四系列を全装備の置換先にしない。以下は固定版の元Loot�
 
 本パックでは、追加側の強化を持った剣を無告知で消費させない。融合前に「銃側を引継ぎ、剣側の強化は先に空印へ退避」と表示し、既存継承の抽出→融合→再装着を一本の製作票にする。器に残る固有能力と移せる特性を区別する。互換のない特性は部分継承の残余として保持できるか確認する。新たな全NBTの無差別mergeを既定の解決にしない。
 
+根拠: 内部検証記録 / weapon-fusion-menu-bytecode.txt。これは事故の原因候補と既存処理の確認であり、本人worldでの消失再現や修正済みを主張しない。
 
 
 G3の限定受入では実T.O呪剣のSharpness IIIとApotheosis生成のmana_regen Affixを印へ抽出し、実融合メニューで機械剣を取得して再適用した。Affix抽出は触媒1、完全適用は印1を消費し、エンチャントだけなら触媒を使わない。両武器固有の術式は保持した。単独原生呪文も後付けと同型だったため、IPresetSpellContainer武器の呪文を抽出対象から外した（K-122）。通常の後付け術式の既存selftestも通過。材料は合成投入であり、実取得/Gem/全Affix/人の操作を受入済みにしない。
@@ -92,6 +93,15 @@ G3の限定受入では実T.O呪剣のSharpness IIIとApotheosis生成のmana_re
 
 回収材が目立つという本人の指摘は量からも説明できるが、平均値だけで受入/不合格にしない。最初に作れる物を案内し、他圏の材料との役割差、新しい武器/技を試す頻度、余剰材を持ち帰る負担を確認してLootを決める。紙はこの二表にないため、空印製作を工場単独で閉じると説明しない。
 
+根拠: 内部検証記録。実箱の開封・補充・world更新はしていない。
+
+## G4の限定確認とゲーム内の製作票
+
+2026-10-27：T.O四系列・12段階を原生呪文付きの実物で鍛冶メニュー検証。使用可能な出力/各材料1回消費/投資marker保持と、原生術式がpristine完成品と一致することを確認。各系列の固有術式ID/levelは元から全段同じで、段階更新で呪文levelが上がるとは説明しない。全段での実Affix/Gem併載は未検証。
+
+4ボスの元Loot表へ各8回の合成entity contextを渡し、現在のパックでT.O追加表が適用されることを確認。last_glow、echo_winglet、呪剣、拳甲、鱗を観測した。Hullbreakerの全8回は鱗6～10の範囲。試験回数から確率や必要討伐数を推定しない。実物Mobはworldへ追加せず、実死亡/通常取得の証拠ではない。
+
+任意の「装備の製作帳」に四系列の材料総数、加工設備、入手元と未整備の経路、融合前の剣側強化退避を掲載。チェックマークは資料を読んだ印のみで、素材を消費せず報酬も出さない。新たな攻略依存や全系列完成の義務は追加しない。人の表示/読みやすさは未検証。
 
 ## 取得監査から決める都市側の補完（状態は各行参照）
 
@@ -108,6 +118,12 @@ GLMの固定データ/bytecode調査をCodexが照合した。一般のentity Lo
 | 機械融合金床 | 既存レシピの金属6。no fuel/XPという元classの静的処理、置いた設備を使用 | 一回の金属block9で私設金床6＋gatling2＋第一強化1まで進む道筋を提示。IIIまでの11や媒体取得は別段階。未設置の共用設備を予算から勝手に除外しない |
 
 補完後も「都市の部品→別圏の原生素材→新しい器/技→強化を移して次の場面で使う」という趣旨を保持する。元の場所/元ストーリーを守るために都市供給を諦めず、必要な戦闘/環境/固有能力も消さない。数値は実入手/実craft前の設計初期値であり、本人worldへの更新は含めない。
+
+## R-29B 都市から環境素材を探す地図
+
+都市の布片/Apo Gem粉/紙/本を研究材料に、磁性洞窟・太古洞窟・深海の原生地図3レシピを追加。出力のBiomeTargetResourceKeyは原生CaveMapItem.createMapと同じ形式で、探索worker/地図描画を複製しない。実craft3件・対象API・消費・負例を確認。任意製作帳は探索準備票を加え5票、全pack2章31questをロードした。未発見素材を必須進行の鍵にしない。
+
+native useを一枚ずつ待つcold試験では3種とも目的地を発見した。初期の同時使用では元Modが前の検索を打ち切っていたため、未発見や幅32比較の解釈を訂正（K-123）。別に、coldの未初期化biome contextを都市研究mapだけで実seed/次元へ揃える修正を確認。無印対照のcontextは変更せず、検索設定も既定。原生の探索再試行の可能性と、都市から採集して帰還する実経路の完成を区別する。全G1/G4/R-29Bは未完了。
 
 ## 対象素材の静的索引
 
@@ -189,3 +205,8 @@ GLMの固定データ/bytecode調査をCodexが照合した。一般のentity Lo
 - 原生生成停止後の取得を「元の場所にあるから大丈夫」と扱わない。実構造/環境、locator、到達条件、再戦・固有drop、製作設備、帰路の一組で確認する。
 - 次のG1受入は、上の供給/加工の実registryとrecipe-manager、T.O modifierの対象、融合NBT、coral_bardiche/heart_of_iron/mithrilの実取得経路。さらに出力から原料へ戻せる循環を調べる。未確認素材のために他の全経路を止めず、行ごとに状態を付ける。
 
+## G4 / R-30B：攻略後の任意回収（2026-10-27）
+
+原生の抽選だけで最初の器を試せない偏りを緩めるため、FTB Questsに一回限りの回収票3件を追加。Maledictusの既存撃破記録→traveloptics:cursed_wraithblade1、Harbinger→traveloptics:last_glow1、Luxtructosaurusの専用撃破記録→traveloptics:gauntlet_of_extinction1。元drop・段階強化の大きな要求数・通常終盤条件は変更せず、この回収票を別攻略の必須gateにしない。九信号の判定へLuxを足さない。
+
+3章34questの実読込、隔離したメモリ内TeamDataで未完了CANT_CLAIM→完了CAN_CLAIM→支給1個→再請求でも1個→serialize/deserialize後も1個を3件確認。FTBの通常のteam/受取規則を利用する。実ボス撃破、ディスク上の本人team cold復元、人のGUI操作、他の全系列の再取得までは未検証。一般的な初回保証全体やR-30Bの完了とは扱わない。

@@ -13,6 +13,8 @@
     <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="progression.html">攻略と製作・終点</a><a href="recipes.html">素材と加工経路</a><a href="mods.html">Mod採用表</a><a href="ideas.html">旧案の採用台帳</a><a href="seams.html">縫合パターン58件</a><a href="delivery.html" aria-current="page">次の作業と実装受入</a><a href="implementation.html">実装ファイル</a><a href="completion.html">完成工程</a><a href="estimate.html">残工数の見積もり</a><a href="known-issues.html">不具合・許容事項</a></nav>
     <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
     <article class="document"><h1>次の作業と受入条件</h1>
+<h2>2026-10-27 武器更新と製作帳の追加</h2>
+<p>T.O四系列12段階の固有術式保持と実鍛冶メニュー消費を確認。4ボスの元Loot表へ合成entity contextを渡し、追加武器・強化媒体を観測しました。通常取得や実戦の証拠とは分けます。ゲーム内に任意の製作帳4票を追加し、材料総数・融合設備・強化退避と未整備の取得先を案内。新しい攻略順/報酬/全系列完成の義務はありません。全packで2章30クエストを読込済み、人の表示は未検証です。水術塔の武器回収の検証を継続し、その後も既存のR全工程へ進みます。</p>
 <h3>2026-10-26 継続時点の実装・機械受入</h3>
 <p>元レシピ26件の実メニュー、新規回収材2レシピ、工場装備箱6容器相当のミスリルscrap計12を確認。呪剣のSharpness III＋実生成mana_regen Affixを抽出→実融合→機械剣へ再適用し、固有術式保持と触媒/印の消費を確認した。K-122の固有術式誤抽出を修正し、通常の後付け術式も回帰確認。水術塔の指定敵からの武器回収は検証継続中。材料の通常取得、人の操作、Gem/他Affix、G1～G6全体と親Rは未完了。詳細は<a href="recipes.html">製作経路台帳</a>を参照。</p>
 <h2>2026-10-23 趣旨との照合と加工依存の具体化</h2>
@@ -610,6 +612,8 @@
 <p><code>SeamEncounter.java</code>/<code>SeamEncounterData.java</code>が段階・参加UUID・所有床lease token・射手/弾UUID・中断・報酬保留を保存。<code>CatacombFloorRoom</code>の計測済み候補を公開し、<code>CatacombFloorCycle</code>へ所有付き開始/照会/個別取消/終了証跡を追加します。level全体のrestoreを個別取消に流用せず、別の床/原生住人/foreign箱を触りません。明示使用と報酬選択は<code>SeamEncounterInteraction</code>/既存コマンド層へ。</p>
 <p><code>seam_encounters/catacomb_entry.json</code>で対象室・距離・時間・2報酬表を指定。<code>seam_crypt_materials</code>はインク/術式素材、<code>seam_tower_materials</code>は再鍛造材/Gem dust/空印の初回選択報酬とし、既存の初回地区記録やボス固有品を再配布しません。専用advancement/FTB案内を接続します。床復元を確認せず射手へ進むcontroller、管理者コマンドだけの起動、登録だけの試作は完成に数えません。</p>
 <p>死亡/離脱/取消/保存再起動/別owner/二重使用/初回報酬選択を原生室で検証します。dirtyをディスク原子性と呼ばず、人の予兆の読みやすさ・退避・楽しさは別途未確認として残します。これはS05の第一縦切りであり、R-38Eの複数境界への拡張を削りません。</p>
+<h3>2026-10-27：都市研究地図と任意回収</h3>
+<p>都市から磁性・太古・深海へ向かう印付き研究地図3レシピを追加し、実製作と再起動後の逐次検索・検索中の二枚目の待機を確認。攻略後の任意回収3票はMaledictus→呪剣1、Harbinger→最後の輝き1、Luxtructosaurus→拳甲1。合成した撃破記録による受取・重複防止・保存形式への復元を確認し、実ボス撃破と人の操作は未検証です。元のドロップ、強化要求数、通常終盤条件は保持。G4/R-29B/R-30B全体の完了ではありません。</p>
 </article>
     <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-23 · 物語の核心は掲載しません。</footer>
   </main>
