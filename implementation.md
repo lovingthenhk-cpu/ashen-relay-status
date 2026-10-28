@@ -816,9 +816,15 @@ R-27E3の残条件は、都市へ接合したIron's墓地の計測済み室で�
 | VolcanicOpenGateway.java | 保存記録、全原生パーツ、実床・3ブロックの空間を照合。再起動後に新規生成のbiome条件を再要求しない |
 | NativeSubterraneanAccessGeometry.java / NativeSubterraneanAccessProtection.java | 既存施設と共用する梯子・照明・地下通路、loaded/編集履歴/居住/他施設の保護 |
 | NativeStreetConnector.java / NativeLoadedStreetAvoidance.java | 地表道路の素材保護と実LC参照判定。火山は監査physical範囲、小屋は既存template検査で保護 |
+| VolcanicCoreLease.java / ManagedVolcanicCoreMixin.java | 都市版の核を保存startから識別。未武装中は召喚/環境弾を拒否し、元の触媒・冷却・通常核を保持 |
+| VolcanicBossLeaseState.java | 核・出生形状・boss UUIDと予約/登録後/終了の所有記録。未登録の成功扱い、二重/別個体の遷移を拒否 |
 
 試験用の通常抽選で全50パーツが生成され、自動工事で梯子103段、地下通路、地表道路22ブロックを施工した。保存・再起動後も全形状と梯子の向き/背面を保持し、地表18/18・小屋入口3/3・地下水平5/5nodesの往復proxy、再施工0、核保持、selftestを確認。施工後の道路previewは21ブロックとなるが、初回の施工記録22ブロックを上書きしない。
 
 生成前の着地点予測は、近傍26洞窟の合成で60予測/実一致56。未一致4件は記録し、工事前の実床・材質・保護検査を維持する。これは施設の成功率ではない。欠損・改変・別施設・未知anchorは拒否し、記録のない旧試験個体を推測で補完しない。
 
 **残件**：本番structure/structuresetと入口JSON、VolcanicCoreLease.java（core/arena/boss所有・中断）、ManagedVolcanicCoreMixin.java（成功時だけの触媒消費と召喚）、ManagedVolcanicArenaProtection.java（街路/他者建築保護）、元生成停止。元cooldown24000とdropを維持し、通常九信号は増やさない。試験用saltの1候補の受入であり、全seed/回転/自然遭遇頻度、人の外観・梯子操作・満HP戦は未検証。R-29B全体は未完了。
+
+召喚管理の部分確認：都市核は実触媒2個→元tickでも2個保持、環境弾0、元保存値/既存entity/追加読込は不変。普通の原生核の対照では元の召喚と冷却24,000tickを確認した。所有protocolは実候補の登録/退役を同コマンド内で行い、保存・再起動後も同UUIDの終了記録を照合。これは本物のritual成功、生存中bossのcold復帰、実戦の受入ではない。都市核は未武装のまま。
+
+次の実装は、元addFreshEntityの実成功/イベント拒否と所有記録の接続、孤児予約の回復、実死亡/報酬、選択した戦域の保護。ManagedVolcanicBossMixin.java（本体の破壊・水の石化・亀裂・炎）、ManagedSauropodCrushMixin.java（踏みつけの素材搬出前）、ManagedTephraExplosionMixin.java（専用爆発の素材/箱/火）、ManagedVolcanicFissureMixin.java（戦闘後の再生範囲）を予定する。専用爆発は通常の爆発イベントだけでは保護できず、火や再生の後続効果も含めて検証する。ダメージ・予兆・元dropを全停止する方式は採らない。
