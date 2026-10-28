@@ -805,6 +805,20 @@ R-27E3の残条件は、都市へ接合したIron's墓地の計測済み室で�
 
 ### 2026-10-29 火山移管の実装・検証範囲
 
-VolcanicCityContract.javaで全原生パーツと実書込範囲を区別し、VolcanicSubterraneanParcelPieceMixin.javaで元のprocedural pieceを維持したまま既存の地下入口情報を保存する。VolcanicCityAccessSurvey.javaは実collision/fluidの着地点と借用hut1・共通街道geometryを照合する候補調査であり、配置許可ではない。
+街の小屋から梯子で原生火山へ降り、攻略後に同じ街へ帰れる経路を実装中。元の火山49パーツをすべて保持し、Alex's Cavesの原生小屋1棟を入口として組み合わせる。元の部屋や地形生成式は複製せず、実行時参照する。
 
-隔離ワールドで全49原生pieceの管理者配置、監査範囲外の変更0、核のcold維持を確認。入口情報の通常save不変/元タグ保持/codec往復/二重・他delegate・破損データ拒否も確認した。入口候補は原生火山の外周を横方向にも調べ、小屋の地形条件を通る225候補から、共通の梯子・照明・3ブロック高の通路全体の材質検査で11候補へ絞った。最短の街道接続は34block。VolcanicCityAccessAssembly.javaで全49原生pieceに借用hutを1棟だけ追加する50pieceの組立と、全nativeタグ保持・元source不変を確認。NativeSubterraneanAccessGeometry.javaは既存の地下施設と共用し、既存の保護gateはAccessPlan側に維持する。都市入口の工事、通常生成、召喚管理・街路保護、実戦・人の外観は未完了。元生成停止を先行せず、施設や攻略の種類を削らない。
+| 実装 | 責務 |
+|---|---|
+| VolcanicCityContract.java / VolcanicNativeGeometry.java | 元パーツのBBと、監査済みの実書込範囲を区別。通常火山の予約は維持 |
+| VolcanicCityAccessSurvey.java / VolcanicNoiseLanding.java | 原生洞窟の着地点、小屋と共通道路の候補を調査。元の抽選・biome条件を使う |
+| VolcanicCityAccessAssembly.java / VolcanicCityParcelContract.java | 全原生49＋小屋1の組立、地上入口と地下の予約、他施設・都市参照の回避 |
+| VolcanicTerrainReceipt.java / VolcanicAccessReceiptCarrier.java / VolcanicSubterraneanParcelPieceMixin.java | 生成時のseed・次元・owner・全形状・特定の借用地形を保存。普通の火山のsaveは不変 |
+| VolcanicOpenGateway.java | 保存記録、全原生パーツ、実床・3ブロックの空間を照合。再起動後に新規生成のbiome条件を再要求しない |
+| NativeSubterraneanAccessGeometry.java / NativeSubterraneanAccessProtection.java | 既存施設と共用する梯子・照明・地下通路、loaded/編集履歴/居住/他施設の保護 |
+| NativeStreetConnector.java / NativeLoadedStreetAvoidance.java | 地表道路の素材保護と実LC参照判定。火山は監査physical範囲、小屋は既存template検査で保護 |
+
+試験用の通常抽選で全50パーツが生成され、自動工事で梯子103段、地下通路、地表道路22ブロックを施工した。保存・再起動後も全形状と梯子の向き/背面を保持し、地表18/18・小屋入口3/3・地下水平5/5nodesの往復proxy、再施工0、核保持、selftestを確認。施工後の道路previewは21ブロックとなるが、初回の施工記録22ブロックを上書きしない。
+
+生成前の着地点予測は、近傍26洞窟の合成で60予測/実一致56。未一致4件は記録し、工事前の実床・材質・保護検査を維持する。これは施設の成功率ではない。欠損・改変・別施設・未知anchorは拒否し、記録のない旧試験個体を推測で補完しない。
+
+**残件**：本番structure/structuresetと入口JSON、VolcanicCoreLease.java（core/arena/boss所有・中断）、ManagedVolcanicCoreMixin.java（成功時だけの触媒消費と召喚）、ManagedVolcanicArenaProtection.java（街路/他者建築保護）、元生成停止。元cooldown24000とdropを維持し、通常九信号は増やさない。試験用saltの1候補の受入であり、全seed/回転/自然遭遇頻度、人の外観・梯子操作・満HP戦は未検証。R-29B全体は未完了。
