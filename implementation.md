@@ -796,9 +796,9 @@ R-27E3の残条件は、都市へ接合したIron's墓地の計測済み室で�
 工場/研究地図→磁性核→抵抗の盾→塔か工場で押し引きを使う任意経路を追加。実死亡/着地/採掘stackを盾へ実製作し、native極性切替とパルスがCataclysmの敵へ作用する代表機能を確認しました。任意製作票6件/全3章35quest。新しい素材ノルマや一般箱への核配布は追加しません。自然探索往復/人の使用/実射手AIとの対戦/全敵耐性は未検証で、火山召喚や六洞窟全体の完成とはしません。
 
 
-### G4/R-29B 火山移管の次の実装（未実装）
+### G4/R-29B 火山移管（都市版登録・通し進行は未完了）
 
-次は原生VolcanoStructureの全pieceを地下に予約し、借用入口/共通接合→原生core/召喚戦→都市へ帰還する契約を実配置で測る。予定責務はVolcanicCityContract.java（全占有/入口）、VolcanicCoreLease.java（core/arena/boss所有と中断）、ManagedVolcanicCoreMixin.java（city coreだけの消費前gate/環境弾制限）、ManagedVolcanicArenaProtection.java（街路/他者建築保護）、volcano_city.json/入口JSON。native cooldown24000と元dropを維持し、通常九信号に追加しない。まだ本番wrapper/arena/保護/ritualは未実装。原生生成停止を先行しない。
+原生VolcanoStructure全49piece＋原生小屋1を都市入口/梯子/地下通路へ接合。保存再起動後の帰路と、本人の見学による導線・外観は限定受入。VolcanicCoreLease/VolcanicBossLeaseState、ManagedVolcanicCoreMixin/VolcanicRitualTransactionが実UUIDの召喚登録・触媒消費・中断を管理し、ManagedVolcanicArenaProtectionとnative攻撃mixinが街路/箱/設置材を保護する。死亡中の元Loot全NBTの保存とcold後の元排出、未join予約だけの停止中全次元監査・解除も代表試験済み。実Tephra raycast→damage/knockback→finalizerでは、通常対照と同じ13damage/吹き飛ばしを維持して箱/金を保護。managed_volcanic_ritual（既定false）の明示許可から、試験専用transaction scopeなしの実核tickで触媒1消費/冷却24000/所有登録、核の環境弾8体への実所有付与を隔離copyで限定受入。本番street_volcanoのstructure/set/入口JSONと元set frequency0を一組で採用。元salt9129/spacing14/separation8の新規通常生成→自動接合/梯子98/48block道路→cold/元core ready/再施工0を代表確認。プレイヤー撃破帰属/満HP実戦/装備更新の通しと広域遭遇分布は未完了。native cooldown24000/元drop/通常九信号は維持し、生成停止を代替配置より先行しない。
 
 原生の一時BE API試験では実Lux1体を生成して同じコマンド内で直ちに退役し、cooldown24000/二回目拒否/保存形式復元後拒否を確認。block/溶岩/触媒を置いておらず、実召喚器/戦闘/都市移管の成功とは区別する。実装と未検証事項を分けて追跡します。
 
@@ -817,19 +817,23 @@ R-27E3の残条件は、都市へ接合したIron's墓地の計測済み室で�
 | NativeSubterraneanAccessGeometry.java / NativeSubterraneanAccessProtection.java | 既存施設と共用する梯子・照明・地下通路、loaded/編集履歴/居住/他施設の保護 |
 | NativeStreetConnector.java / NativeLoadedStreetAvoidance.java | 地表道路の素材保護と実LC参照判定。火山は監査physical範囲、小屋は既存template検査で保護 |
 | VolcanicCoreLease.java / ManagedVolcanicCoreMixin.java | 都市版の核を保存startから識別。未武装中は召喚/環境弾を拒否し、元の触媒・冷却・通常核を保持 |
+| VolcanicRitualTransaction.java | 実登録成功を触媒消費の条件とし、再入・二重召喚・帰路破損を拒否。managed_volcanic_ritualの明示許可を隔離copyで限定受入、本番定義へ採用、通し進行は未完了 |
+| VolcanicReservationRecovery.java / audit-volcanic-reservation.py | 停止中の全次元entity保存とhash集合を監査し、次の起動で一致した未join予約だけを管理者が解除。ACTIVE・未知形式・symlinkは拒否 |
 | VolcanicBossLeaseState.java | 核・出生形状・boss UUIDと予約/登録後/終了の所有記録。未登録の成功扱い、二重/別個体の遷移を拒否 |
 | ManagedVolcanicArenaProtection.java | 実所有UUID・保存形状・生きた保護検査から、戦域内の自然材だけに編集を許可 |
 | ManagedVolcanicBossMixin.java / ManagedSauropodCrushMixin.java | 本体破壊・水の石化・亀裂全5セル・踏みつけを、箱や素材を取り出す前に保護 |
 | ManagedTephraExplosionMixin.java | 独自の爆発処理へ保護を適用。通常爆発イベントだけでは拾えない経路を扱う |
 | OwnedVolcanicFire.java / ManagedVolcanicFireMixin.java / VolcanicFireReplacementMixin.java | ボスの火を160ゲームtickの火床として保存。接触ダメージを残し、延焼・隣焼きを防ぐ。置き換えた建材や通常の火へ所有を持ち越さない |
+| VolcanicPendingLoot.java / VolcanicPendingLootMixin.java | 所有ボスの死亡演出中に、抽選済みの元戦利品・全NBT・演出位置を保存。再抽選せず元の排出処理へ戻す |
+| OwnedVolcanicDrops.java | 元の排出処理で新規に出たItemEntityへ由来を付ける。アイテムstack・数量を変更しない |
 
 試験用の通常抽選で全50パーツが生成され、自動工事で梯子103段、地下通路、地表道路22ブロックを施工した。保存・再起動後も全形状と梯子の向き/背面を保持し、地表18/18・小屋入口3/3・地下水平5/5nodesの往復proxy、再施工0、核保持、selftestを確認。施工後の道路previewは21ブロックとなるが、初回の施工記録22ブロックを上書きしない。
 
 生成前の着地点予測は、近傍26洞窟の合成で60予測/実一致56。未一致4件は記録し、工事前の実床・材質・保護検査を維持する。これは施設の成功率ではない。欠損・改変・別施設・未知anchorは拒否し、記録のない旧試験個体を推測で補完しない。
 
-**残件**：本番structure/structuresetと入口JSON、VolcanicCoreLease.java（core/arena/boss所有・中断）、ManagedVolcanicCoreMixin.java（成功時だけの触媒消費と召喚）、実戦を通した街路/他者建築保護の確認、元生成停止。元cooldown24000とdropを維持し、通常九信号は増やさない。試験用saltの1候補の受入であり、全seed/回転/自然遭遇頻度、人の外観・梯子操作・満HP戦は未検証。R-29B全体は未完了。
+**残件**：実戦を通した街路/他者建築保護・撃破帰属・武器更新、広域の通常遭遇分布。元cooldown24000とdropを維持し、通常九信号は増やさない。試験用saltの1候補の受入。小屋から火山内部への見学は本人が肯定的に受入済み。全seed/回転/自然遭遇頻度・満HP戦は未検証。R-29B全体は未完了。
 
-召喚管理の部分確認：都市核は実触媒2個→元tickでも2個保持、環境弾0、元保存値/既存entity/追加読込は不変。普通の原生核の対照では元の召喚と冷却24,000tickを確認した。所有protocolは実候補の登録/退役を同コマンド内で行い、保存・再起動後も同UUIDの終了記録を照合。これは本物のritual成功、生存中bossのcold復帰、実戦の受入ではない。都市核は未武装のまま。
+未許可の都市核の回帰確認：都市核は実触媒2個→元tickでも2個保持、環境弾0、元保存値/既存entity/追加読込は不変。普通の原生核の対照では元の召喚と冷却24,000tickを確認した。所有protocolは実候補の登録/退役を同コマンド内で行い、保存・再起動後も同UUIDの終了記録を照合。このprotocol単体の試験は、下記の実触媒召喚・生存個体coldとは区別する。明示許可のない都市核は未武装のまま。
 
 攻撃保護の部分確認：元Modの本体更新、亀裂、踏みつけ、専用爆発の実処理を限定した試験で実行。自然地形は変化し、所有個体では箱の中身・金ブロック・帰路を保護し、通常個体の対照では元の破壊が起きることを確認した。元の亀裂再生は最大高さ4の全5セルに収まり、空気だけを再生して新しい箱を保持したため、専用Fissure mixin案の責務は元の再生処理＋既存の全列事前検査で満たす。再生や地形攻撃の種類を削除した変更ではない。元処理が変われば追加adapterを再検討する。
 
@@ -839,4 +843,17 @@ R-27E3の残条件は、都市へ接合したIron's墓地の計測済み室で�
 
 元召喚からの保存復帰：触媒1個を使って所有登録した同じ生存個体と、元の冷却カウンタを保存・再起動後も確認した。試験は召喚アニメーションの設定を観測した後にNoAIで停止した受動個体であり、演出・攻撃中の復帰とは区別する。別の冷却タイマーは追加していない。
 
-次の実装・検証は、孤児予約の回復、実死亡/報酬、召喚演出・戦闘中の保存復帰、通しの戦闘・効果範囲・性能。本番召喚は未開放。ダメージ・予兆・元dropを全停止する方式は採らない。
+次の実装・検証は、素材案内の移管と広域の通常分布、召喚演出・戦闘中の保存復帰、プレイヤー撃破帰属・装備更新の通し・性能。都市版登録済み・通し進行は未完了。ダメージ・予兆・元dropを全停止する方式は採らない。
+
+死亡と元報酬の部分確認：実ダメージによる死亡通知→所有終了→元の死亡演出→破片とTravel Opticsの任意武器を排出。死亡演出中の未排出Lootが元のsave/loadで失われる問題（K-133）を再現したため、抽選済み12個を全NBT付きで保存・復元し、その後の排出内容・数量も元の抽選へ一致させた。本物の死亡演出途中でも保存・再起動し、同じ破片8個＋固有術式付き巻物1個の全NBT・数量を元の演出後に排出することを確認した。既存の追加武器や呪文巻物を異常品扱いで削除せず、元の抽選と固有術式を残す。
+
+
+実爆発の追加検証：人工の破壊セル一覧を使わず、元のTephraExplosion.explode→finalizeExplosionを実行。所有弾/普通の弾ともに13damageと同じ吹き飛ばしを確認し、所有弾だけ箱の全NBTと金を保護。自然地形は変化し、普通の弾では両方を破壊。1,331セルを元に戻し、追加actor/dropを退役、selftestと保存終了を確認。元AIの攻撃発動・通しの満HP戦とは区別する。
+
+未join予約の回復は、全次元の保存UUID不在と起動前のsnapshot一致を条件に限定受入。ACTIVEや別次元に保存された同UUIDは解除しない。
+
+明示許可の通常召喚：managed_volcanic_ritual=trueの隔離コピーでは、試験専用の召喚許可scopeなしで元の核tickから登録・触媒1個・冷却24,000tickを確認した。帰路障害/登録拒否/登録時死亡では消費せず、再入/二重召喚を拒否。元の核が出す火山弾8体へ実際の所有情報を付与し、戦闘前/終了後は都市版の核の発射を抑制。普通の核は元の挙動を維持。本番生成定義は採用済みで、全戦闘の受入は別途進める。
+
+本番用の生成定義（採用済み）：`ashen_relay:street_volcano` のstructure JSONと同名の入口profile/structure set、および `alexscaves:volcano` の元structure set停止JSON。原生biome `alexscaves:primordial_caves`、地下生成step、全49パーツを保持。元のsalt 9129・spacing 14・separation 8を変えず、都市版へIDを差し替え、元setはfrequency 0を対で設定した。
+
+新規通常抽選の一例で全50パーツ/梯子98段/道路48ブロック/地下通路を自動施工し、再起動後も元の全形状・梯子の向きと支持・核1個/召喚準備・再施工0を確認。道路側の参照3か所は隔離試験の非同期読込へ追加した。本番の保護条件は緩和していない。本人が見学したのは別の試験候補であり、この通常配置の外観・満HP戦・広域遭遇率は未検証。既存ワールドの建築を消す変更はしない。

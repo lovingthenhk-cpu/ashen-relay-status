@@ -183,3 +183,10 @@ Iron's Lib、Lionfish API、Citadel、Cerbons API、Apothic Attributes、Placebo
 Iron’sの元catacombs structure setは新規独立生成を停止し、都市版wrapper・原生小屋入口・梯子・短通路を採用しました。原生の地下assembly/敵/通常Loot/登録IDは保持します。攻略family・到達条件・Wayward Compass tagを都市版へ対応。元と都市holderの保持とplacement設定は再起動後のregistryで確認。全locatorの実操作・元物語/案内の移管・分布調整は継続します。
 
 運河交換場はAlex’s Caves/Cataclysm/Iron’s/Mowzie’s/Apotheosisの建材・設備・物資を混ぜた候補です。第2版のLC自然3×3と駅隣接の限定歩行接続を検査中で、本番生成へは未採用です。鉄道の第一対象はLost Cities地下鉄の通常レールとAlex’s Caves磁気レールの車両直通です。歩行接続だけでは未達とし、既存本線を保護して支線を設計します。報酬はCodex監修第3版の16表を実生成検証してパックへ反映しました。
+
+
+### 2026-10-29 Alex’s Caves火山の都市移管
+
+原生火山49パーツと原生小屋1棟、元の触媒召喚/ボスAI/固有戦利品を `ashen_relay:street_volcano` へ組み合わせた。元 `alexscaves:volcano` の独立した野外生成はfrequency 0、都市版は元と同じsalt 9129/spacing 14/separation 8。原生洞窟biomeと地下生成step、通常の冷却24,000tickは保持する。生成済み建築や必要な登録block/item/entityは削除しない。
+
+都市版は明示許可の管理付き召喚と実所有付きの火山弾を使う。新規通常抽選→自動接合→再起動を代表確認。広域遭遇・実戦/撃破帰属・装備更新の通し、元の案内/物語依存の最終移管は残件。都市契約による候補減少は今後の密度調整で測る。
