@@ -866,13 +866,33 @@
 <td>VolcanicBossLeaseState.java</td>
 <td>核・出生形状・boss UUIDと予約/登録後/終了の所有記録。未登録の成功扱い、二重/別個体の遷移を拒否</td>
 </tr>
+<tr>
+<td>ManagedVolcanicArenaProtection.java</td>
+<td>実所有UUID・保存形状・生きた保護検査から、戦域内の自然材だけに編集を許可</td>
+</tr>
+<tr>
+<td>ManagedVolcanicBossMixin.java / ManagedSauropodCrushMixin.java</td>
+<td>本体破壊・水の石化・亀裂全5セル・踏みつけを、箱や素材を取り出す前に保護</td>
+</tr>
+<tr>
+<td>ManagedTephraExplosionMixin.java</td>
+<td>独自の爆発処理へ保護を適用。通常爆発イベントだけでは拾えない経路を扱う</td>
+</tr>
+<tr>
+<td>OwnedVolcanicFire.java / ManagedVolcanicFireMixin.java / VolcanicFireReplacementMixin.java</td>
+<td>ボスの火を160ゲームtickの火床として保存。接触ダメージを残し、延焼・隣焼きを防ぐ。置き換えた建材や通常の火へ所有を持ち越さない</td>
+</tr>
 </tbody>
 </table>
 <p>試験用の通常抽選で全50パーツが生成され、自動工事で梯子103段、地下通路、地表道路22ブロックを施工した。保存・再起動後も全形状と梯子の向き/背面を保持し、地表18/18・小屋入口3/3・地下水平5/5nodesの往復proxy、再施工0、核保持、selftestを確認。施工後の道路previewは21ブロックとなるが、初回の施工記録22ブロックを上書きしない。</p>
 <p>生成前の着地点予測は、近傍26洞窟の合成で60予測/実一致56。未一致4件は記録し、工事前の実床・材質・保護検査を維持する。これは施設の成功率ではない。欠損・改変・別施設・未知anchorは拒否し、記録のない旧試験個体を推測で補完しない。</p>
-<p><strong>残件</strong>：本番structure/structuresetと入口JSON、VolcanicCoreLease.java（core/arena/boss所有・中断）、ManagedVolcanicCoreMixin.java（成功時だけの触媒消費と召喚）、ManagedVolcanicArenaProtection.java（街路/他者建築保護）、元生成停止。元cooldown24000とdropを維持し、通常九信号は増やさない。試験用saltの1候補の受入であり、全seed/回転/自然遭遇頻度、人の外観・梯子操作・満HP戦は未検証。R-29B全体は未完了。</p>
+<p><strong>残件</strong>：本番structure/structuresetと入口JSON、VolcanicCoreLease.java（core/arena/boss所有・中断）、ManagedVolcanicCoreMixin.java（成功時だけの触媒消費と召喚）、実戦を通した街路/他者建築保護の確認、元生成停止。元cooldown24000とdropを維持し、通常九信号は増やさない。試験用saltの1候補の受入であり、全seed/回転/自然遭遇頻度、人の外観・梯子操作・満HP戦は未検証。R-29B全体は未完了。</p>
 <p>召喚管理の部分確認：都市核は実触媒2個→元tickでも2個保持、環境弾0、元保存値/既存entity/追加読込は不変。普通の原生核の対照では元の召喚と冷却24,000tickを確認した。所有protocolは実候補の登録/退役を同コマンド内で行い、保存・再起動後も同UUIDの終了記録を照合。これは本物のritual成功、生存中bossのcold復帰、実戦の受入ではない。都市核は未武装のまま。</p>
-<p>次の実装は、元addFreshEntityの実成功/イベント拒否と所有記録の接続、孤児予約の回復、実死亡/報酬、選択した戦域の保護。ManagedVolcanicBossMixin.java（本体の破壊・水の石化・亀裂・炎）、ManagedSauropodCrushMixin.java（踏みつけの素材搬出前）、ManagedTephraExplosionMixin.java（専用爆発の素材/箱/火）、ManagedVolcanicFissureMixin.java（戦闘後の再生範囲）を予定する。専用爆発は通常の爆発イベントだけでは保護できず、火や再生の後続効果も含めて検証する。ダメージ・予兆・元dropを全停止する方式は採らない。</p>
+<p>攻撃保護の部分確認：元Modの本体更新、亀裂、踏みつけ、専用爆発の実処理を限定した試験で実行。自然地形は変化し、所有個体では箱の中身・金ブロック・帰路を保護し、通常個体の対照では元の破壊が起きることを確認した。元の亀裂再生は最大高さ4の全5セルに収まり、空気だけを再生して新しい箱を保持したため、専用Fissure mixin案の責務は元の再生処理＋既存の全列事前検査で満たす。再生や地形攻撃の種類を削除した変更ではない。元処理が変われば追加adapterを再検討する。</p>
+<p>炎は設置拒否の暫定状態から、接触ダメージを残す160ゲームtick（20TPSで8秒）の一時火床へ変更。実FireBlock tickで隣接木材への伝播なし・接触ダメージあり・途中で置き換えた金ブロックの保持・通常火への非干渉を確認した。実際の160tick経過による消火と、保存・再起動後も同じ生存中の所有個体・期限を保ち、その期限で消火することを確認した。隣接木材と途中で置き換えた金ブロックは保持し、試験後は元の地形へ復元。ボスはNoAIの受動個体であり、攻撃中・召喚演出中の保存復帰や通しの戦闘は別の未検証項目。</p>
+<p>実触媒の召喚試験：元の核のtickとForge登録イベントを通し、成功時は触媒2個→1個・冷却24,000tick・実個体の所有登録を確認。イベント拒否と登録時死亡では触媒2個を保持し冷却0、再入と二重召喚を拒否。通常核の元召喚も回帰確認した。許可は隔離試験中の同じ核にだけ限定し、本番は未開放。</p>
+<p>元召喚からの保存復帰：触媒1個を使って所有登録した同じ生存個体と、元の冷却カウンタを保存・再起動後も確認した。試験は召喚アニメーションの設定を観測した後にNoAIで停止した受動個体であり、演出・攻撃中の復帰とは区別する。別の冷却タイマーは追加していない。</p>
+<p>次の実装・検証は、孤児予約の回復、実死亡/報酬、召喚演出・戦闘中の保存復帰、通しの戦闘・効果範囲・性能。本番召喚は未開放。ダメージ・予兆・元dropを全停止する方式は採らない。</p>
 </article>
     <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-23 · 物語の核心は掲載しません。</footer>
   </main>
