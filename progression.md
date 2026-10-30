@@ -15,7 +15,7 @@
 
 ## 1. まず現状を正す
 
-- 独自レシピは現在、研究石板・空の継承印・継承触媒に回収材版の空印・磁気浮上レールと都市研究地図3件を加えた8件。元Modに横断合成や武器強化はあるが、全施設の入手量と製作目標を一体で設計した状態ではない。
+- 独自レシピは現在、研究石板・空の継承印・継承触媒に回収材版の空印・磁気浮上レールと都市研究地図3件と調査済み都市火山入口図1件を加えた9件。元Modに横断合成や武器強化はあるが、全施設の入手量と製作目標を一体で設計した状態ではない。
 - 工場の容器Lootは実装・代表検証済み。ただし「素材が存在し用途がある」だけでは経済設計の受入にしない。現Lootは仮配分として扱い、本書の用途・数量・次の攻略への接続を満たしてから調整完了とする。
 - 以下の確定は**採用するゲーム設計**という意味。新しいレシピ、報酬保証、複合戦、案内が既に動くという意味ではない。G2の回収材2レシピ・工場ミスリル供給・既存クエストの用途案内は実装し、自己所有の隔離サーバーで確認済み。本人worldへ更新・補充はしていない。
 - 素材・武器の事実確認は固定jarの41レシピと12Loot表の静的抽出に基づく。抽出元は `内部検証記録` / `fixed-loot.json`。runtimeでの全経路開通・実ドロップ率・難度は別途検証する。
@@ -79,7 +79,7 @@ E1のうち少なくとも二経路は、単なる材料増量に加え、未収
 |---|---|---|---|
 | Cursed Wraithblade | Maledictus追加Lootに `traveloptics:cursed_wraithblade` と `echo_winglet` の抽選あり | 素体→level_one→two→three。各鍛冶で前段＋echo_winglet1＋`cataclysm:cursium_ingot`1 | 城塞/呪術側の上位剣。確定入手経路と都市案内は要実装。確率入手だけを必須進行に使わない |
 | Mechanized Wraithblade | `cataclysm:laser_gatling`＋Cursed Wraithbladeを **Cataclysm weapon_fusion** で融合 | 各段で前段＋`traveloptics:last_glow`1＋`cataclysm:witherite_ingot`1 | 工場だけでは完結しない横断武器。Harbinger追加Lootにlast_glow抽選。融合はbaseの銃側NBTをcopyするが追加の剣側は自動統合しない（静的調査と実メニューで確認）。剣を残す選択と事前の抽出/継承案内が必要 |
-| Gauntlet of Extinction | Luxtructosaurus追加Lootに `traveloptics:gauntlet_of_extinction` 抽選 | 各段で前段＋`alexscaves:tectonic_shard`1＋`traveloptics:tectonic_ingot`1。インゴット1はamber_curiosity4＋arcane_ingot4＋tectonic_shard1 | 洞窟環境と魔法加工を横断する拳。3段合計では強化分だけでamber12/arcane12/shard6。素体と材料の再取得/都市からの導線が未完了 |
+| Gauntlet of Extinction | Luxtructosaurus追加Lootに `traveloptics:gauntlet_of_extinction` 抽選 | 各段で前段＋`alexscaves:tectonic_shard`1＋`traveloptics:tectonic_ingot`1。インゴット1はamber_curiosity4＋arcane_ingot4＋tectonic_shard1 | 洞窟環境と魔法加工を横断する拳。3段合計では強化分だけでamber12/arcane12/shard6。都市火山/任意回収票から素体の再取得と支給拳の三段階鍛冶を限定確認。自然採集からの通し・全体経済は未完了 |
 | Trident of the Eternal Maelstrom | hullbreaker_scales4＋arcane_ingot1→hullbreaker_steel1。steel3＋`cataclysm:coral_bardiche`1＋`irons_spellbooks:weapon_parts`1→素体 | 各段で前段＋`alexscaves:immortal_embryo`1＋hullbreaker_steel1 | 水辺の複数攻略を渡る槍。素体～最終のsteelは6、scale24に加え、部品分を含めarcane_ingot8/ミスリル3/embryo3が必要。供給量の調整前に「すぐ作れる」と案内しない |
 | Earthdive Spear | `bosses_of_mass_destruction:void_thorn`1＋`obsidian_heart`1＋棒1 | 元の槍にAffix/Gem/対応する強化を継承 | BOMD二攻略を横断する機動槍。T.O四系列の下位互換にせず操作差を残す。都市からの各任意遠征の接続が残る |
 | 早中期の近接/魔法 | フェラス固有品、Iron's装備/Spellbook、`cataclysm:ancient_spear`等 | 古代槍はancient_metal_ingot4。Apoの付与/再鍛造、Iron's巻物/ルーン、継承で投資を移す | 上位四系列までの空白を埋める。元の固有武器は最終まで選択肢に残す。実性能比較は未完了 |
@@ -194,3 +194,12 @@ Magnetronの核は単なるentity Lootではなく、帰属のある死亡時の
 所有サーバーの合成した未形成/no-AI標本で、Player帰属の死亡→落下核1→着地block1→実Survival採掘で心臓1、無帰属magicでは0を確認。その実採掘stackを実CraftingMenuへ入れて盾1を製作し、一回消費を確認。native useの極性切替とelapsed10相当のnative onUseTickを別々のCataclysm Koboletonへ呼び、各6damageと正負反転するZ速度を観測した。これは射手Hostと同じ元種に盾を使う機能確認であり、実射手GoalやBOMD弾との対戦は未受入。
 
 「抵抗の盾と核の製作票」を既存の任意製作帳へ追加し、材料/使い方/次の二候補/レールとの材料選択/帰還準備を掲載。チェックは読了印のみ、報酬/必須依存を追加しない。全pack3章35quest読込、52試験セル復元、owned tickets解除、保存後Forced空、rc0を確認。人の長押し/表示/操作感、自然spawnからの満HP戦、全敵耐性、都市からの実探索往復は未検証。火山召喚/六洞窟全体/R-29B/R-30Bは未完了。
+
+
+### 2026-10-30 火山討伐後の装備更新と入口図
+
+都市火山の元の核から召喚し、実プレイヤー由来のダメージによる撃破記録を任意回収票へ接続する代表試験が通った。強制完了を使わずFTBの通常判定/提出/受取処理で拳を1個受け取り、二回目と保存形式の復元後も1個を維持した。その拳を元の鍛冶メニューでI→II→IIIへ強化し、各段の一回消費・元のextinction術式・検査用NBTの保持を確認。HPを下げた試験個体と支給した鍛冶素材を使っており、自然採集・満HP戦・実チームの自動提出・本人操作の受入とは区別する。
+
+調査済み都市火山入口図を追加。紙3枚・闇の布切れ2枚・コンパス1個・Gem粉1個からIron’sの巻いた地図を作り、開くと接合済みの小屋の本物入口へ印を付ける。元の火山ID宛の地図も都市入口へ移管。入口が未記録か壊れているときは消費せず知らせる。これは再訪用の案内であり、未発見の初見施設を探す導線は残件。元の3種類の環境地図は洞窟資源を探す役割で保持する。
+
+実3x3メニュー/正規NBT/一回消費、実サバイバル使用、別次元・別宛先への非干渉、入口の閉塞/復元、保存形式を確認。再起動直後の未読込の保存入口も追加チャンク読込0で案内した。地図の描画・操作感は人の未確認項目。既存クエストの案内を更新し、通常九信号と元レシピの要求量は変更しない。R-29B全体は未完了。

@@ -798,7 +798,7 @@ R-27E3の残条件は、都市へ接合したIron's墓地の計測済み室で�
 
 ### G4/R-29B 火山移管（都市版登録・通し進行は未完了）
 
-原生VolcanoStructure全49piece＋原生小屋1を都市入口/梯子/地下通路へ接合。保存再起動後の帰路と、本人の見学による導線・外観は限定受入。VolcanicCoreLease/VolcanicBossLeaseState、ManagedVolcanicCoreMixin/VolcanicRitualTransactionが実UUIDの召喚登録・触媒消費・中断を管理し、ManagedVolcanicArenaProtectionとnative攻撃mixinが街路/箱/設置材を保護する。死亡中の元Loot全NBTの保存とcold後の元排出、未join予約だけの停止中全次元監査・解除も代表試験済み。実Tephra raycast→damage/knockback→finalizerでは、通常対照と同じ13damage/吹き飛ばしを維持して箱/金を保護。managed_volcanic_ritual（既定false）の明示許可から、試験専用transaction scopeなしの実核tickで触媒1消費/冷却24000/所有登録、核の環境弾8体への実所有付与を隔離copyで限定受入。本番street_volcanoのstructure/set/入口JSONと元set frequency0を一組で採用。元salt9129/spacing14/separation8の新規通常生成→自動接合/梯子98/48block道路→cold/元core ready/再施工0を代表確認。プレイヤー撃破帰属/満HP実戦/装備更新の通しと広域遭遇分布は未完了。native cooldown24000/元drop/通常九信号は維持し、生成停止を代替配置より先行しない。
+原生VolcanoStructure全49piece＋原生小屋1を都市入口/梯子/地下通路へ接合。保存再起動後の帰路と、本人の見学による導線・外観は限定受入。VolcanicCoreLease/VolcanicBossLeaseState、ManagedVolcanicCoreMixin/VolcanicRitualTransactionが実UUIDの召喚登録・触媒消費・中断を管理し、ManagedVolcanicArenaProtectionとnative攻撃mixinが街路/箱/設置材を保護する。死亡中の元Loot全NBTの保存とcold後の元排出、未join予約だけの停止中全次元監査・解除も代表試験済み。実Tephra raycast→damage/knockback→finalizerでは、通常対照と同じ13damage/吹き飛ばしを維持して箱/金を保護。managed_volcanic_ritual（既定false）の明示許可から、試験専用transaction scopeなしの実核tickで触媒1消費/冷却24000/所有登録、核の環境弾8体への実所有付与を隔離copyで限定受入。本番street_volcanoのstructure/set/入口JSONと元set frequency0を一組で採用。元salt9129/spacing14/separation8の新規通常生成→自動接合/梯子98/48block道路→cold/元core ready/再施工0を代表確認。実プレイヤー撃破の進捗→任意回収票→支給拳の三段階鍛冶は限定受入（追加鍛冶素材は試験支給）。自然採集/実チーム自動提出/満HP実戦/広域遭遇分布は未完了。native cooldown24000/元drop/通常九信号は維持し、生成停止を代替配置より先行しない。
 
 原生の一時BE API試験では実Lux1体を生成して同じコマンド内で直ちに退役し、cooldown24000/二回目拒否/保存形式復元後拒否を確認。block/溶岩/触媒を置いておらず、実召喚器/戦闘/都市移管の成功とは区別する。実装と未検証事項を分けて追跡します。
 
@@ -857,3 +857,12 @@ R-27E3の残条件は、都市へ接合したIron's墓地の計測済み室で�
 本番用の生成定義（採用済み）：`ashen_relay:street_volcano` のstructure JSONと同名の入口profile/structure set、および `alexscaves:volcano` の元structure set停止JSON。原生biome `alexscaves:primordial_caves`、地下生成step、全49パーツを保持。元のsalt 9129・spacing 14・separation 8を変えず、都市版へIDを差し替え、元setはfrequency 0を対で設定した。
 
 新規通常抽選の一例で全50パーツ/梯子98段/道路48ブロック/地下通路を自動施工し、再起動後も元の全形状・梯子の向きと支持・核1個/召喚準備・再施工0を確認。道路側の参照3か所は隔離試験の非同期読込へ追加した。本番の保護条件は緩和していない。本人が見学したのは別の試験候補であり、この通常配置の外観・満HP戦・広域遭遇率は未検証。既存ワールドの建築を消す変更はしない。
+
+
+### 2026-10-30 火山討伐後の装備更新と入口図
+
+都市火山の元の核から召喚し、実プレイヤー由来のダメージによる撃破記録を任意回収票へ接続する代表試験が通った。強制完了を使わずFTBの通常判定/提出/受取処理で拳を1個受け取り、二回目と保存形式の復元後も1個を維持した。その拳を元の鍛冶メニューでI→II→IIIへ強化し、各段の一回消費・元のextinction術式・検査用NBTの保持を確認。HPを下げた試験個体と支給した鍛冶素材を使っており、自然採集・満HP戦・実チームの自動提出・本人操作の受入とは区別する。
+
+調査済み都市火山入口図を追加。紙3枚・闇の布切れ2枚・コンパス1個・Gem粉1個からIron’sの巻いた地図を作り、開くと接合済みの小屋の本物入口へ印を付ける。元の火山ID宛の地図も都市入口へ移管。入口が未記録か壊れているときは消費せず知らせる。これは再訪用の案内であり、未発見の初見施設を探す導線は残件。元の3種類の環境地図は洞窟資源を探す役割で保持する。
+
+実3x3メニュー/正規NBT/一回消費、実サバイバル使用、別次元・別宛先への非干渉、入口の閉塞/復元、保存形式を確認。再起動直後の未読込の保存入口も追加チャンク読込0で案内した。地図の描画・操作感は人の未確認項目。既存クエストの案内を更新し、通常九信号と元レシピの要求量は変更しない。R-29B全体は未完了。
