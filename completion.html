@@ -457,6 +457,9 @@
 <h3>G4/R-29B 火山移管（都市版登録・通し進行は未完了）</h3>
 <p>原生VolcanoStructure全49piece＋原生小屋1を都市入口/梯子/地下通路へ接合。保存再起動後の帰路と、本人の見学による導線・外観は限定受入。VolcanicCoreLease/VolcanicBossLeaseState、ManagedVolcanicCoreMixin/VolcanicRitualTransactionが実UUIDの召喚登録・触媒消費・中断を管理し、ManagedVolcanicArenaProtectionとnative攻撃mixinが街路/箱/設置材を保護する。死亡中の元Loot全NBTの保存とcold後の元排出、未join予約だけの停止中全次元監査・解除も代表試験済み。実Tephra raycast→damage/knockback→finalizerでは、通常対照と同じ13damage/吹き飛ばしを維持して箱/金を保護。managed_volcanic_ritual（既定false）の明示許可から、試験専用transaction scopeなしの実核tickで触媒1消費/冷却24000/所有登録、核の環境弾8体への実所有付与を隔離copyで限定受入。本番street_volcanoのstructure/set/入口JSONと元set frequency0を一組で採用。元salt9129/spacing14/separation8の新規通常生成→自動接合/梯子98/48block道路→cold/元core ready/再施工0を代表確認。実プレイヤー撃破の進捗→任意回収票→支給拳の三段階鍛冶は限定受入（追加鍛冶素材は試験支給）。自然採集/実チーム自動提出/満HP実戦/広域遭遇分布は未完了。native cooldown24000/元drop/通常九信号は維持し、生成停止を代替配置より先行しない。</p>
 <p>都市火山の実撃破記録から任意回収票の拳1個を受け取り、その拳を三段階鍛冶する代表経路を確認。調査済み入口図を追加し、元宛先の地図も都市小屋へ案内する。自然採集/初見発見/満HP戦/実チーム自動提出/広域遭遇は残件。詳細は<a href="implementation.html">実装状況</a>。</p>
+<h3>2026-10-30 AIを動かした保存・再起動の確認</h3>
+<p>独立した隔離コピーで、元のボスのHP・AI・重力・召喚演出を変更せず、人工的な標的への攻撃を観測。召喚後のジャンプ/蹴りとダメージ→攻撃中の観測後に保存→再起動後も同じUUID/所有状態・元冷却を保持し、尾の別攻撃と追加ダメージへ進んだ。箱全NBT・金ブロック・帰路を保持し、指定試験個体の退役/核と保護確認ブロックの復元/selftest/保存停止を確認した。</p>
+<p>標的は固定して回復する試験用Mobで、再起動後の標的再設定も試験処理。人の戦闘バランス・全技・長期性能を合格としない。この観測では火山弾/火床は発生せず、別の爆発/火床/cold試験と区別する。元Modのアニメーションは再起動時に一旦戻り、その後新たな攻撃へ進んだため、同じ攻撃frameを途中から復元したという受入ではない。</p>
 </article>
     <footer><a href="index.html">概要へ戻る</a> · 更新日 2026-10-23 · 物語の核心は掲載しません。</footer>
   </main>
