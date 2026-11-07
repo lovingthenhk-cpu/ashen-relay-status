@@ -121,7 +121,7 @@ R-27W1で判明した旧 `WroughtFacilityReservation.java` は非都市のラン
 | `pack/kubejs/data/ashen_relay/advancements/progress/reach_*.json` | 既存改修 | 実施設到着→記録→FTB表示の依存を固定別次元から現世へ移す |
 | `pack/config/ftbquests/quests/chapters/ashen_relay.snbt` | 既存改修 | 入口、危険、報酬の用途、次の候補を段階表示 |
 | `pack/kubejs/server_scripts/ashen_relay_recipes.js` | 既存監査・改修 | T.O段階武器、Alex's/Cataclysm素材、BOMD槍、継承印の合成経路と重複を確認 |
-| `addon/.../item/ImprintItem.java`、`ledger/RelayWeaponLedger.java` | 既存保全 | Affix/Gem/装備型呪文の移設、部分適用、素材の消失・増殖防止 |
+| `addon/.../item/ImprintItem.java`、`ledger/RelayWeaponLedger.java` | 既存保全 | Affix/Gem/装備型呪文の移設、部分適用、素材の消失・増殖防止。Gem1種の抽出→同器転送は2026-11-07に実use経路で限定受入（本体source変更なし） |
 
 ## R-28以降の編集面
 

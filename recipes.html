@@ -616,6 +616,7 @@
 </tr>
 </tbody>
 </table>
+<p>Gemを埋めた武器からの継承は、2026-11-07にcommon等級のSplendor 1種で実機確認しました。抽出で継承触媒1個、同じ種類の別武器への移し替えで印1個（この時触媒は使わない）を消費し、移ったGemの種類・希少度・内容・ソケット数は元と完全一致しました。今回の鉄兜への試行では、何も消費せずに拒否されました。この確認は試験環境で用意したGem1種と同種の武器ペアのみで、全てのGemや装備種別・複数ソケットでの確認は今後の課題です。</p>
 <p>根拠は<code>ImprintItem.java</code> use/requiresCatalyst/consumeCatalyst、<code>RelayChainSuture.java</code> REQUIRED_DISTRICTS/DISTRICT_ADVANCEMENTS、<code>RelayWeaponLedger.java</code>の閾値/費用。ソース上の現行動作を確認したもので今回のsurvival実操作ではない。融合前の退避を案内する際は、空印だけで十分か、触媒/既存連鎖/部分継承が必要かを対象武器の実データで判定する。</p>
 <h2>案内と記録を出す順序（G3へ渡す仕様）</h2>
 <p>素材/レシピの通常利用は先に可能とし、P0～P5の段階表を製作禁止条件にしない。未来の核心は出さず、下記のように実際に見た場所/得た品/使った操作に説明を付ける。</p>

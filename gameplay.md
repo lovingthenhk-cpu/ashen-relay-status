@@ -37,7 +37,7 @@
 ## 武器と報酬の具体例
 
 - **最初の地下**: Ferrous Wroughtnautの固有斧・兜を受け取り、共鳴素材と巻物を別の武器更新へ使う。
-- **塔**: ApotheosisのAffix装備・Gemを得て、空印に強化を移し、地下で使う重い武器または呪文武器と比較する。
+- **塔**: ApotheosisのAffix装備・Gemを得て、空印に強化を移し、地下で使う重い武器または呪文武器と比較する。Gem入りの抽出（触媒1）→同種の武器への移し替え（印1）は、common等級のSplendor 1種で実機確認済み（2026-11-07）。
 - **墓地・城塞**: Iron'sの巻物・ルーンと移動呪文を得て、装備型呪文を継承候補にする。
 - **工場・海・洞窟**: CataclysmとAlex'sの原生素材を、T.Oの段階武器へ持ち込む。T.Oの4系列はCursed Wraithblade、Gauntlet of Extinction、Mechanized Wraithblade、Trident of the Eternal Maelstrom。
 - **任意遠征**: BOMDのVoid BlossomとObsidilith等の素材をEarthdive Spearの横断合成へ使い、得た武器を次の継承先として試す。
