@@ -42,7 +42,7 @@ T.O四系列を全装備の置換先にしない。以下は固定版の元Loot�
 - weapon_partsはmithril_ingot3＋arcane_ingot2。海槍のsteel6にarcane6、部品にarcane2で、**素体から最終までのarcane_ingotは合計8**。元文書のsteel分6だけを全工程の合計にしない。
 - arcane_ingot1はarcane_essence8＋arcane_ingot_baseタグ1。固定jarのタグは鉄/銅/金。海槍経路のarcane8は精髄64＋対応金属8に相当し、別途mithrilの加工/取得が必要。
 - mithril_ingotはmithril_scrap4。raw_mithrilまたはarcane_salvageの溶鉱炉経路があり、ingot→scrap4の戻しもある。鉱石のworldgen、salvageの実回収、都市移管後の供給は未受入。
-- heart_of_ironの参照がblock Lootだけでも、自然配置や装置からの実取得は別途確認が必要。coral_bardicheのJSON取得元が見つからなくても、Java装備drop等があり得るため入手不能とは断定しない。
+- heart_of_ironの参照がblock Lootだけでも、自然配置や装置からの実取得は別途確認が必要。coral_bardicheのJSON取得元が見つからなくても、Java装備drop等があり得るため入手不能とは断定しない。2026-11-07にはaddon connector保証dropの実ドロップ→拾得→製作メニュー消費を隔離ワールドで限定確認（合金・部品は診断用合成、自然条件の全般保証ではない）。
 - T.Oの素体と鍛冶媒体は追加Lootの抽選。固定jarのglobal modifier一覧にHarbinger/Maledictus/Hullbreaker/Luxtructosaurusの4件を確認し、各元entity Loot→追加表の条件/参照、KeyLootModifierのaddAllまで静的確認した。最終packの実LootTable＋合成entity contextで4件の追加適用を確認（各8回、固定seed）。通常の実死亡・召喚・都市からの到達は未確認で、全取得経路の受入とは分ける。抽選weightをそのまま最終ドロップ率と説明しない。
 
 ## 終点までの材料予算（元レシピの選択経路を展開）
@@ -110,7 +110,7 @@ GLMの固定データ/bytecode調査をCodexが照合した。一般のentity Lo
 
 | 依存 | 静的に確認できた経路とリスク | 採用する補完の方向 / 次の検証 |
 |---|---|---|
-| coral_bardiche | Deepling Bruteの装備drop。都市水術塔の原生NBTにも武器付きBrute1体/handDropChance0.08がある。箱/レシピには直接の取得元なし | 市内の水術塔Bruteをこの武器の意図的な取得先へ。移管個体の元手持ち品を確実に回収する限定処理を実装。通常配置1件/同UUID実死亡/Count1耐久0/marker再処理なし/保存を確認。全自然Bruteや既存塔は変更しない。外側対照のcold存続と全例外は未確認 |
+| coral_bardiche | Deepling Bruteの装備drop。都市水術塔の原生NBTにも武器付きBrute1体/handDropChance0.08がある。箱/レシピには直接の取得元なし | 市内の水術塔Bruteをこの武器の意図的な取得先へ。移管個体の元手持ち品を確実に回収する限定処理を実装。通常配置1件/同UUID実死亡/Count1耐久0/marker再処理なし/保存を確認。全自然Bruteや既存塔は変更しない。外側対照のcold存続と全例外は未確認。2026-11-07の隔離診断では実ドロップ→実拾得→製作メニュー消費→素体取得まで合格（合金3・部品1は診断用合成、自然入手・人の実戦・networkは未確認） |
 | ミスリル/arcane_salvage | 原鉱/古代残骸→溶鉱炉→scrap4でingot1。原鉱等にforgeのnetherite-tier要件。Nether城塞やEnd聖堂にも少量箱経路があるが、今回の直接参照索引で市内専用供給は未発見 | 都市工場の装備・魔術保守材枠へ**一棟計12 mithril_scrapの有限供給**を実装。装備箱の物理6容器へ各2を追加し、実LootTable抽選で計12を確認した。海槍のweapon_parts1分。全一般箱へ入れず、元の採掘/遠征経路も残す。新規配置の再実行と人の取得体験・他用途の性能影響は未確認。未測定の確定バランスではない |
 | heart_of_iron | 磁性洞窟のMagnetronの独自崩壊処理でcoreブロックを落とし、採掘で回収。単にLoot表があるだけでは取得できない | 当面は磁性洞窟の環境/原生spawnを保持し、都市から装備準備→探索→回収→帰還の導線を作る。これは元Modの物語採用ではない。都市内の別Host化は元ブロック/保護/再取得を試してから。一般箱でcoreを配る方式を既定にしない |
 | tectonic_shard | 火山のvolcanic_core装置＋ominous_catalystでLuxtructosaurusを呼ぶ。元表は1回7～11個＋Looting。現在の拳3段で使う6は一回分で足りる静的予算 | shard要求は維持。都市版street_volcano/元set frequency0を対で採用し、通常生成・帰路・実触媒召喚・実死亡/cold後の元排出を代表確認。実撃破記録→任意回収票の拳→試験支給素材による三段階鍛冶を接続。自然採集からの全経済/人の戦闘/広域遭遇は残件 |
@@ -145,7 +145,7 @@ native useを一枚ずつ待つcold試験では3種とも目的地を発見し�
 | `cataclysm:witherite_ingot` | 1 | 17 | 0 | `data/cataclysm/recipes/witherite_ingot.json` |
 | `cataclysm:cursium_ingot` | 1 | 16 | 1 | `data/cataclysm/recipes/cursium_ingot.json` |
 | `cataclysm:laser_gatling` | 1 | 1 | 0 | `data/cataclysm/recipes/laser_gatling.json` |
-| `cataclysm:coral_bardiche` | 0 | 1 | 0 | `スクリプト/Java/実取得を確認` |
+| `cataclysm:coral_bardiche` | 0 | 1 | 0 | `addon connector実ドロップ→製作消費を隔離fixture確認` |
 | `cataclysm:witherite_block` | 1 | 1 | 2 | `data/cataclysm/recipes/witherite_block.json` |
 | `cataclysm:cursium_block` | 1 | 1 | 1 | `data/cataclysm/recipes/cursium_block.json` |
 | `traveloptics:cursed_wraithblade` | 0 | 2 | 1 | `data/traveloptics/loot_tables/entities/maledictus_additions_new.json` |

@@ -27,7 +27,7 @@ Lost Cities外の独立構造物はなるべく生成させず、都市内に多
 | Apotheosis `7.4.8` | 拾った装備のAffix/Socket/Gemで更新動機を作る | `tower_main/leaf/sand/spruce`、Affix/Gem装備 | 塔4型の原生template/pool、強化入手 | 射手を変更した場合、その1体だけ元AI/dropの重複を止める。塔4型の元setは停止設定済み。Affix/Gemは維持 |
 | Iron's Spells 'n Spellbooks `3.16.3` | 呪文、巻物、詠唱、装備型呪文、地下と城塞 | `catacombs`、`evoker_fort`、LivingEntity caster | 原生施設、呪文、原生loot | 追加敵/追加lootは指定施設内だけ。城塞/山岳塔/火術塔の元生成停止設定を追加。不要要素は実ID別に監査 |
 | L_Ender's Cataclysm `3.16` | 大型ボス、工場、海と固有武器 | `ancient_factory`、`sunken_city`、`bone_fracture`、予兆攻撃 | 原生施設・ボス・固有drop | 工場の装置室1室だけに追加遭遇を置き、元装置・保護ブロックを上書きしない |
-| Bosses of Mass Destruction `1.1.2` | 寒冷地・地下・Nether・Endの四遠征 | `MagicMissileProjectile` と命中callback、Earthdive Spear素材 | 四施設、ボス、原生drop、通常レシピ | Ashen Relay追加報酬の二重支給のみ一回性状態で防ぐ |
+| Bosses of Mass Destruction `1.1.2` | 寒冷地・地下・Nether・Endの四遠征 | `MagicMissileProjectile` と命中callback、Earthdive Spear素材 | 四施設、ボス、原生drop、通常レシピ | 胞子洞の元set生成を停止し都市wrapperを採用（通常起動1回合格・冷起動合格）。Ashen Relay追加報酬の二重支給のみ一回性状態で防ぐ |
 | T.O Magic 'n Extras `6.3.0` | ボス技の呪文化、4系列×3段階の武器、横断合成 | `aqua_mage_tower` / `echo_shrine` / `void_cathedral`、Cataclysm/Alex's素材を使う合成 | 原生施設・武器・通常レシピ | 都市へ施設配置を移管し、元生成/不要loot/recipeを停止。必要環境と寸法を確認 |
 | Dungeons Enhanced（未導入） | 都市の小型接合元として隔離試験する候補 | `watch_tower` / `ruined_building` 候補 | 採用する施設だけ、原生攻略としての価値を個別判断 | 不要なstructure setを固定jarの実IDごと停止する案。依存、権利、動画、性能のゲート通過前は導入しない |
 

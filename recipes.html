@@ -142,7 +142,7 @@
 <li>weapon_partsはmithril_ingot3＋arcane_ingot2。海槍のsteel6にarcane6、部品にarcane2で、<strong>素体から最終までのarcane_ingotは合計8</strong>。元文書のsteel分6だけを全工程の合計にしない。</li>
 <li>arcane_ingot1はarcane_essence8＋arcane_ingot_baseタグ1。固定jarのタグは鉄/銅/金。海槍経路のarcane8は精髄64＋対応金属8に相当し、別途mithrilの加工/取得が必要。</li>
 <li>mithril_ingotはmithril_scrap4。raw_mithrilまたはarcane_salvageの溶鉱炉経路があり、ingot→scrap4の戻しもある。鉱石のworldgen、salvageの実回収、都市移管後の供給は未受入。</li>
-<li>heart_of_ironの参照がblock Lootだけでも、自然配置や装置からの実取得は別途確認が必要。coral_bardicheのJSON取得元が見つからなくても、Java装備drop等があり得るため入手不能とは断定しない。</li>
+<li>heart_of_ironの参照がblock Lootだけでも、自然配置や装置からの実取得は別途確認が必要。coral_bardicheのJSON取得元が見つからなくても、Java装備drop等があり得るため入手不能とは断定しない。2026-11-07にはaddon connector保証dropの実ドロップ→拾得→製作メニュー消費を隔離ワールドで限定確認（合金・部品は診断用合成、自然条件の全般保証ではない）。</li>
 <li>T.Oの素体と鍛冶媒体は追加Lootの抽選。固定jarのglobal modifier一覧にHarbinger/Maledictus/Hullbreaker/Luxtructosaurusの4件を確認し、各元entity Loot→追加表の条件/参照、KeyLootModifierのaddAllまで静的確認した。最終packの実LootTable＋合成entity contextで4件の追加適用を確認（各8回、固定seed）。通常の実死亡・召喚・都市からの到達は未確認で、全取得経路の受入とは分ける。抽選weightをそのまま最終ドロップ率と説明しない。</li>
 </ul>
 <h2>終点までの材料予算（元レシピの選択経路を展開）</h2>
@@ -258,7 +258,7 @@
 <tr>
 <td>coral_bardiche</td>
 <td>Deepling Bruteの装備drop。都市水術塔の原生NBTにも武器付きBrute1体/handDropChance0.08がある。箱/レシピには直接の取得元なし</td>
-<td>市内の水術塔Bruteをこの武器の意図的な取得先へ。移管個体の元手持ち品を確実に回収する限定処理を実装。通常配置1件/同UUID実死亡/Count1耐久0/marker再処理なし/保存を確認。全自然Bruteや既存塔は変更しない。外側対照のcold存続と全例外は未確認</td>
+<td>市内の水術塔Bruteをこの武器の意図的な取得先へ。移管個体の元手持ち品を確実に回収する限定処理を実装。通常配置1件/同UUID実死亡/Count1耐久0/marker再処理なし/保存を確認。全自然Bruteや既存塔は変更しない。外側対照のcold存続と全例外は未確認。2026-11-07の隔離診断では実ドロップ→実拾得→製作メニュー消費→素体取得まで合格（合金3・部品1は診断用合成、自然入手・人の実戦・networkは未確認）</td>
 </tr>
 <tr>
 <td>ミスリル/arcane_salvage</td>
@@ -405,7 +405,7 @@
 <td style="text-align:right">0</td>
 <td style="text-align:right">1</td>
 <td style="text-align:right">0</td>
-<td><code>スクリプト/Java/実取得を確認</code></td>
+<td><code>addon connector実ドロップ→製作消費を隔離fixture確認</code></td>
 </tr>
 <tr>
 <td><code>cataclysm:witherite_block</code></td>
