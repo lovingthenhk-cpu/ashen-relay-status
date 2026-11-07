@@ -13,6 +13,9 @@
     <nav class="site-nav" aria-label="サイト内のページ"><a href="index.html">概要</a><a href="world.html">世界と攻略先</a><a href="gameplay.html">プレイループ</a><a href="progression.html">攻略と製作・終点</a><a href="recipes.html">素材と加工経路</a><a href="mods.html">Mod採用表</a><a href="ideas.html">旧案の採用台帳</a><a href="seams.html">縫合パターン58件</a><a href="delivery.html" aria-current="page">次の作業と実装受入</a><a href="implementation.html">実装ファイル</a><a href="completion.html">完成工程</a><a href="estimate.html">残工数の見積もり</a><a href="known-issues.html">不具合・許容事項</a></nav>
     <header class="subpage-header"><p class="eyebrow">ASHEN RELAY · 公開計画</p><p class="subpage-lead">全工程は <a href="completion.html">完成工程</a>、元の原要求は <a href="gameplay.html">プレイループ</a> に掲載。</p></header>
     <article class="document"><h1>次の作業と受入条件</h1>
+<h2>2026-11-07 Lich塔の通常生成試験：塔本体と街道接続は観測、停止処理で失敗（修正準備中）</h2>
+<p>寒冷地のLich塔を街道へ接続する試験を、新規ワールドで実施しました。元の上下2部品を保って通常生成し、47ブロック分の接続経路も確認できました。停止時には、既存の拠点接合処理が生成中のチャンクの完成を待ち、処理が進まなくなる問題を確認しました。最後の保存は成功表示が出ていますが、全次元の正常保存までは証明できていないため、この個体は不合格のまま保全し、人のプレイには使われていません。</p>
+<p>対応として、生成中に処理を待たせず、チャンクの準備後に拠点を接合する修正案を準備しています。修正は別の新規検証ワールドでやり直し、今回の個体を再利用しません。塔の通常生成と街道接続は確認できましたが、氷の採掘や祭壇修復などの攻略要素は未検証です。都市版の塔は本番設定へまだ採用していません。</p>
 <h2>2026-11-03 胞子洞への接続と冷再起動の限定受入</h2>
 <p>Void Blossom洞窟への通路工事では、予定経路内の胞子1個（115→114）だけを置換し、洞窟全体の植生は保持しました。新しいJVMを1回だけ起こす冷再起動で、保存された予約境界・受領証fingerprint・4starts×2pieces・胞子114/summon1・液体0・selftest成功・終了rc0を確認。梯子は最大48ブロック差の3区間すべてcontinuousSupportedDry=true、BE負例はwrites=0拒否・完全復元。gatewayFootは実測minecraft:grassでありAIRではありません。外観・人の往復操作・ボス実戦・実クライアントnetworkは未検証。production都市配布JSONと元生成停止は未適用で、R-29C全体の完了ではありません。</p>
 <p><strong>2026-11-07本番採用</strong>: 入口判定への原生苔カーペット1件追加のみで本番採用（通常起動1回で自己診断・registry存在・Void Lilyの都市版検索先合格、wrapper2部品commit、自動道路と接続、preview0、梯子3区間、旧苔セルの負例拒否→同材復元、保存終了rc0）。冷起動（2回目）も保存データ比較まで合格: 同receipt・fingerprint・予約境界一致、preview0、梯子supportedDry、全次元保存・強制ロード解除・終了rc0/0、領域走査で胞子113/void block1、対象chest負例は書込0拒否・復元。本件は解決。production都市配布JSONの受入確定もcold合格で確定済みです。</p>
