@@ -99,7 +99,7 @@ Iron's Lib、Lionfish API、Citadel、Cerbons API、Apothic Attributes、Placebo
 | `apotheosis:tower_sand` | 停止設定済み・都市自然接合確認 | 都市塔の別外観wrapper |
 | `apotheosis:tower_spruce` | 停止設定済み・自然接合未検証 | 都市塔の別外観wrapper |
 | `bosses_of_mass_destruction:gauntlet_arena` | 移管/停止未完了 | 都市から到達する管理遠征/必要な攻略環境 |
-| `bosses_of_mass_destruction:lich_tower` | 移管/停止未完了 | 都市から到達する管理遠征/必要な攻略環境 |
+| `bosses_of_mass_destruction:lich_tower` | 2026-11-08本番採用（元生成停止・都市版wrapper） | 寒冷地のLich塔を都市へ移管。元の戦利品（箱5個）・スポナー2個・全部品は維持 |
 | `bosses_of_mass_destruction:obsidilith_arena` | 移管/停止未完了 | 都市から到達する管理遠征/必要な攻略環境 |
 | `bosses_of_mass_destruction:void_blossom` | 移管/停止未完了 | 都市から到達する管理遠征/必要な攻略環境 |
 | `cataclysm:acropolis` | 移管/停止未完了 | 都市の地上/地下/工業/水辺または管理遠征 |
