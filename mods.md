@@ -86,7 +86,7 @@ Iron's Lib、Lionfish API、Citadel、Cerbons API、Apothic Attributes、Placebo
 
 ## 2026-10-13 原生構造set全46件の移管・停止対象
 
-固定版の46setを全件作業化。11件はfrequency=0設定済み、35件は移管/停止未完了。フェラス室の設定は隔離全Mod起動とselftestを確認したが、新規都市接合と全seedの元生成停止は未実測。市外例外はまだ確定していない。必要な部品・戦闘AI・固有素材を残して都市へ集約し、案内/locator/進捗/元物語をパック側へ再構成する。既存建築を消去せず新規生成へ適用。表の都市側用途は実装済みと計画を含むため状態欄と合わせて読む。
+固定版の46setを全件作業化。11件停止設定・35件未完了という件数は2026-10-13時点の履歴です。以降の採用や例外確定は各行の状態を参照してください。フェラス室の設定は隔離全Mod起動とselftestを確認したが、新規都市接合と全seedの元生成停止は未実測。2026-11-08にNetherの拳の祭壇とEndの浮島の2件を市外例外として確定しました。次元固有の攻略環境・召喚・戦利品を維持し、都市で製作できる遠征地図を導線にします。地図の実製作は確認済みで、実検索・現地往復・実戦は未検証です。探索が進行を妨げる場合は導線を見直します。必要な部品・戦闘AI・固有素材を残して都市へ集約し、案内/locator/進捗/元物語をパック側へ再構成する。既存建築を消去せず新規生成へ適用。表の都市側用途は実装済みと計画を含むため状態欄と合わせて読む。
 
 水術塔・湿地小屋・地下フェラス室・Apotheosis tower_mainは既存Javaがtemplateを直接参照して配置するため、原生setの自然配置と独立している。Apotheosis別3型は都市wrapperへ登録し、砂型の自然接合だけ確認。Alex小屋templateを選ぶsetの対応、全locatorは未完了。
 
@@ -98,9 +98,9 @@ Iron's Lib、Lionfish API、Citadel、Cerbons API、Apothic Attributes、Placebo
 | `apotheosis:tower_main` | 停止設定済み | 都市街路の射手塔 |
 | `apotheosis:tower_sand` | 停止設定済み・都市自然接合確認 | 都市塔の別外観wrapper |
 | `apotheosis:tower_spruce` | 停止設定済み・自然接合未検証 | 都市塔の別外観wrapper |
-| `bosses_of_mass_destruction:gauntlet_arena` | 移管/停止未完了 | 都市から到達する管理遠征/必要な攻略環境 |
+| `bosses_of_mass_destruction:gauntlet_arena` | 2026-11-08市外例外確定・元生成維持 | Nether固有の祭壇と召喚・戦利品を保持。都市の灼熱の遠征地図から案内（実検索・往復は未検証） |
 | `bosses_of_mass_destruction:lich_tower` | 2026-11-08本番採用（元生成停止・都市版wrapper） | 寒冷地のLich塔を都市へ移管。元の戦利品（箱5個）・スポナー2個・全部品は維持 |
-| `bosses_of_mass_destruction:obsidilith_arena` | 移管/停止未完了 | 都市から到達する管理遠征/必要な攻略環境 |
+| `bosses_of_mass_destruction:obsidilith_arena` | 2026-11-08市外例外確定・元生成維持 | Endの浮島と召喚・戦利品を保持。都市の終端の遠征地図から案内（実検索・往復は未検証） |
 | `bosses_of_mass_destruction:void_blossom` | 移管/停止未完了 | 都市から到達する管理遠征/必要な攻略環境 |
 | `cataclysm:acropolis` | 移管/停止未完了 | 都市の地上/地下/工業/水辺または管理遠征 |
 | `cataclysm:ancient_factory` | 移管/停止未完了 | 都市の地上/地下/工業/水辺または管理遠征 |
